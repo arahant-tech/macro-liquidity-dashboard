@@ -1,0 +1,336 @@
+{
+  "series": [
+    {
+      "line": 1,
+      "fu_code": "FU893064105.Q",
+      "fa_code": "FA893064105.Q",
+      "description": "All sectors; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "total",
+      "sector_key": null,
+      "label_ko": null
+    },
+    {
+      "line": 2,
+      "fu_code": "FU103164105.Q",
+      "fa_code": "FA103164105.Q",
+      "description": "Nonfinancial corporate business; corporate equities; liability",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "issuer",
+      "sector_key": "nonfinancial_corporations",
+      "label_ko": "비금융 법인"
+    },
+    {
+      "line": 3,
+      "fu_code": "FU793164105.Q",
+      "fa_code": "FA793164105.Q",
+      "description": "Domestic financial sectors; corporate equities; liability",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "issuer_subtotal",
+      "sector_key": null,
+      "label_ko": null
+    },
+    {
+      "line": 4,
+      "fu_code": "FU763164105.Q",
+      "fa_code": "FA763164105.Q",
+      "description": "U.S.-chartered depository institutions; corporate equities; liability",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "issuer",
+      "sector_key": "us_depository_institutions",
+      "label_ko": "미국 인가 예금기관"
+    },
+    {
+      "line": 5,
+      "fu_code": "FU513164105.Q",
+      "fa_code": "FA513164105.Q",
+      "description": "Property-casualty insurance companies; corporate equities; liability",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "issuer",
+      "sector_key": "property_casualty_insurance",
+      "label_ko": "손해보험"
+    },
+    {
+      "line": 6,
+      "fu_code": "FU543164175.Q",
+      "fa_code": "FA543164175.Q",
+      "description": "Life insurance companies, general accounts; corporate equities; liability",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "issuer",
+      "sector_key": "life_insurance",
+      "label_ko": "생명보험"
+    },
+    {
+      "line": 7,
+      "fu_code": "FU554090005.Q",
+      "fa_code": "FA554090005.Q",
+      "description": "Closed-end funds; total financial assets ",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "issuer",
+      "sector_key": "closed_end_funds",
+      "label_ko": "폐쇄형펀드"
+    },
+    {
+      "line": 8,
+      "fu_code": "FU564090005.Q",
+      "fa_code": "FA564090005.Q",
+      "description": "Exchange-traded funds; total financial assets",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "issuer",
+      "sector_key": "exchange_traded_funds",
+      "label_ko": "ETF"
+    },
+    {
+      "line": 9,
+      "fu_code": "FU403164105.Q",
+      "fa_code": "FA403164105.Q",
+      "description": "Government-sponsored enterprises; corporate equities; liability",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "issuer",
+      "sector_key": "government_sponsored_enterprises",
+      "label_ko": "정부후원기관"
+    },
+    {
+      "line": 10,
+      "fu_code": "FU643164105.Q",
+      "fa_code": "FA643164105.Q",
+      "description": "Mortgage real estate investment trusts; corporate equities; liability",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "issuer",
+      "sector_key": "mortgage_reits",
+      "label_ko": "모기지 REIT"
+    },
+    {
+      "line": 11,
+      "fu_code": "FU663164105.Q",
+      "fa_code": "FA663164105.Q",
+      "description": "Security brokers and dealers; corporate equities; liability",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "issuer",
+      "sector_key": "brokers_dealers",
+      "label_ko": "브로커·딜러"
+    },
+    {
+      "line": 12,
+      "fu_code": "FU733164105.Q",
+      "fa_code": "FA733164105.Q",
+      "description": "Holding companies; corporate equities; liability",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "issuer",
+      "sector_key": "holding_companies",
+      "label_ko": "지주회사"
+    },
+    {
+      "line": 13,
+      "fu_code": "FU503164105.Q",
+      "fa_code": "FA503164105.Q",
+      "description": "Other financial business; corporate equities; liability",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "issuer",
+      "sector_key": "other_financial_business",
+      "label_ko": "기타 금융"
+    },
+    {
+      "line": 14,
+      "fu_code": "FU263164100.Q",
+      "fa_code": "FA263164100.Q",
+      "description": "Rest of the world; foreign corporate equities including foreign investment fund shares; liability",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "issuer",
+      "sector_key": "rest_of_world",
+      "label_ko": "해외"
+    },
+    {
+      "line": 15,
+      "fu_code": "FU893064105.Q",
+      "fa_code": "FA893064105.Q",
+      "description": "All sectors; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "repeated_total",
+      "sector_key": null,
+      "label_ko": null
+    },
+    {
+      "line": 16,
+      "fu_code": "FU153064105.Q",
+      "fa_code": "FA153064105.Q",
+      "description": "Households and nonprofit organizations; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "households_nonprofits",
+      "label_ko": "가계·비영리기관(잔여 추정)"
+    },
+    {
+      "line": 17,
+      "fu_code": "FU103064103.Q",
+      "fa_code": "FA103064103.Q",
+      "description": "Nonfinancial corporate business; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "nonfinancial_corporations",
+      "label_ko": "비금융 법인"
+    },
+    {
+      "line": 18,
+      "fu_code": "FU313064105.Q",
+      "fa_code": "FA313064105.Q",
+      "description": "Federal government; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "federal_government",
+      "label_ko": "연방정부"
+    },
+    {
+      "line": 19,
+      "fu_code": "FU213064103.Q",
+      "fa_code": "FA213064103.Q",
+      "description": "State and local governments; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "state_local_governments",
+      "label_ko": "주·지방정부"
+    },
+    {
+      "line": 20,
+      "fu_code": "FU713064103.Q",
+      "fa_code": "FA713064103.Q",
+      "description": "Central bank; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "central_bank",
+      "label_ko": "중앙은행"
+    },
+    {
+      "line": 21,
+      "fu_code": "FU763064103.Q",
+      "fa_code": "FA763064103.Q",
+      "description": "U.S.-chartered depository institutions; corporate equities, excluding Federal Reserve stock and equity in GSEs; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "us_depository_institutions",
+      "label_ko": "미국 인가 예금기관"
+    },
+    {
+      "line": 22,
+      "fu_code": "FU753064103.Q",
+      "fa_code": "FA753064103.Q",
+      "description": "Foreign banking offices in the U.S.; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "foreign_bank_offices_us",
+      "label_ko": "미국 내 외국은행"
+    },
+    {
+      "line": 23,
+      "fu_code": "FU513064105.Q",
+      "fa_code": "FA513064105.Q",
+      "description": "Property-casualty insurance companies; corporate equities, including those held by U.S. residual market reinsurers; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "property_casualty_insurance",
+      "label_ko": "손해보험"
+    },
+    {
+      "line": 24,
+      "fu_code": "FU543064105.Q",
+      "fa_code": "FA543064105.Q",
+      "description": "Life insurance companies; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "life_insurance",
+      "label_ko": "생명보험"
+    },
+    {
+      "line": 25,
+      "fu_code": "FU573064105.Q",
+      "fa_code": "FA573064105.Q",
+      "description": "Private pension funds, including 403(b) plans; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "private_pensions",
+      "label_ko": "민간 연금"
+    },
+    {
+      "line": 26,
+      "fu_code": "FU343064105.Q",
+      "fa_code": "FA343064105.Q",
+      "description": "Federal government pension funds; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "federal_pensions",
+      "label_ko": "연방 연금"
+    },
+    {
+      "line": 27,
+      "fu_code": "FU223064145.Q",
+      "fa_code": "FA223064145.Q",
+      "description": "State and local government employee defined benefit pension funds; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "state_local_pensions",
+      "label_ko": "주·지방 연금"
+    },
+    {
+      "line": 28,
+      "fu_code": "FU653064100.Q",
+      "fa_code": "FA653064100.Q",
+      "description": "Mutual funds; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "mutual_funds",
+      "label_ko": "뮤추얼펀드"
+    },
+    {
+      "line": 29,
+      "fu_code": "FU553064103.Q",
+      "fa_code": "FA553064103.Q",
+      "description": "Closed-end funds; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "closed_end_funds",
+      "label_ko": "폐쇄형펀드"
+    },
+    {
+      "line": 30,
+      "fu_code": "FU563064100.Q",
+      "fa_code": "FA563064100.Q",
+      "description": "Exchange-traded funds; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "exchange_traded_funds",
+      "label_ko": "ETF"
+    },
+    {
+      "line": 31,
+      "fu_code": "FU663064105.Q",
+      "fa_code": "FA663064105.Q",
+      "description": "Security brokers and dealers; corporate equities (net); asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "brokers_dealers",
+      "label_ko": "브로커·딜러"
+    },
+    {
+      "line": 32,
+      "fu_code": "FU503064105.Q",
+      "fa_code": "FA503064105.Q",
+      "description": "Other financial business; corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "other_financial_business",
+      "label_ko": "기타 금융"
+    },
+    {
+      "line": 33,
+      "fu_code": "FU263064105.Q",
+      "fa_code": "FA263064105.Q",
+      "description": "Rest of the world; U.S. corporate equities; asset",
+      "unit": "Millions of dollars; transactions, not seasonally adjusted",
+      "role": "acquirer",
+      "sector_key": "rest_of_world",
+      "label_ko": "해외"
+    }
+  ],
+  "table": "F51.1.t",
+  "unit": "Millions of dollars"
+}
