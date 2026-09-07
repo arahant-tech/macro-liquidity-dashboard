@@ -1,0 +1,55 @@
+{
+  "version": "3.2.0",
+  "objective": "Find economically meaningful, robust relationships between US equities and liquidity without optimizing original S/p definitions to equities. Distinguish quantity, financing prices and policy expectations.",
+  "status": "Fixed before new monthly regressions. Past markets and earlier tests were already inspected. Calendar-era checking is retrospective temporal validation, not a pristine holdout.",
+  "start": "2003-01-01",
+  "end": "2026-06-30",
+  "assets": {
+    "SPASTT01USM661N": "OECD US share price index, monthly average, historical NYSE basis; current constituent continuity unverified. Price index not total return.",
+    "NASDAQCOM": "Nasdaq Composite daily closes averaged within each calendar month with >=15 valid dates. Monthly-average index change, not month-end trading return."
+  },
+  "candidates": {
+    "scalar": "Preserved midpoint scalar dollar contribution / initial same-Wednesday bankassets *100.",
+    "allocation": "Preserved midpoint allocation dollar contribution / initial bankassets *100.",
+    "m2": "100log nominal M2 change. Do not alternately select real/nominal based on results.",
+    "loans": "100log change of monthly average TOTLL nominal bank loans/leases (>=3 Wednesday observations); not all bank credit.",
+    "credit_ease": "Negative change in monthly average BAA10Y *100bp. Corporate financing/default-risk pricing; no stock-price input in the arithmetic. Not pure monetary liquidity or a quantity measure.",
+    "real_ease": "Negative change in monthly mean DFII10 *100bp. Real discount-rate pricing; not money quantity."
+  },
+  "not_adopted": {
+    "EBP": "Uses equity information in default-risk modelling, so not used as the primary independent monthly liquidity candidate. Prior EBP results preserved.",
+    "SOFR": "Insufficient pre2020 history for long-era validation; do not weaken minimum sample merely to include it.",
+    "equity_conditioned_shocks": "Do not use stock-sign-identified monetary shocks to independently prove the same stock-sign reaction."
+  },
+  "measurement": {
+    "formula": "S=R+P, p=(R/S,P/S), midpoint dollars preserved; no asset-fitted aggregate weights.",
+    "contemporaneous": "Observation-time alignment: quantity last common Wednesday<=calendar monthend, at most6days old; M2 exact observation month; loans average same-month Wednesdays; real/credit daily same-month means >=15days. No publication shift in contemporaneous pairs.",
+    "leading": "Decision=calendar monthend. Quantity latest common Wednesday at least14 days earlier(max20d age). M2 monthly reference+45d<=decision(max100d age). Loans reference monthend+14d<=decision(max70d age). Rate/spread monthly mean reference+7d<=decision(max70d age). Each candidate change compares exactly h months earlier using the same availability rule. Record all source dates.",
+    "horizons_months": [
+      1,
+      3
+    ],
+    "targets": "100log(stockmonthlyaverage_end/start); concurrent start=t-h,end=t; leading start=t,end=t+h. No missing-month compression.",
+    "lagged_stock": "For fixed forecast models, AR predictor is hmonth index change ending at latest month whose monthend+45d<=decision(max100d age)."
+  },
+  "inference": {
+    "simple": "6candidates x2assets x2horizons x2timings=48 univariate intercept OLS/HAC6 finite correction. Report Pearson, Spearman, beta95CI, R2, Holm48.",
+    "eras": "pre2020 where target_end<2020; post2020 where target_start and both source observation endpoints>=2020. Require>=36 pairs each. Report each era HAC and paired circular-block correlation95CI blocks6/12,2000draws seed20260907+block.",
+    "meaningful_contemporaneous": "Full Holm48<.05; abs(full Pearson)>=.20; matching nonzero Pearson and Spearman signs across full/pre/post; all full/pre/post HAC beta95CI and block6/12 rho95CI exclude0 in same direction; all three R2>=.01; all leave-one-calendar-year-out correlations same sign. This supports association only, not quantity causality or trading profits.",
+    "meaningful_leading": "Same stability summary; separately require actual expanding forecast gains before claiming useful prediction. A full-sample leading p-value is not forecast validation.",
+    "families": "Fixed four multivariate added-quantity block tests (2assets x2h) get Holm4. Also publish these48+4 against preserved52 tests plus2new policy alternatives when available (106 total). That tracked-family sensitivity does not correct all historical model choices.",
+    "year_sensitivity": "Drop every target calendar year once, no favorable omission selected as replacement result."
+  },
+  "forecast": {
+    "specification": "Exactly4 models: baseline=intercept+lagged equity change+credit_ease+real_ease, augmented=baseline+scalar+allocation+m2+loans. Same intersection pairs and same training for both. No feature selection.",
+    "training": "Expanding min60 eligible pairs; each prior target_end+60calendar days<=current decision; train-only standardization optional for numerical stability, no future fitting. Rank-deficient training skipped with reason. No clipping or posthoc removal.",
+    "inference": "Mean squared error and incremental R2=1-MSE_aug/MSE_base. Paired stored-loss bootstrap2000 draws,blocks6/12months; report95% and Bonferroni98.75% CIs for four model comparisons. No full-refitting/vintage uncertainty.",
+    "unit": "Predicted monthly-average price-index log change; no portfolio, dividends, transaction costs or CAGR."
+  },
+  "limits": [
+    "Latest revised histories; buffers are assumptions, not ALFRED point-in-time reconstruction.",
+    "Same-month stock/credit-price relation is not independent proof that reserve quantity caused stocks. Credit risk and shared macro news remain.",
+    "Original scalar/vector and earlier null/negative results remain unchanged.",
+    "The goal does not authorize finding p<.05 by indefinite indicator/horizon/sample search. All candidates and outcomes are retained."
+  ]
+}

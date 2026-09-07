@@ -1,0 +1,37 @@
+{
+  "version": "3.0.0",
+  "status": "Mechanism-first extension following prior results; prospective specification for this calculation, not untouched historical validation.",
+  "measurement": "Preserve S=R+RRP Others, p=R/S and exact midpoint dollar scalar/allocation attribution on identical Wednesdays. No asset-trained weights. Keep raw dollar contributions. Regression magnitudes divide by initial bank assets rather than initial S to avoid tiny pre-2008 denominators; this is an explicitly new explanatory scaling, not a changed scalar/vector definition.",
+  "cutoff": "2026-08-31; PER remains through2026-06; each outcome keeps own available endpoints.",
+  "markets": {
+    "outcomes": [
+      "SOFR minus reserve remuneration",
+      "EFFR minus reserve remuneration",
+      "OBFR minus reserve remuneration",
+      "SOFR99 minus SOFR",
+      "share of valid days SOFR above remuneration",
+      "2-year Treasury yield",
+      "10-year Treasury yield",
+      "BAA10Y credit spread"
+    ],
+    "units": "Rates/spreads in basis points; positive-day frequency in percentage points. Treasury outcomes are yield changes, not bond returns; BAA10Y contains default and maturity effects, not a pure liquidity premium.",
+    "weekly": "Thu-Wed mean from same-day valid pairs, minimum3 valid days; do not substitute missing values with0. IOER through2021-07-28 and IORB from2021-07-29, based on official replacement. EFFR method break2016 and policy regime boundaries disclosed.",
+    "contemporaneous": "One-week balance scalar/allocation contributions explain same-week mean outcome change. Baseline lagged outcome change+month-end/quarter-end indicators. Association with reverse causality, not a supply-shock elasticity.",
+    "leading": "Quantity reference Wednesday t; assume available t+14 days; target is the next complete Thu-Wed week ending t+21, outcome level(t+21)-level(t+14). Autoregressive baseline uses outcome change endingt+7, at least7days before availability. Dates must be explicit. This is a buffered historical diagnostic, not reconstructed vintage trading.",
+    "inference": "8 outcomes x2 timings=16 joint added-block Wald tests, Holm16, OLS/HAC Bartlett lag8 finite-sample correction. Individual coefficients with95% HAC intervals. No gate based only on p; signs and eras reported as sensitivity.",
+    "forecast": "Leading tests only: expanding training min104 eligible pairs; a prior target_end+7 days must be <= current availability_date. Compare baseline controls versus controls+quantity block on identical train/test observations. Stored paired-loss bootstrap2000draws blocks13/26 weeks, seedfixed, not full refit uncertainty."
+  },
+  "policy": "Use official high-frequency USMPD surprises, with its own policy/protocol.json fixed before event regressions. Distinguish announcement-window price reactions, daily responses and later first/fourth Wednesday balances. Never label an ordinary policy rate move or event dummy as surprise. Target/path/QE information has different scope; pure balance-sheet surprises may remain unverified.",
+  "valuation": {
+    "target": "1/3-calendar-month change of existing digitized Nasdaq100 trailing PER (log percent).",
+    "baseline": "Change in10-year real yield plus change in Federal Reserve excess bond premium EBP (credit risk-appetite proxy, not an observed equity risk premium). Monthly EBP refers to same calendar month and may be released later; this is contemporaneous research only.",
+    "augmentation": "Add same midpoint scalar/allocation contributions divided by initial bank assets, on identical rows.2 windows -> Holm2; HAC lag6. Also report base coefficient intervals and expanded coefficient intervals. No forward-profit proxy invented.",
+    "earnings_status": "Point-in-time Nasdaq100 expected earnings not available in current source set after local/provider check. Forward earnings path remains UNVERIFIED; do not back out price/PER as expected earnings, use later realized EPS, or substitute broad GDP/profit forecasts.",
+    "risk_status": "EBP is estimated from corporate bonds and firm data, may revise across history and includes common risk factors. Equity-specific risk compensation remains unobserved; no complete earnings/discount-rate mediation claim."
+  },
+  "reserve_pressure": "SOFR/EFFR spreads and rate-tail/frequency outcomes are observable pressure proxies, not independent ground truth for scarce reserves. NY Fed RDE when acquired is an external estimated benchmark using reserves and fed funds data; do not count it as independent validation of the same inputs.",
+  "universality": "Only claim evidence in each measured market/period. No universal-liquidity or causal confirmation from one p-value or correlated outcomes. Preserve previous versions and all null/negative results.",
+  "measurement_start": "2003-01-01",
+  "measurement_end": "2026-08-31",
+  "cross_path_multiplicity": "Also report Holm across the union of all declared market16, policy26 and valuation2 regressions (44 expected). This stricter cross-path sensitivity does not account for all prior historical model choices."
+}

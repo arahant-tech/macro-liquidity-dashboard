@@ -1,0 +1,360 @@
+{
+  "markets": [
+    {
+      "outcome": "sofr_admin",
+      "timing": "contemporaneous",
+      "shock": null,
+      "p": 0.024239088094564692,
+      "holm_p": 0.2521582669089887,
+      "cross_path_holm_p": 0.630216290458682
+    },
+    {
+      "outcome": "sofr_admin",
+      "timing": "leading",
+      "shock": null,
+      "p": 0.029210330687051315,
+      "holm_p": 0.26289297618346186,
+      "cross_path_holm_p": 0.7302582671762828
+    },
+    {
+      "outcome": "effr_admin",
+      "timing": "contemporaneous",
+      "shock": null,
+      "p": 0.004989642328297734,
+      "holm_p": 0.06486535026787055,
+      "cross_path_holm_p": 0.14968926984893202
+    },
+    {
+      "outcome": "effr_admin",
+      "timing": "leading",
+      "shock": null,
+      "p": 0.6477757236857632,
+      "holm_p": 1,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "obfr_admin",
+      "timing": "contemporaneous",
+      "shock": null,
+      "p": 0.00014368009947847803,
+      "holm_p": 0.0022988815916556485,
+      "cross_path_holm_p": 0.005028803481746731
+    },
+    {
+      "outcome": "obfr_admin",
+      "timing": "leading",
+      "shock": null,
+      "p": 0.02292347880990806,
+      "holm_p": 0.2521582669089887,
+      "cross_path_holm_p": 0.6189339278675177
+    },
+    {
+      "outcome": "sofr_upper_tail",
+      "timing": "contemporaneous",
+      "shock": null,
+      "p": 0.13679034731248774,
+      "holm_p": 0.8207420838749264,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "sofr_upper_tail",
+      "timing": "leading",
+      "shock": null,
+      "p": 0.05344906581691641,
+      "holm_p": 0.4275925265353313,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "sofr_positive_share",
+      "timing": "contemporaneous",
+      "shock": null,
+      "p": 0.019485763738084572,
+      "holm_p": 0.23382916485701488,
+      "cross_path_holm_p": 0.545601384666368
+    },
+    {
+      "outcome": "sofr_positive_share",
+      "timing": "leading",
+      "shock": null,
+      "p": 0.9064811845486198,
+      "holm_p": 1,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "treasury_2y",
+      "timing": "contemporaneous",
+      "shock": null,
+      "p": 0.003267236324743311,
+      "holm_p": 0.04900854487114967,
+      "cross_path_holm_p": 0.10455156239178595
+    },
+    {
+      "outcome": "treasury_2y",
+      "timing": "leading",
+      "shock": null,
+      "p": 0.5944434158531283,
+      "holm_p": 1,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "treasury_10y",
+      "timing": "contemporaneous",
+      "shock": null,
+      "p": 0.00450391585673715,
+      "holm_p": 0.0630548219943201,
+      "cross_path_holm_p": 0.13962139155885164
+    },
+    {
+      "outcome": "treasury_10y",
+      "timing": "leading",
+      "shock": null,
+      "p": 0.8338995648991092,
+      "holm_p": 1,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "baa10y",
+      "timing": "contemporaneous",
+      "shock": null,
+      "p": 0.07492807175608707,
+      "holm_p": 0.5244965022926095,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "baa10y",
+      "timing": "leading",
+      "shock": null,
+      "p": 0.35235490123546476,
+      "holm_p": 1,
+      "cross_path_holm_p": 1.0
+    }
+  ],
+  "policy": [
+    {
+      "outcome": "hf_sp500",
+      "timing": "intraday",
+      "shock": "STMT",
+      "p": 0.005218575103336238,
+      "holm_p": 0.07827862655004357,
+      "cross_path_holm_p": 0.15133867799675088
+    },
+    {
+      "outcome": "hf_ust2",
+      "timing": "intraday",
+      "shock": "STMT",
+      "p": 7.850579440483631e-42,
+      "holm_p": 2.041150654525744e-40,
+      "cross_path_holm_p": 3.4542549538127977e-40
+    },
+    {
+      "outcome": "hf_ust10",
+      "timing": "intraday",
+      "shock": "STMT",
+      "p": 1.1236938655334475e-11,
+      "holm_p": 2.584495890726929e-10,
+      "cross_path_holm_p": 4.607144848687135e-10
+    },
+    {
+      "outcome": "hf_real10",
+      "timing": "intraday",
+      "shock": "STMT",
+      "p": 3.3399726214801695e-09,
+      "holm_p": 7.013942505108356e-08,
+      "cross_path_holm_p": 1.3025893223772662e-07
+    },
+    {
+      "outcome": "hf_dxy",
+      "timing": "intraday",
+      "shock": "STMT",
+      "p": 6.632168255230068e-07,
+      "holm_p": 1.260111968493713e-05,
+      "cross_path_holm_p": 2.4539022544351253e-05
+    },
+    {
+      "outcome": "daily_btc",
+      "timing": "daily",
+      "shock": "STMT",
+      "p": 0.237465171980919,
+      "holm_p": 1.0,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "daily_credit",
+      "timing": "daily",
+      "shock": "STMT",
+      "p": 0.002611334037874622,
+      "holm_p": 0.041781344605993954,
+      "cross_path_holm_p": 0.08617402324986254
+    },
+    {
+      "outcome": "reserve_pctS_1w",
+      "timing": "subsequent_balance",
+      "shock": "STMT",
+      "p": 0.1427810532699475,
+      "holm_p": 1.0,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "scalar_pctS_1w",
+      "timing": "subsequent_balance",
+      "shock": "STMT",
+      "p": 0.17078432053868156,
+      "holm_p": 1.0,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "allocation_pp_1w",
+      "timing": "subsequent_balance",
+      "shock": "STMT",
+      "p": 0.942466026590218,
+      "holm_p": 1.0,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "reserve_pctS_4w",
+      "timing": "subsequent_balance",
+      "shock": "STMT",
+      "p": 0.3688464049979087,
+      "holm_p": 1.0,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "scalar_pctS_4w",
+      "timing": "subsequent_balance",
+      "shock": "STMT",
+      "p": 0.33347842703106617,
+      "holm_p": 1.0,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "allocation_pp_4w",
+      "timing": "subsequent_balance",
+      "shock": "STMT",
+      "p": 0.9815240697695206,
+      "holm_p": 1.0,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "hf_sp500",
+      "timing": "intraday",
+      "shock": "ME",
+      "p": 1.8965380652479015e-05,
+      "holm_p": 0.00034137685174462227,
+      "cross_path_holm_p": 0.0006827537034892445
+    },
+    {
+      "outcome": "hf_ust2",
+      "timing": "intraday",
+      "shock": "ME",
+      "p": 2.8662378061695296e-41,
+      "holm_p": 7.165594515423824e-40,
+      "cross_path_holm_p": 1.2324822566528977e-39
+    },
+    {
+      "outcome": "hf_ust10",
+      "timing": "intraday",
+      "shock": "ME",
+      "p": 5.03866438086643e-12,
+      "holm_p": 1.2092794514079432e-10,
+      "cross_path_holm_p": 2.1162390399639007e-10
+    },
+    {
+      "outcome": "hf_real10",
+      "timing": "intraday",
+      "shock": "ME",
+      "p": 2.909306135724732e-11,
+      "holm_p": 6.400473498594411e-10,
+      "cross_path_holm_p": 1.1637224542898928e-09
+    },
+    {
+      "outcome": "hf_dxy",
+      "timing": "intraday",
+      "shock": "ME",
+      "p": 1.1413672535289956e-08,
+      "holm_p": 2.282734507057991e-07,
+      "cross_path_holm_p": 4.337195563410183e-07
+    },
+    {
+      "outcome": "daily_btc",
+      "timing": "daily",
+      "shock": "ME",
+      "p": 0.04812562066641463,
+      "holm_p": 0.6737586893298049,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "daily_credit",
+      "timing": "daily",
+      "shock": "ME",
+      "p": 0.00027725324403686275,
+      "holm_p": 0.004713305148626667,
+      "cross_path_holm_p": 0.009426610297253333
+    },
+    {
+      "outcome": "reserve_pctS_1w",
+      "timing": "subsequent_balance",
+      "shock": "ME",
+      "p": 0.14418466219670717,
+      "holm_p": 1.0,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "scalar_pctS_1w",
+      "timing": "subsequent_balance",
+      "shock": "ME",
+      "p": 0.1760061581015637,
+      "holm_p": 1.0,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "allocation_pp_1w",
+      "timing": "subsequent_balance",
+      "shock": "ME",
+      "p": 0.8697828240698282,
+      "holm_p": 1.0,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "reserve_pctS_4w",
+      "timing": "subsequent_balance",
+      "shock": "ME",
+      "p": 0.3147980887486534,
+      "holm_p": 1.0,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "scalar_pctS_4w",
+      "timing": "subsequent_balance",
+      "shock": "ME",
+      "p": 0.2916954601599692,
+      "holm_p": 1.0,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "allocation_pp_4w",
+      "timing": "subsequent_balance",
+      "shock": "ME",
+      "p": 0.8814411240775939,
+      "holm_p": 1.0,
+      "cross_path_holm_p": 1.0
+    }
+  ],
+  "valuation": [
+    {
+      "outcome": "PER 1m",
+      "timing": "contemporaneous",
+      "shock": null,
+      "p": 0.7333852656381515,
+      "holm_p": 0.7333852656381515,
+      "cross_path_holm_p": 1.0
+    },
+    {
+      "outcome": "PER 3m",
+      "timing": "contemporaneous",
+      "shock": null,
+      "p": 0.2619047872246845,
+      "holm_p": 0.523809574449369,
+      "cross_path_holm_p": 1.0
+    }
+  ]
+}
