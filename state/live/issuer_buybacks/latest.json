@@ -1,0 +1,83 @@
+{
+  "assumptions": [
+    "Microsoft's cash-flow statement reports cash payments for the specified quarter, separately from announced repurchase authorization.",
+    "The official earnings navigation identifies the latest published earnings release.",
+    "The same issuer cash payments appearing in SEC and issuer IR sources are overlapping observations and must not be added."
+  ],
+  "errors": [],
+  "fetched_at": "2026-09-08T17:38:22.610761Z",
+  "limitations": [
+    "One issuer is not aggregate market buybacks and is not a representative company panel.",
+    "Cash settlement can differ from market purchase execution timing, including accelerated repurchase settlements.",
+    "Quarterly observations are not monthly flows and are never repeated across months.",
+    "HTML layouts or accounting labels can change; mismatches stop extraction instead of substituting another line.",
+    "A source publication date has day precision only; known_by is actual retrieval time and original release timestamp is unverified.",
+    "The native issuer cash-flow label is retained; equivalence to an exact SEC taxonomy concept is not certified."
+  ],
+  "observations": [
+    {
+      "aggregation_allowed": false,
+      "block": "terminal_flows",
+      "cik": "0000789019",
+      "coverage": "single_issuer_not_market_aggregate",
+      "currency": "USD",
+      "duration_months": 3,
+      "fetched_at": "2026-09-08T17:38:22.538573Z",
+      "fiscal_quarter": 4,
+      "fiscal_year": 2026,
+      "frequency": "quarterly",
+      "id": "IR_BUYBACKS_MSFT",
+      "issuer": "Microsoft",
+      "known_by": "2026-09-08T17:38:22.538573Z",
+      "layer": 4,
+      "measurement_kind": "reported_repurchase_cash_payment",
+      "name": "Microsoft reported common-stock repurchase cash payments",
+      "not_additive_with": [
+        "SEC_BUYBACKS_MSFT"
+      ],
+      "original_release_at": null,
+      "overlap_group": "MSFT_common_stock_cash_repurchase",
+      "period": "2026-06-30",
+      "period_end": "2026-06-30",
+      "period_start": "2026-04-01",
+      "publication_precision": "date_only",
+      "published_date": "2026-07-29",
+      "raw_path": "raw/issuer_buybacks/5001dd9823759986de3fa039a528fb842da318375a33cb974e4dea0a4b48077e.html",
+      "raw_signed_value": -4579.0,
+      "requested_url": "https://aka.ms/latestearnings",
+      "research_eligible": false,
+      "series_id": "IR_BUYBACKS_MSFT",
+      "source_label": "Common stock repurchased",
+      "source_sha256": "5001dd9823759986de3fa039a528fb842da318375a33cb974e4dea0a4b48077e",
+      "source_url": "https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q4/press-release-webcast",
+      "ticker": "MSFT",
+      "track": "equity",
+      "unit": "million USD",
+      "units": "million USD",
+      "value": 4579.0
+    }
+  ],
+  "provider": "issuer_buybacks",
+  "retained_observations": [],
+  "sources": [
+    {
+      "fetched_at": "2026-09-08T17:38:21.887424Z",
+      "known_by": "2026-09-08T17:38:21.887424Z",
+      "original_release_at": null,
+      "raw_path": "raw/issuer_buybacks/cc313e9f911f6ff8b97f4da9b024a9e3baa9ad4b034596bbe60e3e303db77a07.html",
+      "requested_url": "https://www.microsoft.com/en-us/Investor/earnings/",
+      "source_sha256": "cc313e9f911f6ff8b97f4da9b024a9e3baa9ad4b034596bbe60e3e303db77a07",
+      "source_url": "https://www.microsoft.com/en-us/Investor/earnings/default"
+    },
+    {
+      "fetched_at": "2026-09-08T17:38:22.538573Z",
+      "known_by": "2026-09-08T17:38:22.538573Z",
+      "original_release_at": null,
+      "raw_path": "raw/issuer_buybacks/5001dd9823759986de3fa039a528fb842da318375a33cb974e4dea0a4b48077e.html",
+      "requested_url": "https://aka.ms/latestearnings",
+      "source_sha256": "5001dd9823759986de3fa039a528fb842da318375a33cb974e4dea0a4b48077e",
+      "source_url": "https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q4/press-release-webcast"
+    }
+  ],
+  "status": "ok"
+}

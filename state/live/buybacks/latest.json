@@ -1,0 +1,150 @@
+{
+  "access_configuration": "Set SEC_USER_AGENT to a truthful application and contact identity if SEC rejects access; do not bypass HTTP 403.",
+  "assumptions": [
+    "The exact standard cash-repurchase concept measures executed corporate cash payments, not announced authorization.",
+    "Each filing's start/end dates define its fiscal duration; cumulative observations are never repeated across months.",
+    "The fixed five-issuer convenience panel was selected before inspecting values and is not market representative."
+  ],
+  "breaks": [
+    "A five-issuer panel is not aggregate US equity buybacks and has selection and survivorship bias.",
+    "Cash payments can differ in timing from execution of market purchases and can include accelerated-repurchase settlements.",
+    "Quarterly and annual filings are delayed; fiscal calendars and YTD durations differ across issuers.",
+    "Only the exact common-stock payment concept is used. Missing custom concepts, other equity classes and filing contexts are not imputed.",
+    "Filing dates are date-only evidence. Original publication timestamps are unknown; known_by is actual retrieval time.",
+    "Current SEC concept history is revised; these captures do not recreate historic point-in-time availability."
+  ],
+  "capture_id": "20260908T173820869327Z_f71a6d6626c1",
+  "completed_at": "2026-09-08T17:38:21.397693Z",
+  "errors": [
+    {
+      "error": "sec_http_403",
+      "series_id": "SEC_BUYBACKS_AAPL",
+      "ticker": "AAPL"
+    },
+    {
+      "error": "sec_http_403_remaining_panel_not_requested",
+      "series_id": "SEC_BUYBACKS_MSFT",
+      "ticker": "MSFT"
+    },
+    {
+      "error": "sec_http_403_remaining_panel_not_requested",
+      "series_id": "SEC_BUYBACKS_GOOGL",
+      "ticker": "GOOGL"
+    },
+    {
+      "error": "sec_http_403_remaining_panel_not_requested",
+      "series_id": "SEC_BUYBACKS_META",
+      "ticker": "META"
+    },
+    {
+      "error": "sec_http_403_remaining_panel_not_requested",
+      "series_id": "SEC_BUYBACKS_V",
+      "ticker": "V"
+    }
+  ],
+  "fetched_at": "2026-09-08T17:38:21.397693Z",
+  "issuer_status": [
+    {
+      "checked_at": "2026-09-08T17:38:20.869471Z",
+      "cik": "0000320193",
+      "error": "sec_http_403",
+      "fingerprint": null,
+      "issuer": "Apple",
+      "last_good_observations": [],
+      "status": "error",
+      "ticker": "AAPL"
+    },
+    {
+      "checked_at": "2026-09-08T17:38:21.397650Z",
+      "cik": "0000789019",
+      "error": "sec_http_403_remaining_panel_not_requested",
+      "fingerprint": null,
+      "issuer": "Microsoft",
+      "last_good_observations": [],
+      "status": "error",
+      "ticker": "MSFT"
+    },
+    {
+      "checked_at": "2026-09-08T17:38:21.397675Z",
+      "cik": "0001652044",
+      "error": "sec_http_403_remaining_panel_not_requested",
+      "fingerprint": null,
+      "issuer": "Alphabet",
+      "last_good_observations": [],
+      "status": "error",
+      "ticker": "GOOGL"
+    },
+    {
+      "checked_at": "2026-09-08T17:38:21.397682Z",
+      "cik": "0001326801",
+      "error": "sec_http_403_remaining_panel_not_requested",
+      "fingerprint": null,
+      "issuer": "Meta Platforms",
+      "last_good_observations": [],
+      "status": "error",
+      "ticker": "META"
+    },
+    {
+      "checked_at": "2026-09-08T17:38:21.397688Z",
+      "cik": "0001403161",
+      "error": "sec_http_403_remaining_panel_not_requested",
+      "fingerprint": null,
+      "issuer": "Visa",
+      "last_good_observations": [],
+      "status": "error",
+      "ticker": "V"
+    }
+  ],
+  "limitations": [
+    "A five-issuer panel is not aggregate US equity buybacks and has selection and survivorship bias.",
+    "Cash payments can differ in timing from execution of market purchases and can include accelerated-repurchase settlements.",
+    "Quarterly and annual filings are delayed; fiscal calendars and YTD durations differ across issuers.",
+    "Only the exact common-stock payment concept is used. Missing custom concepts, other equity classes and filing contexts are not imputed.",
+    "Filing dates are date-only evidence. Original publication timestamps are unknown; known_by is actual retrieval time.",
+    "Current SEC concept history is revised; these captures do not recreate historic point-in-time availability."
+  ],
+  "market_aggregate": null,
+  "observations": [],
+  "outcome": "error",
+  "panel": [
+    {
+      "cik": "0000320193",
+      "issuer": "Apple",
+      "ticker": "AAPL"
+    },
+    {
+      "cik": "0000789019",
+      "issuer": "Microsoft",
+      "ticker": "MSFT"
+    },
+    {
+      "cik": "0001652044",
+      "issuer": "Alphabet",
+      "ticker": "GOOGL"
+    },
+    {
+      "cik": "0001326801",
+      "issuer": "Meta Platforms",
+      "ticker": "META"
+    },
+    {
+      "cik": "0001403161",
+      "issuer": "Visa",
+      "ticker": "V"
+    }
+  ],
+  "provider": "buybacks",
+  "raw_captures": [],
+  "research_eligible": false,
+  "retrieved_at": "2026-09-08T17:38:21.397693Z",
+  "schema_version": 1,
+  "sources": [
+    "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+    "https://www.sec.gov/about/developer-resources"
+  ],
+  "stale": 0,
+  "started_at": "2026-09-08T17:38:20.869327Z",
+  "status": "error",
+  "success": 0,
+  "total": 5
+}
