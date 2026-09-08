@@ -10,9 +10,9 @@ class ChartPageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         root=Path(__file__).resolve().parents[1]
-        cls.path=root/'charts.js'
-        if not cls.path.exists():
-            cls.path=root/'publishing/cloud-feeds/charts.js'
+        deployment=root/'publishing/cloud-feeds'
+        cls.page_root=deployment if deployment.is_dir() else root
+        cls.path=cls.page_root/'charts.js'
         cls.node=shutil.which('node')
         if not cls.node:
             bundled=Path.home()/'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node'
@@ -23,6 +23,11 @@ class ChartPageTests(unittest.TestCase):
         script="const c=require(process.argv[1]);"+code
         result=subprocess.run([self.node,'-e',script,str(self.path)],capture_output=True,text=True,check=True)
         return json.loads(result.stdout)
+
+    def test_details_page_preserves_the_existing_chart_entrypoint(self):
+        html=(self.page_root/'details.html').read_text()
+        self.assertRegex(html, r'<script\b[^>]*\bsrc=["\'](?:\./)?charts\.js["\']')
+        self.assertRegex(html, r'<link\b[^>]*\bhref=["\'](?:\./)?dashboard\.css["\']')
 
     def test_dates_are_calendar_dates_not_timezone_shifted(self):
         self.assertEqual(self.evaluate("console.log(JSON.stringify([Number.isNaN(c.timestamp('2026-02-30')),new Date(c.timestamp('2026-09-01')).toISOString()]));"),[True,'2026-09-01T00:00:00.000Z'])

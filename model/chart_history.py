@@ -6,16 +6,19 @@ No outcome data, aggregate liquidity score, resampling or imputation is used.
 from __future__ import annotations
 
 import argparse
+import csv
 from datetime import date, datetime, timedelta, timezone
 import hashlib
+import io
 import json
 import math
 import os
 from pathlib import Path
+import re
 import shutil
 
 from model import live_api
-from model.providers import pboc
+from model.providers import funding_structure, intermediary, pboc, terminal_flows
 
 FRED_IDS = ("WRESBAL", "WALCL", "ECBASSETSW", "JPNASSETS", "RRPONTSYD", "WTREGEN")
 PBOC_PARSERS = {"PBOC_TOTAL_ASSETS": pboc.parse_balance,
@@ -26,6 +29,123 @@ LABELS = {"WRESBAL": "Fed 지급준비금", "WALCL": "Fed 총자산", "ECBASSETS
           "PBOC_TOTAL_ASSETS": "PBoC 총자산",
           "PBOC_DEPOSITS_OTHER_DEPOSITORY_CORPORATIONS": "PBoC 예금취급기관 예금",
           "PBOC_TSF_STOCK": "중국 사회융자총량 잔액", "PBOC_TSF_FLOW": "중국 사회융자총량 월간 흐름"}
+MONTHLY_SOURCES = {
+    "NYFED_ACM_TP10_MONTHLY": ("funding_structure", funding_structure.ACM_URL, "csv", "line"),
+    "FINRA_MARGIN_DEBT": ("intermediary", intermediary.FINRA, "html", "line"),
+    "TIC_US_EQUITY_FOREIGN_NET_PURCHASES": ("terminal_flows", terminal_flows.TIC_URL, "txt", "bar"),
+}
+
+
+class HistoryError(ValueError):
+    pass
+
+
+def monthly_history(sid, body, start, end):
+    """Validate the publisher's definition before selecting native monthly cells.
+
+    A month label is a reference period, never its publication date. ACM's
+    actual business-day labels are retained; FINRA/TIC calendar month ends
+    merely label their published balance/transaction reference months.
+    """
+    text = body.decode("utf-8-sig")
+    values = []
+    if sid == "NYFED_ACM_TP10_MONTHLY":
+        latest = funding_structure.parse_acm(text, end)
+        for row in csv.DictReader(io.StringIO(text)):
+            when = datetime.strptime(row["RunDates"], "%d-%b-%Y").date()
+            values.append((when, funding_structure.number(row["TERMYld"])))
+    elif sid == "FINRA_MARGIN_DEBT":
+        latest = next(r for r in intermediary.parse_finra(body, end) if r["series_id"] == sid)
+        for row in (pboc._expanded(r) for r in pboc._HTML(text).rows):
+            if row and re.fullmatch(r"[A-Z][a-z]{2}-\d{2}", row[0]):
+                when = datetime.strptime(row[0], "%b-%y")
+                values.append((intermediary.month_end(when.year, when.month, end), intermediary.numeric(row[1])))
+    elif sid == "TIC_US_EQUITY_FOREIGN_NET_PURCHASES":
+        latest = terminal_flows.parse_tic(text, end)
+        rows = list(csv.reader(io.StringIO(text), delimiter="\t"))
+        index = next(i for i, row in enumerate(rows) if row and row[0] == "country")
+        header = rows[index]
+        code_index = header.index("country_code")
+        for row in rows[index + 1:]:
+            if len(row) <= code_index or row[code_index] != "99996":
+                continue
+            # parse_tic already validates every Grand Total identity, date and
+            # column count. Pre-February-2023 net flows have a structural break.
+            item = dict(zip(header, row))
+            if item["date"] < "2023-02":
+                continue
+            year, month = map(int, item["date"].split("-"))
+            when = intermediary.month_end(year, month, end)
+            raw = item["for_lt_eqty_net"]
+            value = None if raw.strip().lower() == "n.a." else float(terminal_flows.number(raw))
+            values.append((when, value))
+    else:
+        raise HistoryError("unknown_monthly_history_series")
+    months = [(d.year, d.month) for d, _ in values]
+    if len(set(months)) != len(months):
+        raise HistoryError("monthly_history_duplicate_reference_month")
+    if any(d > end or (v is not None and not math.isfinite(v)) for d, v in values):
+        raise HistoryError("monthly_history_future_or_invalid")
+    selected = sorted((d, v) for d, v in values if start <= d <= end)[-36:]
+    if sum(v is not None for _, v in selected) < 12:
+        raise HistoryError("monthly_history_fewer_than_12_observations")
+    points = [{"date": d.isoformat(), "value": v} for d, v in selected]
+    if points[-1] != {"date": latest["period_end"], "value": latest["value"]}:
+        raise HistoryError("monthly_history_latest_point_mismatch")
+    return latest, points
+
+
+def cached_monthly_history(sid, live_root, start, captured):
+    """Read this provider run's complete raw receipt, never an old cell's raw.
+
+    An unchanged latest value can retain an older observation receipt while
+    prior months have been revised. Full-history equality is tested separately
+    by collect.accept, which preserves its first evidence and known_by together.
+    """
+    provider, url, suffix, chart_type = MONTHLY_SOURCES[sid]
+    root = (Path(live_root) / provider).resolve()
+    state = read(root / "latest.json")
+    observations = [o for o in state.get("observations", []) if o.get("series_id") == sid]
+    receipts = [r for r in state.get("sources", []) if r.get("source_url") == url]
+    if len(observations) != 1 or len(receipts) != 1:
+        raise HistoryError("fresh_monthly_history_source_unavailable")
+    obs, receipt = observations[0], receipts[0]
+    if obs.get("source_url") != url:
+        raise HistoryError("monthly_history_source_identity_changed")
+    rel = Path(receipt.get("raw_path", ""))
+    if rel.is_absolute() or ".." in rel.parts or not rel.parts or rel.parts[0] != "raw":
+        raise HistoryError("invalid_monthly_history_evidence_path")
+    source = (root / rel).resolve()
+    if not source.is_relative_to(root) or not source.is_file() or not 0 < source.stat().st_size <= 4_000_000:
+        raise HistoryError("invalid_monthly_history_evidence_file")
+    body = source.read_bytes()
+    if hashlib.sha256(body).hexdigest() != receipt.get("raw_sha256"):
+        raise HistoryError("monthly_history_evidence_hash_mismatch")
+    try:
+        known = datetime.fromisoformat(receipt["known_by"].replace("Z", "+00:00"))
+    except (KeyError, TypeError, ValueError) as exc:
+        raise HistoryError("invalid_monthly_history_known_by") from exc
+    if known.tzinfo is None or known > captured:
+        raise HistoryError("invalid_monthly_history_known_by")
+    latest, points = monthly_history(sid, body, start, captured.date())
+    if any(obs.get(k) != latest.get(k) for k in ("value", "unit", "period_end", "frequency")):
+        raise HistoryError("monthly_history_live_observation_mismatch")
+    if known.date() < date.fromisoformat(points[-1]["date"]):
+        raise HistoryError("monthly_history_known_before_reference_period")
+    known_by = live_api._stamp(known.astimezone(timezone.utc))
+    row = {"series_id": sid, "label": latest["label"], "provider": provider,
+           "points": points, "unit": latest["unit"], "frequency": "Monthly",
+           "known_by": known_by, "source_retrieved_at": known_by,
+           "checked_at": live_api._stamp(captured), "source_url": url,
+           "source_universe": latest["source_universe"],
+           "native_period_basis": latest.get("native_period_basis", latest.get("reference_basis", "reported monthly transactions, calendar-month reference period")),
+           "status": latest["status"], "chart_type": chart_type, "track": "equity",
+           "history_basis": "current_vintage_available_monthly_history_max_36_observations",
+           "research_eligible": False}
+    for key in ("source_page", "source_series_id", "sign_convention", "structural_break", "measurement_kind", "notes"):
+        if key in latest:
+            row[key] = latest[key]
+    return row, body, suffix
 
 
 def read(path, fallback=None):
@@ -64,7 +184,10 @@ def evidence(body, runtime, suffix="json"):
     rel = "raw/" + digest + "." + suffix
     p = runtime / rel
     p.parent.mkdir(parents=True, exist_ok=True)
-    if not p.exists():
+    if p.exists():
+        if p.read_bytes() != body:
+            raise HistoryError("immutable_history_evidence_conflict")
+    else:
         p.write_bytes(body)
     return {"raw_path": rel, "raw_sha256": digest}
 
@@ -95,7 +218,9 @@ def collect(runtime, live_root, checkpoint, *, client=None, clock=None):
     def accept(row):
         prior = old.get(row["series_id"])
         # Revisions never acquire the economic date as their knowledge date.
-        if prior and all(prior.get(k) == row.get(k) for k in ("points", "unit", "frequency", "source_url")):
+        identity = ("points", "unit", "frequency", "source_url", "source_universe",
+                    "native_period_basis", "sign_convention", "structural_break")
+        if prior and all(prior.get(k) == row.get(k) for k in identity):
             source = checkpoint / prior["raw_path"]
             if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest() != prior["raw_sha256"]:
                 raise ValueError("first_history_evidence_missing")
@@ -108,7 +233,9 @@ def collect(runtime, live_root, checkpoint, *, client=None, clock=None):
         output.append(row)
 
     def fail(sid, error):
-        code = str(error) if isinstance(error, (live_api.FredError, pboc.PBoCError)) else type(error).__name__
+        code = str(error) if isinstance(error, (live_api.FredError, pboc.PBoCError, HistoryError,
+                                               funding_structure.FundingError, intermediary.IntermediaryError,
+                                               terminal_flows.TerminalError)) else type(error).__name__
         errors.append({"series_id": sid, "code": code})
         if sid in old:
             row = {**old[sid], "status": "retained", "checked_at": live_api._stamp(live_api._utc(now))}
@@ -179,6 +306,12 @@ def collect(runtime, live_root, checkpoint, *, client=None, clock=None):
                     "source_retrieved_at": receipt["known_by"], "status": "stale" if (end - date.fromisoformat(max(values))).days > 120 else "ok",
                     "chart_type": "bar" if kind == "flow" else "line", "track": "equity",
                     "history_basis": "available_official_monthly_table", "research_eligible": False, **proof})
+        except Exception as e:
+            fail(sid, e)
+    for sid in MONTHLY_SOURCES:
+        try:
+            row, body, suffix = cached_monthly_history(sid, live_root, start, live_api._utc(now))
+            accept({**row, **evidence(body, runtime, suffix)})
         except Exception as e:
             fail(sid, e)
     run_id = os.environ.get("GITHUB_RUN_ID")

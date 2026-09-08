@@ -4,6 +4,12 @@ from pathlib import Path
 import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
+PUBLIC_RUNTIME_FILES = (
+    "accounting-v8.html", "live-model.json", "update-status.json", "live-data.json",
+    "chart-data.json", "charts.js", "dashboard.css", "details.html",
+    "overview.js", "overview.css", "interpretation.js", "interpretation-copy.json",
+    "vendor/chart.umd.min.js", "vendor/LICENSE.chartjs.txt",
+)
 
 
 def package():
@@ -17,7 +23,7 @@ def package():
         raise ValueError("invalid_chart_history")
     # Preserve already-public archive links without reading research contents.
     files = json.loads((ROOT / "automation/public-files.json").read_text())
-    files += ["accounting-v8.html", "live-model.json", "update-status.json", "live-data.json", "chart-data.json", "charts.js", "dashboard.css"]
+    files += list(PUBLIC_RUNTIME_FILES)
     files += [str(p.relative_to(ROOT)) for p in (ROOT / "docs").glob("*_SOURCE*.md")]
     files += ["docs/CLOUD_OPERATION.md"]
     destination = ROOT / "_site"
@@ -25,6 +31,8 @@ def package():
         shutil.rmtree(destination)
     destination.mkdir()
     for relative in dict.fromkeys(files):
+        if not isinstance(relative, str) or Path(relative).is_absolute() or ".." in Path(relative).parts:
+            raise ValueError("unsafe_public_artifact_path")
         source = ROOT / relative
         if source.is_symlink() or not source.resolve().is_relative_to(ROOT) or not source.is_file():
             raise ValueError("unsafe_or_missing_public_artifact")
