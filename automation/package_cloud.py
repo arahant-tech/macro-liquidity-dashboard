@@ -10,7 +10,7 @@ def package():
     snapshot = json.loads((ROOT / "live-data.json").read_text())
     if snapshot.get("research_eligible") is not False or not snapshot.get("generated_at"):
         raise ValueError("invalid_observation_snapshot")
-    if {p["provider"] for p in snapshot["providers"]} != {"fred", "pboc", "buybacks", "issuer_buybacks", "crypto", "etf_flows", "miner_flows"}:
+    if {p["provider"] for p in snapshot["providers"]} != {"fred", "pboc", "buybacks", "issuer_buybacks", "crypto", "etf_flows", "miner_flows", "funding_structure", "intermediary", "terminal_flows", "offshore", "market_buybacks"}:
         raise ValueError("provider_status_incomplete")
     charts = json.loads((ROOT / "chart-data.json").read_text())
     if charts.get("research_eligible") is not False or charts.get("vintage_policy") != "current_snapshot_not_historical_availability":

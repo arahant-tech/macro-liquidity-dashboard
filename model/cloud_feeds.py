@@ -17,12 +17,36 @@ from datetime import datetime, timezone
 
 from model import live_api
 from model.providers import pboc, buybacks, issuer_buybacks, crypto, etf_flows, miner_flows
+from model.providers import funding_structure, intermediary, terminal_flows, offshore, market_buybacks
 
 ROOT = Path(__file__).resolve().parents[1]
 PROVIDERS = {"fred": "FRED · 중앙은행·은행·분포", "pboc": "PBoC · 중국 공식 통계",
              "buybacks": "SEC 직접 API · 보조 경로", "issuer_buybacks": "기업 공식 공시 · 자사주 5개사",
              "crypto": "크립토 · 공급·레버리지", "etf_flows": "현물 ETF · BTC·ETH 순유입",
-             "miner_flows": "채굴사 공시 · 실제 BTC 매도"}
+             "miner_flows": "채굴사 공시 · 실제 BTC 매도",
+             "funding_structure": "분포 · ACM·ECB HQLA",
+             "intermediary": "중개기관 · 딜러·FINRA·SLR",
+             "terminal_flows": "주식 플로우 · TIC·순발행·ICI",
+             "offshore": "BIS 역외 달러 · OFR 레포",
+             "market_buybacks": "S&P 500 · 분기 자사주 집계"}
+TOTALS = {"pboc": 4, "buybacks": 5, "issuer_buybacks": 5, "crypto": 10,
+          "etf_flows": 2, "miner_flows": 2, "funding_structure": 12,
+          "intermediary": 10, "terminal_flows": 8, "offshore": 5, "market_buybacks": 1}
+EXTENSIONS = {"funding_structure", "intermediary", "terminal_flows", "offshore", "market_buybacks"}
+API_ACCESS = {
+    "fred": {"method": "official_api", "authentication": "existing_github_secret"},
+    "pboc": {"method": "official_public_tables", "authentication": "none"},
+    "buybacks": {"method": "official_api", "authentication": "contact_user_agent_github_secret"},
+    "issuer_buybacks": {"method": "official_public_filings", "authentication": "none"},
+    "crypto": {"method": "public_apis", "authentication": "none"},
+    "etf_flows": {"method": "public_reported_tables", "authentication": "none"},
+    "miner_flows": {"method": "official_public_disclosures", "authentication": "none"},
+    "funding_structure": {"method": "ecb_api_and_nyfed_csv", "authentication": "none"},
+    "intermediary": {"method": "nyfed_api_and_official_public_tables", "authentication": "none"},
+    "terminal_flows": {"method": "fred_api_treasury_text_ici_public_tables", "authentication": "existing_fred_secret_only"},
+    "offshore": {"method": "bis_and_ofr_official_apis", "authentication": "none"},
+    "market_buybacks": {"method": "sp_dow_jones_official_public_disclosures", "authentication": "none"},
+}
 ASSUMPTIONS = [
     "API 확인 간격은 1시간입니다. 거시통계 값은 기관의 발표·개정 때 바뀝니다.",
     "표의 레벨은 원자료 관측값이며 잠재 유동성 상태·회귀 입력·진입 신호가 아닙니다.",
@@ -41,11 +65,12 @@ BREAKS = [
     "라이브 자료는 연구 표본과 분리합니다. 과거 컷오프·봉인 홀드아웃을 소급 갱신하지 않습니다.",
 ]
 MISSING = [
-    "2층 분포: 통화 베이시스·ACM·HQLA 미연결",
-    "3층 전환 연산자: 딜러 여력·SLR·FINRA·패시브 비중 미연결; A_t 미추정",
-    "4층 종단 플로우: 주식 펀드/ETF·순발행·TIC 미연결; 자사주는 고정 5개사로 범위 제한",
+    "2층 분포: EURUSD·USDJPY 3개월 통화 베이시스의 무료 지속 공급원 미확보. HQLA는 ECB 감독대상 은행 범위이며 세계 전체가 아님",
+    "3층 전환 연산자: 딜러 포지션·레포와 FINRA는 관측 자료. SLR은 JPM 1개사 비율이며 전체 여유한도 미측정. 패시브 비중은 ICI 접근 상태 확인 필요; A_t 미추정",
+    "4층 종단 플로우: ICI 주식 펀드·ETF 흐름은 접근 상태 확인 필요. Z.1 분기 ETF·펀드 주식자산 거래는 주간 가입유입과 다른 관측. TIC·순발행과 중복 가능; 기업별 자사주는 5개사, 별도 S&P 500 집계는 공표기간의 갱신 지연 확인 필요",
     "5층 범위: ETF는 Farside 보고 집계, 채굴사는 CLSK·MARA 공시 2개사; 전체 온체인 채굴자 매도압은 미측정",
-    "BIS 역외 달러·담보 재사용 등 전체 블록을 채우지 못했으며 L_t 미추정",
+    "BIS GLI의 비미국 비은행 달러신용과 은행대출 구성은 LBS 전 범위를 대체하지 않음. OFR 레포 잔액·거래량은 담보 재사용률이 아니며 재사용률 미측정",
+    "L_t 미추정: 엔 캐리·담보 등 상태 블록의 관측, 역사적 발표일·빈티지와 훈련 표본이 부족. 현재 수집치는 과거 연구에 소급 사용하지 않음",
 ]
 
 
@@ -63,7 +88,9 @@ def normalize_observation(provider, item, *, status="ok"):
               "source_reported_at", "source_quality", "original_release_at", "published_date",
               "methodology", "method", "components", "universe", "fund_universe", "source_universe", "covered_funds", "discovery_status",
               "discovery_mode", "duration_months", "measurement_kind", "raw_scope", "native_period_basis",
-              "not_additive_with", "aggregation_allowed", "source_page", "acquisition_route")
+              "not_additive_with", "aggregation_allowed", "source_page", "acquisition_route",
+              "source_series_id", "native_series_id", "source_label", "scope", "seriesbreak",
+              "seasonal_adjustment", "sign_convention", "source_status", "source_publisher")
     row = {key: item.get(key) for key in fields}
     row.update(provider=provider, status=status, research_eligible=False,
                label=item.get("label") or item.get("meaning") or item.get("series_id"),
@@ -85,6 +112,16 @@ def normalize_observation(provider, item, *, status="ok"):
             row["notes"].append("공시 구성: " + "; ".join(f"{k}: {v} BTC" for k, v in item["components"].items()))
     if provider == "pboc":
         row["notes"].append("공식 월간 HTML 통계표; 원단위 유지")
+    if provider == "funding_structure":
+        row["notes"].append("ACM 월말·ECB 감독대상 은행 분기 자료; 분포 관측이며 세계 HQLA나 상태 추정치가 아님")
+    if provider == "intermediary":
+        row["notes"].append("포지션·마진부채·기관별 비율은 원자료. 딜러 여유한도나 추정 A_t로 해석하지 않음")
+    if provider == "terminal_flows":
+        row["notes"].append("TIC 거주지 기준·Z.1 비금융기업·ICI 투자범위 구분; 원기간 유지, 자사주와 중복 합산 금지")
+    if provider == "market_buybacks":
+        row["notes"].append("S&P DJI가 직접 보고한 S&P 500 분기 자사주 매입; 기업별 관측·Z.1과 중복 합산 금지. 관측기간의 갱신 지연을 확인")
+    if provider == "offshore":
+        row["notes"].append("BIS 총액과 대출·채권 구성은 중복 합산 금지. OFR 잔액·거래량은 담보 재사용률이 아님")
     if provider == "crypto":
         row["notes"].append("단일 공급자·계약; 주식과 별도 트랙")
         if item.get("upstream_observation_time_unknown"):
@@ -143,6 +180,11 @@ def merge_rows(provider, fresh, previous, now):
             limit = 10 if provider == "etf_flows" else 75 if item.get("frequency") == "monthly" else 180
             if age > limit:
                 state = "stale"
+        if provider in EXTENSIONS and item.get("period_end"):
+            age = (now.date() - datetime.fromisoformat(item["period_end"]).date()).days
+            limit = {"daily": 10, "weekly": 21, "monthly": 100, "quarterly": 210}.get(str(item.get("frequency", "")).lower(), 210)
+            if age > limit:
+                state = "stale"
         merged[item["series_id"]] = normalize_observation(provider, item, status=state)
     return list(merged.values())
 
@@ -157,7 +199,10 @@ def collect(output_root, *, collectors=None, clock=None):
     catalog = read_json(Path(live_api.__file__).with_name("live_catalog.json"))
     collectors = collectors or {"fred": live_api.poll, "pboc": pboc.collect, "buybacks": buybacks.collect,
                                 "issuer_buybacks": issuer_buybacks.collect, "crypto": crypto.collect,
-                                "etf_flows": etf_flows.collect, "miner_flows": miner_flows.collect}
+                                "etf_flows": etf_flows.collect, "miner_flows": miner_flows.collect,
+                                "funding_structure": funding_structure.collect, "intermediary": intermediary.collect,
+                                "terminal_flows": terminal_flows.collect, "offshore": offshore.collect,
+                                "market_buybacks": market_buybacks.collect}
     rows, providers = [], []
     with live_api._poll_lock(root):
         for name, fn in collectors.items():
@@ -198,19 +243,24 @@ def collect(output_root, *, collectors=None, clock=None):
                     receipts.update({o["series_id"]: o for o in prior_receipt.get("observations", [])})
                     for index, item in enumerate(result.get("observations", [])):
                         old = receipts.get(item["series_id"], {})
-                        if name in {"pboc", "issuer_buybacks", "etf_flows", "miner_flows"} and old and all(old.get(key) == item.get(key) for key in (
-                            "value", "unit", "period_start", "period_end", "source_url", "methodology", "components", "universe", "fund_universe", "source_universe")):
-                            for key in ("known_by", "retrieved_at", "raw_path", "raw_sha256", "source_sha256"):
+                        if name in ({"pboc", "issuer_buybacks", "etf_flows", "miner_flows"} | EXTENSIONS) and old and all(old.get(key) == item.get(key) for key in (
+                            "value", "unit", "units", "observation_date", "period_start", "period_end", "frequency", "source_url", "methodology", "components", "universe", "fund_universe", "source_universe", "measurement_kind", "scope")):
+                            evidence_keys = {"known_by", "retrieved_at", "raw_path", "raw_sha256", "source_sha256", "requested_url", "request_url"}
+                            evidence_keys.update(key for key in set(old) | set(item)
+                                                 if key.endswith(("_raw_path", "_raw_sha256")))
+                            for key in evidence_keys:
                                 if key in old:
                                     item[key] = old[key]
+                                else:
+                                    item.pop(key, None)
                         receipts.pop(item["series_id"], None)
                     result["retained_observations"] = list(receipts.values())
                     live_api._atomic_json(target / "latest.json", result)
                 provider_rows = merge_rows(name, result, old_rows, now())
                 status = result.get("status", "error")
                 success = result.get("success", len(result.get("observations", [])))
-                total = {"pboc": 4, "buybacks": 5, "issuer_buybacks": 5, "crypto": 10, "etf_flows": 2, "miner_flows": 2}[name]
-                errors = [{**{k: e[k] for k in ("source", "ticker") if k in e},
+                total = TOTALS[name]
+                errors = [{**{k: e[k] for k in ("source", "ticker", "series_id", "series_ids", "source_group") if k in e},
                            "code": e.get("code") or e.get("error") or "source_error"}
                           if isinstance(e, dict) else {"code": "source_error"}
                           for e in list(result.get("errors", [])) + list(result.get("discovery_warnings", []))]
@@ -246,6 +296,13 @@ def collect(output_root, *, collectors=None, clock=None):
         public = {"schema_version": 1, "generated_at": live_api._stamp(now()), "github_run_url": run_url,
                   "research_eligible": False, "schedule_minutes": 60,
                   "providers": providers, "observations": rows, "missing_coverage": MISSING,
+                  "api_access": {key: API_ACCESS[key] for key in collectors},
+                  "model_readiness": {"latent_state": "not_estimated", "operator": "not_estimated",
+                       "reason": "native current captures do not supply historical release vintages, full state blocks or a validated training sample",
+                       "scalar_global_liquidity": False, "historical_research_eligible": False,
+                       "validation_axes": {"internal": "not_evaluated", "construct": "not_evaluated",
+                                           "external": "not_evaluated", "researcher_freedom": "not_evaluated"},
+                       "kill_criteria": "not_evaluated"},
                   "assumptions": ASSUMPTIONS, "breaks": BREAKS}
         live_api._atomic_json(root / "public.json", public)
     return public

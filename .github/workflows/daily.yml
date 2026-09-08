@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           ref: main
-      - name: Install pinned PDF disclosure parser
+      - name: Install pinned source parsers and CA certificates
         run: |
           python3 -m venv .venv-cloud
           .venv-cloud/bin/python -m pip install --disable-pip-version-check -r requirements.txt

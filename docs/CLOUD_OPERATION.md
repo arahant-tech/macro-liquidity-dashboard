@@ -6,7 +6,7 @@
 
 ## 2. 명세
 
-`.github/workflows/daily.yml`의 기존 일간 작업을 시간별 작업으로 교체했다. 매시 23분 예약이며 GitHub 실행 대기열에 따라 늦어질 수 있다. Pages는 정적 화면을 제공하고, 수집 코드는 GitHub의 Ubuntu 실행기에서 구동한다. PDF 재무제표 추출에는 고정된 pypdf 6.10.0을 사용한다. GPT 호출과 로컬 컴퓨터는 필요하지 않다.
+`.github/workflows/daily.yml`의 기존 일간 작업을 시간별 작업으로 교체했다. 매시 23분 예약이며 GitHub 실행 대기열에 따라 늦어질 수 있다. Pages는 정적 화면을 제공하고, 수집 코드는 GitHub의 Ubuntu 실행기에서 구동한다. PDF 재무제표 추출에는 pypdf 6.10.0, TLS 인증서 검증에는 certifi 2026.7.22를 고정해 사용한다. GPT 호출과 로컬 컴퓨터는 필요하지 않다.
 
 FRED 인증은 저장소의 암호화된 `FRED_API_KEY` secret을 사용한다. SEC 요청은 실제 연락처를 포함하는 `SEC_USER_AGENT` secret을 선택적으로 사용할 수 있다. 코드·Pages·수집 로그에는 키나 연락처를 쓰지 않는다. API를 접근할 수 없는 경우 원인을 기록하며 우회하지 않는다.
 
@@ -43,3 +43,8 @@ SEC 자동 요청에 실제 연락처를 암호화된 설정으로 추가했다.
 ## 첫 화면 관측 이력
 
 동일 시간당 실행에서 `chart_history`가 FRED 6계열의 현재 빈티지와 보관된 PBoC 4계열의 월별 이력을 검증하고 `chart-data.json`을 게시한다. 전체 이력의 최초 실제 수집시각과 원문은 `state/chart-history`에 보존한다. 이 출력은 현재빈티지 원자료 표시 전용이며 모델 추정에 넣지 않는다. [원천과 규율](CHART_HISTORY_SOURCE.md)을 따른다.
+
+
+## 공개 원천 확장
+
+ACM·ECB HQLA, NYFed 딜러·FINRA·JPM SLR, TIC·Z.1·ICI, BIS GLI·OFR 레포를 같은 시간별 파이프라인에서 수집한다. 각 연결의 실제 성공 여부와 늦은 관측은 분리해 표시한다. 키가 필요한 FRED는 기존 secret을 사용하고 공식 무키 API는 가입 없이 접속한다. HTML 공개 표는 정식 API와 구분한다. [무료 접근·잔여 공백·모형 미추정 이유](PUBLIC_API_SOURCE.md)를 따른다.

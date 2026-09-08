@@ -52,6 +52,11 @@
           <button class="filter" type="button" data-provider="crypto" aria-pressed="false">공급·레버리지</button>
           <button class="filter" type="button" data-provider="etf_flows" aria-pressed="false">ETF 순유입</button>
           <button class="filter" type="button" data-provider="miner_flows" aria-pressed="false">채굴사 매도</button>
+          <button class="filter" type="button" data-provider="funding_structure" aria-pressed="false">분포 · ACM·HQLA</button>
+          <button class="filter" type="button" data-provider="intermediary" aria-pressed="false">딜러 · FINRA·SLR</button>
+          <button class="filter" type="button" data-provider="terminal_flows" aria-pressed="false">TIC · 주식 순발행·ICI</button>
+          <button class="filter" type="button" data-provider="offshore" aria-pressed="false">BIS · OFR 레포</button>
+          <button class="filter" type="button" data-provider="market_buybacks" aria-pressed="false">S&P 500 자사주</button>
         </div>
         <div class="toolbar-actions"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="계열명 또는 코드 검색" aria-label="계열명 또는 코드 검색"></label><button id="refresh" class="refresh" type="button">↻ 새로 확인</button></div>
       </div>
@@ -59,7 +64,7 @@
     </section>
     <section id="method" class="coverage" aria-label="관측 범위와 해석 규율">
       <article class="note-panel"><h2>아직 채워지지 않은 관측</h2><ul id="missing-coverage" class="note-list"><li>연결 상태를 확인한 뒤 실제 미확보 범위를 표시합니다.</li></ul></article>
-      <article class="note-panel"><h2>가정과 해석의 한계</h2><p>API 확인 주기가 경제 데이터의 발표 주기를 바꾸지는 않습니다. 일간·주간·월간·분기 자료는 각 원천의 실제 기간을 유지합니다.</p><details class="method-details"><summary>가정 보기</summary><ul id="assumptions" class="note-list"></ul></details><details class="method-details"><summary>어디서 깨지는가</summary><ul id="breaks" class="note-list"></ul></details></article>
+      <article class="note-panel"><h2>가정과 해석의 한계</h2><p><a href="docs/PUBLIC_API_SOURCE.md" target="_blank" rel="noopener noreferrer">무료 API·인증과 미확보 범위 ↗</a></p><p>API 확인 주기가 경제 데이터의 발표 주기를 바꾸지는 않습니다. 일간·주간·월간·분기 자료는 각 원천의 실제 기간을 유지합니다.</p><details class="method-details"><summary>가정 보기</summary><ul id="assumptions" class="note-list"></ul></details><details class="method-details"><summary>어디서 깨지는가</summary><ul id="breaks" class="note-list"></ul></details></article>
     </section>
   </main>
   <footer class="footer"><div>Macro Liquidity · 관측 데이터 대시보드<br>화면은 5분마다 새 데이터를 확인합니다. 수집 지연과 원천 장애는 연결 상태에 표시됩니다.</div><div><a href="accounting-v8.html">이전 회계 화면 · 갱신 중지 ↗</a><br>설명은 예측을 의미하지 않습니다.</div></footer>
@@ -73,7 +78,12 @@ const PROVIDERS = [
   {id:'issuer_buybacks',label:'기업 공식 공시 · 자사주 5개사',tag:'EQUITY / CASH FLOW'},
   {id:'crypto',label:'크립토 공급 · 레버리지',tag:'CRYPTO / SEPARATE TRACK'},
   {id:'etf_flows',label:'현물 ETF · BTC·ETH 순유입',tag:'CRYPTO / ETF FLOWS'},
-  {id:'miner_flows',label:'채굴사 공시 · 실제 BTC 매도',tag:'CRYPTO / DISCLOSED SALES'}
+  {id:'miner_flows',label:'채굴사 공시 · 실제 BTC 매도',tag:'CRYPTO / DISCLOSED SALES'},
+  {id:'funding_structure',label:'분포 · ACM·HQLA',tag:'DISTRIBUTION'},
+  {id:'intermediary',label:'딜러 · FINRA·SLR',tag:'INTERMEDIATION'},
+  {id:'terminal_flows',label:'TIC · 주식 순발행·ICI',tag:'EQUITY FLOWS'},
+  {id:'offshore',label:'BIS · OFR 레포',tag:'OFFSHORE / REPO'},
+  {id:'market_buybacks',label:'S&P 500 · 분기 자사주',tag:'REPORTED MARKET BUYBACKS'}
 ];
 const SERIES_LABELS = {
   WALCL:'Fed 총자산',WRESBAL:'Fed 지급준비금 잔액',RRPONTSYD:'미국 익일물 역레포',WTREGEN:'미 재무부 일반계정',
@@ -96,9 +106,9 @@ const SERIES_LABELS = {
 function seriesLabel(row) { return SERIES_LABELS[row.series_id]||row.label||row.series_id||'이름 미확인'; }
 const LAYERS = [
   {id:1,title:'창출 · 스톡',description:'중앙은행과 은행 신용의 원천 관측',empty:'현재 필터에서 표시할 창출·스톡 관측치가 없습니다.'},
-  {id:2,title:'분포',description:'자금이 어느 섹터·통화·만기에 놓여 있는가',empty:'현재 필터에서 표시할 분포 관측치가 없습니다.'},
-  {id:3,title:'전환 연산자 A',description:'리스크 선호와 중개기관 여력의 관측',empty:'전환 연산자의 관측은 아직 확보되지 않았거나 현재 필터에 없습니다.'},
-  {id:4,title:'종단 플로우',description:'실제 자산 수요로 이어지는 흐름',empty:'현재 필터에서 표시할 종단 플로우 관측치가 없습니다. 자사주 원천별 연결 상태를 함께 확인하세요.',footnote:'기업 공식 공시 5개사에서 실제 자사주 현금 지급을 수집합니다. SEC 직접 API의 접근 상태는 보조 경로로 별도 표시합니다. 동일 발행사를 중복 합산하지 않으며, 분기·YTD·연간 원기간을 유지합니다. 이 관측은 시장 전체 자사주 매입액이 아닙니다.'},
+  {id:2,footnote:'ACM은 뉴욕연은의 월말 추정치이며 현재 빈티지입니다. ECB HQLA는 SSM 중요은행의 분기 규제 분류로 세계 전체 비중이 아닙니다. 결측 통화 베이시스를 환율이나 금리차로 대체하지 않습니다.',title:'분포',description:'자금이 어느 섹터·통화·만기에 놓여 있는가',empty:'현재 필터에서 표시할 분포 관측치가 없습니다.'},
+  {id:3,footnote:'딜러 순포지션은 위험 수용 여유한도와 다릅니다. SLR은 JPM 1개사의 공시 비율이며, FINRA 마진 통계·패시브 구성과 함께 A_t를 추정하기 전의 개별 관측입니다.',title:'전환 연산자 A',description:'리스크 선호와 중개기관 여력의 관측',empty:'전환 연산자의 관측은 아직 확보되지 않았거나 현재 필터에 없습니다.'},
+  {id:4,title:'종단 플로우',description:'실제 자산 수요로 이어지는 흐름',empty:'현재 필터에서 표시할 종단 플로우 관측치가 없습니다. 자사주 원천별 연결 상태를 함께 확인하세요.',footnote:'기업 공식 공시 5개사에서 실제 자사주 현금 지급을 수집합니다. SEC 직접 API의 접근 상태는 보조 경로로 별도 표시합니다. 동일 발행사를 중복 합산하지 않으며, 분기·YTD·연간 원기간을 유지합니다. 5개사 관측은 시장 전체 자사주 매입액이 아닙니다. 별도 S&P 500 집계는 실제 공표 분기의 관측이며 지연 여부를 함께 표시합니다. TIC는 거주지 기준, Z.1은 비금융기업 순발행 및 분기 ETF·펀드 주식자산 거래를 구분합니다. 펀드 주식자산 순매수는 투자자의 펀드 가입유입과 다릅니다. 순발행에는 현금합병·자사주가 이미 차감될 수 있습니다. 펀드 흐름·TIC·순발행·자사주를 하나의 합계로 더하지 않습니다.'},
   {id:5,title:'크립토 전용 트랙',description:'스테이블코인 · ETF · 레버리지 등 별도 관측',empty:'현재 필터에서 표시할 크립토 관측치가 없습니다.',footnote:'크립토는 주식과 별도 트랙입니다. ETF는 Farside 보고 순유입이며 뉴욕 당일·불완전 집계를 제외합니다. 채굴사 매도는 CLSK·MARA의 지연된 직접 공시로, 기간이 달라 합산하지 않습니다. USDT+USDC 잔액 합계는 글로벌 잠재 유동성이 아닙니다.'}
 ];
 const STATUS = {ok:'정상',success:'정상',partial:'일부 미확보',stale:'갱신 지연',retained:'이전 정상값',error:'연결 실패',blocked:'접근 제한',missing:'미확보',unavailable:'미확보',pending:'확인 전'};
@@ -108,7 +118,7 @@ function element(tag, className, text) { const node=document.createElement(tag);
 function safeUrl(value) { if(typeof value!=='string') return null; try { const url=new URL(value); return ['https:','http:'].includes(url.protocol)?url.href:null; } catch { return null; } }
 function statusKey(value) { return Object.prototype.hasOwnProperty.call(STATUS,value)?value:'pending'; }
 function badge(value) { const key=statusKey(value); return element('span','badge '+key,STATUS[key]); }
-function providerKey(value) { const text=String(value||'').toLowerCase(); if(text.includes('fred'))return 'fred'; if(text.includes('pboc'))return 'pboc'; if(text==='issuer_buybacks')return 'issuer_buybacks'; if(text.includes('buyback')||text==='sec')return 'buybacks'; if(text.includes('crypto')||text.includes('stablecoin'))return 'crypto'; return text; }
+function providerKey(value) { const text=String(value||'').toLowerCase(); if(PROVIDERS.some(spec=>spec.id===text))return text; if(text.includes('fred'))return 'fred'; if(text.includes('pboc'))return 'pboc'; if(text==='issuer_buybacks')return 'issuer_buybacks'; if(text.includes('buyback')||text==='sec')return 'buybacks'; if(text.includes('crypto')||text.includes('stablecoin'))return 'crypto'; return text; }
 function stamp(value, mode='full') { if(!value)return '—'; const date=new Date(value); if(Number.isNaN(date.getTime()))return String(value); const options={timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}; if(mode!=='date'){options.hour='2-digit';options.minute='2-digit';options.hourCycle='h23';} const parts=Object.fromEntries(new Intl.DateTimeFormat('ko-KR',options).formatToParts(date).map(item=>[item.type,item.value])); return parts.year+'.'+parts.month+'.'+parts.day+(mode==='date'?'':' '+parts.hour+':'+parts.minute); }
 function numeric(value) { if(value===null||value===undefined||value==='')return '—'; const candidate=typeof value==='string'&&/^[-+]?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?$/.test(value.trim())?Number(value):value; if(typeof candidate==='number'){if(!Number.isFinite(candidate))return '—';if(candidate!==0&&Math.abs(candidate)<1e-8)return candidate.toExponential(4);if(Math.abs(candidate)>Number.MAX_SAFE_INTEGER)return String(value);return new Intl.NumberFormat('en-US',{maximumFractionDigits:8}).format(candidate);} return String(value); }
 function listItems(target, items, fallback) { const list=Array.isArray(items)&&items.length?items:[fallback]; target.replaceChildren(...list.map(item=>element('li','',typeof item==='string'?item:JSON.stringify(item)))); }
@@ -124,7 +134,7 @@ function renderProviders() {
     meta.append(amount,element('span','source-caption','연결된 계열'));
     card.append(top,heading,meta,element('div','source-updated',source.last_success_at?'최근 성공 '+stamp(source.last_success_at):source.checked_at?'최근 확인 '+stamp(source.checked_at):'수집 시각: 아직 확인되지 않음'));
     const errors=Array.isArray(source.errors)?source.errors:[];
-    if(errors.length){const details=element('details','error-details');details.append(element('summary','',errors.length+'개 오류·미확보 사유'));const list=element('ul');errors.forEach(error=>list.append(element('li','',typeof error==='string'?error:[error.code||error.error,error.message].filter(Boolean).join(' · '))));details.append(list);card.append(details);}
+    if(errors.length){const details=element('details','error-details');details.append(element('summary','',errors.length+'개 오류·미확보 사유'));const list=element('ul');errors.forEach(error=>list.append(element('li','',typeof error==='string'?error:[error.source_group,error.source,error.ticker,error.series_id,Array.isArray(error.series_ids)?error.series_ids.join(', '):null,error.code||error.error].filter(Boolean).join(' · '))));details.append(list);card.append(details);}
     return card;
   }));
 }
