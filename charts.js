@@ -3,19 +3,19 @@
   'use strict';
   const DAY=86400000;
   const SPECS={
-    WRESBAL:{region:'UNITED STATES',short:'미국 · Fed',color:'#09816b',unit:'Millions of U.S. Dollars',scale:1e6,display:'조 USD'},
-    WALCL:{region:'UNITED STATES',short:'미국 · Fed',color:'#09816b',unit:'Millions of U.S. Dollars',scale:1e6,display:'조 USD'},
-    ECBASSETSW:{region:'EURO AREA',short:'유로지역 · ECB',color:'#417bbb',unit:'Millions of Euros',scale:1e6,display:'조 EUR'},
-    JPNASSETS:{region:'JAPAN',short:'일본 · BOJ',color:'#8a69b1',unit:'100 Million Yen',scale:1e4,display:'조 JPY'},
-    RRPONTSYD:{region:'UNITED STATES',short:'미국 · Fed',color:'#3877a2',unit:'Billions of US Dollars',scale:1e3,display:'조 USD'},
-    WTREGEN:{region:'UNITED STATES',short:'미 재무부',color:'#a0783d',unit:'Millions of U.S. Dollars',scale:1e6,display:'조 USD'},
-    PBOC_TOTAL_ASSETS:{region:'CHINA',short:'중국 · PBoC',color:'#b88436',unit:'100 million CNY',scale:1e4,display:'조 CNY'},
-    PBOC_DEPOSITS_OTHER_DEPOSITORY_CORPORATIONS:{region:'CHINA',short:'중국 · PBoC',color:'#b88436',unit:'100 million CNY',scale:1e4,display:'조 CNY'},
-    PBOC_TSF_STOCK:{region:'CHINA / CREDIT',short:'중국 · 신용',color:'#a87735',unit:'trillion CNY',scale:1,display:'조 CNY'},
-    PBOC_TSF_FLOW:{region:'CHINA / CREDIT',short:'중국 · 신용',color:'#a87735',unit:'100 million CNY',scale:1e4,display:'조 CNY'},
-    NYFED_ACM_TP10_MONTHLY:{region:'UNITED STATES / TERM PREMIUM',short:'미국 · ACM',color:'#417bbb',unit:'percent',scale:1,display:'%',change:'bp'},
-    FINRA_MARGIN_DEBT:{region:'UNITED STATES / MARGIN DEBT',short:'미국 · FINRA',color:'#8a69b1',unit:'million USD',scale:1e6,display:'조 USD'},
-    TIC_US_EQUITY_FOREIGN_NET_PURCHASES:{region:'UNITED STATES / FOREIGN EQUITY FLOWS',short:'미국 · TIC',color:'#09816b',unit:'million USD',scale:1e3,display:'십억 USD'}
+    WRESBAL:{region:'UNITED STATES',short:'미국 · Fed',color:'#77c6af',unit:'Millions of U.S. Dollars',scale:1e6,display:'조 USD'},
+    WALCL:{region:'UNITED STATES',short:'미국 · Fed',color:'#77c6af',unit:'Millions of U.S. Dollars',scale:1e6,display:'조 USD'},
+    ECBASSETSW:{region:'EURO AREA',short:'유로지역 · ECB',color:'#9fafe1',unit:'Millions of Euros',scale:1e6,display:'조 EUR'},
+    JPNASSETS:{region:'JAPAN',short:'일본 · BOJ',color:'#bbace0',unit:'100 Million Yen',scale:1e4,display:'조 JPY'},
+    RRPONTSYD:{region:'UNITED STATES',short:'미국 · Fed',color:'#9fafe1',unit:'Billions of US Dollars',scale:1e3,display:'조 USD'},
+    WTREGEN:{region:'UNITED STATES',short:'미 재무부',color:'#77c6af',unit:'Millions of U.S. Dollars',scale:1e6,display:'조 USD'},
+    PBOC_TOTAL_ASSETS:{region:'CHINA',short:'중국 · PBoC',color:'#c4cab5',unit:'100 million CNY',scale:1e4,display:'조 CNY'},
+    PBOC_DEPOSITS_OTHER_DEPOSITORY_CORPORATIONS:{region:'CHINA',short:'중국 · PBoC',color:'#c4cab5',unit:'100 million CNY',scale:1e4,display:'조 CNY'},
+    PBOC_TSF_STOCK:{region:'CHINA / CREDIT',short:'중국 · 신용',color:'#c4cab5',unit:'trillion CNY',scale:1,display:'조 CNY'},
+    PBOC_TSF_FLOW:{region:'CHINA / CREDIT',short:'중국 · 신용',color:'#c4cab5',unit:'100 million CNY',scale:1e4,display:'조 CNY'},
+    NYFED_ACM_TP10_MONTHLY:{region:'UNITED STATES / TERM PREMIUM',short:'미국 · ACM',color:'#9fafe1',unit:'percent',scale:1,display:'%',change:'bp'},
+    FINRA_MARGIN_DEBT:{region:'UNITED STATES / MARGIN DEBT',short:'미국 · FINRA',color:'#bbace0',unit:'million USD',scale:1e6,display:'조 USD'},
+    TIC_US_EQUITY_FOREIGN_NET_PURCHASES:{region:'UNITED STATES / FOREIGN EQUITY FLOWS',short:'미국 · TIC',color:'#c4cab5',unit:'million USD',scale:1e3,display:'십억 USD'}
   };
   const OVERVIEW=['WRESBAL','ECBASSETSW','JPNASSETS','PBOC_TOTAL_ASSETS'];
   function timestamp(value){if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return NaN;const n=Date.parse(value+'T00:00:00Z');return Number.isFinite(n)&&new Date(n).toISOString().slice(0,10)===value?n:NaN;}
@@ -109,9 +109,9 @@
     chart.append(svg('title',{},row.label+' · 원자료의 현재 빈티지'));
     for(let i=0;i<5;i++){const v=g.lo+(g.hi-g.lo)*i/4,y=g.y(v);chart.append(svg('line',{x1:g.pad.left,x2:width-g.pad.right,y1:y,y2:y,class:'chart-grid'}),svg('text',{x:width-g.pad.right+12,y:y+4,class:'chart-axis'},fmt(v,Math.abs(g.hi-g.lo)<.1?4:Math.abs(g.hi-g.lo)<1?3:2)));}
     for(let i=0;i<4;i++){const t=g.x0+(g.x1-g.x0)*i/3,label=new Date(t).toISOString().slice(0,10);chart.append(svg('text',{x:g.x(t),y:height-6,class:'chart-axis','text-anchor':i===0?'start':i===3?'end':'middle'},(g.x1-g.x0>180*DAY?label.slice(0,7):label.slice(5)).replace('-','.')));}
-    if(bars){chart.append(svg('line',{x1:g.pad.left,x2:width-g.pad.right,y1:g.base,y2:g.base,stroke:'#a7b5bf','stroke-width':1}));const gaps=scaled.slice(1).map((p,i)=>p.t-scaled[i].t).filter(x=>x>0),barWidth=Math.max(2,Math.min(32,(g.x(g.x0+Math.min(...gaps,30*DAY))-g.x(g.x0))*.65));g.segments.flat().forEach(p=>chart.append(svg('rect',{x:p.x-barWidth/2,y:Math.min(g.base,p.y),width:barWidth,height:Math.max(1,Math.abs(g.base-p.y)),fill:p.value<0?'#b0606d':color,rx:1,opacity:.8})));}
-    else{g.segments.forEach(segment=>{if(segment.length>1){const bottom=height-g.pad.bottom;chart.append(svg('path',{d:linePath(segment)+` L${segment.at(-1).x},${bottom} L${segment[0].x},${bottom} Z`,fill:color,opacity:.055}),svg('path',{d:linePath(segment),fill:'none',stroke:color,'stroke-width':2.3,'stroke-linecap':'round','stroke-linejoin':'round','vector-effect':'non-scaling-stroke'}));}else chart.append(svg('circle',{cx:segment[0].x,cy:segment[0].y,r:3,fill:color}));});const last=g.segments.at(-1)?.at(-1);if(last)chart.append(svg('circle',{cx:last.x,cy:last.y,r:3.6,fill:color,stroke:'#fff','stroke-width':2}));}
-    const guide=svg('line',{y1:g.pad.top,y2:height-g.pad.bottom,class:'chart-guide',visibility:'hidden'}),dot=svg('circle',{r:4,fill:color,stroke:'#fff','stroke-width':2,visibility:'hidden'});chart.append(guide,dot);
+    if(bars){chart.append(svg('line',{x1:g.pad.left,x2:width-g.pad.right,y1:g.base,y2:g.base,stroke:'#52616c','stroke-width':1}));const gaps=scaled.slice(1).map((p,i)=>p.t-scaled[i].t).filter(x=>x>0),barWidth=Math.max(2,Math.min(32,(g.x(g.x0+Math.min(...gaps,30*DAY))-g.x(g.x0))*.65));g.segments.flat().forEach(p=>chart.append(svg('rect',{x:p.x-barWidth/2,y:Math.min(g.base,p.y),width:barWidth,height:Math.max(1,Math.abs(g.base-p.y)),fill:p.value<0?'#52616c':color,rx:1,opacity:.8})));}
+    else{g.segments.forEach(segment=>{if(segment.length>1){const bottom=height-g.pad.bottom;chart.append(svg('path',{d:linePath(segment)+` L${segment.at(-1).x},${bottom} L${segment[0].x},${bottom} Z`,fill:color,opacity:.055}),svg('path',{d:linePath(segment),fill:'none',stroke:color,'stroke-width':2.3,'stroke-linecap':'round','stroke-linejoin':'round','vector-effect':'non-scaling-stroke'}));}else chart.append(svg('circle',{cx:segment[0].x,cy:segment[0].y,r:3,fill:color}));});const last=g.segments.at(-1)?.at(-1);if(last)chart.append(svg('circle',{cx:last.x,cy:last.y,r:3.6,fill:color,stroke:'#18232c','stroke-width':2}));}
+    const guide=svg('line',{y1:g.pad.top,y2:height-g.pad.bottom,class:'chart-guide',visibility:'hidden'}),dot=svg('circle',{r:4,fill:color,stroke:'#18232c','stroke-width':2,visibility:'hidden'});chart.append(guide,dot);
     const tooltip=node('div','chart-tooltip hidden');tooltip.setAttribute('aria-live','polite');let selected=points.length-1;
     const show=index=>{selected=Math.max(0,Math.min(points.length-1,index));const p=scaled[selected],x=g.x(p.t);guide.setAttribute('x1',x);guide.setAttribute('x2',x);guide.setAttribute('visibility','visible');dot.setAttribute('visibility',p.value===null?'hidden':'visible');if(p.value!==null){dot.setAttribute('cx',x);dot.setAttribute('cy',g.y(p.value));}tooltip.replaceChildren(node('div','',shortDate(p.date)),node('strong','',p.value===null?'결측':fmt(p.value,5)+' '+unit.label),node('span','',row.frequency));tooltip.classList.remove('hidden');const rect=container.getBoundingClientRect();tooltip.style.left=Math.max(0,Math.min(rect.width-190,x/width*rect.width+12))+'px';tooltip.style.top='12px';};
     chart.addEventListener('pointermove',event=>{const rect=chart.getBoundingClientRect(),x=(event.clientX-rect.left)/rect.width*width;let nearest=0;for(let i=1;i<scaled.length;i++)if(Math.abs(g.x(scaled[i].t)-x)<Math.abs(g.x(scaled[nearest].t)-x))nearest=i;show(nearest);});
