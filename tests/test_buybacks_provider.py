@@ -29,6 +29,22 @@ def transport(url, headers):
     return fixture(cik)
 
 
+def companyfacts_fixture(cik='0001403161'):
+    concept = fixture(cik)
+    return {'cik': int(cik), 'entityName': 'Fixture issuer',
+            'facts': {'us-gaap': {buybacks.CONCEPT: {
+                key: concept[key] for key in ('label', 'description', 'units')}}}}
+
+
+def visa_empty_transport(url, headers):
+    if '/companyfacts/' in url:
+        return companyfacts_fixture()
+    payload = transport(url, headers)
+    if payload['cik'] == 1403161:
+        payload['units']['USD'] = []
+    return payload
+
+
 class BuybackTests(unittest.TestCase):
     def test_fixed_panel_is_not_a_market_aggregate(self):
         self.assertEqual([item['ticker'] for item in buybacks.PANEL], ['AAPL', 'MSFT', 'GOOGL', 'META', 'V'])
@@ -152,6 +168,92 @@ class BuybackTests(unittest.TestCase):
             self.assertEqual(result['success'], 0)
             self.assertEqual(len(result['errors']), 5)
             self.assertEqual(result['errors'][1]['error'], 'sec_http_403_remaining_panel_not_requested')
+
+    def test_visa_empty_success_uses_identical_companyfacts_concept_with_both_raw_sources(self):
+        with tempfile.TemporaryDirectory() as directory:
+            result = buybacks.collect(directory, transport=visa_empty_transport, clock=lambda: NOW)
+            self.assertEqual(result['success'], 5)
+            row = result['observations'][-1]
+            self.assertEqual(row['concept'], buybacks.CONCEPT)
+            self.assertEqual(row['acquisition_route'], 'companyfacts_same_concept')
+            self.assertEqual(row['source_url'], buybacks.companyfacts_url('0001403161'))
+            raw = (Path(directory) / row['raw_path']).read_bytes()
+            self.assertIn('facts', json.loads(raw))
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), row['raw_sha256'])
+            empty = (Path(directory) / row['initial_response_raw_path']).read_bytes()
+            self.assertEqual(json.loads(empty)['units']['USD'], [])
+            self.assertEqual(hashlib.sha256(empty).hexdigest(), row['initial_response_raw_sha256'])
+            self.assertEqual(row['known_by'], '2026-09-09T10:00:00Z')
+            self.assertEqual(len(result['raw_captures']), 6)
+
+    def test_companyfacts_allows_larger_document_and_keeps_older_native_period(self):
+        def larger(url, headers):
+            payload = visa_empty_transport(url, headers)
+            if '/companyfacts/' in url:
+                payload['unselected_public_metadata'] = 'x' * 2_000_000
+                rows = payload['facts']['us-gaap'][buybacks.CONCEPT]['units']['USD']
+                payload['facts']['us-gaap'][buybacks.CONCEPT]['units']['USD'] = [
+                    dict(rows[0], start='2025-10-01', end='2026-03-31', filed='2026-04-28')]
+            return payload
+        with tempfile.TemporaryDirectory() as directory:
+            result = buybacks.collect(directory, transport=larger, clock=lambda: NOW)
+            self.assertEqual(result['success'], 5)
+            row = result['observations'][-1]
+            self.assertEqual(row['period_start'], '2025-10-01')
+            self.assertEqual(row['period_end'], '2026-03-31')
+            self.assertGreater((Path(directory) / row['raw_path']).stat().st_size, 2_000_000)
+
+    def test_visa_observed_empty_usd_object_uses_same_concept_route(self):
+        def empty_object(url, headers):
+            payload = visa_empty_transport(url, headers)
+            if '/companyconcept/' in url and payload['cik'] == 1403161:
+                payload['units']['USD'] = {}
+            return payload
+        with tempfile.TemporaryDirectory() as directory:
+            result = buybacks.collect(directory, transport=empty_object, clock=lambda: NOW)
+            self.assertEqual(result['success'], 5)
+            self.assertEqual(result['observations'][-1]['acquisition_route'], 'companyfacts_same_concept')
+
+    def test_companyfacts_does_not_substitute_authorization_or_wrong_issuer(self):
+        payload = companyfacts_fixture()
+        cash = payload['facts']['us-gaap'].pop(buybacks.CONCEPT)
+        payload['facts']['us-gaap']['StockRepurchaseProgramAuthorizedAmount'] = cash
+        with self.assertRaisesRegex(buybacks.BuybackError, 'companyfacts_exact_cash_concept_unavailable'):
+            buybacks.concept_from_companyfacts(payload, buybacks.PANEL[-1])
+        with self.assertRaisesRegex(buybacks.BuybackError, 'issuer_identity_mismatch'):
+            buybacks.concept_from_companyfacts(companyfacts_fixture('0000320193'), buybacks.PANEL[-1])
+
+    def test_visa_malformed_nonempty_cash_does_not_trigger_companyfacts(self):
+        calls = []
+        def malformed(url, headers):
+            calls.append(url)
+            payload = transport(url, headers)
+            if payload['cik'] == 1403161:
+                payload['units']['USD'][0]['val'] = -1
+            return payload
+        with tempfile.TemporaryDirectory() as directory:
+            result = buybacks.collect(directory, transport=malformed, clock=lambda: NOW)
+            self.assertEqual(result['success'], 4)
+            self.assertEqual(result['errors'][-1]['error'], 'invalid_cash_payment_value')
+            self.assertFalse(any('/companyfacts/' in url for url in calls))
+
+    def test_visa_missing_usd_does_not_trigger_companyfacts(self):
+        calls = []
+        def missing(url, headers):
+            calls.append(url)
+            payload = transport(url, headers)
+            if payload['cik'] == 1403161:
+                payload['units'] = {'shares': []}
+            return payload
+        with tempfile.TemporaryDirectory() as directory:
+            result = buybacks.collect(directory, transport=missing, clock=lambda: NOW)
+            self.assertEqual(result['success'], 4)
+            self.assertFalse(any('/companyfacts/' in url for url in calls))
+
+    def test_companyfacts_response_has_bounded_size(self):
+        url = buybacks.companyfacts_url('0001403161')
+        with self.assertRaisesRegex(buybacks.BuybackError, 'response_exceeds_size_limit'):
+            buybacks._decode_response(b'x' * 6_000_001, url)
 
     def test_research_output_is_rejected(self):
         with self.assertRaisesRegex(ValueError, 'isolated_from_research'):

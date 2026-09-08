@@ -16,18 +16,21 @@ import shutil
 from datetime import datetime, timezone
 
 from model import live_api
-from model.providers import pboc, buybacks, issuer_buybacks, crypto
+from model.providers import pboc, buybacks, issuer_buybacks, crypto, etf_flows, miner_flows
 
 ROOT = Path(__file__).resolve().parents[1]
 PROVIDERS = {"fred": "FRED · 중앙은행·은행·분포", "pboc": "PBoC · 중국 공식 통계",
-             "buybacks": "SEC · 실제 자사주 매입", "issuer_buybacks": "Microsoft IR · 실제 자사주",
-             "crypto": "크립토 · 별도 트랙"}
+             "buybacks": "SEC 직접 API · 보조 경로", "issuer_buybacks": "기업 공식 공시 · 자사주 5개사",
+             "crypto": "크립토 · 공급·레버리지", "etf_flows": "현물 ETF · BTC·ETH 순유입",
+             "miner_flows": "채굴사 공시 · 실제 BTC 매도"}
 ASSUMPTIONS = [
     "API 확인 간격은 1시간입니다. 거시통계 값은 기관의 발표·개정 때 바뀝니다.",
     "표의 레벨은 원자료 관측값이며 잠재 유동성 상태·회귀 입력·진입 신호가 아닙니다.",
     "known_by는 실제 수집 완료 시각입니다. 최초 발표시각이나 역사적 빈티지를 인증하지 않습니다.",
     "자사주는 고정 5개사의 SEC 현금 지급 공시입니다. 공시별 YTD·연간 기간을 유지하며 시장 전체로 합산하지 않습니다.",
-    "Microsoft 자체 IR의 직접 분기 현금 지급을 별도 관측합니다. 동일 기업의 SEC 관측과 합산하지 않습니다.",
+    "기업 자체 공시의 실제 자사주 현금 지급을 고정 5개사에서 별도 관측합니다. 동일 기업의 SEC 관측과 합산하지 않습니다.",
+    "BTC·ETH 현물 ETF는 Farside의 완결된 일별 순유입 보고입니다. AUM 변화로 추정하지 않습니다.",
+    "채굴사 매도량은 CLSK·MARA의 명시적 공시입니다. 생산량·보유량 차이를 매도로 대체하지 않습니다.",
     "스테이블코인 변화는 실제 수집 두 시점 사이 유통량 차이입니다. 일간 순발행·BTC 순유입으로 해석하지 않습니다.",
 ]
 BREAKS = [
@@ -41,7 +44,7 @@ MISSING = [
     "2층 분포: 통화 베이시스·ACM·HQLA 미연결",
     "3층 전환 연산자: 딜러 여력·SLR·FINRA·패시브 비중 미연결; A_t 미추정",
     "4층 종단 플로우: 주식 펀드/ETF·순발행·TIC 미연결; 자사주는 고정 5개사로 범위 제한",
-    "5층 크립토: 현물 ETF 순유입·채굴자 매도압 미연결",
+    "5층 범위: ETF는 Farside 보고 집계, 채굴사는 CLSK·MARA 공시 2개사; 전체 온체인 채굴자 매도압은 미측정",
     "BIS 역외 달러·담보 재사용 등 전체 블록을 채우지 못했으며 L_t 미추정",
 ]
 
@@ -57,7 +60,10 @@ def normalize_observation(provider, item, *, status="ok"):
     fields = ("series_id", "value", "unit", "observation_date", "period_start", "period_end",
               "known_by", "source_url", "raw_sha256", "layer", "track", "block", "frequency",
               "elapsed_capture_seconds", "filed_date", "accession", "ticker", "observed_at",
-              "source_reported_at", "source_quality", "original_release_at")
+              "source_reported_at", "source_quality", "original_release_at", "published_date",
+              "methodology", "method", "components", "universe", "fund_universe", "source_universe", "covered_funds", "discovery_status",
+              "discovery_mode", "duration_months", "measurement_kind", "raw_scope", "native_period_basis",
+              "not_additive_with", "aggregation_allowed", "source_page", "acquisition_route")
     row = {key: item.get(key) for key in fields}
     row.update(provider=provider, status=status, research_eligible=False,
                label=item.get("label") or item.get("meaning") or item.get("series_id"),
@@ -67,7 +73,16 @@ def normalize_observation(provider, item, *, status="ok"):
     if provider in {"buybacks", "issuer_buybacks"}:
         row["label"] = f"{item.get('ticker', '')} · 실제 현금 자사주 매입"
         row["notes"].append("공시의 YTD·연간 누적 현금 지급; 다른 기업·기간과 합산 금지" if provider == "buybacks"
-                             else "발행자 직접 공시의 분기 현금 지급; SEC의 같은 회사 관측과 중복 합산 금지")
+                             else "발행자 직접 공시의 분기·YTD 원기간 유지; SEC의 같은 회사 관측과 중복 합산 금지")
+        if item.get("discovery_status") and item["discovery_status"] != "automatic":
+            row["notes"].append("새 공시 자동 발견 미확인: 등록된 공식 문서의 수집 상태와 구분")
+    if provider == "etf_flows":
+        row["notes"].append("Farside의 펀드별 보고 합계; 완결된 날짜만 사용, 결제현금 독립 인증 아님")
+    if provider == "miner_flows":
+        row["label"] = f"{item.get('ticker', '')} · 공시된 실제 BTC 매도량"
+        row["notes"].append("공시한 원기간 동안의 실현 매도; 전체 채굴자·현재 거래소 매도압이 아님")
+        if item.get("components"):
+            row["notes"].append("공시 구성: " + "; ".join(f"{k}: {v} BTC" for k, v in item["components"].items()))
     if provider == "pboc":
         row["notes"].append("공식 월간 HTML 통계표; 원단위 유지")
     if provider == "crypto":
@@ -117,11 +132,16 @@ def merge_rows(provider, fresh, previous, now):
     for item in fresh.get("observations", []):
         if not valid_value(item.get("value")):
             continue
-        state = "ok"
+        state = item.get("status") if item.get("status") in {"ok", "partial", "stale"} else "ok"
         if provider == "buybacks":
             state = next((s["status"] for s in fresh.get("issuer_status", []) if s["ticker"] == item.get("ticker")), "ok")
         if provider == "pboc" and item.get("period_end"):
             if (now.date() - datetime.fromisoformat(item["period_end"]).date()).days > 120:
+                state = "stale"
+        if provider in {"issuer_buybacks", "miner_flows", "etf_flows"} and item.get("period_end"):
+            age = (now.date() - datetime.fromisoformat(item["period_end"]).date()).days
+            limit = 10 if provider == "etf_flows" else 75 if item.get("frequency") == "monthly" else 180
+            if age > limit:
                 state = "stale"
         merged[item["series_id"]] = normalize_observation(provider, item, status=state)
     return list(merged.values())
@@ -136,7 +156,8 @@ def collect(output_root, *, collectors=None, clock=None):
     old_providers = {p["provider"]: p for p in previous.get("providers", [])}
     catalog = read_json(Path(live_api.__file__).with_name("live_catalog.json"))
     collectors = collectors or {"fred": live_api.poll, "pboc": pboc.collect, "buybacks": buybacks.collect,
-                                "issuer_buybacks": issuer_buybacks.collect, "crypto": crypto.collect}
+                                "issuer_buybacks": issuer_buybacks.collect, "crypto": crypto.collect,
+                                "etf_flows": etf_flows.collect, "miner_flows": miner_flows.collect}
     rows, providers = [], []
     with live_api._poll_lock(root):
         for name, fn in collectors.items():
@@ -177,20 +198,24 @@ def collect(output_root, *, collectors=None, clock=None):
                     receipts.update({o["series_id"]: o for o in prior_receipt.get("observations", [])})
                     for index, item in enumerate(result.get("observations", [])):
                         old = receipts.get(item["series_id"], {})
-                        if name in {"pboc", "issuer_buybacks"} and old and all(old.get(key) == item.get(key) for key in (
-                            "value", "unit", "period_start", "period_end", "source_url")):
-                            result["observations"][index] = old
+                        if name in {"pboc", "issuer_buybacks", "etf_flows", "miner_flows"} and old and all(old.get(key) == item.get(key) for key in (
+                            "value", "unit", "period_start", "period_end", "source_url", "methodology", "components", "universe", "fund_universe", "source_universe")):
+                            for key in ("known_by", "retrieved_at", "raw_path", "raw_sha256", "source_sha256"):
+                                if key in old:
+                                    item[key] = old[key]
                         receipts.pop(item["series_id"], None)
                     result["retained_observations"] = list(receipts.values())
                     live_api._atomic_json(target / "latest.json", result)
                 provider_rows = merge_rows(name, result, old_rows, now())
                 status = result.get("status", "error")
                 success = result.get("success", len(result.get("observations", [])))
-                total = {"pboc": 4, "buybacks": 5, "issuer_buybacks": 1, "crypto": 10}[name]
+                total = {"pboc": 4, "buybacks": 5, "issuer_buybacks": 5, "crypto": 10, "etf_flows": 2, "miner_flows": 2}[name]
                 errors = [{**{k: e[k] for k in ("source", "ticker") if k in e},
                            "code": e.get("code") or e.get("error") or "source_error"}
                           if isinstance(e, dict) else {"code": "source_error"}
-                          for e in result.get("errors", [])]
+                          for e in list(result.get("errors", [])) + list(result.get("discovery_warnings", []))]
+                if result.get("discovery_warnings") and status == "ok":
+                    status = "partial"
             if any(r["status"] == "stale" for r in provider_rows) and status == "ok":
                 status = "partial"
             rows.extend(provider_rows)
@@ -199,6 +224,24 @@ def collect(output_root, *, collectors=None, clock=None):
                               "checked_at": live_api._stamp(now()),
                               "last_success_at": live_api._stamp(now()) if status == "ok" else old_providers.get(name, {}).get("last_success_at")})
         run_id = os.environ.get("GITHUB_RUN_ID")
+        # Successful API access does not mean the API contains the newest
+        # issuer filing. Compare dates only; differing durations are not summed.
+        issuer_periods = {r.get("ticker"): r.get("period_end") for r in rows
+                          if r["provider"] == "issuer_buybacks" and r.get("value") is not None}
+        lagging = []
+        for row in rows:
+            peer_end = issuer_periods.get(row.get("ticker"))
+            if (row["provider"] == "buybacks" and row.get("period_end") and peer_end
+                    and row["period_end"] < peer_end and row["status"] != "retained"):
+                row["status"] = "stale"
+                row["notes"].append("기업 직접 공시에 더 최신 기간이 있음: " + peer_end)
+                lagging.append({"ticker": row.get("ticker"), "code": "newer_issuer_period_available"})
+        if lagging:
+            for provider in providers:
+                if provider["provider"] == "buybacks":
+                    provider["status"] = "partial"
+                    provider["errors"].extend(lagging)
+                    provider["last_success_at"] = old_providers.get("buybacks", {}).get("last_success_at")
         run_url = f"https://github.com/{os.environ.get('GITHUB_REPOSITORY')}/actions/runs/{run_id}" if run_id else None
         public = {"schema_version": 1, "generated_at": live_api._stamp(now()), "github_run_url": run_url,
                   "research_eligible": False, "schedule_minutes": 60,

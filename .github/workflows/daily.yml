@@ -33,13 +33,17 @@ jobs:
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           ref: main
+      - name: Install pinned PDF disclosure parser
+        run: |
+          python3 -m venv .venv-cloud
+          .venv-cloud/bin/python -m pip install --disable-pip-version-check -r requirements.txt
       - name: Verify source contracts and failure preservation
-        run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+        run: .venv-cloud/bin/python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Collect current observations with actual retrieval timestamps
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
-        run: python3 -m model.cloud_feeds --output-root .run/live --checkpoint state/live --public-output live-data.json
+        run: .venv-cloud/bin/python -m model.cloud_feeds --output-root .run/live --checkpoint state/live --public-output live-data.json
       - name: Preserve full source receipts for replay
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -59,7 +63,7 @@ jobs:
             git push origin HEAD:main
           fi
       - name: Package observation page and existing public archives
-        run: python3 automation/package_cloud.py
+        run: .venv-cloud/bin/python automation/package_cloud.py
       - name: Upload public page package
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
@@ -69,4 +73,4 @@ jobs:
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
       - name: Report actual source coverage
         if: always()
-        run: python3 automation/report_cloud.py
+        run: .venv-cloud/bin/python automation/report_cloud.py

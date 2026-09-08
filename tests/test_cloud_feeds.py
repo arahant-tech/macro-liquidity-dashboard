@@ -335,5 +335,50 @@ class CloudFeedTests(unittest.TestCase):
         self.assertNotIn("raw_path", flow)
 
 
+class ExtendedFlowCoverageTests(unittest.TestCase):
+    def test_successful_sec_access_with_older_period_is_flagged_against_issuer(self):
+        now = datetime(2026, 9, 9, tzinfo=timezone.utc)
+        def provider(end, sid):
+            return lambda **kw: {"status": "ok", "success": 1, "errors": [], "observations": [{
+                "series_id": sid, "ticker": "V", "value": 10, "unit": "USD", "period_end": end,
+                "period_start": "2025-10-01", "known_by": "2026-09-09T00:00:00Z", "layer": 4}]}
+        with tempfile.TemporaryDirectory() as folder:
+            result = cloud_feeds.collect(Path(folder)/"live", collectors={
+                "buybacks": provider("2026-03-31", "SEC_BUYBACKS_V"),
+                "issuer_buybacks": provider("2026-06-30", "IR_BUYBACKS_V")}, clock=lambda: now)
+            sec = next(r for r in result["observations"] if r["provider"] == "buybacks")
+            self.assertEqual(sec["status"], "stale")
+            self.assertEqual(result["providers"][0]["status"], "partial")
+            self.assertEqual(result["providers"][0]["errors"][0]["code"], "newer_issuer_period_available")
+
+    def test_disclosed_miner_period_and_components_survive_public_normalization(self):
+        row = cloud_feeds.normalize_observation("miner_flows", {"series_id": "MINER_CLSK_BTC_SOLD", "ticker": "CLSK",
+            "value": 15, "unit": "BTC over disclosed period", "period_start": "2026-07-01", "period_end": "2026-07-31",
+            "track": "crypto", "layer": 5, "components": {"spot": 12, "call exercises": 3}, "raw_path": "private/path"})
+        self.assertEqual(row["components"]["call exercises"], 3)
+        self.assertEqual(row["period_start"], "2026-07-01")
+        self.assertNotIn("raw_path", row)
+        self.assertFalse(row["research_eligible"])
+
+    def test_etf_universe_quality_and_partial_row_are_preserved(self):
+        now = datetime(2026, 9, 9, tzinfo=timezone.utc)
+        row = {"series_id": "ETF_BTC_SPOT_NET_FLOW_FARSIDE", "value": -1, "unit": "million USD", "status": "partial",
+               "source_universe": ["AAA", "BBB"], "covered_funds": 2, "components": {"AAA": 1, "BBB": -2},
+               "source_quality": "third_party_reported_underlying_cash_method_unverified", "period_end": "2026-09-04",
+               "track": "crypto", "layer": 5, "raw_scope": "exact_flow_table_html_fragment_excluding_page_footer"}
+        output = cloud_feeds.merge_rows("etf_flows", {"observations": [row]}, [], now)[0]
+        self.assertEqual(output["status"], "partial")
+        self.assertEqual(output["source_universe"], ["AAA", "BBB"])
+        self.assertEqual(output["value"], -1)
+        self.assertEqual(output["raw_scope"], row["raw_scope"])
+
+    def test_all_five_issuer_provider_totals_are_configured(self):
+        now = datetime(2026, 9, 9, tzinfo=timezone.utc)
+        with tempfile.TemporaryDirectory() as folder:
+            result = cloud_feeds.collect(Path(folder)/"live", collectors={"issuer_buybacks": lambda **kw: {
+                "observations": [], "status": "error", "errors": []}}, clock=lambda: now)
+            self.assertEqual(result["providers"][0]["total"], 5)
+
+
 if __name__ == "__main__":
     unittest.main()

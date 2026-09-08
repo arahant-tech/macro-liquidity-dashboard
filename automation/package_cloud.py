@@ -10,7 +10,7 @@ def package():
     snapshot = json.loads((ROOT / "live-data.json").read_text())
     if snapshot.get("research_eligible") is not False or not snapshot.get("generated_at"):
         raise ValueError("invalid_observation_snapshot")
-    if {p["provider"] for p in snapshot["providers"]} != {"fred", "pboc", "buybacks", "issuer_buybacks", "crypto"}:
+    if {p["provider"] for p in snapshot["providers"]} != {"fred", "pboc", "buybacks", "issuer_buybacks", "crypto", "etf_flows", "miner_flows"}:
         raise ValueError("provider_status_incomplete")
     # Preserve already-public archive links without reading research contents.
     files = json.loads((ROOT / "automation/public-files.json").read_text())

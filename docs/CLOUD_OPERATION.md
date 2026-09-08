@@ -6,11 +6,11 @@
 
 ## 2. 명세
 
-`.github/workflows/daily.yml`의 기존 일간 작업을 시간별 작업으로 교체했다. 매시 23분 예약이며 GitHub 실행 대기열에 따라 늦어질 수 있다. Pages는 정적 화면을 제공하고, 수집 코드는 GitHub의 Ubuntu 실행기에서 구동한다. GPT 호출과 로컬 컴퓨터는 필요하지 않다.
+`.github/workflows/daily.yml`의 기존 일간 작업을 시간별 작업으로 교체했다. 매시 23분 예약이며 GitHub 실행 대기열에 따라 늦어질 수 있다. Pages는 정적 화면을 제공하고, 수집 코드는 GitHub의 Ubuntu 실행기에서 구동한다. PDF 재무제표 추출에는 고정된 pypdf 6.10.0을 사용한다. GPT 호출과 로컬 컴퓨터는 필요하지 않다.
 
 FRED 인증은 저장소의 암호화된 `FRED_API_KEY` secret을 사용한다. SEC 요청은 실제 연락처를 포함하는 `SEC_USER_AGENT` secret을 선택적으로 사용할 수 있다. 코드·Pages·수집 로그에는 키나 연락처를 쓰지 않는다. API를 접근할 수 없는 경우 원인을 기록하며 우회하지 않는다.
 
-등록 범위는 FRED 16개, PBoC 월간 4개, SEC 고정 5개사 실제 현금 자사주 매입, Microsoft 자체 IR의 직접 분기 현금 지급 1개, 별도 크립토 공급·펀딩·OI다. 동일 Microsoft의 SEC와 IR 관측은 중복 합산하지 않는다. 현재 범위와 실패는 `live-data.json`의 provider 상태가 기준이다. 자사주·스테이블코인·단일 거래소 데이터의 범위는 각 소스 문서에 따른다.
+등록 범위는 FRED 16개, PBoC 월간 4개, 기업 공식 공시의 자사주 현금 지급 5개사(AAPL·MSFT·GOOGL·META·V), 별도 크립토 공급·펀딩·OI, BTC·ETH 현물 ETF 일별 순유입 2개 집계, CLSK·MARA의 직접 공시 BTC 매도량 2개다. SEC 직접 API는 보조 경로로 유지하며 접근 오류가 기업 공시 수집을 막지 않는다. 동일 기업의 SEC와 직접 공시를 합산하지 않는다. 현재 범위와 실패는 `live-data.json`의 provider 상태가 기준이다. 자사주·스테이블코인·단일 거래소 데이터의 범위는 각 소스 문서에 따른다.
 
 원자료의 native 빈도·통화·단위를 유지한다. 발표·개정 때만 경제적 관측이 달라진다. 분기를 월별로 반복하지 않는다. `known_by`는 실제 확보시각이며 원래 발표시각과 다르다. 모든 신규 관측은 `research_eligible=false`다. 이 경로는 VIX·주가·BTC 수익률 및 봉인된 연구 표본을 읽거나 갱신하지 않는다.
 
@@ -33,3 +33,9 @@ FRED 인증은 저장소의 암호화된 `FRED_API_KEY` secret을 사용한다. 
 깨지는 곳: API 차단·rate limit·HTML 구조 변경·발표 지연·기관 개정·GitHub 장애가 수집을 멈추거나 늦출 수 있다. GitHub는 정시 실행을 보장하지 않고 공개 저장소의 장기 무활동 시 예약을 비활성화할 수 있다. 화면은 마지막 수집 후 3시간을 넘기면 갱신 지연을 표시한다. GitHub Actions 실행 이력에서 실패를 확인할 수 있다. 다수 미연결 채널 때문에 잠재 상태와 전환 연산자·종단 플로우의 전체 명세는 여전히 완비되지 않았다.
 
 공식 운영 근거: [GitHub Pages 사용자 워크플로](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages), [GitHub 예약 실행 제약](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
+
+
+ETF는 Farside의 공표 순유입으로 펀드별 합과 총계를 검증하며 불완전·뉴욕 당일 행은 제외한다. 발행사의 결제현금을 독립 인증한 자료는 아니다. 채굴사는 명시적 실현 BTC 매도 공시이며 현재 시장 전체의 온체인 매도압이 아니다. 서로 다른 기간을 월별로 반복하거나 합산하지 않는다. 자세한 원천 규율은 [ETF](ETF_FLOWS_SOURCE.md), [채굴사](MINER_FLOWS_SOURCE.md), [자사주](ISSUER_BUYBACKS_SOURCE.md)에 기록했다.
+
+
+SEC 자동 요청에 실제 연락처를 암호화된 설정으로 추가했다. Visa의 성공 응답에서 동일 계정 USD 자료가 빈 구조일 때에만 SEC CompanyFacts의 동일 us-gaap 현금지급 계정으로 보완한다. 403에는 이 보완을 적용하지 않는다. API 응답이 성공해도 직접 기업 공시보다 관측 기간이 오래되면 지연으로 표시하며 값·기간을 임의로 당기지 않는다.

@@ -1,57 +1,62 @@
-# Microsoft 자체 공시의 자사주 현금지급 관측
+# 5개 발행자의 자체 공시 자사주 현금지급 연결
 
 ## 1. 무엇을 검증했는가
 
-SEC API의 접근 상태와 별개로, Microsoft가 자체 IR 사이트에서 공개한 현금흐름표에서 실제 보고된 보통주 매입 현금지급액을 분기별로 자동 수집할 수 있는지 검증했다. 매입 승인·계획 금액이나 주식수 감소로 대체하지 않는다.
+Microsoft·Apple·Alphabet·Meta·Visa의 자체 공식 공시에서 실제 보고된 자사주 관련 현금지급을 원래 기간·단위로 자동 수집할 수 있는지 검증했다. SEC API의 HTTP 403을 해결했다고 주장하거나, 매입 승인 금액을 실제 매입으로 대체한 작업이 아니다.
 
 ## 2. 수집 스펙
 
-구현은 `model/providers/issuer_buybacks.py`의 `collect(output_root, transport=None, clock=None)`다. 표 추출은 기존 `model/providers/pboc.py`의 표준 라이브러리 HTML 파서를 재사용하며 외부 패키지나 API 키가 필요 없다.
+구현은 model/providers/issuer_buybacks.py의 collect(output_root, transport=None, clock=None)이며 기본 패널은 처음 정한 5개 회사로 고정한다. 각 회사에 별도의 IR_BUYBACKS 계열을 부여한다. HTML 파서에는 기존 pboc.py의 표준 라이브러리 도구를 사용하고, PDF에는 pypdf==6.10.0을 사용한다.
 
-1. [Microsoft 공식 실적 인덱스](https://www.microsoft.com/en-us/Investor/earnings/)에서 `Press Release & Webcast` 링크를 발견한다.
-2. 공식 인덱스가 제공하는 [최신 실적 링크](https://aka.ms/latestearnings)를 따른다. 리다이렉트는 해당 Microsoft 단축 링크와 `www.microsoft.com/en-us/Investor/earnings/` 경로만 허용한다.
-3. 최종 URL의 회계연도·분기와 본문 실적 제목이 일치해야 한다. 현금흐름표의 단위, `Common stock repurchased` 행, 인접 자금조달 행, 현재 연도와 `Three Months Ended` 열을 확인한다.
-4. 명시된 최근 **3개월 값만** 수집한다. 전년 비교 값이나 6·9·12개월 누적 값을 선택하지 않고, 누적 값 차분으로 분기를 추정하지 않는다. 분기를 월별로 반복하지 않는다.
+| 회사 | 최신 문서 발견 경로 | 선택한 공식 계정 |
+|---|---|---|
+| Microsoft | [공식 실적 인덱스](https://www.microsoft.com/en-us/Investor/earnings/) → Press Release & Webcast | Common stock repurchased |
+| Apple | [공식 회사 뉴스](https://www.apple.com/newsroom/topics/company-news/) → 최신 분기 실적 → 재무제표 PDF | Repurchases of common stock |
+| Alphabet | [공식 실적 페이지](https://abc.xyz/investor/Earnings/default.aspx)의 공개 FinancialReport JSON 피드 → Earnings Release PDF | Repurchases of stock |
+| Meta | [공식 재무자료 페이지](https://investor.atmeta.com/financials/)의 공개 FinancialReport JSON 피드 → Earnings Release PDF | Repurchases of Class A common stock |
+| Visa | [공식 분기 실적 페이지](https://investor.visa.com/financial-information/quarterly-earnings/default.aspx)의 공개 FinancialReport JSON 피드 → Financial Report PDF | Repurchases of class A common stock |
 
-| 항목 | 명세 |
+Q4 피드는 각 공식 웹사이트의 공개 위젯 JS가 사용하는 /feed/FinancialReport.svc/GetFinancialReportList 경로다. 공개 연도·보고서 유형 파라미터로 요청하며, API 키나 로그인 정보가 필요하지 않았다. 피드가 연결한 발행자별 공식 CDN 폴더만 허용하고 SEC URL은 이 어댑터에서 요청하지 않는다. 사이트 CMS의 ReportDate는 경제적 관측기간이나 발표일로 사용하지 않는다. 실제 기간은 재무제표에서 읽는다.
+
+관측값은 현금지급 규모를 양수로 표시하고 원문 현금유출 부호를 raw_signed_value에 보존한다. 단위는 원문 그대로 million USD다. 현재 연도·비교 연도·분기·YTD 열을 구분한다. Apple의 회계연도 시작일은 같은 PDF 대차대조표의 직전 회계연도 말일 다음 날로 산출했다는 근거를 기록한다.
+
+**분기와 누적 기간을 합치거나 월별로 반복하지 않는다.** 현재 Apple·Visa는 9개월 누적 현금흐름이며 나머지 3사는 직접 공표된 3개월 현금흐름이다. 누적 값 차분으로 분기를 만들지 않는다. 모든 관측은 aggregation_allowed=false, research_eligible=false이며 동일 회사 SEC_BUYBACKS 관측과 not_additive_with 관계를 표시한다.
+
+Meta의 대시는 무조건 0으로 바꾸지 않는다. 현금흐름표 자금조달 활동의 모든 행과 당기·전기·당기누적·전기누적 **4개 열의 소계 항등식**이 맞는지 확인한 뒤 그 계정의 회계상 0을 기록한다. 일반 결측은 0으로 채우지 않는다.
+
+원문 HTML·JSON·PDF는 SHA256별 파일에 보존하고 실제 known_by·수집시각·관측 시작일과 종료일·원문 URL·선택한 PDF 페이지를 붙인다. 원문 발표일도 일 단위 증거에 그치므로 original_release_at=null이다. 수집 당시 문서는 과거 실시간 빈티지를 복원하지 않는다.
+
+## 3. 실제 결과와 검증
+
+2026-09-09 한국시간의 실제 수집은 **5/5 성공**, errors=[], discovery_warnings=[]였다. 다섯 회사 모두 discovery_status=automatic으로 최신 문서를 발견했다.
+
+| 계열 | 현금지급 규모, million USD | 관측기간 | 기간 종류 | 원문 |
+|---|---:|---|---|---|
+| IR_BUYBACKS_MSFT | 4,579 | 2026-04-01 ~ 2026-06-30 | 3개월 | [Microsoft FY2026 Q4](https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q4/press-release-webcast) |
+| IR_BUYBACKS_AAPL | 62,094 | 2025-09-28 ~ 2026-06-27 | 9개월 YTD | [Apple 공식 재무제표](https://www.apple.com/newsroom/pdfs/fy2026q3/FY26_Q3_Consolidated_Financial_Statements.pdf) |
+| IR_BUYBACKS_GOOGL | 0 | 2026-04-01 ~ 2026-06-30 | 3개월 | [Alphabet 공식 실적](https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf) |
+| IR_BUYBACKS_META | 0 | 2026-04-01 ~ 2026-06-30 | 3개월 | [Meta 공식 실적](https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/Meta-06-30-2026-Exhibit-99-1-FINAL.pdf) |
+| IR_BUYBACKS_V | 16,430 | 2025-10-01 ~ 2026-06-30 | 9개월 YTD | [Visa 공식 실적](https://s1.q4cdn.com/050606653/files/doc_financials/2026/q3/Q3-2026-Earnings-Release_vF.pdf) |
+
+이 숫자를 합산한 시장 자사주 플로우는 만들지 않았다. Alphabet의 숫자 0과 Meta의 대시를 비교 연도 값과 구분했다. PDF 현금흐름표를 렌더링하여 제목·기간·단위·숫자 열을 직접 대조했다. Apple PDF 내부 객체 경고가 있었지만 해당 표의 추출값과 렌더링 결과가 일치했다.
+
+tests/test_issuer_buybacks_provider.py의 32개 테스트는 최근 분기·전기·YTD 구분, 부호·단위, 발표일·관측기간, Apple 회계기간 근거, Meta 소계, 공개 피드의 null 메타데이터, 원문 SHA, URL 범위, 발견 실패 시 상태를 확인한다.
+
+| 평가 축 | 이번 작업의 범위 |
 |---|---|
-| 계열 ID | `IR_BUYBACKS_MSFT` |
-| 층·트랙 | 4층 종단 플로우 · 주식 |
-| 원문 계정명 | `Common stock repurchased` |
-| 관측값 | 자사주 현금지급 규모를 양수로 표현 |
-| 원문 부호 | `raw_signed_value`에 현금유출의 음수 부호 보존 |
-| 단위 | 원문 단위인 `million USD` |
-| 빈도 | 분기, 관측 시작일·종료일 명시 |
-| 중복 관계 | `SEC_BUYBACKS_MSFT`와 동일 경제현상을 겹쳐 관측할 수 있으므로 합산 금지 |
-| 연구 투입 | `research_eligible=false`, `aggregation_allowed=false` |
-
-이 연결은 **발행자가 자체 제공하는 공개 HTML 어댑터**다. SEC 데이터를 다른 경로로 몰래 요청하거나 SEC의 403을 우회하는 기능이 아니다. 통일된 금융 REST API도 아니다. SEC 표준 태그와 본문 계정명의 완전한 의미 일치를 인증하지 않으므로 별도 계열 ID를 사용한다.
-
-원문 bytes를 내용의 SHA256별 HTML 파일로 보존하고 관측에 원문 URL·요청 URL·SHA256·상대 저장경로·실제 수집시각을 첨부한다. `known_by`는 수집시각이다. 본문에 명확한 보도자료 날짜가 있으면 `published_date`로 저장하되, 시각과 시간대가 확인되지 않으므로 `original_release_at=null`을 유지한다.
-
-## 3. 결과와 검증
-
-2026-09-09 한국시간의 실제 수집에서 공식 최신 링크는 [FY2026 Q4 실적 발표](https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q4/press-release-webcast)로 연결됐고, 관측 1개를 성공적으로 수집했다.
-
-| 원문 계정 | 관측기간 | 현금지급 규모 | 원문 부호 | 본문 발표일 |
-|---|---|---:|---:|---|
-| Common stock repurchased | 2026-04-01 ~ 2026-06-30 | 4,579 million USD | −4,579 million USD | 2026-07-29 |
-
-`tests/test_issuer_buybacks_provider.py`의 17개 테스트는 최근 분기·비교 연도·누적 기간 열의 분리, 원문 부호·단위, 원문 SHA, 보수적 known-by, 미래 기간·발표일 오류 거부, 승인 금액 대체 방지, 공식 URL 범위와 실패 시 결측 유지를 확인한다. 현금흐름표 외 주가·성과 API를 요청하지 않는다.
-
-| 평가 축 | 이번 검증의 범위 |
-|---|---|
-| 축1 내적 타당성 | 원문·관측기간·수집시각과 개념 보존. 과거 실시간 빈티지 인증 아님 |
-| 축2 구성 타당성 | 이벤트·벤치마크 설명력 미검증 |
-| 축3 외적 타당성 | 수익률·분위회귀·투자 성과 미검증 |
-| 축4 연구자 자유도 | 수집기 구현만 추가. 실제 시장 성과를 보고 모형을 선택하지 않음 |
+| 축1 | 원문·관측기간·수집시각·단위·계정 검증. 역사적 빈티지 인증 아님 |
+| 축2 | 이벤트·벤치마크 설명력 미검증 |
+| 축3 | 수익률·분위회귀·투자 성과 미검증 |
+| 축4 | 최초 5개사 패널의 수집 확대. 시장 성과로 계량 스펙을 선택하지 않음 |
 
 ## 4. Kill criteria
 
-모형의 kill criteria는 이번 수집 성공으로 통과 판정하지 않는다. 표 구조·단위·행 부호·기간이 바뀌면 오류와 빈 관측 목록을 반환한다. 호출하는 집계기는 마지막 정상 자료를 유지하면서 해당 실행의 실패를 명시해야 한다. SEC와 자체 IR 관측을 함께 보여줄 수 있지만 중복 합산해서 전체 자사주 매입 플로우를 만들면 안 된다.
+자료 연결 성공으로 모형의 kill criteria를 통과 판정하지 않는다. 계정명·부호·단위·기간·표 구조가 바뀌면 해당 관측을 거부하고 오류를 반환한다. 집계기는 이전 정상 관측과 현재 실행 실패를 구분해야 한다.
+
+Meta 공개 목록이 일시적으로 접근 불가하면 정상 공식 재무자료 페이지에서 검증·등록한 독립 배포 PDF를 재확인하는 보조 경로가 있다. 이 경우 discovery_status=blocked, discovery_mode=registered_official_document와 경고를 반환한다. **등록 문서 재확인은 미래 새 실적의 자동 발견 성공이 아니다. 이번 5/5 검증에서는 보조 경로를 사용하지 않았다.**
 
 ## 5. 가정과 깨지는 곳
 
-가정: Microsoft의 해당 현금흐름표가 그 분기의 보통주 매입 관련 실제 현금지급을 보고하며, 공식 최신 실적 링크가 최신 발표를 가리킨다.
+가정: 각 발행자의 현금흐름표가 해당 기간의 자사주 관련 현금지급을 보고하며 공식 최신 목록이 현재 문서를 가리킨다. 매매 집행과 현금 정산이 같다는 가정은 하지 않는다.
 
-깨지는 곳: 현금 정산 시점과 시장에서 주식을 매수한 시점이 다를 수 있고, 가속 자사주 매입 계약 등의 정산이 포함될 수 있다. 따라서 이 값은 분기별 **보고된 현금지급**이며 일별 실제 거래 집행액이 아니다. Microsoft 한 회사는 미국 주식시장 전체를 대표하지 않는다. SEC 계열과 겹치는 관측, 서로 다른 회계 기간, 보고 지연·소급 정정, 사이트 개편이 해석과 수집을 깨뜨릴 수 있다. 1시간 갱신 확인이 분기 자료의 경제적 빈도를 높이지 않는다.
+깨지는 곳: 현금 정산과 시장 매매 시점 차이, 가속 자사주 매입, 세금·지분 종류·계정 차이, 서로 다른 회계기간, 원문 수정·공표 지연, 사이트 개편·요청 차단이다. 5개사는 시장 전체를 대표하지 않으며 표본 선택·생존 편향이 남는다. 1시간 확인은 분기·누적 보고의 경제적 빈도를 높이지 않는다. 로컬 성공과 GitHub 실행 환경의 접근성은 별도로 확인해야 한다.

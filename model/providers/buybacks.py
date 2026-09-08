@@ -42,6 +42,7 @@ LIMITATIONS = [
     "Only the exact common-stock payment concept is used. Missing custom concepts, other equity classes and filing contexts are not imputed.",
     "Filing dates are date-only evidence. Original publication timestamps are unknown; known_by is actual retrieval time.",
     "Current SEC concept history is revised; these captures do not recreate historic point-in-time availability.",
+    "SEC companyconcept and companyfacts can disagree on coverage. Visa's empty successful concept response permits only the identical standard concept from official companyfacts; its native period may lag issuer IR.",
 ]
 SOURCES = [
     "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
@@ -59,6 +60,57 @@ def concept_url(cik):
     return f"https://data.sec.gov/api/xbrl/companyconcept/CIK{cik}/{TAXONOMY}/{CONCEPT}.json"
 
 
+def companyfacts_url(cik):
+    if cik not in {item["cik"] for item in PANEL}:
+        raise BuybackError("issuer_not_in_fixed_panel")
+    return f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json"
+
+
+def _response_limit(url):
+    return 6_000_000 if "/companyfacts/" in url else 2_000_000
+
+
+def _decode_response(raw, url):
+    if isinstance(raw, dict):
+        raw = json.dumps(raw, sort_keys=True, ensure_ascii=False, allow_nan=False).encode()
+    if not isinstance(raw, bytes):
+        raise BuybackError("transport_must_return_bytes_or_dict")
+    if len(raw) > _response_limit(url):
+        raise BuybackError("response_exceeds_size_limit")
+    try:
+        payload = json.loads(raw)
+        if not isinstance(payload, dict):
+            raise ValueError()
+    except Exception:
+        raise BuybackError("invalid_sec_json") from None
+    return raw, payload
+
+
+def _validate_identity(payload, issuer, *, concept=True):
+    try:
+        if int(payload["cik"]) != int(issuer["cik"]):
+            raise ValueError()
+    except Exception:
+        raise BuybackError("issuer_identity_mismatch") from None
+    if concept and (payload.get("taxonomy") != TAXONOMY or payload.get("tag") != CONCEPT):
+        raise BuybackError("concept_identity_mismatch")
+
+
+def concept_from_companyfacts(payload, issuer):
+    """Select the exact predeclared concept, never search/substitute other tags."""
+    _validate_identity(payload, issuer, concept=False)
+    try:
+        concept = payload["facts"][TAXONOMY][CONCEPT]
+        if not isinstance(concept, dict):
+            raise ValueError()
+    except (KeyError, TypeError, ValueError):
+        raise BuybackError("companyfacts_exact_cash_concept_unavailable") from None
+    return {"cik": payload["cik"], "entityName": payload.get("entityName"),
+            "taxonomy": TAXONOMY, "tag": CONCEPT,
+            "label": concept.get("label"), "description": concept.get("description"),
+            "units": concept.get("units", {})}
+
+
 def _user_agent():
     # No invented email, copied personal profile or credential search.
     value = os.environ.get("SEC_USER_AGENT", "").strip()
@@ -73,9 +125,9 @@ def _request(url, headers, timeout=20):
     request = urllib.request.Request(url, headers=headers)
     try:
         with urllib.request.urlopen(request, timeout=timeout) as response:
-            body = response.read(2_000_001)
-        if len(body) > 2_000_000:
-            raise BuybackError("response_exceeds_concept_size_limit")
+            body = response.read(_response_limit(url) + 1)
+        if len(body) > _response_limit(url):
+            raise BuybackError("response_exceeds_size_limit")
         return body
     except urllib.error.HTTPError as error:
         # In particular, do not route around a 403 or masquerade as a browser.
@@ -88,13 +140,7 @@ def _request(url, headers, timeout=20):
 
 def select_latest_facts(payload, issuer, retrieved_at):
     """Return latest disclosed period(s), preserving fiscal duration and accession."""
-    try:
-        if int(payload["cik"]) != int(issuer["cik"]):
-            raise ValueError()
-    except Exception:
-        raise BuybackError("issuer_identity_mismatch") from None
-    if payload.get("taxonomy") != TAXONOMY or payload.get("tag") != CONCEPT:
-        raise BuybackError("concept_identity_mismatch")
+    _validate_identity(payload, issuer)
     rows = payload.get("units", {}).get("USD")
     if not isinstance(rows, list):
         raise BuybackError("required_usd_cash_concept_unavailable")
@@ -168,7 +214,7 @@ def select_latest_facts(payload, issuer, retrieved_at):
 
 
 def collect(output_root, transport=None, clock=None):
-    """Collect five official concept responses. Inject transport(url, headers) for tests."""
+    """Collect fixed exact-concept panel. Inject transport(url, headers) for tests."""
     root = _validate_output_root(output_root)
     started = _utc(clock)
     capture_id = started.strftime("%Y%m%dT%H%M%S%fZ") + "_" + uuid.uuid4().hex[:12]
@@ -190,21 +236,28 @@ def collect(output_root, transport=None, clock=None):
                     raise BuybackError("sec_http_403_remaining_panel_not_requested")
                 if user_agent is None:
                     raise BuybackError("invalid_sec_user_agent")
-                # One sequential request per issuer, <= 2/sec even with zero network latency.
+                # Sequential requests, <= 2/sec even with zero network latency.
                 if transport is None:
                     time.sleep(.5)
                 url = concept_url(issuer["cik"])
                 raw = (transport or _request)(url, {"User-Agent": user_agent, "Accept": "application/json"})
-                if isinstance(raw, dict):
-                    raw = json.dumps(raw, sort_keys=True, ensure_ascii=False, allow_nan=False).encode()
-                if not isinstance(raw, bytes):
-                    raise BuybackError("transport_must_return_bytes_or_dict")
-                if len(raw) > 2_000_000:
-                    raise BuybackError("response_exceeds_concept_size_limit")
-                try:
-                    payload = json.loads(raw)
-                except Exception:
-                    raise BuybackError("invalid_sec_json") from None
+                raw, payload = _decode_response(raw, url)
+                _validate_identity(payload, issuer)
+                initial_raw, initial_retrieved_at = None, None
+                route = "companyconcept"
+                # Verified Visa API coverage discrepancy: successful, correctly
+                # identified concept with USD:{} (observed) or USD:[] only.
+                # Never retry around HTTP
+                # denial, other units, wrong identities or invalid cash facts.
+                if issuer["ticker"] == "V" and payload.get("units", {}).get("USD") in ([], {}):
+                    initial_raw, initial_retrieved_at = raw, _utc(clock)
+                    url = companyfacts_url(issuer["cik"])
+                    if transport is None:
+                        time.sleep(.5)
+                    raw = (transport or _request)(url, {"User-Agent": user_agent, "Accept": "application/json"})
+                    raw, all_facts = _decode_response(raw, url)
+                    payload = concept_from_companyfacts(all_facts, issuer)
+                    route = "companyfacts_same_concept"
                 retrieved_at = _utc(clock)
                 selected = select_latest_facts(payload, issuer, retrieved_at)
                 relative = Path("raw") / capture_id / (issuer["cik"] + ".json")
@@ -215,10 +268,29 @@ def collect(output_root, transport=None, clock=None):
                     handle.flush()
                     os.fsync(handle.fileno())
                 digest = hashlib.sha256(raw).hexdigest()
+                initial_provenance = {}
+                if initial_raw is not None:
+                    initial_relative = relative.with_name(issuer["cik"] + ".companyconcept.empty.json")
+                    with (root / initial_relative).open("xb") as handle:
+                        handle.write(initial_raw)
+                        handle.flush()
+                        os.fsync(handle.fileno())
+                    initial_digest = hashlib.sha256(initial_raw).hexdigest()
+                    initial_provenance = {
+                        "fallback_reason": "verified_visa_companyconcept_empty_usd",
+                        "initial_source_url": concept_url(issuer["cik"]),
+                        "initial_response_raw_path": initial_relative.as_posix(),
+                        "initial_response_raw_sha256": initial_digest,
+                        "initial_response_retrieved_at": _stamp(initial_retrieved_at),
+                    }
+                    captures.append({"ticker": issuer["ticker"], "path": initial_relative.as_posix(),
+                                     "sha256": initial_digest, "source_url": concept_url(issuer["cik"]),
+                                     "retrieved_at": _stamp(initial_retrieved_at), "role": "empty_concept_evidence"})
                 for item in selected:
-                    item.update({"raw_path": relative.as_posix(), "raw_sha256": digest})
+                    item.update({"raw_path": relative.as_posix(), "raw_sha256": digest,
+                                 "source_url": url, "acquisition_route": route, **initial_provenance})
                 fingerprint = hashlib.sha256(json.dumps([
-                    {k: item[k] for k in ("cik", "value", "fiscal_start", "fiscal_end", "accession", "filed_date", "form")}
+                    {k: item[k] for k in ("cik", "value", "fiscal_start", "fiscal_end", "accession", "filed_date", "form", "source_url")}
                     for item in selected], sort_keys=True).encode()).hexdigest()
                 old = previous_by_issuer.get(issuer["ticker"], {})
                 changed = old.get("fingerprint") != fingerprint
@@ -231,9 +303,9 @@ def collect(output_root, transport=None, clock=None):
                                       "fiscal_end": selected[0]["fiscal_end"], "filed_date": selected[0]["filed_date"],
                                       "age_calendar_days": age, "stale_after_days": 180,
                                       "fingerprint": fingerprint, "last_good_observations": selected,
-                                      "changed": changed, "error": None})
+                                      "acquisition_route": route, "changed": changed, "error": None})
                 captures.append({"ticker": issuer["ticker"], "path": relative.as_posix(), "sha256": digest,
-                                 "retrieved_at": _stamp(retrieved_at)})
+                                 "source_url": url, "retrieved_at": _stamp(retrieved_at)})
                 if changed:
                     with (root / "observed.jsonl").open("a") as ledger:
                         ledger.write(json.dumps({"capture_id": capture_id, "ticker": issuer["ticker"],
