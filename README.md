@@ -1,22 +1,24 @@
-# 미국 달러 유동성 대시보드
+# Macro liquidity observations
 
-[대시보드 열기](https://arahant-tech.github.io/macro-liquidity-dashboard/)
+[라이브 화면](https://arahant-tech.github.io/macro-liquidity-dashboard/) · [실행 상태](https://github.com/arahant-tech/macro-liquidity-dashboard/actions/workflows/daily.yml)
 
-매일 한국시간 오전 9시에 GitHub Actions가 공식 자료를 확인하고 같은 S=R+P, p=(R/S,P/S) 정의로 모델을 재계산한다. 컴퓨터나 브라우저를 켜 둘 필요가 없다. 실행 대기 때문에 정확한 시작 시각은 지연될 수 있다.
+GitHub Actions가 매시간 등록 소스의 최신 관측을 수집하고 GitHub Pages에 게시합니다. 컴퓨터나 GPT가 켜져 있을 필요는 없습니다. 예약은 매시 23분이며 GitHub 대기열·소스 장애에 따라 늦어질 수 있습니다.
 
-- H.4.1 준비금·역레포 Others: FRED 공식 계열의 수요일 잔액.
-- ICI 주간 상품 설정: combined·mutual·ETF 발표일·단위·분류·합계 교차 확인. 각 발표의 겹치는 주는 수정치를 반영하고 이전에 검증한 주를 보존한다. 접근이 차단되면 이전 관측과 실패 상태를 유지한다.
-- MMF·자금 수요: OFR 전체 MMF 투자처, Treasury DTS 순발행, NY Fed 딜러 국채 보유와 TGCR, FRED IOER/IORB. 월별 조달 자료까지 검증된 묶음만 반영한다.
-- Z.1: 실제 current release의 FU 비계절조정 분기 거래. preview는 사용하지 않는다. 공식 부문·계열 정의가 달라지면 임의로 대응시키지 않고 이전 자료를 유지하며 검토 필요를 표시한다.
+FRED의 중앙은행·은행·분포 관측, PBoC 월간 공식 통계, 실제 현금 자사주 공시, 별도 크립토 공급·펀딩·OI를 다룹니다. 성공 여부와 미연결 범위는 화면의 소스별 상태가 기준입니다. 실패한 요청은 마지막 정상 관측의 시각과 함께 표시합니다.
 
-매일 새 숫자가 발표되는 것은 아니다. 페이지의 **최근 자료 확인**, **모델 계산**, **출처별 자료 기준일**은 별개다. 일부 출처 실패는 해당 묶음을 유지하며, 코어 수집 또는 전체 계산 검증 실패는 모델 전체를 그대로 유지한다. 실패를 새 자료 확인 성공으로 표시하지 않는다. 페이지를 열면 검증된 공개 JSON을 읽고, 열어 둔 페이지는 5분마다 새 게시본을 확인한다. 데이터와 상태의 SHA-256이 일치하지 않으면 현재 표시를 유지한다.
+이 페이지는 원자료 수집 화면입니다. 스칼라 유동성 지표·예측·진입 신호를 생성하지 않습니다. 단위와 관측 기간이 다른 계열을 더하지 않으며, 주식과 크립토를 분리합니다. 모델의 4축 타당성·계수·kill criteria 통과를 주장하지 않습니다.
 
-이전 연구 보관본은 고정 기록이며 자동 갱신하지 않는다. 현재 수정치 기반 측정으로, 당시 공표 빈티지(PIT)나 매매 성과를 재검증하는 작업은 아니다. 원문 HTTP 응답과 해시는 각 실행의 `official-source-snapshots` 자료에서 90일 동안 확인할 수 있다. 과거 미수집 이력을 새로 확보했다고 주장하지 않는다.
+## 운영
 
-[실행 기록 및 수동 재실행](https://github.com/arahant-tech/macro-liquidity-dashboard/actions/workflows/daily.yml). 수동 실행은 저장소 권한이 있는 소유자만 가능하다. 인증정보는 페이지나 수집 코드에 넣지 않으며 게시에는 이 저장소에 한정된 GitHub Actions 토큰을 사용한다.
+- `.github/workflows/daily.yml`: 시간별 수집·검사·공개 배포
+- `model/cloud_feeds.py`: 등록 소스 통합, 실패 보존, 공개 필드 제한
+- `state/live/`: 다음 실행에 필요한 최신 원문·공급량 기준 스냅숏
+- `live-data.json`: 원자료·실제 확보시각·오류·범위가 함께 있는 공개 스냅숏
+- Actions `liquidity-source-receipts`: 실행별 원문과 SHA256 증거, 90일 보존
+- `accounting-v8.html`: 이전 회계 화면, 갱신 중지
 
-기존 `liqdesk`·`liqdesk-page` 저장소 및 해당 자동 갱신과는 연결하지 않는다.
+FRED 키는 GitHub의 암호화된 `FRED_API_KEY` secret에 저장합니다. 선택적 `SEC_USER_AGENT`는 실제 앱·연락처 식별자입니다. 키·연락처를 공개 파일에 쓰지 않습니다. 데이터 수집은 Python 표준 라이브러리만 사용합니다.
 
-GitHub Pages는 검증된 `_site` 패키지만 배포한다. `live-model.json`과 `update-status.json`의 일일 기록은 강제 푸시 없이 이력으로 남긴다. GitHub가 장기 비활동으로 일정을 중지하거나 실행을 지연시키면 페이지가 마지막 확인 시각과 36시간 경과 안내를 표시한다.
+가정은 소스 정의와 GitHub/API 접근 권한이 유지된다는 것입니다. 발표 지연·개정·접근 차단·HTML 변경·GitHub 일정 지연에서 깨집니다. `known_by`는 실제 수집 완료 시각이며 과거의 최초 발표시각이 아닙니다. 최신 관측으로 봉인한 과거 연구 자료를 갱신하지 않습니다.
 
-구현 근거: [GitHub Pages 사용자 지정 워크플로](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages), [예약 실행 규칙](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
+자세한 범위와 복구 규칙은 [운영 문서](docs/CLOUD_OPERATION.md), [PBoC](docs/PBOC_SOURCE.md), [SEC 자사주](docs/BUYBACKS_SOURCE.md), [Microsoft 직접 공시](docs/ISSUER_BUYBACKS_SOURCE.md), [크립토](docs/CRYPTO_SOURCES.md)에 있습니다.

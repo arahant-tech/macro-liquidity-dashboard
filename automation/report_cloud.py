@@ -1,0 +1,21 @@
+"""Summarize partial coverage after publishing failures honestly."""
+import json
+import os
+from pathlib import Path
+
+path = Path("live-data.json")
+if not path.exists():
+    raise SystemExit("No current observation snapshot; inspect collection failure.")
+data = json.loads(path.read_text())
+lines = ["## Hourly observation collection", "", "Capture: " + data["generated_at"], "",
+         "|Source|Status|Fresh observations|", "|---|---|---|"]
+for source in data["providers"]:
+    lines.append(f"|{source['provider']}|{source['status']}|{source['success']}/{source['total']}|")
+    if source["status"] != "ok":
+        print("::warning::" + source["provider"] + " source coverage: " + source["status"])
+lines += ["", "Known-by is actual retrieval time. Model validity and sealed outcomes are not tested.",
+          "Failed sources retain earlier values and original timestamps. See published coverage and errors."]
+with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as handle:
+    handle.write("\n".join(lines) + "\n")
+if all(source["status"] == "error" for source in data["providers"]):
+    raise SystemExit("All sources failed; status and retained observations were published.")

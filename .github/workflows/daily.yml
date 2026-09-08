@@ -1,14 +1,14 @@
-name: Daily liquidity update
+name: Hourly liquidity observations
 
 on:
   schedule:
-    - cron: '0 0 * * *' # 09:00 Asia/Seoul; GitHub may queue scheduled runs.
+    - cron: '23 * * * *' # Every hour at :23 UTC/KST; GitHub may delay runs.
   workflow_dispatch:
   push:
     branches: [main]
     paths-ignore:
-      - 'live-model.json'
-      - 'update-status.json'
+      - 'state/**'
+      - 'live-data.json'
 
 permissions:
   contents: read
@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  update-and-publish:
+  collect-and-publish:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     permissions:
@@ -29,49 +29,44 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Read current published snapshot
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Read current code and last successful receipts
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           ref: main
-      - name: Validate calculations and failure preservation
-        run: python3 -m unittest discover -s automation -p 'test_*.py' -v
-      - name: Collect official observations and validate candidate
-        run: python3 automation/update.py
-      - name: Package verified page and observations
-        run: python3 automation/package.py
-      - name: Preserve source receipts for independent replay
+      - name: Verify source contracts and failure preservation
+        run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Collect current observations with actual retrieval timestamps
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: python3 -m model.cloud_feeds --output-root .run/live --checkpoint state/live --public-output live-data.json
+      - name: Preserve full source receipts for replay
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: official-source-snapshots
+          name: liquidity-source-receipts
           path: .run/
           include-hidden-files: true
-          if-no-files-found: ignore
+          if-no-files-found: warn
           retention-days: 90
-      - name: Save model and check status without changing other pages
+      - name: Save latest receipts and bounded restart state
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- live-model.json update-status.json
+          git add -- state/live live-data.json
           if ! git diff --cached --quiet; then
-            git commit -m 'Update validated liquidity observations and source status [skip ci]'
+            git commit -m 'Update source observations and cloud checkpoint [skip ci]'
             git push origin HEAD:main
           fi
+      - name: Package observation page and existing public archives
+        run: python3 automation/package_cloud.py
       - name: Upload public page package
-        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
           path: _site
       - name: Publish GitHub Pages
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
-      - name: Report retained model if core collection or validation failed
-        run: |
-          python3 - <<'PY'
-          import json,os
-          from pathlib import Path
-          status=json.loads(Path('update-status.json').read_text())
-          lines=['## Daily liquidity check', '', 'Result: '+status['state'], '', 'Failed sources keep the previous verified observations.', '']
-          lines += [s['label']+': '+s['state']+' / '+s['observation_date'] for s in status['sources']]
-          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:f.write('\n'.join(lines)+'\n')
-          if status['state']=='failed':raise SystemExit('Previous model retained; inspect published status and source receipts.')
-          PY
+      - name: Report actual source coverage
+        if: always()
+        run: python3 automation/report_cloud.py

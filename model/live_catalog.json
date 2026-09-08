@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "scope": "Current public macro observations, kept outside the sealed research sample",
+  "series": [
+    {
+      "series_id": "WALCL",
+      "layer": 1,
+      "block": "fed",
+      "expected_frequency": "Weekly",
+      "stale_after_days": 21,
+      "expected_units": "Millions of U.S. Dollars",
+      "meaning": "Federal Reserve total assets"
+    },
+    {
+      "series_id": "WRESBAL",
+      "layer": 1,
+      "block": "fed",
+      "expected_frequency": "Weekly",
+      "stale_after_days": 21,
+      "expected_units": "Millions of U.S. Dollars",
+      "meaning": "Reserve balances; preserve the exact native series definition"
+    },
+    {
+      "series_id": "RRPONTSYD",
+      "layer": 1,
+      "block": "fed",
+      "expected_frequency": "Daily",
+      "stale_after_days": 7,
+      "expected_units": "Billions of US Dollars",
+      "meaning": "Overnight reverse repurchase agreements; native billions retained"
+    },
+    {
+      "series_id": "WTREGEN",
+      "layer": 1,
+      "block": "fed",
+      "expected_frequency": "Weekly",
+      "stale_after_days": 21,
+      "expected_units": "Millions of U.S. Dollars",
+      "meaning": "Treasury General Account; preserve the exact native averaging definition"
+    },
+    {
+      "series_id": "SOFR",
+      "layer": 1,
+      "block": "fed_funding",
+      "expected_frequency": "Daily",
+      "stale_after_days": 7,
+      "expected_units": "Percent",
+      "meaning": "Secured Overnight Financing Rate"
+    },
+    {
+      "series_id": "IORB",
+      "layer": 1,
+      "block": "fed_funding",
+      "expected_frequency": "Daily",
+      "stale_after_days": 7,
+      "expected_units": "Percent",
+      "meaning": "Interest on reserve balances"
+    },
+    {
+      "series_id": "TOTBKCR",
+      "layer": 1,
+      "block": "bank_credit",
+      "expected_frequency": "Weekly",
+      "stale_after_days": 21,
+      "expected_units": "Billions of U.S. Dollars",
+      "meaning": "Bank credit, all commercial banks, seasonally adjusted"
+    },
+    {
+      "series_id": "DPSACBW027SBOG",
+      "layer": 2,
+      "block": "sector_distribution",
+      "expected_frequency": "Weekly",
+      "stale_after_days": 21,
+      "expected_units": "Billions of U.S. Dollars",
+      "meaning": "Deposits, all commercial banks, seasonally adjusted"
+    },
+    {
+      "series_id": "WRBWFRBL",
+      "layer": 1,
+      "block": "fed",
+      "expected_frequency": "Weekly",
+      "stale_after_days": 21,
+      "expected_units": "Millions of U.S. Dollars",
+      "meaning": "Reserve balances, Wednesday level; overlaps WRESBAL and is not added to it"
+    },
+    {
+      "series_id": "WLRRAOL",
+      "layer": 1,
+      "block": "fed",
+      "expected_frequency": "Weekly",
+      "stale_after_days": 21,
+      "expected_units": "Millions of U.S. Dollars",
+      "meaning": "Reverse repurchase agreements, other, Wednesday level; not an alias for daily ON RRP"
+    },
+    {
+      "series_id": "WDTGAL",
+      "layer": 1,
+      "block": "fed",
+      "expected_frequency": "Weekly",
+      "stale_after_days": 21,
+      "expected_units": "Millions of U.S. Dollars",
+      "meaning": "Treasury General Account, Wednesday level; not an alias for weekly averages"
+    },
+    {
+      "series_id": "TOTLL",
+      "layer": 1,
+      "block": "bank_credit",
+      "expected_frequency": "Weekly",
+      "stale_after_days": 21,
+      "expected_units": "Billions of U.S. Dollars",
+      "meaning": "Loans and leases in bank credit, seasonally adjusted; overlaps total bank credit"
+    },
+    {
+      "series_id": "ECBASSETSW",
+      "layer": 1,
+      "block": "ecb",
+      "expected_frequency": "Weekly",
+      "stale_after_days": 21,
+      "expected_units": "Millions of Euros",
+      "meaning": "ECB assets; native EUR unit, kept separate from other central banks"
+    },
+    {
+      "series_id": "JPNASSETS",
+      "layer": 1,
+      "block": "boj",
+      "expected_frequency": "Monthly",
+      "stale_after_days": 75,
+      "expected_units": "100 Million Yen",
+      "meaning": "Bank of Japan assets; native JPY unit, kept separate from other central banks"
+    },
+    {
+      "series_id": "DRTSCILM",
+      "layer": 1,
+      "block": "bank_credit",
+      "expected_frequency": "Quarterly",
+      "stale_after_days": 190,
+      "expected_units": "Percent",
+      "meaning": "SLOOS domestic respondents tightening C&I standards for large and middle-market firms; a specific question, not all lending attitudes"
+    },
+    {
+      "series_id": "MMMFFAQ027S",
+      "layer": 2,
+      "block": "sector_distribution",
+      "expected_frequency": "Quarterly",
+      "stale_after_days": 190,
+      "expected_units": "Millions of U.S. Dollars",
+      "meaning": "Money market funds total financial assets; quarterly, not ICI weekly assets",
+      "reference_period_end": true,
+      "reference_period_evidence": [
+        "https://fredhelp.stlouisfed.org/fred/data/understanding-the-data/date-format/",
+        "https://fred.stlouisfed.org/graph/?graph_id=1224230"
+      ]
+    }
+  ],
+  "assumptions": [
+    "The official FRED metadata contract identifies each native series independently.",
+    "Staleness thresholds are conservative age warnings, not release calendars. Only MMMFFAQ027S uses its verified quarter-end stock date; all other series retain native observation dates."
+  ],
+  "breaks": [
+    "Overlapping balance-sheet series cannot be added or treated as separate independent observations without a measurement specification.",
+    "Live collection does not certify original publication timestamps or historic point-in-time availability.",
+    "PBoC, offshore dollar credit, collateral, operator, terminal flow and crypto coverage remain incomplete."
+  ]
+}
