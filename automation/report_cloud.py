@@ -7,6 +7,13 @@ path = Path("live-data.json")
 if not path.exists():
     raise SystemExit("No current observation snapshot; inspect collection failure.")
 data = json.loads(path.read_text())
+expected_run = f"https://github.com/{os.environ.get('GITHUB_REPOSITORY')}/actions/runs/{os.environ.get('GITHUB_RUN_ID')}"
+if data.get("github_run_url") != expected_run:
+    with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as handle:
+        handle.write("## Collection failed before a current snapshot was written\n\n"
+                     "The repository still contains a previous run's observations. "
+                     "They are not this run's successful collection. Inspect the failed step.\n")
+    raise SystemExit("Current-run snapshot missing; previous data must not count as this run's success.")
 lines = ["## Hourly observation collection", "", "Capture: " + data["generated_at"], "",
          "|Source|Status|Fresh observations|", "|---|---|---|"]
 for source in data["providers"]:
