@@ -11,48 +11,24 @@
     "Quarterly and annual filings are delayed; fiscal calendars and YTD durations differ across issuers.",
     "Only the exact common-stock payment concept is used. Missing custom concepts, other equity classes and filing contexts are not imputed.",
     "Filing dates are date-only evidence. Original publication timestamps are unknown; known_by is actual retrieval time.",
-    "Current SEC concept history is revised; these captures do not recreate historic point-in-time availability."
+    "Current SEC concept history is revised; these captures do not recreate historic point-in-time availability.",
+    "SEC companyconcept and companyfacts can disagree on coverage. Visa's empty successful concept response permits only the identical standard concept from official companyfacts; its native period may lag issuer IR."
   ],
-  "capture_id": "20260908T174221233217Z_c047557b381c",
-  "completed_at": "2026-09-08T17:42:21.772418Z",
-  "errors": [
-    {
-      "error": "sec_http_403",
-      "series_id": "SEC_BUYBACKS_AAPL",
-      "ticker": "AAPL"
-    },
-    {
-      "error": "sec_http_403_remaining_panel_not_requested",
-      "series_id": "SEC_BUYBACKS_MSFT",
-      "ticker": "MSFT"
-    },
-    {
-      "error": "sec_http_403_remaining_panel_not_requested",
-      "series_id": "SEC_BUYBACKS_GOOGL",
-      "ticker": "GOOGL"
-    },
-    {
-      "error": "sec_http_403_remaining_panel_not_requested",
-      "series_id": "SEC_BUYBACKS_META",
-      "ticker": "META"
-    },
-    {
-      "error": "sec_http_403_remaining_panel_not_requested",
-      "series_id": "SEC_BUYBACKS_V",
-      "ticker": "V"
-    }
-  ],
-  "fetched_at": "2026-09-08T17:42:21.772418Z",
+  "capture_id": "20260908T183341579911Z_53c66e9ab5cf",
+  "completed_at": "2026-09-08T18:33:45.577086Z",
+  "errors": [],
+  "fetched_at": "2026-09-08T18:33:45.577086Z",
   "limitations": [
     "A five-issuer panel is not aggregate US equity buybacks and has selection and survivorship bias.",
     "Cash payments can differ in timing from execution of market purchases and can include accelerated-repurchase settlements.",
     "Quarterly and annual filings are delayed; fiscal calendars and YTD durations differ across issuers.",
     "Only the exact common-stock payment concept is used. Missing custom concepts, other equity classes and filing contexts are not imputed.",
     "Filing dates are date-only evidence. Original publication timestamps are unknown; known_by is actual retrieval time.",
-    "Current SEC concept history is revised; these captures do not recreate historic point-in-time availability."
+    "Current SEC concept history is revised; these captures do not recreate historic point-in-time availability.",
+    "SEC companyconcept and companyfacts can disagree on coverage. Visa's empty successful concept response permits only the identical standard concept from official companyfacts; its native period may lag issuer IR."
   ],
   "market_aggregate": null,
-  "outcome": "error",
+  "outcome": "ok",
   "panel": [
     {
       "cik": "0000320193",
@@ -82,15 +58,15 @@
   ],
   "provider": "buybacks",
   "research_eligible": false,
-  "retrieved_at": "2026-09-08T17:42:21.772418Z",
+  "retrieved_at": "2026-09-08T18:33:45.577086Z",
   "schema_version": 1,
   "sources": [
     "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
     "https://www.sec.gov/about/developer-resources"
   ],
   "stale": 0,
-  "started_at": "2026-09-08T17:42:21.233217Z",
-  "status": "error",
-  "success": 0,
+  "started_at": "2026-09-08T18:33:41.579911Z",
+  "status": "ok",
+  "success": 5,
   "total": 5
 }

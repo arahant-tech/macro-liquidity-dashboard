@@ -1,0 +1,36 @@
+{
+  "assumptions": [
+    "Farside's published flow values are observations from a third-party data publisher; issuer cash-settlement methods are not independently certified.",
+    "The table's enumerated fund universe is the covered universe, not every crypto investment product worldwide.",
+    "A complete prior-New-York-date row with a reconciled total is less provisional than an unfinished current-day row."
+  ],
+  "breaks": [
+    "Underlying flow construction and revisions are not independently audited against each issuer's creations and redemptions.",
+    "The current New York calendar date is deliberately excluded, even if all cells are filled; this introduces a conservative reporting delay.",
+    "A dash, blank or nonnumeric component is missing, not zero. Incomplete dates cannot produce an aggregate.",
+    "Rounded component sums must reconcile with the publisher total; explicit fund-universe changes require a code review.",
+    "Public HTML is a programmatic source, not a documented JSON API contract; layout changes or access denial can stop collection.",
+    "Only BTC and ETH US spot-product universes on the source tables are covered; equity ETF flows and other crypto products remain absent.",
+    "Capture time is the earliest knowability certified by this collector; a business date is not an original publication timestamp."
+  ],
+  "capture_id": "20260908T183351533091Z_31b63562e5aa",
+  "errors": [],
+  "fetched_at": "2026-09-08T18:33:54.322209Z",
+  "limitations": [
+    "Underlying flow construction and revisions are not independently audited against each issuer's creations and redemptions.",
+    "The current New York calendar date is deliberately excluded, even if all cells are filled; this introduces a conservative reporting delay.",
+    "A dash, blank or nonnumeric component is missing, not zero. Incomplete dates cannot produce an aggregate.",
+    "Rounded component sums must reconcile with the publisher total; explicit fund-universe changes require a code review.",
+    "Public HTML is a programmatic source, not a documented JSON API contract; layout changes or access denial can stop collection.",
+    "Only BTC and ETH US spot-product universes on the source tables are covered; equity ETF flows and other crypto products remain absent.",
+    "Capture time is the earliest knowability certified by this collector; a business date is not an original publication timestamp."
+  ],
+  "provider": "etf_flows",
+  "research_eligible": false,
+  "schema_version": 1,
+  "stale": 0,
+  "started_at": "2026-09-08T18:33:51.533091Z",
+  "status": "ok",
+  "success": 2,
+  "total": 2
+}
