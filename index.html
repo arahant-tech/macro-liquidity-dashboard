@@ -127,7 +127,7 @@ function renderProviders() {
     const heading=element('h2','',source.label||spec.label);
     const meta=element('div','source-meta');const amount=element('span','source-count',count(source.success));amount.append(element('span','denominator','/ '+count(source.total)));
     meta.append(amount,element('span','source-caption','연결된 계열'));
-    card.append(top,heading,meta,element('div','source-updated',source.last_success_at?'최근 성공 '+stamp(source.last_success_at):'정상 수집 시각: 아직 확인되지 않음'));
+    card.append(top,heading,meta,element('div','source-updated',source.last_success_at?'최근 성공 '+stamp(source.last_success_at):source.checked_at?'최근 확인 '+stamp(source.checked_at):'수집 시각: 아직 확인되지 않음'));
     const errors=Array.isArray(source.errors)?source.errors:[];
     if(errors.length){const details=element('details','error-details');details.append(element('summary','',errors.length+'개 오류·미확보 사유'));const list=element('ul');errors.forEach(error=>list.append(element('li','',typeof error==='string'?error:[error.code||error.error,error.message].filter(Boolean).join(' · '))));details.append(list);card.append(details);}
     return card;
@@ -135,7 +135,7 @@ function renderProviders() {
 }
 function periodCell(row) {
   const td=element('td');const start=row.period_start,end=row.period_end||row.observation_date;
-  if(start&&end&&start!==end){td.append(element('div','period',start+' →'),element('div','period',end),element('div','sub-date','공시된 원기간'));}
+  if(start&&end&&start!==end){td.append(element('div','period',start+' →'),element('div','period',end),element('div','sub-date',row.elapsed_capture_seconds!=null?'실제 수집 구간':'공시된 원기간'));}
   else{td.append(element('div','period',end||'—'));if(start)td.append(element('div','sub-date','관측 기준일'));}
   return td;
 }
