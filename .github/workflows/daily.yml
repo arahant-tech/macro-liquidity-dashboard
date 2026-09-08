@@ -9,6 +9,7 @@ on:
     paths-ignore:
       - 'state/**'
       - 'live-data.json'
+      - 'chart-data.json'
 
 permissions:
   contents: read
@@ -44,6 +45,10 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
         run: .venv-cloud/bin/python -m model.cloud_feeds --output-root .run/live --checkpoint state/live --public-output live-data.json
+      - name: Collect native current-vintage histories for display only
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: .venv-cloud/bin/python -m model.chart_history --output-root .run/chart-history --live-root state/live --checkpoint state/chart-history --public-output chart-data.json
       - name: Preserve full source receipts for replay
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -57,7 +62,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- state/live live-data.json
+          git add -- state/live state/chart-history live-data.json chart-data.json
           if ! git diff --cached --quiet; then
             git commit -m 'Update source observations and cloud checkpoint [skip ci]'
             git push origin HEAD:main

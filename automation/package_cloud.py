@@ -12,9 +12,12 @@ def package():
         raise ValueError("invalid_observation_snapshot")
     if {p["provider"] for p in snapshot["providers"]} != {"fred", "pboc", "buybacks", "issuer_buybacks", "crypto", "etf_flows", "miner_flows"}:
         raise ValueError("provider_status_incomplete")
+    charts = json.loads((ROOT / "chart-data.json").read_text())
+    if charts.get("research_eligible") is not False or charts.get("vintage_policy") != "current_snapshot_not_historical_availability":
+        raise ValueError("invalid_chart_history")
     # Preserve already-public archive links without reading research contents.
     files = json.loads((ROOT / "automation/public-files.json").read_text())
-    files += ["accounting-v8.html", "live-model.json", "update-status.json", "live-data.json"]
+    files += ["accounting-v8.html", "live-model.json", "update-status.json", "live-data.json", "chart-data.json", "charts.js", "dashboard.css"]
     files += [str(p.relative_to(ROOT)) for p in (ROOT / "docs").glob("*_SOURCE*.md")]
     files += ["docs/CLOUD_OPERATION.md"]
     destination = ROOT / "_site"

@@ -20,6 +20,9 @@ class CloudPageTests(unittest.TestCase):
         if not node:
             raise unittest.SkipTest('Node.js is required for the static page behavior check')
         cls.html = cls.page.read_text()
+        css = cls.page.with_name('dashboard.css')
+        if css.exists():
+            cls.html += '\n' + css.read_text()
         script = cls.html.split('<script>')[1].split('</script>')[0]
         prefix = script.split("document.querySelectorAll('.filter').forEach(button")[0]
         program = "const vm=require('vm');const input=JSON.parse(require('fs').readFileSync(0,'utf8'));new vm.Script(input.script);console.log(vm.runInNewContext(input.prefix+input.query,{document:{createElement:()=>({})},URL,Intl,Date,Number,JSON,Array,Object,String}));"

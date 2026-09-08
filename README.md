@@ -24,3 +24,5 @@ FRED 키는 GitHub의 암호화된 `FRED_API_KEY` secret에 저장합니다. 선
 자세한 범위와 복구 규칙은 [운영 문서](docs/CLOUD_OPERATION.md), [PBoC](docs/PBOC_SOURCE.md), [SEC 자사주](docs/BUYBACKS_SOURCE.md), [기업 5개사 직접 공시](docs/ISSUER_BUYBACKS_SOURCE.md), [크립토](docs/CRYPTO_SOURCES.md)에 있습니다.
 
 추가 출처: [ETF 순유입](docs/ETF_FLOWS_SOURCE.md), [채굴사 실현 매도](docs/MINER_FLOWS_SOURCE.md). 공시한 기간과 범위를 지키며 전체 시장의 실시간 매도압으로 과장하지 않습니다.
+
+첫 화면은 중앙은행별 요약 그래프와 기간 선택이 가능한 상세 그래프를 제공합니다. FRED 6계열의 약 3년 현재 빈티지와 PBoC 4계열의 확보된 월별 표를 사용합니다. [그래프 데이터 규율](docs/CHART_HISTORY_SOURCE.md)을 따르며, 잠재 유동성 점수·역사적 이용 가능 데이터로 해석하지 않습니다.

@@ -3,17 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
-  <meta name="description" content="매크로 유동성 모델을 위한 API 관측 데이터. 원천, 단위, 관측기간과 실제 이용 가능 시각을 구분합니다.">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="중앙은행별 유동성 흐름과 5개 층의 원자료를 확인하는 관측실. 원단위·원빈도와 실제 수집 시각을 유지합니다.">
   <title>유동성 관측실 · Macro Liquidity</title>
-  <style>
-    :root{--bg:#08121d;--panel:#101e2c;--panel2:#132434;--line:#253747;--text:#eaf2f7;--muted:#91a5b7;--faint:#657b8e;--accent:#61d8c5;--accent-dim:#163c3c;--amber:#edbf75;--red:#f39798;--radius:16px;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse 700px 460px at 92% 0%,#12353970,transparent),var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;font-size:14px;line-height:1.55}button,input{font:inherit}button,a,input{ -webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}button:disabled{cursor:wait;opacity:.65}.shell{width:min(1320px,calc(100% - 80px));margin:auto}.skip{position:fixed;top:-100px;left:20px;background:var(--accent);color:var(--bg);padding:12px;z-index:30}.skip:focus{top:12px}.topbar{height:90px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:13px;letter-spacing:-.35px}.brand-mark{width:35px;height:35px;color:var(--accent)}.brand strong{font-size:17px;font-weight:650}.brand span{display:block;color:var(--faint);font:9px var(--mono);letter-spacing:1.8px;margin-top:1px}.toplinks{display:flex;align-items:center;gap:25px;font-size:12px;color:var(--muted)}.toplinks a:hover{color:var(--text)}.cloud-label{display:flex;align-items:center;gap:7px}.dot{display:inline-block;flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--faint)}.dot.ok{background:var(--accent)}.hero{padding:45px 0 33px;display:grid;grid-template-columns:1fr 350px;gap:45px;align-items:end}.eyebrow{color:var(--accent);font:10px var(--mono);letter-spacing:2px;margin:0 0 17px}.hero h1{font-size:38px;line-height:1.28;letter-spacing:-1.65px;font-weight:650;margin:0}.hero h1 span{color:var(--muted)}.hero-copy{color:var(--muted);margin:16px 0 0;font-size:13px;line-height:1.8}.run-panel{padding:20px 22px;border:1px solid #28484d;background:linear-gradient(125deg,#17333388,#10202a88);border-radius:var(--radius)}.run-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:11px;color:var(--muted)}.run-time{font:17px var(--mono);font-weight:500;letter-spacing:-.6px;margin:10px 0 8px;min-height:25px}.run-foot{font-size:10px;color:var(--muted);display:flex;gap:9px;align-items:center;flex-wrap:wrap}.run-foot a{color:var(--accent)}.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:20px;background:#263643;color:var(--muted);font-size:10px;line-height:1.4;white-space:nowrap}.badge.ok{background:#173b36;color:var(--accent)}.badge.partial,.badge.stale,.badge.retained{background:#423629;color:var(--amber)}.badge.error,.badge.blocked{background:#402b34;color:var(--red)}.status-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:22px}.source-card{border:1px solid var(--line);background:linear-gradient(145deg,#122231,#0e1b28);border-radius:var(--radius);padding:20px 20px 17px;min-height:159px;position:relative}.source-card .top{display:flex;justify-content:space-between;align-items:center;gap:8px}.source-tag{color:var(--faint);font:10px var(--mono);letter-spacing:1.2px}.source-card h2{font-size:15px;font-weight:600;margin:13px 0 4px;letter-spacing:-.3px}.source-meta{display:flex;align-items:baseline;gap:6px;margin-top:11px}.source-count{font:22px var(--mono);letter-spacing:-1px}.source-count .denominator{color:var(--faint);font-size:14px;margin-left:4px}.source-caption{font-size:10px;color:var(--muted)}.source-updated{color:var(--faint);font-size:10px;margin-top:8px;min-height:16px}.boundary{display:flex;gap:11px;padding:13px 17px;border-radius:10px;border:1px solid var(--line);color:var(--muted);background:#0d1b28;font-size:11px;line-height:1.7;margin-bottom:31px}.boundary-icon{color:var(--accent);font:14px var(--mono);line-height:1.5;flex:0 0 auto}.boundary strong{color:#c9d8e1;font-weight:550}.connection-banner{display:none;padding:12px 16px;border:1px solid #69503a;border-radius:10px;background:#302b23;color:var(--amber);font-size:12px;margin-bottom:22px}.connection-banner.visible{display:block}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 16px}.section-head h2{font-size:19px;font-weight:600;letter-spacing:-.6px;margin:0}.section-head p{font-size:11px;color:var(--muted);margin:5px 0 0}.section-meta{color:var(--faint);font:10px var(--mono)}.toolbar{display:flex;justify-content:space-between;gap:15px;padding:0 0 18px;align-items:center}.filter-group{display:flex;gap:5px;flex-wrap:wrap}.filter{color:var(--muted);background:transparent;border:1px solid transparent;padding:7px 12px;border-radius:7px;font-size:11px;white-space:nowrap}.filter:hover{color:var(--text);background:var(--panel)}.filter[aria-pressed=true]{color:var(--accent);background:var(--accent-dim);border-color:#285450}.toolbar-actions{display:flex;gap:8px;align-items:center}.search{border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;gap:8px;padding:7px 11px;color:var(--faint);background:#0c1a27}.search input{background:transparent;border:0;color:var(--text);width:166px;font-size:11px;outline:none}.search input::placeholder{color:var(--faint)}.refresh{background:var(--panel);border:1px solid var(--line);border-radius:8px;color:var(--muted);padding:7px 11px;font-size:11px;white-space:nowrap}.refresh:hover{color:var(--text);border-color:var(--faint)}.layers{display:flex;flex-direction:column;gap:16px}.layer{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#0e1b28}.layer-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 21px;border-bottom:1px solid var(--line);background:#122231}.layer-name{display:flex;align-items:center;gap:13px}.layer-number{font:11px var(--mono);color:var(--accent);width:28px;height:28px;display:grid;place-items:center;border:1px solid #2b514f;border-radius:7px;background:#153333}.layer h3{font-size:13px;font-weight:600;letter-spacing:-.2px;margin:0}.layer-description{color:var(--muted);font-size:10px;margin-top:2px}.layer-count{font:10px var(--mono);color:var(--faint);white-space:nowrap}.table-scroll{overflow:auto}table{width:100%;border-collapse:collapse;text-align:left;table-layout:fixed}th{font-size:9px;color:var(--faint);font-weight:500;letter-spacing:.2px;padding:12px 21px;border-bottom:1px solid #213342;background:#0f1d2a}td{padding:15px 21px;border-bottom:1px solid #1d2e3e;vertical-align:top}tr:last-child td{border-bottom:0}tbody tr:hover{background:#12233377}.col-series{width:29%}.col-value{width:22%}.col-period{width:17%}.col-known{width:16%}.col-status{width:9%}.col-source{width:7%}.series-label{font-size:11px;font-weight:500;color:#dbe7ee;overflow-wrap:anywhere}.series-code{color:var(--faint);font:9px var(--mono);margin-top:4px;overflow-wrap:anywhere}.row-note{color:var(--muted);font-size:10px;margin-top:6px;line-height:1.6;overflow-wrap:anywhere}.value{font:14px var(--mono);color:#eff7fc;letter-spacing:-.4px;overflow-wrap:anywhere}.unit{color:var(--faint);font-size:9px;margin-top:4px;line-height:1.5;overflow-wrap:anywhere}.period,.known{font:10px var(--mono);color:#b6c7d4;line-height:1.8;overflow-wrap:anywhere}.sub-date{color:var(--faint);font-size:9px;margin-top:2px}.source-link{font-size:10px;white-space:nowrap;color:var(--accent)}.source-link:hover{text-decoration:underline}.empty-layer{padding:23px 21px;color:var(--faint);font-size:11px;line-height:1.8}.layer.crypto{border-color:#335053}.layer.crypto .layer-head{background:linear-gradient(100deg,#153338,#102431)}.layer.crypto .layer-number{color:#97e2d4}.layer-footnote{border-top:1px solid var(--line);padding:11px 21px;font-size:10px;color:var(--muted);line-height:1.7;background:#10212d}.coverage{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;margin-top:29px}.note-panel{padding:21px 23px;border:1px solid var(--line);border-radius:var(--radius);background:#0e1b28}.note-panel h2{font-size:12px;font-weight:600;margin:0 0 12px}.note-panel p{font-size:11px;color:var(--muted);margin:0;line-height:1.9}.note-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}.note-list li{position:relative;padding-left:12px;color:var(--muted);font-size:10px;line-height:1.8;overflow-wrap:anywhere}.note-list li::before{content:"";position:absolute;left:0;top:8px;width:3px;height:3px;background:var(--faint);border-radius:50%}.method-details{margin-top:17px;border-top:1px solid var(--line);padding-top:14px}.method-details summary{font-size:10px;color:var(--muted);cursor:pointer}.method-details .note-list{margin-top:12px}.error-details{margin-top:10px}.error-details summary{font-size:10px;color:var(--amber);cursor:pointer}.error-details ul{font-size:10px;color:var(--muted);padding-left:15px;overflow-wrap:anywhere}.footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding:22px 0 31px;margin-top:34px;color:var(--faint);font-size:10px;line-height:1.8}.footer a{color:var(--muted)}.footer a:hover{color:var(--text)}.hidden{display:none!important}
-    @media(min-width:1500px){.hero{padding-top:51px}.hero h1{font-size:43px}.source-card{min-height:166px}}
-    @media(max-width:1050px){.shell{width:calc(100% - 44px)}.hero{grid-template-columns:1fr 320px;gap:25px}.hero h1{font-size:33px}.status-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.source-card{padding:17px 15px}.source-card h2{font-size:13px}td,th{padding-left:15px;padding-right:15px}.col-series{width:27%}.col-value{width:22%}.col-known{width:17%}.col-source{width:8%}.col-status{width:9%}.toplinks{gap:16px}}
-    @media(max-width:760px){.shell{width:calc(100% - 32px)}.topbar{height:74px}.toplinks .cloud-label,.toplinks a[href="#method"]{display:none}.toplinks{font-size:10px;gap:12px}.brand strong{font-size:15px}.brand span{font-size:8px}.brand-mark{width:29px;height:29px}.hero{grid-template-columns:1fr;padding:31px 0 23px;gap:22px}.hero h1{font-size:33px;line-height:1.28}.hero-copy{font-size:12px;margin-top:13px}.run-panel{padding:15px 17px}.run-time{font-size:16px;margin:8px 0}.status-cards{grid-template-columns:repeat(2,1fr);gap:10px}.source-card{min-height:150px;padding:15px}.source-card:last-child{grid-column:1/-1}.source-card h2{font-size:13px}.source-tag{font-size:9px}.source-count{font-size:20px}.badge{font-size:9px;padding:4px 7px}.boundary{font-size:10px;margin-bottom:26px}.toolbar{align-items:stretch;flex-direction:column;gap:12px}.filter-group{gap:2px}.filter{font-size:10px;padding:7px 10px}.toolbar-actions{justify-content:space-between}.search{flex:1}.search input{width:100%}.layer-head{padding:15px}.layer-name{gap:10px}.layer-description{font-size:9px}.layer h3{font-size:12px}table{min-width:890px}.layer-footnote{padding:11px 15px}.coverage{grid-template-columns:1fr;gap:12px;margin-top:22px}.note-panel{padding:19px}.section-meta{font-size:9px}.section-head h2{font-size:17px}.footer{flex-direction:column;gap:10px;margin-top:26px;padding-bottom:24px}.run-foot{font-size:9px}.table-scroll{scrollbar-width:thin;scrollbar-color:#375366 #0e1b28}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  </style>
+  <link rel="stylesheet" href="./dashboard.css">
 </head>
 <body>
 <a class="skip" href="#observations">관측 데이터로 이동</a>
@@ -25,26 +18,28 @@
     </a>
     <nav class="toplinks" aria-label="주 메뉴">
       <span class="cloud-label"><span class="dot ok"></span> 클라우드 수집</span>
-      <a href="#method">데이터 규율</a>
-      <a href="accounting-v8.html">이전 회계 화면 · 갱신 중지 ↗</a>
+      <a href="#overview" class="nav-active">흐름</a><a href="#observations">관측 데이터</a><a href="#method">데이터 규율</a>
+      <a href="accounting-v8.html">보관함 ↗</a>
     </nav>
   </header>
   <main>
     <section class="hero" aria-labelledby="title">
-      <div>
-        <p class="eyebrow">OBSERVE FIRST. INTERPRET SECOND.</p>
-        <h1>유동성 모델을 위한<br><span>실시간 관측 데이터.</span></h1>
-        <p class="hero-copy">발표된 데이터를 API로 수집합니다.<br>원천·단위·관측 시점을 함께 확인하세요.</p>
-      </div>
-      <div class="run-panel">
-        <div class="run-head"><span>마지막 데이터 수집</span><span id="connection-state" class="badge" role="status" aria-live="polite">확인 중</span></div>
-        <div id="generated-at" class="run-time">—</div>
-        <div class="run-foot"><span>매시간 수집 예약 · KST</span><span>·</span><a id="run-link" class="hidden" target="_blank" rel="noopener noreferrer">실행 기록 ↗</a><span id="screen-check">화면 확인 중</span></div>
-      </div>
+      <div><p class="eyebrow">LIQUIDITY / OVERVIEW</p><h1 id="title">유동성 흐름</h1><p class="hero-copy">중앙은행별 흐름을 보고, 원천까지 확인하세요.</p></div>
+      <div class="run-panel"><div class="run-head"><span class="dot ok"></span><span>매시간 자동 수집</span><span id="connection-state" class="badge" role="status" aria-live="polite">확인 중</span></div><div class="run-foot"><span id="generated-at">—</span><span>KST</span><a id="run-link" class="hidden" target="_blank" rel="noopener noreferrer">실행 기록 ↗</a></div><span id="screen-check" class="screen-check">화면 확인 중</span></div>
     </section>
     <div id="connection-banner" class="connection-banner" role="status"></div>
-    <section id="provider-cards" class="status-cards" aria-label="원천별 API 연결 상태"></section>
-    <div class="boundary"><span class="boundary-icon" aria-hidden="true">↳</span><div><strong>관측값과 측정모형을 구분합니다.</strong> 아래 표는 원단위 데이터입니다. 잠재 유동성 점수나 매매 진입 신호가 아니며, 계열의 수준을 합산하지 않습니다.</div></div>
+    <section id="overview" class="overview" aria-label="중앙은행별 유동성 원자료 그래프">
+      <div id="overview-cards" class="overview-cards" aria-label="중앙은행 선택"><p class="chart-empty">공식 원자료의 흐름을 불러오고 있습니다.</p></div>
+      <article class="chart-panel">
+        <div class="chart-top"><div><div class="chart-kicker"><span id="chart-region">SOURCE HISTORY</span><span id="chart-status" class="badge">확인 중</span></div><h2 id="chart-title">Fed 지급준비금</h2></div><div class="chart-actions"><label class="sr-only" for="chart-series">그래프로 볼 원자료</label><select id="chart-series" aria-label="그래프로 볼 원자료"><option value="WRESBAL">Fed 지급준비금</option></select><div class="range-controls" role="group" aria-label="그래프 기간"><button type="button" data-range="90" aria-pressed="false">3개월</button><button type="button" data-range="365" aria-pressed="true">1년</button><button type="button" data-range="1096" aria-pressed="false">3년</button></div></div></div>
+        <div class="chart-reading"><span id="chart-value">—</span><span id="chart-unit"></span><span id="chart-change" class="chart-change"></span></div>
+        <div id="chart-canvas" class="chart-canvas" aria-label="선택한 원자료의 시간별 흐름"><p class="chart-empty">관측 이력을 확인하고 있습니다.</p></div>
+        <div class="chart-bottom"><div><span id="chart-extent">이력 확인 중</span><span class="chart-separator">·</span><span id="chart-frequency"></span></div><a id="chart-source" class="source-link hidden" target="_blank" rel="noopener noreferrer">공식 원천 ↗</a></div>
+        <details class="chart-data-details"><summary>그래프 수치·수집시각 확인</summary><div class="chart-note" id="chart-provenance"></div><div class="chart-data-scroll"><table id="chart-data-table"><caption class="sr-only">선택 기간의 원자료 관측값</caption><thead><tr><th scope="col">원관측일</th><th scope="col">값 · 원단위</th></tr></thead><tbody></tbody></table></div></details>
+      </article>
+      <div class="chart-context"><span class="context-mark" aria-hidden="true">i</span><span>원자료의 <strong>현재 빈티지</strong>를 보여줍니다. 국가별 단위와 빈도를 유지하며, 하나의 유동성 점수로 합산하지 않습니다.</span><a href="#method">가정과 한계 ↗</a></div>
+    </section>
+    <section class="sources-section" aria-labelledby="sources-title"><div class="section-head"><div><h2 id="sources-title">데이터 연결 현황</h2></div><span id="source-summary" class="section-meta">원천 확인 중</span></div><div id="provider-cards" class="status-cards" aria-label="원천별 API 연결 상태"></div></section>
     <section id="observations" aria-labelledby="observations-title">
       <div class="section-head"><div><h2 id="observations-title">층별 관측 데이터</h2><p>기준기간은 데이터가 설명하는 때, 알게 된 시각은 실제 수집한 때입니다.</p></div><span id="observation-count" class="section-meta">— OBSERVATIONS</span></div>
       <div class="toolbar">
@@ -152,7 +147,7 @@ function renderLayers() {
   const all=Array.isArray(state.data?.observations)?state.data.observations:[];
   const query=state.search.trim().toLowerCase();
   const visible=all.filter(row=>(state.provider==='all'||providerKey(row.provider)===state.provider)&&(!query||[row.series_id,seriesLabel(row),row.provider].join(' ').toLowerCase().includes(query)));
-  $('observation-count').textContent=visible.length+' OBSERVATIONS';
+  $('observation-count').textContent=visible.length+'개 관측';
   $('layers').replaceChildren(...LAYERS.map(spec=>{
     const rows=visible.filter(row=>(String(row.track).toLowerCase()==='crypto'||providerKey(row.provider)==='crypto'?5:Number(row.layer))===spec.id);
     const section=element('article','layer'+(spec.id===5?' crypto':''));const head=element('div','layer-head');const name=element('div','layer-name');name.append(element('span','layer-number',String(spec.id).padStart(2,'0')));const words=element('div');words.append(element('h3','',spec.title),element('div','layer-description',spec.description));name.append(words);head.append(name,element('span','layer-count',rows.length+' 계열'));section.append(head);
@@ -163,6 +158,8 @@ function renderLayers() {
 }
 function renderData() {
   renderProviders();renderLayers();
+  const sources=state.data?.providers||[]; const success=sources.reduce((n,s)=>n+(s.success||0),0), total=sources.reduce((n,s)=>n+(s.total||0),0);
+  $('source-summary').textContent=total?success+' / '+total+' 계열 조회 · '+sources.filter(s=>s.status!=='ok').length+'개 원천 상태 확인':'원천 확인 중';
   $('generated-at').textContent=stamp(state.data?.generated_at);
   const run=safeUrl(state.data?.github_run_url);$('run-link').classList.toggle('hidden',!run);if(run)$('run-link').href=run;
   listItems($('missing-coverage'),state.data?.missing_coverage,state.data?'미확보 범위가 명시되지 않았습니다. 전체 모델의 관측 충족을 의미하지 않습니다.':'연결 상태를 확인한 뒤 실제 미확보 범위를 표시합니다.');
@@ -177,9 +174,10 @@ async function refreshData() {
     if(!response.ok)throw new Error('HTTP '+response.status);
     const payload=await response.json();if(!payload||!Array.isArray(payload.providers)||!Array.isArray(payload.observations))throw new Error('Invalid feed schema');
     state.data=payload;state.lastScreenCheck=new Date();renderData();
+    const stale=Date.now()-Date.parse(payload.generated_at)>3*3600000;
     $('connection-state').className='badge ok';$('connection-state').textContent='화면 동기화';
     $('screen-check').textContent='확인 '+stamp(state.lastScreenCheck.toISOString()).split(' ').slice(-1).join(' ');
-    $('connection-banner').classList.remove('visible');$('connection-banner').textContent='';
+    $('connection-banner').classList.toggle('visible',stale);$('connection-banner').textContent=stale?'마지막 수집 후 3시간이 지났습니다. 원천별 확인 시각과 실행 기록을 확인하세요.':'';
   } catch {
     $('connection-state').className='badge error';$('connection-state').textContent='화면 갱신 실패';
     $('connection-banner').textContent=state.data?'새 데이터 파일을 불러오지 못했습니다. 마지막으로 받은 화면을 유지합니다. 원천의 마지막 성공 시각과 관측기간을 확인하세요.':'아직 데이터 파일을 불러오지 못했습니다. 클라우드 수집 실행이 완료되면 자동으로 다시 확인합니다. 현재 표시는 데이터가 0이라는 뜻이 아닙니다.';
@@ -188,8 +186,9 @@ async function refreshData() {
 }
 document.querySelectorAll('.filter').forEach(button=>button.addEventListener('click',()=>{state.provider=button.dataset.provider;document.querySelectorAll('.filter').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));renderLayers();}));
 $('search').addEventListener('input',event=>{state.search=event.target.value;renderLayers();});
-$('refresh').addEventListener('click',refreshData);
+$('refresh').addEventListener('click',()=>{refreshData();window.LiquidityCharts?.refresh();});
 renderData();refreshData();setInterval(refreshData,5*60*1000);
 </script>
+<script src="./charts.js"></script>
 </body>
 </html>

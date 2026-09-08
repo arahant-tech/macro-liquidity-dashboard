@@ -22,6 +22,16 @@ for source in data["providers"]:
         print("::warning::" + source["provider"] + " source coverage: " + source["status"])
 lines += ["", "Known-by is actual retrieval time. Model validity and sealed outcomes are not tested.",
           "Failed sources retain earlier values and original timestamps. See published coverage and errors."]
+chart_path = Path("chart-data.json")
+charts = json.loads(chart_path.read_text()) if chart_path.exists() else {}
+if charts.get("github_run_url") == expected_run:
+    lines += ["", "## Display-only native histories", "",
+              f"Series: {len(charts['series'])}/10. Errors: {len(charts.get('errors', []))}.",
+              "Current-vintage levels only; no historical availability, global score or model validity claim."]
+    if charts.get("errors"):
+        print("::warning::Some native chart histories are unavailable or retained.")
+else:
+    lines += ["", "Current-run chart history was not written; do not count old charts as this run's success."]
 with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as handle:
     handle.write("\n".join(lines) + "\n")
 if all(source["status"] == "error" for source in data["providers"]):
