@@ -1,64 +1,63 @@
 {
-  "known_by": "2026-09-08T20:34:45.924038Z",
+  "known_by": "2026-09-08T21:12:34.427343Z",
   "metadata_response": {
     "realtime_end": "2026-09-08",
     "realtime_start": "2026-09-08",
     "seriess": [
       {
-        "frequency": "Weekly, As of Wednesday",
-        "frequency_short": "W",
-        "id": "WRBWFRBL",
-        "last_updated": "2026-09-03 15:32:05-05",
-        "notes": "For questions on the data, please contact the data source (https://www.federalreserve.gov/apps/ContactUs/feedback.aspx?refurl=/releases/h41/%). For questions on FRED functionality, please contact us here (https://fred.stlouisfed.org/contactus/).",
-        "observation_end": "2026-09-02",
-        "observation_start": "2002-12-18",
-        "popularity": 68,
+        "frequency": "Daily",
+        "frequency_short": "D",
+        "id": "SOFR",
+        "last_updated": "2026-09-08 07:02:30-05",
+        "observation_end": "2026-09-04",
+        "observation_start": "2018-04-03",
+        "popularity": 91,
         "realtime_end": "2026-09-08",
         "realtime_start": "2026-09-08",
         "seasonal_adjustment": "Not Seasonally Adjusted",
         "seasonal_adjustment_short": "NSA",
-        "title": "Liabilities and Capital: Other Factors Draining Reserve Balances: Reserve Balances with Federal Reserve Banks: Wednesday Level",
-        "units": "Millions of U.S. Dollars",
-        "units_short": "Mil. of U.S. $"
+        "title": "Secured Overnight Financing Rate",
+        "units": "Percent",
+        "units_short": "%"
       }
     ]
   },
   "observation_response": {
-    "count": 1238,
+    "count": 2199,
     "file_type": "json",
     "limit": 5,
     "observation_end": "2026-09-08",
     "observation_start": "1600-01-01",
     "observations": [
       {
+        "date": "2026-09-04",
+        "realtime_end": "2026-09-08",
+        "realtime_start": "2026-09-08",
+        "value": "3.65"
+      },
+      {
+        "date": "2026-09-03",
+        "realtime_end": "2026-09-08",
+        "realtime_start": "2026-09-08",
+        "value": "3.66"
+      },
+      {
         "date": "2026-09-02",
         "realtime_end": "2026-09-08",
         "realtime_start": "2026-09-08",
-        "value": "2929285"
+        "value": "3.65"
       },
       {
-        "date": "2026-08-26",
+        "date": "2026-09-01",
         "realtime_end": "2026-09-08",
         "realtime_start": "2026-09-08",
-        "value": "2916824"
+        "value": "3.66"
       },
       {
-        "date": "2026-08-19",
+        "date": "2026-08-31",
         "realtime_end": "2026-09-08",
         "realtime_start": "2026-09-08",
-        "value": "2930817"
-      },
-      {
-        "date": "2026-08-12",
-        "realtime_end": "2026-09-08",
-        "realtime_start": "2026-09-08",
-        "value": "2947630"
-      },
-      {
-        "date": "2026-08-05",
-        "realtime_end": "2026-09-08",
-        "realtime_start": "2026-09-08",
-        "value": "3002731"
+        "value": "3.68"
       }
     ],
     "offset": 0,
@@ -76,14 +75,14 @@
       "output_type": 1,
       "realtime_end": "2026-09-08",
       "realtime_start": "2026-09-08",
-      "series_id": "WRBWFRBL",
+      "series_id": "SOFR",
       "sort_order": "desc",
       "units": "lin"
     },
     "provider": "FRED"
   },
   "research_eligible": false,
-  "retrieved_at": "2026-09-08T20:34:45.924038Z",
+  "retrieved_at": "2026-09-08T21:12:34.427343Z",
   "schema_version": 1,
-  "series_id": "WRBWFRBL"
+  "series_id": "SOFR"
 }

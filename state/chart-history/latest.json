@@ -7,14 +7,14 @@
     "자료 개정·공표 지연·이력 부족이 남습니다. 국가 간 합산·빈도 늘리기·결측 보간을 하지 않습니다."
   ],
   "errors": [],
-  "generated_at": "2026-09-08T20:35:38.338764Z",
-  "github_run_url": "https://github.com/arahant-tech/macro-liquidity-dashboard/actions/runs/34275570928",
+  "generated_at": "2026-09-08T21:13:29.586057Z",
+  "github_run_url": "https://github.com/arahant-tech/macro-liquidity-dashboard/actions/runs/34279231309",
   "research_eligible": false,
   "schema_version": 1,
   "series": [
     {
       "chart_type": "line",
-      "checked_at": "2026-09-08T20:35:33.888831Z",
+      "checked_at": "2026-09-08T21:13:25.486724Z",
       "frequency": "Weekly, Ending Wednesday",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-09-08T19:13:38.087680Z",
@@ -661,7 +661,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-08T20:35:34.727045Z",
+      "checked_at": "2026-09-08T21:13:26.163512Z",
       "frequency": "Weekly, As of Wednesday",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-09-08T19:13:38.786982Z",
@@ -1308,7 +1308,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-08T20:35:35.687478Z",
+      "checked_at": "2026-09-08T21:13:27.035481Z",
       "frequency": "Weekly",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-09-08T19:13:39.842378Z",
@@ -1959,7 +1959,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-08T20:35:36.706819Z",
+      "checked_at": "2026-09-08T21:13:27.977758Z",
       "frequency": "Monthly, End of Period",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-09-08T19:13:40.776262Z",
@@ -2122,7 +2122,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-08T20:35:37.427588Z",
+      "checked_at": "2026-09-08T21:13:28.754995Z",
       "frequency": "Daily",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-09-08T19:13:41.475491Z",
@@ -5293,7 +5293,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-08T20:35:38.284191Z",
+      "checked_at": "2026-09-08T21:13:29.473501Z",
       "frequency": "Weekly, Ending Wednesday",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-09-08T19:13:42.375188Z",
@@ -5940,7 +5940,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-08T20:35:38.304826Z",
+      "checked_at": "2026-09-08T21:13:29.493980Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-09-08T19:13:42.396583Z",
@@ -5988,7 +5988,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-08T20:35:38.323813Z",
+      "checked_at": "2026-09-08T21:13:29.512289Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-09-08T19:13:42.415299Z",
@@ -6036,7 +6036,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-08T20:35:38.330629Z",
+      "checked_at": "2026-09-08T21:13:29.518560Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-09-08T19:13:42.421692Z",
@@ -6084,7 +6084,7 @@
     },
     {
       "chart_type": "bar",
-      "checked_at": "2026-09-08T20:35:38.338371Z",
+      "checked_at": "2026-09-08T21:13:29.525813Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-09-08T19:13:42.428953Z",
@@ -6129,6 +6129,415 @@
       "status": "ok",
       "track": "equity",
       "unit": "100 million CNY"
+    },
+    {
+      "chart_type": "line",
+      "checked_at": "2026-09-08T21:13:29.526172Z",
+      "frequency": "Monthly",
+      "history_basis": "current_vintage_available_monthly_history_max_36_observations",
+      "known_by": "2026-09-08T21:13:08.357158Z",
+      "label": "미국 ACM 10년 텀 프리미엄 · 월말",
+      "measurement_kind": "publisher_estimated_term_premium",
+      "native_period_basis": "monthly end-of-period observation, not monthly average",
+      "notes": [
+        "NY Fed ACM 월말 추정치. 매월 재추정되어 과거값도 개정됩니다.",
+        "원자료 수준 표시이며 측정모형 입력·백테스트에는 사용하지 않습니다."
+      ],
+      "points": [
+        {
+          "date": "2023-09-29",
+          "value": 0.149315149077403
+        },
+        {
+          "date": "2023-10-31",
+          "value": 0.403704229907229
+        },
+        {
+          "date": "2023-11-30",
+          "value": 0.0543130391828486
+        },
+        {
+          "date": "2023-12-29",
+          "value": -0.337477334079502
+        },
+        {
+          "date": "2024-01-31",
+          "value": -0.206558205894598
+        },
+        {
+          "date": "2024-02-29",
+          "value": -0.159778529540088
+        },
+        {
+          "date": "2024-03-28",
+          "value": -0.265795231682224
+        },
+        {
+          "date": "2024-04-30",
+          "value": -0.037009747298729
+        },
+        {
+          "date": "2024-05-31",
+          "value": 0.00361654342962137
+        },
+        {
+          "date": "2024-06-28",
+          "value": -0.125611964543169
+        },
+        {
+          "date": "2024-07-31",
+          "value": -0.115765585557758
+        },
+        {
+          "date": "2024-08-30",
+          "value": -0.128677764337359
+        },
+        {
+          "date": "2024-09-30",
+          "value": -0.113330537433241
+        },
+        {
+          "date": "2024-10-31",
+          "value": 0.161366776416836
+        },
+        {
+          "date": "2024-11-29",
+          "value": 0.0812644841276429
+        },
+        {
+          "date": "2024-12-31",
+          "value": 0.478600697228544
+        },
+        {
+          "date": "2025-01-31",
+          "value": 0.488183708655331
+        },
+        {
+          "date": "2025-02-28",
+          "value": 0.259050259772582
+        },
+        {
+          "date": "2025-03-31",
+          "value": 0.368740614508917
+        },
+        {
+          "date": "2025-04-30",
+          "value": 0.591704472397278
+        },
+        {
+          "date": "2025-05-30",
+          "value": 0.737829969391612
+        },
+        {
+          "date": "2025-06-30",
+          "value": 0.622261314613729
+        },
+        {
+          "date": "2025-07-31",
+          "value": 0.631535189933337
+        },
+        {
+          "date": "2025-08-29",
+          "value": 0.773763134134092
+        },
+        {
+          "date": "2025-09-30",
+          "value": 0.612220862162136
+        },
+        {
+          "date": "2025-10-31",
+          "value": 0.564177890118777
+        },
+        {
+          "date": "2025-11-28",
+          "value": 0.583860382515845
+        },
+        {
+          "date": "2025-12-31",
+          "value": 0.752432081720561
+        },
+        {
+          "date": "2026-01-30",
+          "value": 0.766279507262309
+        },
+        {
+          "date": "2026-02-27",
+          "value": 0.597138288526749
+        },
+        {
+          "date": "2026-03-31",
+          "value": 0.653922683494117
+        },
+        {
+          "date": "2026-04-30",
+          "value": 0.718869033995807
+        },
+        {
+          "date": "2026-05-29",
+          "value": 0.664806649389082
+        },
+        {
+          "date": "2026-06-30",
+          "value": 0.510789667068488
+        },
+        {
+          "date": "2026-07-31",
+          "value": 0.836348421229078
+        },
+        {
+          "date": "2026-08-31",
+          "value": 0.762512945770763
+        }
+      ],
+      "provider": "funding_structure",
+      "raw_path": "raw/ed46c6edbdb79e28e03ade567c4537b2a61968a3a7ee1ce56543b50e667a95ae.csv",
+      "raw_sha256": "ed46c6edbdb79e28e03ade567c4537b2a61968a3a7ee1ce56543b50e667a95ae",
+      "research_eligible": false,
+      "series_id": "NYFED_ACM_TP10_MONTHLY",
+      "source_page": "https://www.newyorkfed.org/research/data_indicators/term-premia-tabs",
+      "source_retrieved_at": "2026-09-08T21:13:08.357158Z",
+      "source_universe": "US 10-year Treasury",
+      "source_url": "https://www.newyorkfed.org/medialibrary/media/research/data_indicators/acmPlot_data.csv",
+      "status": "ok",
+      "track": "equity",
+      "unit": "percent"
+    },
+    {
+      "chart_type": "line",
+      "checked_at": "2026-09-08T21:13:29.537647Z",
+      "frequency": "Monthly",
+      "history_basis": "current_vintage_available_monthly_history_max_36_observations",
+      "known_by": "2026-09-08T21:13:09.658471Z",
+      "label": "FINRA 고객 증권 마진부채",
+      "measurement_kind": "reported_native_stock_or_ratio",
+      "native_period_basis": "last_business_day_settlement_date_balances_labelled_by_calendar_month",
+      "notes": "월말 고객계좌 잔액. 월간 변동은 보고 방식·회원사 범위 변화도 포함할 수 있음.",
+      "points": [
+        {
+          "date": "2025-07-31",
+          "value": 1022548.0
+        },
+        {
+          "date": "2025-08-31",
+          "value": 1059723.0
+        },
+        {
+          "date": "2025-09-30",
+          "value": 1126494.0
+        },
+        {
+          "date": "2025-10-31",
+          "value": 1183654.0
+        },
+        {
+          "date": "2025-11-30",
+          "value": 1214321.0
+        },
+        {
+          "date": "2025-12-31",
+          "value": 1225597.0
+        },
+        {
+          "date": "2026-01-31",
+          "value": 1279042.0
+        },
+        {
+          "date": "2026-02-28",
+          "value": 1253192.0
+        },
+        {
+          "date": "2026-03-31",
+          "value": 1220922.0
+        },
+        {
+          "date": "2026-04-30",
+          "value": 1304281.0
+        },
+        {
+          "date": "2026-05-31",
+          "value": 1415557.0
+        },
+        {
+          "date": "2026-06-30",
+          "value": 1502072.0
+        },
+        {
+          "date": "2026-07-31",
+          "value": 1417225.0
+        }
+      ],
+      "provider": "intermediary",
+      "raw_path": "raw/05fb9443a5c1c4ba8f276749cf4e00c4760c4d38f318b1baae903c39b2814b15.html",
+      "raw_sha256": "05fb9443a5c1c4ba8f276749cf4e00c4760c4d38f318b1baae903c39b2814b15",
+      "research_eligible": false,
+      "series_id": "FINRA_MARGIN_DEBT",
+      "source_retrieved_at": "2026-09-08T21:13:09.658471Z",
+      "source_universe": "FINRA reporting member firms carrying customer margin accounts",
+      "source_url": "https://www.finra.org/rules-guidance/key-topics/margin-accounts/margin-statistics",
+      "status": "ok",
+      "track": "equity",
+      "unit": "million USD"
+    },
+    {
+      "chart_type": "bar",
+      "checked_at": "2026-09-08T21:13:29.552855Z",
+      "frequency": "Monthly",
+      "history_basis": "current_vintage_available_monthly_history_max_36_observations",
+      "known_by": "2026-09-08T21:13:21.003348Z",
+      "label": "TIC · 외국인의 미국 주식 순매수",
+      "native_period_basis": "reported monthly transactions, calendar-month reference period",
+      "points": [
+        {
+          "date": "2023-09-30",
+          "value": -27293.0
+        },
+        {
+          "date": "2023-10-31",
+          "value": -80847.0
+        },
+        {
+          "date": "2023-11-30",
+          "value": -1841.0
+        },
+        {
+          "date": "2023-12-31",
+          "value": -3564.0
+        },
+        {
+          "date": "2024-01-31",
+          "value": -120618.0
+        },
+        {
+          "date": "2024-02-29",
+          "value": -23041.0
+        },
+        {
+          "date": "2024-03-31",
+          "value": 44370.0
+        },
+        {
+          "date": "2024-04-30",
+          "value": -22067.0
+        },
+        {
+          "date": "2024-05-31",
+          "value": -7243.0
+        },
+        {
+          "date": "2024-06-30",
+          "value": 68430.0
+        },
+        {
+          "date": "2024-07-31",
+          "value": 22894.0
+        },
+        {
+          "date": "2024-08-31",
+          "value": 51369.0
+        },
+        {
+          "date": "2024-09-30",
+          "value": 124843.0
+        },
+        {
+          "date": "2024-10-31",
+          "value": -34207.0
+        },
+        {
+          "date": "2024-11-30",
+          "value": 142077.0
+        },
+        {
+          "date": "2024-12-31",
+          "value": 60685.0
+        },
+        {
+          "date": "2025-01-31",
+          "value": -17413.0
+        },
+        {
+          "date": "2025-02-28",
+          "value": 20559.0
+        },
+        {
+          "date": "2025-03-31",
+          "value": 5355.0
+        },
+        {
+          "date": "2025-04-30",
+          "value": -16802.0
+        },
+        {
+          "date": "2025-05-31",
+          "value": 115775.0
+        },
+        {
+          "date": "2025-06-30",
+          "value": 163579.0
+        },
+        {
+          "date": "2025-07-31",
+          "value": -18525.0
+        },
+        {
+          "date": "2025-08-31",
+          "value": 87246.0
+        },
+        {
+          "date": "2025-09-30",
+          "value": 128058.0
+        },
+        {
+          "date": "2025-10-31",
+          "value": 60227.0
+        },
+        {
+          "date": "2025-11-30",
+          "value": 94518.0
+        },
+        {
+          "date": "2025-12-31",
+          "value": 119030.0
+        },
+        {
+          "date": "2026-01-31",
+          "value": -9241.0
+        },
+        {
+          "date": "2026-02-28",
+          "value": 22694.0
+        },
+        {
+          "date": "2026-03-31",
+          "value": 9823.0
+        },
+        {
+          "date": "2026-04-30",
+          "value": 109576.0
+        },
+        {
+          "date": "2026-05-31",
+          "value": 134620.0
+        },
+        {
+          "date": "2026-06-30",
+          "value": 181426.0
+        }
+      ],
+      "provider": "terminal_flows",
+      "raw_path": "raw/71588eb1c2ca1dc92f02f807204f4ba1217f19c2020d03dbd9da863b22f82d0e.txt",
+      "raw_sha256": "71588eb1c2ca1dc92f02f807204f4ba1217f19c2020d03dbd9da863b22f82d0e",
+      "research_eligible": false,
+      "series_id": "TIC_US_EQUITY_FOREIGN_NET_PURCHASES",
+      "sign_convention": "positive_foreign_net_purchase",
+      "source_retrieved_at": "2026-09-08T21:13:21.003348Z",
+      "source_series_id": "for_lt_eqty_net",
+      "source_universe": "All foreign residents; US corporate equity; Grand Total code 99996",
+      "source_url": "https://ticdata.treasury.gov/Publish/slt_table1.txt",
+      "status": "ok",
+      "structural_break": "2023-02",
+      "track": "equity",
+      "unit": "million USD"
     }
   ],
   "vintage_policy": "current_snapshot_not_historical_availability"
