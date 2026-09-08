@@ -12,7 +12,10 @@
     PBOC_TOTAL_ASSETS:{region:'CHINA',short:'중국 · PBoC',color:'#b88436',unit:'100 million CNY',scale:1e4,display:'조 CNY'},
     PBOC_DEPOSITS_OTHER_DEPOSITORY_CORPORATIONS:{region:'CHINA',short:'중국 · PBoC',color:'#b88436',unit:'100 million CNY',scale:1e4,display:'조 CNY'},
     PBOC_TSF_STOCK:{region:'CHINA / CREDIT',short:'중국 · 신용',color:'#a87735',unit:'trillion CNY',scale:1,display:'조 CNY'},
-    PBOC_TSF_FLOW:{region:'CHINA / CREDIT',short:'중국 · 신용',color:'#a87735',unit:'100 million CNY',scale:1e4,display:'조 CNY'}
+    PBOC_TSF_FLOW:{region:'CHINA / CREDIT',short:'중국 · 신용',color:'#a87735',unit:'100 million CNY',scale:1e4,display:'조 CNY'},
+    NYFED_ACM_TP10_MONTHLY:{region:'UNITED STATES / TERM PREMIUM',short:'미국 · ACM',color:'#417bbb',unit:'percent',scale:1,display:'%',change:'bp'},
+    FINRA_MARGIN_DEBT:{region:'UNITED STATES / MARGIN DEBT',short:'미국 · FINRA',color:'#8a69b1',unit:'million USD',scale:1e6,display:'조 USD'},
+    TIC_US_EQUITY_FOREIGN_NET_PURCHASES:{region:'UNITED STATES / FOREIGN EQUITY FLOWS',short:'미국 · TIC',color:'#09816b',unit:'million USD',scale:1e3,display:'십억 USD'}
   };
   const OVERVIEW=['WRESBAL','ECBASSETSW','JPNASSETS','PBOC_TOTAL_ASSETS'];
   function timestamp(value){if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return NaN;const n=Date.parse(value+'T00:00:00Z');return Number.isFinite(n)&&new Date(n).toISOString().slice(0,10)===value?n:NaN;}
@@ -26,6 +29,20 @@
     return points.filter(p=>p.t>=end-days*DAY&&p.t<=end);
   }
   function unitFor(series){const spec=SPECS[series.series_id];return spec&&spec.unit===series.unit?{scale:spec.scale,label:spec.display}:{scale:1,label:series.unit||'단위 미확인'};}
+  function validateHistory(data){
+    if(data.schema_version!==1||data.research_eligible!==false||data.vintage_policy!=='current_snapshot_not_historical_availability'||!Array.isArray(data.series)||data.series.length>Object.keys(SPECS).length)throw Error('History schema');
+    const seen=new Set();data.series.forEach(s=>{if(!SPECS[s.series_id]||seen.has(s.series_id))throw Error('History identity');seen.add(s.series_id);selectPoints(s,1096,data.generated_at);});return data;
+  }
+  function changeFor(row,points){
+    const finite=points.filter(p=>p.value!==null),first=finite[0],last=finite.at(-1);
+    if(finite.length<2)return '이력을 축적하고 있습니다';
+    if(row.chart_type==='bar')return '공시된 각 월의 흐름';
+    const spec=SPECS[row.series_id],delta=last.value-first.value;
+    // A term premium may cross zero. Its change is a rate difference, not a return.
+    if(spec?.change==='bp'&&row.unit===spec.unit)return (delta>=0?'+':'')+fmt(delta*100,2)+' bp · 표시기간 첫 관측 대비';
+    if(first.value<=0)return '첫 관측이 0 이하이므로 변화율 미표시';
+    return (delta>=0?'+':'')+fmt(delta/first.value*100,2)+'% · 표시기간 첫 관측 대비';
+  }
   function geometry(points,width=1000,height=300,bars=false){
     const finite=points.filter(p=>p.value!==null);
     if(!finite.length)return null;
@@ -45,7 +62,7 @@
     if(health.generatedAt&&now-Date.parse(health.generatedAt)>3*3600000)return ['stale','이력 갱신 지연'];
     return row.status==='retained'?['retained','이전 이력']:row.status==='stale'?['stale','관측 지연']:['ok','원자료'];
   }
-  const exports={timestamp,validPoints,selectPoints,unitFor,geometry,chartStatus,SPECS};
+  const exports={timestamp,validPoints,selectPoints,unitFor,validateHistory,changeFor,geometry,chartStatus,SPECS};
   if(typeof module!=='undefined'&&module.exports)module.exports=exports;
   if(!root.document)return;
   const doc=root.document,$=id=>doc.getElementById(id),SVG='http://www.w3.org/2000/svg';
@@ -109,7 +126,7 @@
     if(!row){$('chart-title').textContent='이력 미확보';$('chart-value').textContent='—';$('chart-unit').textContent='';$('chart-change').textContent='';$('chart-canvas').replaceChildren(node('p','chart-empty','이 원천의 관측 이력을 아직 확보하지 못했습니다. 다른 원천을 선택할 수 있습니다.'));$('chart-status').className='badge error';$('chart-status').textContent='미확보';$('chart-extent').textContent='연결 대기';$('chart-frequency').textContent='';$('chart-source').classList.add('hidden');$('chart-provenance').textContent='';$('chart-data-table').querySelector('tbody').replaceChildren();return;}
     const points=selectPoints(row,state.days,state.data.generated_at),finite=points.filter(p=>p.value!==null),last=finite.at(-1),first=finite[0],unit=unitFor(row);
     $('chart-region').textContent=SPECS[row.series_id].region;$('chart-title').textContent=row.label;setBadge(row);$('chart-value').textContent=last?fmt(last.value/unit.scale):'—';$('chart-unit').textContent=unit.label;
-    $('chart-change').textContent=first&&last&&first!==last?row.chart_type==='bar'?'공시된 각 월의 흐름':first.value===0?'첫 관측이 0이므로 변화율 미표시':(last.value-first.value>=0?'+':'')+fmt((last.value/first.value-1)*100,2)+'% · 표시기간 첫 관측 대비':'이력을 축적하고 있습니다';
+    $('chart-change').textContent=changeFor(row,points);
     $('chart-extent').textContent=first?shortDate(first.date)+' — '+shortDate(last.date)+' · '+finite.length+'개 관측':'이 기간의 관측 없음';
     $('chart-frequency').textContent=row.frequency.startsWith('Weekly')?'주간 · 원빈도':row.frequency.startsWith('Monthly')?'월간 · 원빈도':'일간 · 원빈도';
     const source=$('chart-source');try{const url=new URL(row.source_url);if(url.protocol!=='https:')throw Error();source.href=url.href;source.classList.remove('hidden');}catch{source.classList.add('hidden');}
@@ -117,7 +134,7 @@
   }
   async function refresh(){
     if(state.loading)return;state.loading=true;const controller=new AbortController(),timeout=root.setTimeout(()=>controller.abort(),15000);
-    try{const response=await root.fetch('./chart-data.json?t='+Date.now(),{cache:'no-store',credentials:'omit',signal:controller.signal});if(!response.ok)throw Error('History unavailable');const data=await response.json();if(data.schema_version!==1||data.research_eligible!==false||data.vintage_policy!=='current_snapshot_not_historical_availability'||!Array.isArray(data.series)||data.series.length>Object.keys(SPECS).length)throw Error('History schema');const seen=new Set();data.series.forEach(s=>{if(!SPECS[s.series_id]||seen.has(s.series_id))throw Error('History identity');seen.add(s.series_id);selectPoints(s,1096,data.generated_at);});state.fetchFailed=false;state.data=data;render();}
+    try{const response=await root.fetch('./chart-data.json?t='+Date.now(),{cache:'no-store',credentials:'omit',signal:controller.signal});if(!response.ok)throw Error('History unavailable');const data=validateHistory(await response.json());state.fetchFailed=false;state.data=data;render();}
     catch{state.fetchFailed=true;if(state.data){setBadge(state.data.series.find(s=>s.series_id===state.selected)||{});}else{$('chart-canvas').replaceChildren(node('p','chart-empty','관측 이력을 불러오지 못했습니다. 아래 최신 원자료는 별도로 확인할 수 있습니다.'));$('overview-cards').replaceChildren(node('p','chart-empty','그래프 연결을 확인하고 있습니다.'));$('chart-status').className='badge error';$('chart-status').textContent='연결 실패';}}
     finally{root.clearTimeout(timeout);state.loading=false;}
   }

@@ -44,6 +44,33 @@ class ChartPageTests(unittest.TestCase):
         actual=self.evaluate("console.log(JSON.stringify([c.unitFor({series_id:'WRESBAL',unit:'Millions of U.S. Dollars'}),c.unitFor({series_id:'JPNASSETS',unit:'100 Million Yen'}),c.unitFor({series_id:'WRESBAL',unit:'changed unit'})]));")
         self.assertEqual([x['scale'] for x in actual],[1e6,1e4,1])
 
+    def test_every_collector_history_is_supported_by_the_details_page(self):
+        from model.chart_history import FRED_IDS, PBOC_PARSERS, MONTHLY_SOURCES
+        expected=set(FRED_IDS) | set(PBOC_PARSERS) | set(MONTHLY_SOURCES)
+        actual=self.evaluate("console.log(JSON.stringify(Object.keys(c.SPECS)));")
+        self.assertEqual(set(actual),expected)
+
+    def test_published_history_passes_the_same_validation_used_by_refresh(self):
+        actual=self.evaluate("const fs=require('fs'),path=require('path');const data=JSON.parse(fs.readFileSync(path.join(path.dirname(process.argv[1]),'chart-data.json'),'utf8'));console.log(JSON.stringify(c.validateHistory(data).series.map(s=>s.series_id)));")
+        self.assertEqual(len(actual),13)
+        self.assertTrue({'NYFED_ACM_TP10_MONTHLY','FINRA_MARGIN_DEBT','TIC_US_EQUITY_FOREIGN_NET_PURCHASES'}.issubset(actual))
+
+    def test_unknown_or_duplicate_history_cannot_pass_validation(self):
+        actual=self.evaluate("const base={schema_version:1,research_eligible:false,vintage_policy:'current_snapshot_not_historical_availability',generated_at:'2026-09-09T00:00:00Z'};const row={series_id:'WRESBAL',points:[{date:'2026-09-01',value:1}]};console.log(JSON.stringify([[{...row,series_id:'UNKNOWN'}],[row,row]].map(series=>{try{c.validateHistory({...base,series});return false;}catch{return true;}})));")
+        self.assertEqual(actual,[True,True])
+
+    def test_added_monthly_series_keep_native_unit_scales(self):
+        actual=self.evaluate("console.log(JSON.stringify([['NYFED_ACM_TP10_MONTHLY','percent'],['FINRA_MARGIN_DEBT','million USD'],['TIC_US_EQUITY_FOREIGN_NET_PURCHASES','million USD']].map(([series_id,unit])=>c.unitFor({series_id,unit}))));")
+        self.assertEqual(actual,[{'scale':1,'label':'%'},{'scale':1e6,'label':'조 USD'},{'scale':1e3,'label':'십억 USD'}])
+
+    def test_term_premium_changes_are_basis_points_across_zero(self):
+        actual=self.evaluate("const row={series_id:'NYFED_ACM_TP10_MONTHLY',unit:'percent'};console.log(JSON.stringify([[0,.2],[-.2,.3],[.3,-.1]].map(values=>c.changeFor(row,values.map(value=>({value}))))));")
+        self.assertEqual(actual,['+20 bp · 표시기간 첫 관측 대비','+50 bp · 표시기간 첫 관측 대비','-40 bp · 표시기간 첫 관측 대비'])
+
+    def test_stock_change_and_signed_flow_are_distinct(self):
+        actual=self.evaluate("console.log(JSON.stringify([c.changeFor({series_id:'FINRA_MARGIN_DEBT'},[{value:100},{value:90}]),c.changeFor({series_id:'TIC_US_EQUITY_FOREIGN_NET_PURCHASES',chart_type:'bar'},[{value:-100},{value:200}]),c.changeFor({series_id:'WRESBAL'},[{value:0},{value:10}])]));")
+        self.assertEqual(actual,['-10% · 표시기간 첫 관측 대비','공시된 각 월의 흐름','첫 관측이 0 이하이므로 변화율 미표시'])
+
     def test_range_filter_does_not_create_monthly_observations(self):
         actual=self.evaluate("const p=c.selectPoints({points:[{date:'2026-01-31',value:1},{date:'2026-07-31',value:3}]},90,'2026-09-09T00:00:00Z');console.log(JSON.stringify(p.map(x=>x.date)));")
         self.assertEqual(actual,['2026-07-31'])
