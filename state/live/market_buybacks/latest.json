@@ -1,0 +1,95 @@
+{
+  "assumptions": [
+    "The publisher's explicit quarterly stock-repurchase expenditure is an independent reported observation, not an authorization or net-issuance inversion.",
+    "The S&P 500 observation covers the publisher's index reporting population, which changes over time; it is not the fixed five-company panel or the entire US equity market.",
+    "The newest verifiable repurchase report in the public press archive is the newest observation this collector can certify, not necessarily the publisher's newest licensed dataset."
+  ],
+  "errors": [
+    {
+      "code": "latest_public_quarter_stale",
+      "series_id": "SPDJI_SP500_REPORTED_BUYBACKS"
+    }
+  ],
+  "fetched_at": "2026-09-08T19:41:13.398773Z",
+  "limitations": [
+    "The accessible archive may lag other S&P DJI publications. Reference periods older than 190 days are explicitly stale and are never extended to newer quarters.",
+    "Preliminary aggregate figures can be revised, and headline billion-dollar amounts are rounded. Raw issuer definitions, cash timing and the exact constituent observation date are not independently certified.",
+    "This aggregate overlaps the individual SEC and issuer repurchase observations; do not add them. Z.1 net issuance already contains retirements and is not additive either.",
+    "Actual capture is the certified knowability time; a press-release date is preserved separately, without backdating the current snapshot.",
+    "A quarterly report is a delayed realized flow, not a real-time trading signal. No model performance, causality or latent-state validity is established by collection."
+  ],
+  "observations": [
+    {
+      "age_calendar_days": 343,
+      "aggregation_allowed": false,
+      "block": "reported_market_buybacks",
+      "constituent_date_verified": false,
+      "discovery_status": "public_archive_only_current_licensed_data_unverified",
+      "duration_months": 3,
+      "frequency": "quarterly",
+      "known_by": "2026-09-08T19:41:13.396048Z",
+      "label": "S&P DJI · S&P 500 자사주 매입 집계",
+      "layer": 4,
+      "market_aggregate": true,
+      "measurement_kind": "independent_aggregate_buyback_observation",
+      "method": "publisher_reported_aggregate_repurchase_expenditure",
+      "native_period_basis": "reported_quarter_not_ttm",
+      "not_additive_with": [
+        "issuer_buybacks",
+        "buybacks",
+        "Z1_NFC_EQUITY_NET_ISSUANCE"
+      ],
+      "observation_date": "2025-09-30",
+      "original_release_at": null,
+      "original_release_date": "2025-12-18",
+      "period_end": "2025-09-30",
+      "period_start": "2025-07-01",
+      "provider": "market_buybacks",
+      "raw_path": "raw/market_buybacks/44ede712e9c9eac5fe0582f70af495fa9ab2fddddb5e238d4fc9b997365f2b92.html",
+      "raw_sha256": "44ede712e9c9eac5fe0582f70af495fa9ab2fddddb5e238d4fc9b997365f2b92",
+      "release_timestamp_verified": false,
+      "reported_release_lag_days": 79,
+      "research_eligible": false,
+      "retrieved_at": "2026-09-08T19:41:13.396048Z",
+      "role": "flow",
+      "rounding_unit_billion_usd": 0.1,
+      "series_id": "SPDJI_SP500_REPORTED_BUYBACKS",
+      "source_publisher": "S&P Dow Jones Indices",
+      "source_quality": "publisher_reported_preliminary",
+      "source_universe": "S&P 500 reporting constituents; exact observation-date membership unverified",
+      "source_url": "https://press.spglobal.com/2025-12-18-S-P-500-Q3-2025-Buybacks-Post-Modest-6-2-Gain-to-249-0-Billion-After-Declining-20-1-Amidst-Uncertainty-in-Q2-Q4-2025-Expenditures-Expected-to-Post-Similar-Growth,-As-2025-Anticipates-a-Record-1-Trillion",
+      "stale_after_days": 190,
+      "status": "stale",
+      "track": "equity",
+      "unit": "billion USD",
+      "units": "billion USD",
+      "value": 249.0
+    }
+  ],
+  "provider": "market_buybacks",
+  "research_eligible": false,
+  "retained_observations": [],
+  "sources": [
+    {
+      "known_by": "2026-09-08T19:41:13.319130Z",
+      "original_release_at": null,
+      "raw_path": "raw/market_buybacks/e015f482b1a0e655cdd3d0e018f4a01e11da62e53a5dcfaa3b4d3c466f902705.html",
+      "raw_sha256": "e015f482b1a0e655cdd3d0e018f4a01e11da62e53a5dcfaa3b4d3c466f902705",
+      "release_timestamp_verified": false,
+      "retrieved_at": "2026-09-08T19:41:13.319130Z",
+      "source_url": "https://press.spglobal.com/index.php?s=2429&keywords=buybacks"
+    },
+    {
+      "known_by": "2026-09-08T19:41:13.396048Z",
+      "original_release_at": null,
+      "raw_path": "raw/market_buybacks/44ede712e9c9eac5fe0582f70af495fa9ab2fddddb5e238d4fc9b997365f2b92.html",
+      "raw_sha256": "44ede712e9c9eac5fe0582f70af495fa9ab2fddddb5e238d4fc9b997365f2b92",
+      "release_timestamp_verified": false,
+      "retrieved_at": "2026-09-08T19:41:13.396048Z",
+      "source_url": "https://press.spglobal.com/2025-12-18-S-P-500-Q3-2025-Buybacks-Post-Modest-6-2-Gain-to-249-0-Billion-After-Declining-20-1-Amidst-Uncertainty-in-Q2-Q4-2025-Expenditures-Expected-to-Post-Similar-Growth,-As-2025-Anticipates-a-Record-1-Trillion"
+    }
+  ],
+  "status": "partial",
+  "success": 1,
+  "total": 1
+}
