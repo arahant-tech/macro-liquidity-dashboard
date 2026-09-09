@@ -1,30 +1,29 @@
 {
-  "known_by": "2026-09-09T10:35:56.121642Z",
+  "known_by": "2026-09-09T11:35:06.911125Z",
   "metadata_response": {
     "realtime_end": "2026-09-09",
     "realtime_start": "2026-09-09",
     "seriess": [
       {
-        "frequency": "Weekly",
-        "frequency_short": "W",
-        "id": "ECBASSETSW",
-        "last_updated": "2026-09-08 11:02:30-05",
-        "notes": "A longer history for this series is available on the monthly series ECBASSETS (https://fred.stlouisfed.org/series/ECBASSETS).\r\n\r\nCopyright, 2016, European Central Bank (ECB). Reprinted with permission.",
+        "frequency": "Daily",
+        "frequency_short": "D",
+        "id": "SOFR",
+        "last_updated": "2026-09-08 07:02:30-05",
         "observation_end": "2026-09-04",
-        "observation_start": "1999-01-01",
-        "popularity": 60,
+        "observation_start": "2018-04-03",
+        "popularity": 91,
         "realtime_end": "2026-09-09",
         "realtime_start": "2026-09-09",
         "seasonal_adjustment": "Not Seasonally Adjusted",
         "seasonal_adjustment_short": "NSA",
-        "title": "Central Bank Assets for Euro Area (11-19 Countries)",
-        "units": "Millions of Euros",
-        "units_short": "Mil. of Euros"
+        "title": "Secured Overnight Financing Rate",
+        "units": "Percent",
+        "units_short": "%"
       }
     ]
   },
   "observation_response": {
-    "count": 1445,
+    "count": 2199,
     "file_type": "json",
     "limit": 5,
     "observation_end": "2026-09-09",
@@ -34,31 +33,31 @@
         "date": "2026-09-04",
         "realtime_end": "2026-09-09",
         "realtime_start": "2026-09-09",
-        "value": "5912178.0"
+        "value": "3.65"
       },
       {
-        "date": "2026-08-28",
+        "date": "2026-09-03",
         "realtime_end": "2026-09-09",
         "realtime_start": "2026-09-09",
-        "value": "5915343.0"
+        "value": "3.66"
       },
       {
-        "date": "2026-08-21",
+        "date": "2026-09-02",
         "realtime_end": "2026-09-09",
         "realtime_start": "2026-09-09",
-        "value": "5913041.0"
+        "value": "3.65"
       },
       {
-        "date": "2026-08-14",
+        "date": "2026-09-01",
         "realtime_end": "2026-09-09",
         "realtime_start": "2026-09-09",
-        "value": "5927307.0"
+        "value": "3.66"
       },
       {
-        "date": "2026-08-07",
+        "date": "2026-08-31",
         "realtime_end": "2026-09-09",
         "realtime_start": "2026-09-09",
-        "value": "5923023.0"
+        "value": "3.68"
       }
     ],
     "offset": 0,
@@ -76,14 +75,14 @@
       "output_type": 1,
       "realtime_end": "2026-09-09",
       "realtime_start": "2026-09-09",
-      "series_id": "ECBASSETSW",
+      "series_id": "SOFR",
       "sort_order": "desc",
       "units": "lin"
     },
     "provider": "FRED"
   },
   "research_eligible": false,
-  "retrieved_at": "2026-09-09T10:35:56.121642Z",
+  "retrieved_at": "2026-09-09T11:35:06.911125Z",
   "schema_version": 1,
-  "series_id": "ECBASSETSW"
+  "series_id": "SOFR"
 }
