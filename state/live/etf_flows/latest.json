@@ -1,11 +1,11 @@
 {
   "asset_status": [
     {
-      "age_calendar_days": 4,
+      "age_calendar_days": 5,
       "asset": "BTC",
       "business_date": "2026-09-04",
       "changed": false,
-      "checked_at": "2026-09-09T03:35:54.204605Z",
+      "checked_at": "2026-09-09T04:35:46.084615Z",
       "covered_funds": 12,
       "error": null,
       "fingerprint": "b02abacc9786f44fd07e4a559d14fc4bbec7bed3ad4a3a099deea51f6cc84ce9",
@@ -94,7 +94,7 @@
         "latest_excluded_dates": [
           {
             "date": "2026-09-08",
-            "reason": "current_new_york_date_provisional"
+            "reason": "missing_or_nonnumeric_component"
           }
         ],
         "layer": 5,
@@ -102,7 +102,8 @@
         "notes": [
           "게시자 보고 순유입; 발행사 결제현금 독립 인증 아님",
           "12개 공시 열이 완전한 동일 영업일; 당일 NY 날짜 제외",
-          "음수는 순유출, 0은 명시적 영(零) 흐름; AUM 변화로 계산하지 않음"
+          "음수는 순유출, 0은 명시적 영(零) 흐름; AUM 변화로 계산하지 않음",
+          "더 최근의 2026-09-08 행 제외: missing_or_nonnumeric_component"
         ],
         "observation_date": "2026-09-04",
         "original_release_at": null,
@@ -138,7 +139,7 @@
           "BTC"
         ],
         "source_url": "https://farside.co.uk/btc/",
-        "status": "ok",
+        "status": "partial",
         "track": "crypto",
         "unit": "million USD",
         "unit_evidence_heading": "Bitcoin ETF Flow (US$m)",
@@ -146,14 +147,14 @@
       },
       "series_id": "ETF_BTC_SPOT_NET_FLOW_FARSIDE",
       "stale_after_days": 7,
-      "status": "ok"
+      "status": "partial"
     },
     {
-      "age_calendar_days": 4,
+      "age_calendar_days": 5,
       "asset": "ETH",
       "business_date": "2026-09-04",
       "changed": false,
-      "checked_at": "2026-09-09T03:35:55.012709Z",
+      "checked_at": "2026-09-09T04:35:47.325468Z",
       "covered_funds": 10,
       "error": null,
       "fingerprint": "fc71fe38114a4d6a1c3dd14fe242b038fee930d0c82bcb4f89e0fb4f9fef33b8",
@@ -230,7 +231,7 @@
         "latest_excluded_dates": [
           {
             "date": "2026-09-08",
-            "reason": "current_new_york_date_provisional"
+            "reason": "missing_or_nonnumeric_component"
           }
         ],
         "layer": 5,
@@ -238,7 +239,8 @@
         "notes": [
           "게시자 보고 순유입; 발행사 결제현금 독립 인증 아님",
           "10개 공시 열이 완전한 동일 영업일; 당일 NY 날짜 제외",
-          "음수는 순유출, 0은 명시적 영(零) 흐름; AUM 변화로 계산하지 않음"
+          "음수는 순유출, 0은 명시적 영(零) 흐름; AUM 변화로 계산하지 않음",
+          "더 최근의 2026-09-08 행 제외: missing_or_nonnumeric_component"
         ],
         "observation_date": "2026-09-04",
         "original_release_at": null,
@@ -272,7 +274,7 @@
           "ETH"
         ],
         "source_url": "https://farside.co.uk/eth/",
-        "status": "ok",
+        "status": "partial",
         "track": "crypto",
         "unit": "million USD",
         "unit_evidence_heading": "Ethereum ETF Flow (US$m)",
@@ -280,7 +282,7 @@
       },
       "series_id": "ETF_ETH_SPOT_NET_FLOW_FARSIDE",
       "stale_after_days": 7,
-      "status": "ok"
+      "status": "partial"
     }
   ],
   "assumptions": [
@@ -297,9 +299,9 @@
     "Only BTC and ETH US spot-product universes on the source tables are covered; equity ETF flows and other crypto products remain absent.",
     "Capture time is the earliest knowability certified by this collector; a business date is not an original publication timestamp."
   ],
-  "capture_id": "20260909T033552562536Z_c71dd3b99760",
+  "capture_id": "20260909T043544723431Z_13f027e50212",
   "errors": [],
-  "fetched_at": "2026-09-09T03:35:55.024274Z",
+  "fetched_at": "2026-09-09T04:35:47.337041Z",
   "limitations": [
     "Underlying flow construction and revisions are not independently audited against each issuer's creations and redemptions.",
     "The current New York calendar date is deliberately excluded, even if all cells are filled; this introduces a conservative reporting delay.",
@@ -395,7 +397,7 @@
       "latest_excluded_dates": [
         {
           "date": "2026-09-08",
-          "reason": "current_new_york_date_provisional"
+          "reason": "missing_or_nonnumeric_component"
         }
       ],
       "layer": 5,
@@ -403,7 +405,8 @@
       "notes": [
         "게시자 보고 순유입; 발행사 결제현금 독립 인증 아님",
         "12개 공시 열이 완전한 동일 영업일; 당일 NY 날짜 제외",
-        "음수는 순유출, 0은 명시적 영(零) 흐름; AUM 변화로 계산하지 않음"
+        "음수는 순유출, 0은 명시적 영(零) 흐름; AUM 변화로 계산하지 않음",
+        "더 최근의 2026-09-08 행 제외: missing_or_nonnumeric_component"
       ],
       "observation_date": "2026-09-04",
       "original_release_at": null,
@@ -439,7 +442,7 @@
         "BTC"
       ],
       "source_url": "https://farside.co.uk/btc/",
-      "status": "ok",
+      "status": "partial",
       "track": "crypto",
       "unit": "million USD",
       "unit_evidence_heading": "Bitcoin ETF Flow (US$m)",
@@ -518,7 +521,7 @@
       "latest_excluded_dates": [
         {
           "date": "2026-09-08",
-          "reason": "current_new_york_date_provisional"
+          "reason": "missing_or_nonnumeric_component"
         }
       ],
       "layer": 5,
@@ -526,7 +529,8 @@
       "notes": [
         "게시자 보고 순유입; 발행사 결제현금 독립 인증 아님",
         "10개 공시 열이 완전한 동일 영업일; 당일 NY 날짜 제외",
-        "음수는 순유출, 0은 명시적 영(零) 흐름; AUM 변화로 계산하지 않음"
+        "음수는 순유출, 0은 명시적 영(零) 흐름; AUM 변화로 계산하지 않음",
+        "더 최근의 2026-09-08 행 제외: missing_or_nonnumeric_component"
       ],
       "observation_date": "2026-09-04",
       "original_release_at": null,
@@ -560,7 +564,7 @@
         "ETH"
       ],
       "source_url": "https://farside.co.uk/eth/",
-      "status": "ok",
+      "status": "partial",
       "track": "crypto",
       "unit": "million USD",
       "unit_evidence_heading": "Ethereum ETF Flow (US$m)",
@@ -571,23 +575,23 @@
   "raw_captures": [
     {
       "asset": "BTC",
-      "raw_path": "raw/20260909T033552562536Z_c71dd3b99760/btc_flow_table.html",
+      "raw_path": "raw/20260909T043544723431Z_13f027e50212/btc_flow_table.html",
       "raw_sha256": "e16fb7311ba23b1c1de01a638c466626c1c8e69e901c7ae766b1f92864be9233",
-      "retrieved_at": "2026-09-09T03:35:54.204605Z"
+      "retrieved_at": "2026-09-09T04:35:46.084615Z"
     },
     {
       "asset": "ETH",
-      "raw_path": "raw/20260909T033552562536Z_c71dd3b99760/eth_flow_table.html",
+      "raw_path": "raw/20260909T043544723431Z_13f027e50212/eth_flow_table.html",
       "raw_sha256": "80538a2c34ec058bef7165ca55cdf3e9f204f61ada5db6d5041ffb9c8b07ab56",
-      "retrieved_at": "2026-09-09T03:35:55.012709Z"
+      "retrieved_at": "2026-09-09T04:35:47.325468Z"
     }
   ],
   "research_eligible": false,
   "retained_observations": [],
   "schema_version": 1,
   "stale": 0,
-  "started_at": "2026-09-09T03:35:52.562536Z",
-  "status": "ok",
+  "started_at": "2026-09-09T04:35:44.723431Z",
+  "status": "partial",
   "success": 2,
   "total": 2
 }
