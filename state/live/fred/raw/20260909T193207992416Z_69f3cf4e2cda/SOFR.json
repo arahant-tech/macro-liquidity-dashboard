@@ -1,64 +1,63 @@
 {
-  "known_by": "2026-09-09T18:37:52.013764Z",
+  "known_by": "2026-09-09T19:32:22.295895Z",
   "metadata_response": {
     "realtime_end": "2026-09-09",
     "realtime_start": "2026-09-09",
     "seriess": [
       {
-        "frequency": "Monthly, End of Period",
-        "frequency_short": "M",
-        "id": "JPNASSETS",
-        "last_updated": "2026-09-02 20:12:27-05",
-        "notes": "Copyright, 2016, Bank of Japan.",
-        "observation_end": "2026-08-01",
-        "observation_start": "1998-04-01",
-        "popularity": 55,
+        "frequency": "Daily",
+        "frequency_short": "D",
+        "id": "SOFR",
+        "last_updated": "2026-09-09 07:02:24-05",
+        "observation_end": "2026-09-08",
+        "observation_start": "2018-04-03",
+        "popularity": 91,
         "realtime_end": "2026-09-09",
         "realtime_start": "2026-09-09",
         "seasonal_adjustment": "Not Seasonally Adjusted",
         "seasonal_adjustment_short": "NSA",
-        "title": "Bank of Japan: Total Assets for Japan",
-        "units": "100 Million Yen",
-        "units_short": "100 Mil. Yen"
+        "title": "Secured Overnight Financing Rate",
+        "units": "Percent",
+        "units_short": "%"
       }
     ]
   },
   "observation_response": {
-    "count": 341,
+    "count": 2201,
     "file_type": "json",
     "limit": 5,
     "observation_end": "2026-09-09",
     "observation_start": "1600-01-01",
     "observations": [
       {
-        "date": "2026-08-01",
+        "date": "2026-09-08",
         "realtime_end": "2026-09-09",
         "realtime_start": "2026-09-09",
-        "value": "6446620"
+        "value": "3.64"
       },
       {
-        "date": "2026-07-01",
+        "date": "2026-09-07",
         "realtime_end": "2026-09-09",
         "realtime_start": "2026-09-09",
-        "value": "6442957"
+        "value": "."
       },
       {
-        "date": "2026-06-01",
+        "date": "2026-09-04",
         "realtime_end": "2026-09-09",
         "realtime_start": "2026-09-09",
-        "value": "6395509.0"
+        "value": "3.65"
       },
       {
-        "date": "2026-05-01",
+        "date": "2026-09-03",
         "realtime_end": "2026-09-09",
         "realtime_start": "2026-09-09",
-        "value": "6643630.0"
+        "value": "3.66"
       },
       {
-        "date": "2026-04-01",
+        "date": "2026-09-02",
         "realtime_end": "2026-09-09",
         "realtime_start": "2026-09-09",
-        "value": "6632533.0"
+        "value": "3.65"
       }
     ],
     "offset": 0,
@@ -76,14 +75,14 @@
       "output_type": 1,
       "realtime_end": "2026-09-09",
       "realtime_start": "2026-09-09",
-      "series_id": "JPNASSETS",
+      "series_id": "SOFR",
       "sort_order": "desc",
       "units": "lin"
     },
     "provider": "FRED"
   },
   "research_eligible": false,
-  "retrieved_at": "2026-09-09T18:37:52.013764Z",
+  "retrieved_at": "2026-09-09T19:32:22.295895Z",
   "schema_version": 1,
-  "series_id": "JPNASSETS"
+  "series_id": "SOFR"
 }
