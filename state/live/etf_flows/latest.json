@@ -5,7 +5,7 @@
       "asset": "BTC",
       "business_date": "2026-09-08",
       "changed": false,
-      "checked_at": "2026-09-09T11:35:39.322012Z",
+      "checked_at": "2026-09-09T12:41:02.100501Z",
       "covered_funds": 12,
       "error": null,
       "fingerprint": "3022c45c2143acb38d6ed68612175cd09257f65acd097bb7f20db9eaaedca9c3",
@@ -91,7 +91,12 @@
         "frequency": "daily_business_date",
         "known_by": "2026-09-09T07:35:58.294877Z",
         "label": "BTC 현물 ETF · 일별 순유입 (Farside)",
-        "latest_excluded_dates": [],
+        "latest_excluded_dates": [
+          {
+            "date": "2026-09-09",
+            "reason": "current_new_york_date_provisional"
+          }
+        ],
         "layer": 5,
         "method": "publisher_reported_net_flow",
         "notes": [
@@ -148,7 +153,7 @@
       "asset": "ETH",
       "business_date": "2026-09-08",
       "changed": false,
-      "checked_at": "2026-09-09T11:35:40.585082Z",
+      "checked_at": "2026-09-09T12:41:02.937857Z",
       "covered_funds": 10,
       "error": null,
       "fingerprint": "b01cd2269e93a0fbe7d78c1e2acda852348f962f935b8e57de2acf40e4282d7f",
@@ -222,7 +227,12 @@
         "frequency": "daily_business_date",
         "known_by": "2026-09-09T07:35:59.243346Z",
         "label": "ETH 현물 ETF · 일별 순유입 (Farside)",
-        "latest_excluded_dates": [],
+        "latest_excluded_dates": [
+          {
+            "date": "2026-09-09",
+            "reason": "current_new_york_date_provisional"
+          }
+        ],
         "layer": 5,
         "method": "publisher_reported_net_flow",
         "notes": [
@@ -287,9 +297,9 @@
     "Only BTC and ETH US spot-product universes on the source tables are covered; equity ETF flows and other crypto products remain absent.",
     "Capture time is the earliest knowability certified by this collector; a business date is not an original publication timestamp."
   ],
-  "capture_id": "20260909T113537941597Z_8669bae8165b",
+  "capture_id": "20260909T124059503810Z_78cf30df2475",
   "errors": [],
-  "fetched_at": "2026-09-09T11:35:40.596881Z",
+  "fetched_at": "2026-09-09T12:41:02.949868Z",
   "limitations": [
     "Underlying flow construction and revisions are not independently audited against each issuer's creations and redemptions.",
     "The current New York calendar date is deliberately excluded, even if all cells are filled; this introduces a conservative reporting delay.",
@@ -382,7 +392,12 @@
       "frequency": "daily_business_date",
       "known_by": "2026-09-09T07:35:58.294877Z",
       "label": "BTC 현물 ETF · 일별 순유입 (Farside)",
-      "latest_excluded_dates": [],
+      "latest_excluded_dates": [
+        {
+          "date": "2026-09-09",
+          "reason": "current_new_york_date_provisional"
+        }
+      ],
       "layer": 5,
       "method": "publisher_reported_net_flow",
       "notes": [
@@ -500,7 +515,12 @@
       "frequency": "daily_business_date",
       "known_by": "2026-09-09T07:35:59.243346Z",
       "label": "ETH 현물 ETF · 일별 순유입 (Farside)",
-      "latest_excluded_dates": [],
+      "latest_excluded_dates": [
+        {
+          "date": "2026-09-09",
+          "reason": "current_new_york_date_provisional"
+        }
+      ],
       "layer": 5,
       "method": "publisher_reported_net_flow",
       "notes": [
@@ -551,22 +571,22 @@
   "raw_captures": [
     {
       "asset": "BTC",
-      "raw_path": "raw/20260909T113537941597Z_8669bae8165b/btc_flow_table.html",
-      "raw_sha256": "1650ea7cfbe6c1ffca246e6dcb1972b04cd8aa457d67a0d9bd398f990260bfed",
-      "retrieved_at": "2026-09-09T11:35:39.322012Z"
+      "raw_path": "raw/20260909T124059503810Z_78cf30df2475/btc_flow_table.html",
+      "raw_sha256": "067a5ed52fc39ce84b53e81368603bcf1e713c550d6a05c078b5508b46e1ba9f",
+      "retrieved_at": "2026-09-09T12:41:02.100501Z"
     },
     {
       "asset": "ETH",
-      "raw_path": "raw/20260909T113537941597Z_8669bae8165b/eth_flow_table.html",
-      "raw_sha256": "ca274acda9f8141e283d649fb40c1ef84424d6fef30a5af460967997854fc599",
-      "retrieved_at": "2026-09-09T11:35:40.585082Z"
+      "raw_path": "raw/20260909T124059503810Z_78cf30df2475/eth_flow_table.html",
+      "raw_sha256": "4c1bd628a8f3566e9207c20d2a115c8c67094dbfb03ab167d8c14323277bbc3f",
+      "retrieved_at": "2026-09-09T12:41:02.937857Z"
     }
   ],
   "research_eligible": false,
   "retained_observations": [],
   "schema_version": 1,
   "stale": 0,
-  "started_at": "2026-09-09T11:35:37.941597Z",
+  "started_at": "2026-09-09T12:40:59.503810Z",
   "status": "ok",
   "success": 2,
   "total": 2
