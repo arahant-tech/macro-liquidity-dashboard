@@ -1,64 +1,64 @@
 {
-  "known_by": "2026-09-11T07:35:09.170850Z",
+  "known_by": "2026-09-11T08:35:39.383613Z",
   "metadata_response": {
     "realtime_end": "2026-09-11",
     "realtime_start": "2026-09-11",
     "seriess": [
       {
-        "frequency": "Monthly, End of Period",
-        "frequency_short": "M",
-        "id": "JPNASSETS",
-        "last_updated": "2026-09-02 20:12:27-05",
-        "notes": "Copyright, 2016, Bank of Japan.",
-        "observation_end": "2026-08-01",
-        "observation_start": "1998-04-01",
-        "popularity": 55,
+        "frequency": "Weekly, Ending Wednesday",
+        "frequency_short": "W",
+        "id": "TOTBKCR",
+        "last_updated": "2026-09-04 15:18:31-05",
+        "notes": "data source (https://www.federalreserve.gov/apps/ContactUs/feedback.aspx?refurl=/releases/h8/%). For questions on FRED functionality, please contact us here (https://fred.stlouisfed.org/contactus/).</p>",
+        "observation_end": "2026-08-26",
+        "observation_start": "1973-01-03",
+        "popularity": 67,
         "realtime_end": "2026-09-11",
         "realtime_start": "2026-09-11",
-        "seasonal_adjustment": "Not Seasonally Adjusted",
-        "seasonal_adjustment_short": "NSA",
-        "title": "Bank of Japan: Total Assets for Japan",
-        "units": "100 Million Yen",
-        "units_short": "100 Mil. Yen"
+        "seasonal_adjustment": "Seasonally Adjusted",
+        "seasonal_adjustment_short": "SA",
+        "title": "Bank Credit, All Commercial Banks",
+        "units": "Billions of U.S. Dollars",
+        "units_short": "Bil. of U.S. $"
       }
     ]
   },
   "observation_response": {
-    "count": 341,
+    "count": 2800,
     "file_type": "json",
     "limit": 5,
     "observation_end": "2026-09-11",
     "observation_start": "1600-01-01",
     "observations": [
       {
-        "date": "2026-08-01",
+        "date": "2026-08-26",
         "realtime_end": "2026-09-11",
         "realtime_start": "2026-09-11",
-        "value": "6446620"
+        "value": "19830.1808"
       },
       {
-        "date": "2026-07-01",
+        "date": "2026-08-19",
         "realtime_end": "2026-09-11",
         "realtime_start": "2026-09-11",
-        "value": "6442957"
+        "value": "19828.1642"
       },
       {
-        "date": "2026-06-01",
+        "date": "2026-08-12",
         "realtime_end": "2026-09-11",
         "realtime_start": "2026-09-11",
-        "value": "6395509.0"
+        "value": "19794.3647"
       },
       {
-        "date": "2026-05-01",
+        "date": "2026-08-05",
         "realtime_end": "2026-09-11",
         "realtime_start": "2026-09-11",
-        "value": "6643630.0"
+        "value": "19784.0768"
       },
       {
-        "date": "2026-04-01",
+        "date": "2026-07-29",
         "realtime_end": "2026-09-11",
         "realtime_start": "2026-09-11",
-        "value": "6632533.0"
+        "value": "19768.128"
       }
     ],
     "offset": 0,
@@ -76,14 +76,14 @@
       "output_type": 1,
       "realtime_end": "2026-09-11",
       "realtime_start": "2026-09-11",
-      "series_id": "JPNASSETS",
+      "series_id": "TOTBKCR",
       "sort_order": "desc",
       "units": "lin"
     },
     "provider": "FRED"
   },
   "research_eligible": false,
-  "retrieved_at": "2026-09-11T07:35:09.170850Z",
+  "retrieved_at": "2026-09-11T08:35:39.383613Z",
   "schema_version": 1,
-  "series_id": "JPNASSETS"
+  "series_id": "TOTBKCR"
 }
