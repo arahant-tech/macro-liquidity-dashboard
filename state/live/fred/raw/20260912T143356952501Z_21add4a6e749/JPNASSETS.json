@@ -1,64 +1,64 @@
 {
-  "known_by": "2026-09-12T13:31:43.107832Z",
+  "known_by": "2026-09-12T14:34:11.696876Z",
   "metadata_response": {
     "realtime_end": "2026-09-12",
     "realtime_start": "2026-09-12",
     "seriess": [
       {
-        "frequency": "Quarterly",
-        "frequency_short": "Q",
-        "id": "DRTSCILM",
-        "last_updated": "2026-08-03 13:01:40-05",
-        "notes": "data source (https://www.federalreserve.gov/apps/ContactUs/feedback.aspx?refurl=/data/SLOOS%). For questions on FRED functionality, please contact us here (https://fred.stlouisfed.org/contactus/).</p>",
-        "observation_end": "2026-07-01",
-        "observation_start": "1990-04-01",
-        "popularity": 70,
+        "frequency": "Monthly, End of Period",
+        "frequency_short": "M",
+        "id": "JPNASSETS",
+        "last_updated": "2026-09-02 20:12:27-05",
+        "notes": "Copyright, 2016, Bank of Japan.",
+        "observation_end": "2026-08-01",
+        "observation_start": "1998-04-01",
+        "popularity": 55,
         "realtime_end": "2026-09-12",
         "realtime_start": "2026-09-12",
         "seasonal_adjustment": "Not Seasonally Adjusted",
         "seasonal_adjustment_short": "NSA",
-        "title": "Net Percentage of Domestic Banks Tightening Standards for Commercial and Industrial Loans to Large and Middle-Market Firms",
-        "units": "Percent",
-        "units_short": "%"
+        "title": "Bank of Japan: Total Assets for Japan",
+        "units": "100 Million Yen",
+        "units_short": "100 Mil. Yen"
       }
     ]
   },
   "observation_response": {
-    "count": 146,
+    "count": 341,
     "file_type": "json",
     "limit": 5,
     "observation_end": "2026-09-12",
     "observation_start": "1600-01-01",
     "observations": [
       {
+        "date": "2026-08-01",
+        "realtime_end": "2026-09-12",
+        "realtime_start": "2026-09-12",
+        "value": "6446620"
+      },
+      {
         "date": "2026-07-01",
         "realtime_end": "2026-09-12",
         "realtime_start": "2026-09-12",
-        "value": "0"
+        "value": "6442957"
+      },
+      {
+        "date": "2026-06-01",
+        "realtime_end": "2026-09-12",
+        "realtime_start": "2026-09-12",
+        "value": "6395509.0"
+      },
+      {
+        "date": "2026-05-01",
+        "realtime_end": "2026-09-12",
+        "realtime_start": "2026-09-12",
+        "value": "6643630.0"
       },
       {
         "date": "2026-04-01",
         "realtime_end": "2026-09-12",
         "realtime_start": "2026-09-12",
-        "value": "8.1"
-      },
-      {
-        "date": "2026-01-01",
-        "realtime_end": "2026-09-12",
-        "realtime_start": "2026-09-12",
-        "value": "5.3"
-      },
-      {
-        "date": "2025-10-01",
-        "realtime_end": "2026-09-12",
-        "realtime_start": "2026-09-12",
-        "value": "6.5"
-      },
-      {
-        "date": "2025-07-01",
-        "realtime_end": "2026-09-12",
-        "realtime_start": "2026-09-12",
-        "value": "9.5"
+        "value": "6632533.0"
       }
     ],
     "offset": 0,
@@ -76,14 +76,14 @@
       "output_type": 1,
       "realtime_end": "2026-09-12",
       "realtime_start": "2026-09-12",
-      "series_id": "DRTSCILM",
+      "series_id": "JPNASSETS",
       "sort_order": "desc",
       "units": "lin"
     },
     "provider": "FRED"
   },
   "research_eligible": false,
-  "retrieved_at": "2026-09-12T13:31:43.107832Z",
+  "retrieved_at": "2026-09-12T14:34:11.696876Z",
   "schema_version": 1,
-  "series_id": "DRTSCILM"
+  "series_id": "JPNASSETS"
 }
