@@ -10,15 +10,6 @@
     {
       "code": "http_403",
       "series_ids": [
-        "FINRA_MARGIN_DEBT",
-        "FINRA_CASH_FREE_CREDIT",
-        "FINRA_MARGIN_FREE_CREDIT"
-      ],
-      "source_group": "finra"
-    },
-    {
-      "code": "http_403",
-      "series_ids": [
         "ICI_DOMESTIC_EQUITY_INDEX_SHARE",
         "ICI_WORLD_EQUITY_INDEX_SHARE",
         "ICI_LONG_TERM_INDEX_SHARE"
@@ -26,7 +17,7 @@
       "source_group": "ici_index"
     }
   ],
-  "fetched_at": "2026-09-14T16:36:21.148670Z",
+  "fetched_at": "2026-09-14T17:34:40.856173Z",
   "limitations": [
     "No series identifies the causal effect of intermediation on prices, and no single global liquidity score is constructed.",
     "Position signs have no fixed capacity interpretation. Repo and reverse repo are gross sides, not additive market liquidity or collateral reuse.",
@@ -137,48 +128,6 @@
     },
     {
       "aggregation_allowed": false,
-      "block": "reported_regulatory_ratio",
-      "components": {
-        "tier1_capital_million_usd": 322576.0,
-        "total_leverage_exposure_million_usd": 5847063.0
-      },
-      "frequency": "quarterly",
-      "issuer": "JPMorgan Chase & Co.",
-      "known_by": "2026-09-08T19:40:59.824370Z",
-      "label": "JPM 보고 SLR · 단일 연결회사",
-      "layer": 3,
-      "measurement_kind": "reported_native_stock_or_ratio",
-      "notes": "단일 회사 분기 SLR. 규제 최소치·여유분·전체 딜러의 자본 제약으로 대체 해석하지 않음.",
-      "observation_date": "2026-06-30",
-      "original_release_at": null,
-      "period_end": "2026-06-30",
-      "period_start": "2026-06-30",
-      "provider": "intermediary",
-      "raw_path": "raw/intermediary/66692795b2b8a63961b7034af49444af71696935e46eff8f5167b616e6a8dc3a.xlsx",
-      "raw_scope": "original_public_first_party_document",
-      "raw_sha256": "66692795b2b8a63961b7034af49444af71696935e46eff8f5167b616e6a8dc3a",
-      "release_timestamp_verified": false,
-      "research_eligible": false,
-      "retrieved_at": "2026-09-08T19:40:59.824370Z",
-      "role": "operator_observation",
-      "series_id": "JPM_REPORTED_SLR",
-      "source_label": "SLR in Capital and other selected balance sheet items",
-      "source_sheet": "xl/worksheets/sheet10.xml",
-      "source_universe": "One consolidated holding company; not its individual broker-dealers",
-      "source_url": "https://www.jpmorganchase.com/content/dam/jpmc/jpmorgan-chase-and-co/investor-relations/documents/quarterly-earnings/2026/2nd-quarter/2q26-earnings-supplement.xlsx",
-      "status": "ok",
-      "ticker": "JPM",
-      "track": "equity",
-      "unit": "percent",
-      "units": "percent",
-      "value": 5.5
-    }
-  ],
-  "provider": "intermediary",
-  "research_eligible": false,
-  "retained_observations": [
-    {
-      "aggregation_allowed": false,
       "block": "customer_margin",
       "frequency": "monthly",
       "known_by": "2026-09-08T19:40:58.774852Z",
@@ -272,61 +221,112 @@
       "unit": "million USD",
       "units": "million USD",
       "value": 217305.0
+    },
+    {
+      "aggregation_allowed": false,
+      "block": "reported_regulatory_ratio",
+      "components": {
+        "tier1_capital_million_usd": 322576.0,
+        "total_leverage_exposure_million_usd": 5847063.0
+      },
+      "frequency": "quarterly",
+      "issuer": "JPMorgan Chase & Co.",
+      "known_by": "2026-09-08T19:40:59.824370Z",
+      "label": "JPM 보고 SLR · 단일 연결회사",
+      "layer": 3,
+      "measurement_kind": "reported_native_stock_or_ratio",
+      "notes": "단일 회사 분기 SLR. 규제 최소치·여유분·전체 딜러의 자본 제약으로 대체 해석하지 않음.",
+      "observation_date": "2026-06-30",
+      "original_release_at": null,
+      "period_end": "2026-06-30",
+      "period_start": "2026-06-30",
+      "provider": "intermediary",
+      "raw_path": "raw/intermediary/66692795b2b8a63961b7034af49444af71696935e46eff8f5167b616e6a8dc3a.xlsx",
+      "raw_scope": "original_public_first_party_document",
+      "raw_sha256": "66692795b2b8a63961b7034af49444af71696935e46eff8f5167b616e6a8dc3a",
+      "release_timestamp_verified": false,
+      "research_eligible": false,
+      "retrieved_at": "2026-09-08T19:40:59.824370Z",
+      "role": "operator_observation",
+      "series_id": "JPM_REPORTED_SLR",
+      "source_label": "SLR in Capital and other selected balance sheet items",
+      "source_sheet": "xl/worksheets/sheet10.xml",
+      "source_universe": "One consolidated holding company; not its individual broker-dealers",
+      "source_url": "https://www.jpmorganchase.com/content/dam/jpmc/jpmorgan-chase-and-co/investor-relations/documents/quarterly-earnings/2026/2nd-quarter/2q26-earnings-supplement.xlsx",
+      "status": "ok",
+      "ticker": "JPM",
+      "track": "equity",
+      "unit": "percent",
+      "units": "percent",
+      "value": 5.5
     }
   ],
+  "provider": "intermediary",
+  "research_eligible": false,
+  "retained_observations": [],
   "sources": [
     {
-      "known_by": "2026-09-14T16:36:20.096944Z",
+      "known_by": "2026-09-14T17:34:39.527094Z",
       "original_release_at": null,
       "raw_path": "raw/intermediary/ef2ba93b10af9551181daf5a6f013dab9774ad0c84b9136d51fc17b79164ab78.json",
       "raw_scope": "original_public_first_party_document",
       "raw_sha256": "ef2ba93b10af9551181daf5a6f013dab9774ad0c84b9136d51fc17b79164ab78",
       "release_timestamp_verified": false,
-      "retrieved_at": "2026-09-14T16:36:20.096944Z",
+      "retrieved_at": "2026-09-14T17:34:39.527094Z",
       "source_url": "https://markets.newyorkfed.org/api/pd/list/seriesbreaks.json"
     },
     {
-      "known_by": "2026-09-14T16:36:20.199142Z",
+      "known_by": "2026-09-14T17:34:39.909987Z",
       "original_release_at": null,
       "raw_path": "raw/intermediary/77a7805ffdf634d259bdc94c8eb4ff9f44acb7c5ea7c1246f05152a971d4c7c0.json",
       "raw_scope": "original_public_first_party_document",
       "raw_sha256": "77a7805ffdf634d259bdc94c8eb4ff9f44acb7c5ea7c1246f05152a971d4c7c0",
       "release_timestamp_verified": false,
-      "retrieved_at": "2026-09-14T16:36:20.199142Z",
+      "retrieved_at": "2026-09-14T17:34:39.909987Z",
       "source_url": "https://markets.newyorkfed.org/api/pd/list/timeseries.json"
     },
     {
-      "known_by": "2026-09-14T16:36:20.273068Z",
+      "known_by": "2026-09-14T17:34:39.969478Z",
       "original_release_at": null,
       "raw_path": "raw/intermediary/cb0ceba4730b2b7e08a0532c0cceb940a1b24c2845dd66f19eb0ff3bb14e1ece.json",
       "raw_scope": "original_public_first_party_document",
       "raw_sha256": "cb0ceba4730b2b7e08a0532c0cceb940a1b24c2845dd66f19eb0ff3bb14e1ece",
       "release_timestamp_verified": false,
-      "retrieved_at": "2026-09-14T16:36:20.273068Z",
+      "retrieved_at": "2026-09-14T17:34:39.969478Z",
       "source_url": "https://markets.newyorkfed.org/api/pd/latest/SBN2024.json"
     },
     {
-      "known_by": "2026-09-14T16:36:20.551648Z",
+      "known_by": "2026-09-14T17:34:40.096128Z",
+      "original_release_at": null,
+      "raw_path": "raw/intermediary/f4fe273c9868b31a0f83b7046cea23ecd6d48b924941438bf93c0a289a1c17cf.html",
+      "raw_scope": "original_public_first_party_document",
+      "raw_sha256": "f4fe273c9868b31a0f83b7046cea23ecd6d48b924941438bf93c0a289a1c17cf",
+      "release_timestamp_verified": false,
+      "retrieved_at": "2026-09-14T17:34:40.096128Z",
+      "source_url": "https://www.finra.org/rules-guidance/key-topics/margin-accounts/margin-statistics"
+    },
+    {
+      "known_by": "2026-09-14T17:34:40.167040Z",
       "original_release_at": null,
       "raw_path": "raw/intermediary/c8dd2dc4c4d442fc0c57e4c40ac3600f57fa4955d2cc431b1f96acdf12e5ff92.json",
       "raw_scope": "original_public_first_party_document",
       "raw_sha256": "c8dd2dc4c4d442fc0c57e4c40ac3600f57fa4955d2cc431b1f96acdf12e5ff92",
       "release_timestamp_verified": false,
-      "retrieved_at": "2026-09-14T16:36:20.551648Z",
+      "retrieved_at": "2026-09-14T17:34:40.167040Z",
       "source_url": "https://www.jpmorganchase.com/services/json/v1/investor-relations/quarterly-earnings.json"
     },
     {
-      "known_by": "2026-09-14T16:36:20.805775Z",
+      "known_by": "2026-09-14T17:34:40.492366Z",
       "original_release_at": null,
       "raw_path": "raw/intermediary/66692795b2b8a63961b7034af49444af71696935e46eff8f5167b616e6a8dc3a.xlsx",
       "raw_scope": "original_public_first_party_document",
       "raw_sha256": "66692795b2b8a63961b7034af49444af71696935e46eff8f5167b616e6a8dc3a",
       "release_timestamp_verified": false,
-      "retrieved_at": "2026-09-14T16:36:20.805775Z",
+      "retrieved_at": "2026-09-14T17:34:40.492366Z",
       "source_url": "https://www.jpmorganchase.com/content/dam/jpmc/jpmorgan-chase-and-co/investor-relations/documents/quarterly-earnings/2026/2nd-quarter/2q26-earnings-supplement.xlsx"
     }
   ],
   "status": "partial",
-  "success": 4,
+  "success": 7,
   "total": 10
 }
