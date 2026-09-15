@@ -1,5 +1,5 @@
 {
-  "known_by": "2026-09-15T15:34:10.963452Z",
+  "known_by": "2026-09-15T16:35:23.383822Z",
   "metadata_response": {
     "realtime_end": "2026-09-15",
     "realtime_start": "2026-09-15",
@@ -7,23 +7,24 @@
       {
         "frequency": "Daily",
         "frequency_short": "D",
-        "id": "SOFR",
-        "last_updated": "2026-09-15 07:02:29-05",
+        "id": "RRPONTSYD",
+        "last_updated": "2026-09-14 13:02:27-05",
+        "notes": "This series is constructed as the aggregated daily amount value of the RRP transactions reported by the New York Fed as part of the Temporary Open Market Operations.\r\n\r\nTemporary open market operations involve short-term repurchase and reverse repurchase agreements that are designed to temporarily add or drain reserves available to the banking system and influence day-to-day trading in the federal funds market.\r\n\r\nA reverse repurchase agreement (known as reverse repo or RRP) is a transaction in which the New York Fed under the authorization and direction of the Federal Open Market Committee sells a security to an eligible counterparty with an agreement to repurchase that same security at a specified price at a specific time in the future. For these transactions, eligible securities are U.S. Treasury instruments, federal agency debt and the mortgage-backed securities issued or fully guaranteed by federal agencies.\r\nFor more information, see https://www.newyorkfed.org/markets/rrp_faq.html",
         "observation_end": "2026-09-14",
-        "observation_start": "2018-04-03",
-        "popularity": 91,
+        "observation_start": "2003-02-07",
+        "popularity": 92,
         "realtime_end": "2026-09-15",
         "realtime_start": "2026-09-15",
         "seasonal_adjustment": "Not Seasonally Adjusted",
         "seasonal_adjustment_short": "NSA",
-        "title": "Secured Overnight Financing Rate",
-        "units": "Percent",
-        "units_short": "%"
+        "title": "Overnight Reverse Repurchase Agreements: Treasury Securities Sold by the Federal Reserve in the Temporary Open Market Operations",
+        "units": "Billions of US Dollars",
+        "units_short": "Bil. of US $"
       }
     ]
   },
   "observation_response": {
-    "count": 2205,
+    "count": 6157,
     "file_type": "json",
     "limit": 5,
     "observation_end": "2026-09-15",
@@ -33,31 +34,31 @@
         "date": "2026-09-14",
         "realtime_end": "2026-09-15",
         "realtime_start": "2026-09-15",
-        "value": "3.62"
+        "value": "1.42"
       },
       {
         "date": "2026-09-11",
         "realtime_end": "2026-09-15",
         "realtime_start": "2026-09-15",
-        "value": "3.62"
+        "value": "5.255"
       },
       {
         "date": "2026-09-10",
         "realtime_end": "2026-09-15",
         "realtime_start": "2026-09-15",
-        "value": "3.62"
+        "value": "4.736"
       },
       {
         "date": "2026-09-09",
         "realtime_end": "2026-09-15",
         "realtime_start": "2026-09-15",
-        "value": "3.64"
+        "value": "0.432"
       },
       {
         "date": "2026-09-08",
         "realtime_end": "2026-09-15",
         "realtime_start": "2026-09-15",
-        "value": "3.64"
+        "value": "0.626"
       }
     ],
     "offset": 0,
@@ -75,14 +76,14 @@
       "output_type": 1,
       "realtime_end": "2026-09-15",
       "realtime_start": "2026-09-15",
-      "series_id": "SOFR",
+      "series_id": "RRPONTSYD",
       "sort_order": "desc",
       "units": "lin"
     },
     "provider": "FRED"
   },
   "research_eligible": false,
-  "retrieved_at": "2026-09-15T15:34:10.963452Z",
+  "retrieved_at": "2026-09-15T16:35:23.383822Z",
   "schema_version": 1,
-  "series_id": "SOFR"
+  "series_id": "RRPONTSYD"
 }
