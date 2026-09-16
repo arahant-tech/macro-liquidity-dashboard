@@ -8,18 +8,38 @@
   ],
   "errors": [
     {
-      "code": "fresh_monthly_history_source_unavailable",
-      "series_id": "FINRA_MARGIN_DEBT"
+      "code": "http_400",
+      "series_id": "WRESBAL"
+    },
+    {
+      "code": "http_400",
+      "series_id": "WALCL"
+    },
+    {
+      "code": "http_400",
+      "series_id": "ECBASSETSW"
+    },
+    {
+      "code": "http_400",
+      "series_id": "JPNASSETS"
+    },
+    {
+      "code": "http_400",
+      "series_id": "RRPONTSYD"
+    },
+    {
+      "code": "http_400",
+      "series_id": "WTREGEN"
     }
   ],
-  "generated_at": "2026-09-15T23:33:07.421273Z",
-  "github_run_url": "https://github.com/arahant-tech/macro-liquidity-dashboard/actions/runs/35036074877",
+  "generated_at": "2026-09-16T00:40:06.430429Z",
+  "github_run_url": "https://github.com/arahant-tech/macro-liquidity-dashboard/actions/runs/35040885740",
   "research_eligible": false,
   "schema_version": 1,
   "series": [
     {
       "chart_type": "line",
-      "checked_at": "2026-09-15T23:33:02.920885Z",
+      "checked_at": "2026-09-16T00:40:04.244771Z",
       "frequency": "Weekly, Ending Wednesday",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-09-10T21:33:21.304868Z",
@@ -663,13 +683,13 @@
       "research_eligible": false,
       "series_id": "WRESBAL",
       "source_url": "https://fred.stlouisfed.org/series/WRESBAL",
-      "status": "ok",
+      "status": "retained",
       "track": "equity",
       "unit": "Millions of U.S. Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-15T23:33:03.958630Z",
+      "checked_at": "2026-09-16T00:40:04.640160Z",
       "frequency": "Weekly, As of Wednesday",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-09-10T21:33:22.152993Z",
@@ -1313,13 +1333,13 @@
       "research_eligible": false,
       "series_id": "WALCL",
       "source_url": "https://fred.stlouisfed.org/series/WALCL",
-      "status": "ok",
+      "status": "retained",
       "track": "equity",
       "unit": "Millions of U.S. Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-15T23:33:04.762018Z",
+      "checked_at": "2026-09-16T00:40:05.008947Z",
       "frequency": "Weekly",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-09-15T16:36:23.714642Z",
@@ -1967,13 +1987,13 @@
       "research_eligible": false,
       "series_id": "ECBASSETSW",
       "source_url": "https://fred.stlouisfed.org/series/ECBASSETSW",
-      "status": "ok",
+      "status": "retained",
       "track": "equity",
       "unit": "Millions of Euros"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-15T23:33:05.711054Z",
+      "checked_at": "2026-09-16T00:40:05.570025Z",
       "frequency": "Monthly, End of Period",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-09-08T19:13:40.776262Z",
@@ -2129,13 +2149,13 @@
       "research_eligible": false,
       "series_id": "JPNASSETS",
       "source_url": "https://fred.stlouisfed.org/series/JPNASSETS",
-      "status": "ok",
+      "status": "retained",
       "track": "equity",
       "unit": "100 Million Yen"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-15T23:33:06.508235Z",
+      "checked_at": "2026-09-16T00:40:05.918915Z",
       "frequency": "Daily",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-09-15T18:36:41.047252Z",
@@ -5319,13 +5339,13 @@
       "research_eligible": false,
       "series_id": "RRPONTSYD",
       "source_url": "https://fred.stlouisfed.org/series/RRPONTSYD",
-      "status": "ok",
+      "status": "retained",
       "track": "equity",
       "unit": "Billions of US Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-15T23:33:07.283835Z",
+      "checked_at": "2026-09-16T00:40:06.275626Z",
       "frequency": "Weekly, Ending Wednesday",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-09-10T21:33:25.616267Z",
@@ -5969,13 +5989,13 @@
       "research_eligible": false,
       "series_id": "WTREGEN",
       "source_url": "https://fred.stlouisfed.org/series/WTREGEN",
-      "status": "ok",
+      "status": "retained",
       "track": "equity",
       "unit": "Millions of U.S. Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-15T23:33:07.312888Z",
+      "checked_at": "2026-09-16T00:40:06.303911Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-09-14T09:37:09.027202Z",
@@ -6026,7 +6046,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-15T23:33:07.339598Z",
+      "checked_at": "2026-09-16T00:40:06.329956Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-09-14T09:37:09.051906Z",
@@ -6077,7 +6097,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-15T23:33:07.348763Z",
+      "checked_at": "2026-09-16T00:40:06.339023Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-09-14T09:37:09.061704Z",
@@ -6128,7 +6148,7 @@
     },
     {
       "chart_type": "bar",
-      "checked_at": "2026-09-15T23:33:07.359118Z",
+      "checked_at": "2026-09-16T00:40:06.349517Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-09-14T09:37:09.071709Z",
@@ -6179,7 +6199,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-15T23:33:07.359652Z",
+      "checked_at": "2026-09-16T00:40:06.349998Z",
       "frequency": "Monthly",
       "history_basis": "current_vintage_available_monthly_history_max_36_observations",
       "known_by": "2026-09-08T21:13:08.357158Z",
@@ -6350,7 +6370,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-09-15T23:33:07.375664Z",
+      "checked_at": "2026-09-16T00:40:06.365375Z",
       "frequency": "Monthly",
       "history_basis": "current_vintage_available_monthly_history_max_36_observations",
       "known_by": "2026-09-14T20:34:36.099048Z",
@@ -6419,13 +6439,13 @@
       "source_retrieved_at": "2026-09-14T20:34:36.099048Z",
       "source_universe": "FINRA reporting member firms carrying customer margin accounts",
       "source_url": "https://www.finra.org/rules-guidance/key-topics/margin-accounts/margin-statistics",
-      "status": "retained",
+      "status": "ok",
       "track": "equity",
       "unit": "million USD"
     },
     {
       "chart_type": "bar",
-      "checked_at": "2026-09-15T23:33:07.375975Z",
+      "checked_at": "2026-09-16T00:40:06.388218Z",
       "frequency": "Monthly",
       "history_basis": "current_vintage_available_monthly_history_max_36_observations",
       "known_by": "2026-09-08T21:13:21.003348Z",
