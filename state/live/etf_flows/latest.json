@@ -5,7 +5,7 @@
       "asset": "BTC",
       "business_date": "2026-09-16",
       "changed": false,
-      "checked_at": "2026-09-17T17:33:15.968602Z",
+      "checked_at": "2026-09-17T18:37:33.592230Z",
       "covered_funds": 12,
       "error": null,
       "fingerprint": "c4ee2769d1b1ad7b6432d21e9a189adae449cd639432b08f29e9be35abbe65c4",
@@ -149,13 +149,9 @@
       "status": "ok"
     },
     {
-      "age_calendar_days": 1,
       "asset": "ETH",
-      "business_date": "2026-09-16",
-      "changed": false,
-      "checked_at": "2026-09-17T17:33:17.240690Z",
-      "covered_funds": 10,
-      "error": null,
+      "checked_at": "2026-09-17T18:37:34.775662Z",
+      "error": "source_fund_universe_changed",
       "fingerprint": "a57ca4f5a55f0b5a0a11898d30cfb59fb861e8f10352ff1ead5afb0869752ff4",
       "last_good_observation": {
         "asset": "ETH",
@@ -279,8 +275,7 @@
         "value": -224.1
       },
       "series_id": "ETF_ETH_SPOT_NET_FLOW_FARSIDE",
-      "stale_after_days": 7,
-      "status": "ok"
+      "status": "error"
     }
   ],
   "assumptions": [
@@ -297,9 +292,16 @@
     "Only BTC and ETH US spot-product universes on the source tables are covered; equity ETF flows and other crypto products remain absent.",
     "Capture time is the earliest knowability certified by this collector; a business date is not an original publication timestamp."
   ],
-  "capture_id": "20260917T173314658938Z_64e564e76636",
-  "errors": [],
-  "fetched_at": "2026-09-17T17:33:17.248493Z",
+  "capture_id": "20260917T183732400269Z_cc91d8b439d5",
+  "errors": [
+    {
+      "asset": "ETH",
+      "code": "source_fund_universe_changed",
+      "error": "source_fund_universe_changed",
+      "series_id": "ETF_ETH_SPOT_NET_FLOW_FARSIDE"
+    }
+  ],
+  "fetched_at": "2026-09-17T18:37:34.775699Z",
   "limitations": [
     "Underlying flow construction and revisions are not independently audited against each issuer's creations and redemptions.",
     "The current New York calendar date is deliberately excluded, even if all cells are filled; this introduces a conservative reporting delay.",
@@ -444,7 +446,19 @@
       "unit": "million USD",
       "unit_evidence_heading": "Bitcoin ETF Flow (US$m)",
       "value": -295.9
-    },
+    }
+  ],
+  "provider": "etf_flows",
+  "raw_captures": [
+    {
+      "asset": "BTC",
+      "raw_path": "raw/20260917T183732400269Z_cc91d8b439d5/btc_flow_table.html",
+      "raw_sha256": "2372253f0fd5af616b725fd6b3323aeebe4a4ac51ba181ded667949aed65c7d5",
+      "retrieved_at": "2026-09-17T18:37:33.592230Z"
+    }
+  ],
+  "research_eligible": false,
+  "retained_observations": [
     {
       "asset": "ETH",
       "component_sum": -224.1,
@@ -567,27 +581,10 @@
       "value": -224.1
     }
   ],
-  "provider": "etf_flows",
-  "raw_captures": [
-    {
-      "asset": "BTC",
-      "raw_path": "raw/20260917T173314658938Z_64e564e76636/btc_flow_table.html",
-      "raw_sha256": "2372253f0fd5af616b725fd6b3323aeebe4a4ac51ba181ded667949aed65c7d5",
-      "retrieved_at": "2026-09-17T17:33:15.968602Z"
-    },
-    {
-      "asset": "ETH",
-      "raw_path": "raw/20260917T173314658938Z_64e564e76636/eth_flow_table.html",
-      "raw_sha256": "381af6399fb305ed2773c9771fdf3dc4380dcffdc2f93e7baf2cd10c32324bce",
-      "retrieved_at": "2026-09-17T17:33:17.240690Z"
-    }
-  ],
-  "research_eligible": false,
-  "retained_observations": [],
   "schema_version": 1,
   "stale": 0,
-  "started_at": "2026-09-17T17:33:14.658938Z",
-  "status": "ok",
-  "success": 2,
+  "started_at": "2026-09-17T18:37:32.400269Z",
+  "status": "partial",
+  "success": 1,
   "total": 2
 }
