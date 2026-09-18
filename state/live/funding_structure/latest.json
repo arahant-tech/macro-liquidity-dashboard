@@ -5,7 +5,52 @@
     "Shares use only same-quarter, same-unit, same-scope observations. L1 quality components are not independent liquidity creation stocks.",
     "All observations are current vintage, first usable at actual capture; no historical release timestamp is reconstructed."
   ],
-  "errors": [],
+  "errors": [
+    {
+      "code": "http_503",
+      "series_id": "ECB_SI_LCR_LIQUIDITY_BUFFER"
+    },
+    {
+      "code": "http_503",
+      "series_id": "ECB_SI_TOTAL_ASSETS"
+    },
+    {
+      "code": "http_503",
+      "series_id": "ECB_SI_HQLA_LEVEL1"
+    },
+    {
+      "code": "http_503",
+      "series_id": "ECB_SI_HQLA_LEVEL1_CASH"
+    },
+    {
+      "code": "http_503",
+      "series_id": "ECB_SI_HQLA_LEVEL1_GOVERNMENT"
+    },
+    {
+      "code": "http_503",
+      "series_id": "ECB_SI_HQLA_LEVEL1_OTHER"
+    },
+    {
+      "code": "http_503",
+      "series_id": "ECB_SI_HQLA_LEVEL1_COVERED"
+    },
+    {
+      "code": "http_503",
+      "series_id": "ECB_SI_HQLA_LEVEL2A"
+    },
+    {
+      "code": "http_503",
+      "series_id": "ECB_SI_LCR_BUFFER_ASSET_SHARE"
+    },
+    {
+      "code": "http_503",
+      "series_id": "ECB_SI_LEVEL1_CASH_SHARE"
+    },
+    {
+      "code": "http_503",
+      "series_id": "ECB_SI_LEVEL1_GOVERNMENT_SHARE"
+    }
+  ],
   "limitations": [
     "ACM is itself a model estimate, re-estimated monthly using a full sample; historical revisions prohibit treating this download as a real-time research vintage.",
     "ECB covers significant institutions in the SSM with a changing sample. It does not cover the world, all EU banks, dealers or nonbanks.",
@@ -51,7 +96,11 @@
       "unit": "percent",
       "units": "percent",
       "value": 0.762512945770763
-    },
+    }
+  ],
+  "provider": "funding_structure",
+  "research_eligible": false,
+  "retained_observations": [
     {
       "block": "funding_structure",
       "frequency": "quarterly",
@@ -508,33 +557,20 @@
       "value": 36.08901708358008
     }
   ],
-  "provider": "funding_structure",
-  "research_eligible": false,
-  "retained_observations": [],
   "sources": [
     {
-      "known_by": "2026-09-18T21:33:26.506597Z",
+      "known_by": "2026-09-18T22:33:32.182713Z",
       "original_release_at": null,
       "raw_path": "raw/funding_structure/ed46c6edbdb79e28e03ade567c4537b2a61968a3a7ee1ce56543b50e667a95ae.csv",
       "raw_scope": "original_public_source_csv",
       "raw_sha256": "ed46c6edbdb79e28e03ade567c4537b2a61968a3a7ee1ce56543b50e667a95ae",
       "release_timestamp_verified": false,
-      "retrieved_at": "2026-09-18T21:33:26.506597Z",
+      "retrieved_at": "2026-09-18T22:33:32.182713Z",
       "source_url": "https://www.newyorkfed.org/medialibrary/media/research/data_indicators/acmPlot_data.csv"
-    },
-    {
-      "known_by": "2026-09-18T21:33:27.498025Z",
-      "original_release_at": null,
-      "raw_path": "raw/funding_structure/dc8062eef28a26b450907f94177d78a404f8a458003e22f65901540f553e0a14.csv",
-      "raw_scope": "original_public_source_csv",
-      "raw_sha256": "dc8062eef28a26b450907f94177d78a404f8a458003e22f65901540f553e0a14",
-      "release_timestamp_verified": false,
-      "retrieved_at": "2026-09-18T21:33:27.498025Z",
-      "source_url": "https://data-api.ecb.europa.eu/service/data/SUP/Q.B01.W0._Z.A6310+A0000+A6400+A6401+A6250+A6403+A6404+A6280._T.SII._Z.ALL.LE.E.C?format=csvdata&lastNObservations=1"
     }
   ],
-  "status": "ok",
-  "success": 12,
+  "status": "partial",
+  "success": 1,
   "total": 12,
   "unconnected": [
     {
