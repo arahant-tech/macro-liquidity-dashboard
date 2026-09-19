@@ -5,7 +5,7 @@
       "asset": "BTC",
       "business_date": "2026-09-18",
       "changed": false,
-      "checked_at": "2026-09-19T05:33:09.493963Z",
+      "checked_at": "2026-09-19T06:37:17.008820Z",
       "covered_funds": 12,
       "error": null,
       "fingerprint": "8630d73a5979ea7eff9e0563cce930e82deda287bda5884bbed801f28e50e2ad",
@@ -145,7 +145,7 @@
     },
     {
       "asset": "ETH",
-      "checked_at": "2026-09-19T05:33:11.502952Z",
+      "checked_at": "2026-09-19T06:37:17.886259Z",
       "error": "source_fund_universe_changed",
       "fingerprint": "a57ca4f5a55f0b5a0a11898d30cfb59fb861e8f10352ff1ead5afb0869752ff4",
       "last_good_observation": {
@@ -287,7 +287,7 @@
     "Only BTC and ETH US spot-product universes on the source tables are covered; equity ETF flows and other crypto products remain absent.",
     "Capture time is the earliest knowability certified by this collector; a business date is not an original publication timestamp."
   ],
-  "capture_id": "20260919T053307163528Z_10a65d904ac1",
+  "capture_id": "20260919T063715859436Z_8cd02b686fd0",
   "errors": [
     {
       "asset": "ETH",
@@ -296,7 +296,7 @@
       "series_id": "ETF_ETH_SPOT_NET_FLOW_FARSIDE"
     }
   ],
-  "fetched_at": "2026-09-19T05:33:11.502987Z",
+  "fetched_at": "2026-09-19T06:37:17.886291Z",
   "limitations": [
     "Underlying flow construction and revisions are not independently audited against each issuer's creations and redemptions.",
     "The current New York calendar date is deliberately excluded, even if all cells are filled; this introduces a conservative reporting delay.",
@@ -442,9 +442,9 @@
   "raw_captures": [
     {
       "asset": "BTC",
-      "raw_path": "raw/20260919T053307163528Z_10a65d904ac1/btc_flow_table.html",
+      "raw_path": "raw/20260919T063715859436Z_8cd02b686fd0/btc_flow_table.html",
       "raw_sha256": "764cd3aa929c942b1318742e28791e2fdb9075176e3c268cd12117f116878168",
-      "retrieved_at": "2026-09-19T05:33:09.493963Z"
+      "retrieved_at": "2026-09-19T06:37:17.008820Z"
     }
   ],
   "research_eligible": false,
@@ -573,7 +573,7 @@
   ],
   "schema_version": 1,
   "stale": 0,
-  "started_at": "2026-09-19T05:33:07.163528Z",
+  "started_at": "2026-09-19T06:37:15.859436Z",
   "status": "partial",
   "success": 1,
   "total": 2
