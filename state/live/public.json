@@ -66,8 +66,8 @@
     "크립토 유통량은 DefiLlama 대리 관측, 파생상품은 OKX 단일 계약입니다. 공급자 캐시 시각과 시장 전체 대표성에는 한계가 있습니다.",
     "라이브 자료는 연구 표본과 분리합니다. 과거 컷오프·봉인 홀드아웃을 소급 갱신하지 않습니다."
   ],
-  "generated_at": "2026-09-22T13:31:11.990158Z",
-  "github_run_url": "https://github.com/arahant-tech/macro-liquidity-dashboard/actions/runs/35733777108",
+  "generated_at": "2026-09-22T18:11:03.916226Z",
+  "github_run_url": "https://github.com/arahant-tech/macro-liquidity-dashboard/actions/runs/35765350261",
   "missing_coverage": [
     "2층 분포: EURUSD·USDJPY 3개월 통화 베이시스의 무료 지속 공급원 미확보. HQLA는 ECB 감독대상 은행 범위이며 세계 전체가 아님",
     "3층 전환 연산자: 딜러 포지션·레포와 FINRA는 관측 자료. SLR은 JPM 1개사 비율이며 전체 여유한도 미측정. 패시브 비중은 ICI 접근 상태 확인 필요; A_t 미추정",
@@ -215,7 +215,7 @@
       "filed_date": null,
       "frequency": "Daily",
       "fund_universe": null,
-      "known_by": "2026-09-21T18:48:34.883770Z",
+      "known_by": "2026-09-22T18:10:05.556177Z",
       "label": "Overnight reverse repurchase agreements; native billions retained",
       "layer": 1,
       "measurement_kind": null,
@@ -225,7 +225,7 @@
       "native_series_id": null,
       "not_additive_with": null,
       "notes": [],
-      "observation_date": "2026-09-21",
+      "observation_date": "2026-09-22",
       "observed_at": null,
       "original_release_at": null,
       "period_end": null,
@@ -233,7 +233,7 @@
       "provider": "fred",
       "published_date": null,
       "raw_scope": null,
-      "raw_sha256": "68c78609c4c786593925f2bc76565c5537b6669939366df8d648aae84cdea8df",
+      "raw_sha256": "1692829d7b2567b812b02211174302545200e95013c2dbd45bf049cbc10fe9b5",
       "research_eligible": false,
       "scope": null,
       "seasonal_adjustment": null,
@@ -254,7 +254,7 @@
       "track": "equity",
       "unit": "Billions of US Dollars",
       "universe": null,
-      "value": "0.582"
+      "value": "0.453"
     },
     {
       "accession": null,
@@ -765,7 +765,7 @@
       "filed_date": null,
       "frequency": "Weekly",
       "fund_universe": null,
-      "known_by": "2026-09-15T16:35:32.915497Z",
+      "known_by": "2026-09-22T18:10:15.647377Z",
       "label": "ECB assets; native EUR unit, kept separate from other central banks",
       "layer": 1,
       "measurement_kind": null,
@@ -775,7 +775,7 @@
       "native_series_id": null,
       "not_additive_with": null,
       "notes": [],
-      "observation_date": "2026-09-11",
+      "observation_date": "2026-09-18",
       "observed_at": null,
       "original_release_at": null,
       "period_end": null,
@@ -783,7 +783,7 @@
       "provider": "fred",
       "published_date": null,
       "raw_scope": null,
-      "raw_sha256": "1938f3794963125efa243cf5bce86fa6b70688deb94680cd864722cf09227c8b",
+      "raw_sha256": "0108ffc713913907c99bb9ae23ec2af12e0cc4c4debf103f2fc829af2c74eb47",
       "research_eligible": false,
       "scope": null,
       "seasonal_adjustment": null,
@@ -804,7 +804,7 @@
       "track": "equity",
       "unit": "Millions of Euros",
       "universe": null,
-      "value": "5911237.0"
+      "value": "5898477.0"
     },
     {
       "accession": null,
@@ -1849,7 +1849,7 @@
       "filed_date": null,
       "frequency": "current_snapshot",
       "fund_universe": null,
-      "known_by": "2026-09-22T13:30:03.398214Z",
+      "known_by": "2026-09-22T18:10:35.317845Z",
       "label": "CRYPTO_USDT_CIRCULATING",
       "layer": 5,
       "measurement_kind": null,
@@ -1870,7 +1870,7 @@
       "provider": "crypto",
       "published_date": null,
       "raw_scope": null,
-      "raw_sha256": "e0377d395bd3c0412dd5764f9eb4aae165e8f38eb40021a58eb2f4ee0e694494",
+      "raw_sha256": "5e323024145d3109984cab41655cd4d9fe7c4b03548b0243bff94e9b71fba50c",
       "research_eligible": false,
       "scope": null,
       "seasonal_adjustment": null,
@@ -1891,7 +1891,7 @@
       "track": "crypto",
       "unit": "USDT tokens",
       "universe": null,
-      "value": 183492657955.63327
+      "value": 183520498133.84296
     },
     {
       "accession": null,
@@ -1907,7 +1907,7 @@
       "filed_date": null,
       "frequency": "current_snapshot",
       "fund_universe": null,
-      "known_by": "2026-09-22T13:30:03.398214Z",
+      "known_by": "2026-09-22T18:10:35.317845Z",
       "label": "CRYPTO_USDC_CIRCULATING",
       "layer": 5,
       "measurement_kind": null,
@@ -1928,7 +1928,7 @@
       "provider": "crypto",
       "published_date": null,
       "raw_scope": null,
-      "raw_sha256": "e0377d395bd3c0412dd5764f9eb4aae165e8f38eb40021a58eb2f4ee0e694494",
+      "raw_sha256": "5e323024145d3109984cab41655cd4d9fe7c4b03548b0243bff94e9b71fba50c",
       "research_eligible": false,
       "scope": null,
       "seasonal_adjustment": null,
@@ -1949,7 +1949,7 @@
       "track": "crypto",
       "unit": "USDC tokens",
       "universe": null,
-      "value": 74724617062.95097
+      "value": 75424717917.43579
     },
     {
       "accession": null,
@@ -1957,8 +1957,8 @@
       "aggregation_allowed": null,
       "block": null,
       "components": {
-        "USDC": 74724617062.95097,
-        "USDT": 183492657955.63327
+        "USDC": 75424717917.43579,
+        "USDT": 183520498133.84296
       },
       "covered_funds": null,
       "discovery_mode": null,
@@ -1968,7 +1968,7 @@
       "filed_date": null,
       "frequency": "current_snapshot",
       "fund_universe": null,
-      "known_by": "2026-09-22T13:30:03.398214Z",
+      "known_by": "2026-09-22T18:10:35.317845Z",
       "label": "CRYPTO_USDT_USDC_CIRCULATING",
       "layer": 5,
       "measurement_kind": null,
@@ -1989,7 +1989,7 @@
       "provider": "crypto",
       "published_date": null,
       "raw_scope": null,
-      "raw_sha256": "e0377d395bd3c0412dd5764f9eb4aae165e8f38eb40021a58eb2f4ee0e694494",
+      "raw_sha256": "5e323024145d3109984cab41655cd4d9fe7c4b03548b0243bff94e9b71fba50c",
       "research_eligible": false,
       "scope": null,
       "seasonal_adjustment": null,
@@ -2010,7 +2010,7 @@
       "track": "crypto",
       "unit": "USDT+USDC native token units at nominal par",
       "universe": null,
-      "value": 258217275018.58423
+      "value": 258945216051.27875
     },
     {
       "accession": null,
@@ -2026,7 +2026,7 @@
       "filed_date": null,
       "frequency": "latest_settled_funding",
       "fund_universe": null,
-      "known_by": "2026-09-22T13:30:03.747308Z",
+      "known_by": "2026-09-22T18:10:35.485509Z",
       "label": "CRYPTO_OKX_BTC_USDT_SWAP_REALIZED_FUNDING",
       "layer": 5,
       "measurement_kind": null,
@@ -2039,14 +2039,14 @@
         "단일 공급자·계약; 주식과 별도 트랙"
       ],
       "observation_date": "2026-09-22",
-      "observed_at": "2026-09-22T08:00:00Z",
+      "observed_at": "2026-09-22T16:00:00Z",
       "original_release_at": null,
       "period_end": null,
       "period_start": null,
       "provider": "crypto",
       "published_date": null,
       "raw_scope": null,
-      "raw_sha256": "5e6cde72aa3ab69668c1f2bbaafddc10cf99cbdd027ff7aa84cd22c016c2f973",
+      "raw_sha256": "a73de9e903e821058e7173037cbe64c31ebc4308647a2efc618345ae209ce712",
       "research_eligible": false,
       "scope": null,
       "seasonal_adjustment": null,
@@ -2067,7 +2067,7 @@
       "track": "crypto",
       "unit": "decimal funding rate per reported settlement",
       "universe": null,
-      "value": 0.0001
+      "value": 5.44099189888e-05
     },
     {
       "accession": null,
@@ -2083,7 +2083,7 @@
       "filed_date": null,
       "frequency": "current_snapshot",
       "fund_universe": null,
-      "known_by": "2026-09-22T13:30:03.977114Z",
+      "known_by": "2026-09-22T18:10:35.637861Z",
       "label": "CRYPTO_OKX_BTC_USDT_SWAP_OI_CONTRACTS",
       "layer": 5,
       "measurement_kind": null,
@@ -2096,14 +2096,14 @@
         "단일 공급자·계약; 주식과 별도 트랙"
       ],
       "observation_date": "2026-09-22",
-      "observed_at": "2026-09-22T13:30:03.892000Z",
+      "observed_at": "2026-09-22T18:10:35.580000Z",
       "original_release_at": null,
       "period_end": null,
       "period_start": null,
       "provider": "crypto",
       "published_date": null,
       "raw_scope": null,
-      "raw_sha256": "b7f88086021121551e44ba48837e171313e8f6467aa3f7431015512e43134cfe",
+      "raw_sha256": "1b78be9c54c0fd1d9ec50aa3a803cb94d46755094070a4e2e4a1a32b09d69b54",
       "research_eligible": false,
       "scope": null,
       "seasonal_adjustment": null,
@@ -2114,7 +2114,7 @@
       "source_page": null,
       "source_publisher": null,
       "source_quality": "official_exchange_reported",
-      "source_reported_at": "2026-09-22T13:30:03.892000Z",
+      "source_reported_at": "2026-09-22T18:10:35.580000Z",
       "source_series_id": null,
       "source_status": null,
       "source_universe": null,
@@ -2124,7 +2124,7 @@
       "track": "crypto",
       "unit": "contracts",
       "universe": null,
-      "value": 3061601.150000014
+      "value": 3060273.190000011
     },
     {
       "accession": null,
@@ -2140,7 +2140,7 @@
       "filed_date": null,
       "frequency": "current_snapshot",
       "fund_universe": null,
-      "known_by": "2026-09-22T13:30:03.977114Z",
+      "known_by": "2026-09-22T18:10:35.637861Z",
       "label": "CRYPTO_OKX_BTC_USDT_SWAP_OI_BTC",
       "layer": 5,
       "measurement_kind": null,
@@ -2153,14 +2153,14 @@
         "단일 공급자·계약; 주식과 별도 트랙"
       ],
       "observation_date": "2026-09-22",
-      "observed_at": "2026-09-22T13:30:03.892000Z",
+      "observed_at": "2026-09-22T18:10:35.580000Z",
       "original_release_at": null,
       "period_end": null,
       "period_start": null,
       "provider": "crypto",
       "published_date": null,
       "raw_scope": null,
-      "raw_sha256": "b7f88086021121551e44ba48837e171313e8f6467aa3f7431015512e43134cfe",
+      "raw_sha256": "1b78be9c54c0fd1d9ec50aa3a803cb94d46755094070a4e2e4a1a32b09d69b54",
       "research_eligible": false,
       "scope": null,
       "seasonal_adjustment": null,
@@ -2171,7 +2171,7 @@
       "source_page": null,
       "source_publisher": null,
       "source_quality": "official_exchange_reported",
-      "source_reported_at": "2026-09-22T13:30:03.892000Z",
+      "source_reported_at": "2026-09-22T18:10:35.580000Z",
       "source_series_id": null,
       "source_status": null,
       "source_universe": null,
@@ -2181,7 +2181,7 @@
       "track": "crypto",
       "unit": "BTC",
       "universe": null,
-      "value": 30616.011500000142
+      "value": 30602.73190000011
     },
     {
       "accession": null,
@@ -2197,7 +2197,7 @@
       "filed_date": null,
       "frequency": "current_snapshot",
       "fund_universe": null,
-      "known_by": "2026-09-22T13:30:03.977114Z",
+      "known_by": "2026-09-22T18:10:35.637861Z",
       "label": "CRYPTO_OKX_BTC_USDT_SWAP_OI_USD_NOTIONAL",
       "layer": 5,
       "measurement_kind": null,
@@ -2210,14 +2210,14 @@
         "단일 공급자·계약; 주식과 별도 트랙"
       ],
       "observation_date": "2026-09-22",
-      "observed_at": "2026-09-22T13:30:03.892000Z",
+      "observed_at": "2026-09-22T18:10:35.580000Z",
       "original_release_at": null,
       "period_end": null,
       "period_start": null,
       "provider": "crypto",
       "published_date": null,
       "raw_scope": null,
-      "raw_sha256": "b7f88086021121551e44ba48837e171313e8f6467aa3f7431015512e43134cfe",
+      "raw_sha256": "1b78be9c54c0fd1d9ec50aa3a803cb94d46755094070a4e2e4a1a32b09d69b54",
       "research_eligible": false,
       "scope": null,
       "seasonal_adjustment": null,
@@ -2228,7 +2228,7 @@
       "source_page": null,
       "source_publisher": null,
       "source_quality": "official_exchange_reported",
-      "source_reported_at": "2026-09-22T13:30:03.892000Z",
+      "source_reported_at": "2026-09-22T18:10:35.580000Z",
       "source_series_id": null,
       "source_status": null,
       "source_universe": null,
@@ -2238,7 +2238,7 @@
       "track": "crypto",
       "unit": "USD notional",
       "universe": null,
-      "value": 2624138146.479962
+      "value": 2645890778.1616797
     },
     {
       "accession": null,
@@ -2250,11 +2250,11 @@
       "discovery_mode": null,
       "discovery_status": null,
       "duration_months": null,
-      "elapsed_capture_seconds": 20478.808868,
+      "elapsed_capture_seconds": 16831.919631,
       "filed_date": null,
       "frequency": "current_snapshot",
       "fund_universe": null,
-      "known_by": "2026-09-22T13:30:03.398214Z",
+      "known_by": "2026-09-22T18:10:35.317845Z",
       "label": "CRYPTO_USDT_NET_ISSUANCE_PROXY",
       "layer": 5,
       "measurement_kind": null,
@@ -2271,12 +2271,12 @@
       "observation_date": null,
       "observed_at": null,
       "original_release_at": null,
-      "period_end": "2026-09-22T13:30:03.398214Z",
-      "period_start": "2026-09-22T07:48:44.589346Z",
+      "period_end": "2026-09-22T18:10:35.317845Z",
+      "period_start": "2026-09-22T13:30:03.398214Z",
       "provider": "crypto",
       "published_date": null,
       "raw_scope": null,
-      "raw_sha256": "e0377d395bd3c0412dd5764f9eb4aae165e8f38eb40021a58eb2f4ee0e694494",
+      "raw_sha256": "5e323024145d3109984cab41655cd4d9fe7c4b03548b0243bff94e9b71fba50c",
       "research_eligible": false,
       "scope": null,
       "seasonal_adjustment": null,
@@ -2297,7 +2297,7 @@
       "track": "crypto",
       "unit": "USDT tokens over capture interval",
       "universe": null,
-      "value": 8623453.47076416
+      "value": 27840178.20968628
     },
     {
       "accession": null,
@@ -2309,11 +2309,11 @@
       "discovery_mode": null,
       "discovery_status": null,
       "duration_months": null,
-      "elapsed_capture_seconds": 20478.808868,
+      "elapsed_capture_seconds": 16831.919631,
       "filed_date": null,
       "frequency": "current_snapshot",
       "fund_universe": null,
-      "known_by": "2026-09-22T13:30:03.398214Z",
+      "known_by": "2026-09-22T18:10:35.317845Z",
       "label": "CRYPTO_USDC_NET_ISSUANCE_PROXY",
       "layer": 5,
       "measurement_kind": null,
@@ -2330,12 +2330,12 @@
       "observation_date": null,
       "observed_at": null,
       "original_release_at": null,
-      "period_end": "2026-09-22T13:30:03.398214Z",
-      "period_start": "2026-09-22T07:48:44.589346Z",
+      "period_end": "2026-09-22T18:10:35.317845Z",
+      "period_start": "2026-09-22T13:30:03.398214Z",
       "provider": "crypto",
       "published_date": null,
       "raw_scope": null,
-      "raw_sha256": "e0377d395bd3c0412dd5764f9eb4aae165e8f38eb40021a58eb2f4ee0e694494",
+      "raw_sha256": "5e323024145d3109984cab41655cd4d9fe7c4b03548b0243bff94e9b71fba50c",
       "research_eligible": false,
       "scope": null,
       "seasonal_adjustment": null,
@@ -2356,7 +2356,7 @@
       "track": "crypto",
       "unit": "USDC tokens over capture interval",
       "universe": null,
-      "value": -903596320.4238586
+      "value": 700100854.4848175
     },
     {
       "accession": null,
@@ -2364,18 +2364,18 @@
       "aggregation_allowed": null,
       "block": null,
       "components": {
-        "USDC": -903596320.4238586,
-        "USDT": 8623453.47076416
+        "USDC": 700100854.4848175,
+        "USDT": 27840178.20968628
       },
       "covered_funds": null,
       "discovery_mode": null,
       "discovery_status": null,
       "duration_months": null,
-      "elapsed_capture_seconds": 20478.808868,
+      "elapsed_capture_seconds": 16831.919631,
       "filed_date": null,
       "frequency": "current_snapshot",
       "fund_universe": null,
-      "known_by": "2026-09-22T13:30:03.398214Z",
+      "known_by": "2026-09-22T18:10:35.317845Z",
       "label": "CRYPTO_USDT_USDC_NET_ISSUANCE_PROXY",
       "layer": 5,
       "measurement_kind": null,
@@ -2392,12 +2392,12 @@
       "observation_date": null,
       "observed_at": null,
       "original_release_at": null,
-      "period_end": "2026-09-22T13:30:03.398214Z",
-      "period_start": "2026-09-22T07:48:44.589346Z",
+      "period_end": "2026-09-22T18:10:35.317845Z",
+      "period_start": "2026-09-22T13:30:03.398214Z",
       "provider": "crypto",
       "published_date": null,
       "raw_scope": null,
-      "raw_sha256": "e0377d395bd3c0412dd5764f9eb4aae165e8f38eb40021a58eb2f4ee0e694494",
+      "raw_sha256": "5e323024145d3109984cab41655cd4d9fe7c4b03548b0243bff94e9b71fba50c",
       "research_eligible": false,
       "scope": null,
       "seasonal_adjustment": null,
@@ -2418,7 +2418,7 @@
       "track": "crypto",
       "unit": "USDT+USDC token change over capture interval",
       "universe": null,
-      "value": -894972866.9530945
+      "value": 727941032.6945038
     },
     {
       "accession": null,
@@ -4508,27 +4508,27 @@
   ],
   "providers": [
     {
-      "checked_at": "2026-09-22T13:29:46.258579Z",
+      "checked_at": "2026-09-22T18:10:19.278119Z",
       "errors": [],
       "label": "FRED · 중앙은행·은행·분포",
-      "last_success_at": "2026-09-22T13:29:46.258586Z",
+      "last_success_at": "2026-09-22T18:10:19.278126Z",
       "provider": "fred",
       "status": "ok",
       "success": 16,
       "total": 16
     },
     {
-      "checked_at": "2026-09-22T13:29:55.303606Z",
+      "checked_at": "2026-09-22T18:10:25.065694Z",
       "errors": [],
       "label": "PBoC · 중국 공식 통계",
-      "last_success_at": "2026-09-22T13:29:55.303613Z",
+      "last_success_at": "2026-09-22T18:10:25.065702Z",
       "provider": "pboc",
       "status": "ok",
       "success": 4,
       "total": 4
     },
     {
-      "checked_at": "2026-09-22T13:29:59.220083Z",
+      "checked_at": "2026-09-22T18:10:29.593987Z",
       "errors": [
         {
           "code": "newer_issuer_period_available",
@@ -4543,27 +4543,27 @@
       "total": 5
     },
     {
-      "checked_at": "2026-09-22T13:30:03.229271Z",
+      "checked_at": "2026-09-22T18:10:35.225287Z",
       "errors": [],
       "label": "기업 공식 공시 · 자사주 5개사",
-      "last_success_at": "2026-09-22T13:30:03.229277Z",
+      "last_success_at": "2026-09-22T18:10:35.225294Z",
       "provider": "issuer_buybacks",
       "status": "ok",
       "success": 5,
       "total": 5
     },
     {
-      "checked_at": "2026-09-22T13:30:03.980214Z",
+      "checked_at": "2026-09-22T18:10:35.641139Z",
       "errors": [],
       "label": "크립토 · 공급·레버리지",
-      "last_success_at": "2026-09-22T13:30:03.980221Z",
+      "last_success_at": "2026-09-22T18:10:35.641145Z",
       "provider": "crypto",
       "status": "ok",
       "success": 10,
       "total": 10
     },
     {
-      "checked_at": "2026-09-22T13:30:12.149317Z",
+      "checked_at": "2026-09-22T18:10:38.859841Z",
       "errors": [
         {
           "code": "source_fund_universe_changed",
@@ -4578,27 +4578,27 @@
       "total": 2
     },
     {
-      "checked_at": "2026-09-22T13:30:12.997712Z",
+      "checked_at": "2026-09-22T18:10:39.605315Z",
       "errors": [],
       "label": "채굴사 공시 · 실제 BTC 매도",
-      "last_success_at": "2026-09-22T13:30:12.997718Z",
+      "last_success_at": "2026-09-22T18:10:39.605321Z",
       "provider": "miner_flows",
       "status": "ok",
       "success": 2,
       "total": 2
     },
     {
-      "checked_at": "2026-09-22T13:30:14.079341Z",
+      "checked_at": "2026-09-22T18:10:42.612295Z",
       "errors": [],
       "label": "분포 · ACM·ECB HQLA",
-      "last_success_at": "2026-09-22T13:30:14.079347Z",
+      "last_success_at": "2026-09-22T18:10:42.612301Z",
       "provider": "funding_structure",
       "status": "ok",
       "success": 12,
       "total": 12
     },
     {
-      "checked_at": "2026-09-22T13:30:15.471826Z",
+      "checked_at": "2026-09-22T18:10:44.485715Z",
       "errors": [
         {
           "code": "http_403",
@@ -4618,7 +4618,7 @@
       "total": 10
     },
     {
-      "checked_at": "2026-09-22T13:31:11.038703Z",
+      "checked_at": "2026-09-22T18:10:56.137295Z",
       "errors": [
         {
           "code": "http_403",
@@ -4637,17 +4637,17 @@
       "total": 8
     },
     {
-      "checked_at": "2026-09-22T13:31:11.826586Z",
+      "checked_at": "2026-09-22T18:10:57.180135Z",
       "errors": [],
       "label": "BIS 역외 달러 · OFR 레포",
-      "last_success_at": "2026-09-22T13:31:11.826594Z",
+      "last_success_at": "2026-09-22T18:10:57.180141Z",
       "provider": "offshore",
       "status": "ok",
       "success": 5,
       "total": 5
     },
     {
-      "checked_at": "2026-09-22T13:31:11.990095Z",
+      "checked_at": "2026-09-22T18:11:03.916167Z",
       "errors": [
         {
           "code": "latest_public_quarter_stale",
