@@ -9,8 +9,8 @@
     "Only the latest five native observations are fetched, so older revisions can be missed.",
     "The collection covers a subset of the five-layer model; missing sources are not imputed."
   ],
-  "capture_id": "20261001T193813188809Z_c16b3258fe5f",
-  "completed_at": "2026-10-01T19:38:29.430049Z",
+  "capture_id": "20261001T235839137957Z_25fc785618c3",
+  "completed_at": "2026-10-01T23:58:54.180832Z",
   "derived": {
     "SOFR_IORB": {
       "formula": "100 * (SOFR - IORB), identical observation date",
@@ -21,12 +21,12 @@
           "series_id": "SOFR"
         },
         {
-          "raw_path": "raw/20261001T061040167395Z_b1829327d673/IORB.json",
-          "raw_sha256": "86a304dc0af26802304578082608644de0be598030e33feed82990d8d937f90f",
+          "raw_path": "raw/20261001T235839137957Z_25fc785618c3/IORB.json",
+          "raw_sha256": "40e2d038de25f99e86df149e6a30613fc472af1ef4c2dbb898643b2fa4d5d747",
           "series_id": "IORB"
         }
       ],
-      "known_by": "2026-10-01T13:33:54.565919Z",
+      "known_by": "2026-10-01T23:58:44.575285Z",
       "observation_date": "2026-09-30",
       "research_eligible": false,
       "status": "ok",
@@ -39,7 +39,7 @@
   "series": {
     "DPSACBW027SBOG": {
       "block": "sector_distribution",
-      "checked_at": "2026-10-01T19:38:21.388342Z",
+      "checked_at": "2026-10-01T23:58:46.291275Z",
       "error": null,
       "freshness": {
         "age_calendar_days": 15,
@@ -51,9 +51,9 @@
         "stale_after_days": 21
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/DPSACBW027SBOG.json",
-        "raw_sha256": "196cc04524bfedeac67bc9780eb83f860bfe0e065be38f1668191d2c5a97e9d5",
-        "retrieved_at": "2026-10-01T19:38:21.388342Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/DPSACBW027SBOG.json",
+        "raw_sha256": "22578ce9f769dd63495b972ce1f1b10f1eeea9ff61772b2c842b1635a97bfa7c",
+        "retrieved_at": "2026-10-01T23:58:46.291275Z"
       },
       "last_good": {
         "fingerprint": "9e11a8733926717c97a92abfe8c455f8adec29bef1b675170d2292765918016f",
@@ -112,7 +112,7 @@
     },
     "DRTSCILM": {
       "block": "bank_credit",
-      "checked_at": "2026-10-01T19:38:28.597288Z",
+      "checked_at": "2026-10-01T23:58:53.316609Z",
       "error": null,
       "freshness": {
         "age_calendar_days": 92,
@@ -124,9 +124,9 @@
         "stale_after_days": 190
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/DRTSCILM.json",
-        "raw_sha256": "59cb92103da0d43ff7fe8d541bff845d30358baf9cfc1a36121cef046d0d703c",
-        "retrieved_at": "2026-10-01T19:38:28.597288Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/DRTSCILM.json",
+        "raw_sha256": "89f71f8fbfd9bff708643f1b84c20d4266935697b51cfa22cf09f793ce5b1a55",
+        "retrieved_at": "2026-10-01T23:58:53.316609Z"
       },
       "last_good": {
         "fingerprint": "efd8d52673a8b9a03b82b446ec8878a5cbcc7b2c46d55dfe6826a3426fc7425d",
@@ -185,7 +185,7 @@
     },
     "ECBASSETSW": {
       "block": "ecb",
-      "checked_at": "2026-10-01T19:38:26.795880Z",
+      "checked_at": "2026-10-01T23:58:51.615956Z",
       "error": null,
       "freshness": {
         "age_calendar_days": 6,
@@ -197,9 +197,9 @@
         "stale_after_days": 21
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/ECBASSETSW.json",
-        "raw_sha256": "296c3289cdfa24a8b43b16b6f419cf86bd1ad185f3c3e9f4437891f5c5dab592",
-        "retrieved_at": "2026-10-01T19:38:26.795880Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/ECBASSETSW.json",
+        "raw_sha256": "3b412279bc72204e15a990710a8a0e721cc7b67f45e83f43c5507a0164c5cec1",
+        "retrieved_at": "2026-10-01T23:58:51.615956Z"
       },
       "last_good": {
         "fingerprint": "d9a5204b9546e354e96f72ce412997212c73bf49fb6a3baea9a2b5847b9b331b",
@@ -258,7 +258,7 @@
     },
     "IORB": {
       "block": "fed_funding",
-      "checked_at": "2026-10-01T19:38:18.912683Z",
+      "checked_at": "2026-10-01T23:58:44.575285Z",
       "error": null,
       "freshness": {
         "age_calendar_days": 0,
@@ -270,13 +270,13 @@
         "stale_after_days": 7
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/IORB.json",
-        "raw_sha256": "ca57f2bebe1c48132d5a7a4149ead8bbc8e86a0086a5225c5233858f14b12a96",
-        "retrieved_at": "2026-10-01T19:38:18.912683Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/IORB.json",
+        "raw_sha256": "40e2d038de25f99e86df149e6a30613fc472af1ef4c2dbb898643b2fa4d5d747",
+        "retrieved_at": "2026-10-01T23:58:44.575285Z"
       },
       "last_good": {
-        "fingerprint": "ab183e4f3c416eafd6ea8ac364ad1a9aed27ab874e7abbecd6dfdd14493fc301",
-        "known_by": "2026-10-01T06:10:45.428196Z",
+        "fingerprint": "c129e6d064e1702d9decf451b342cfc640acd00c94a2b68d933448cc008e88d3",
+        "known_by": "2026-10-01T23:58:44.575285Z",
         "observation_date": "2026-10-01",
         "observations": [
           {
@@ -311,13 +311,13 @@
           }
         ],
         "original_release_at": null,
-        "raw_path": "raw/20261001T061040167395Z_b1829327d673/IORB.json",
-        "raw_sha256": "86a304dc0af26802304578082608644de0be598030e33feed82990d8d937f90f",
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/IORB.json",
+        "raw_sha256": "40e2d038de25f99e86df149e6a30613fc472af1ef4c2dbb898643b2fa4d5d747",
         "release_timestamp_verified": false,
         "research_eligible": false,
-        "retrieved_at": "2026-10-01T06:10:45.428196Z",
+        "retrieved_at": "2026-10-01T23:58:44.575285Z",
         "source_frequency": "Daily, 7-Day",
-        "source_last_updated": "2026-09-30 15:31:28-05",
+        "source_last_updated": "2026-10-01 15:31:32-05",
         "source_units": "Percent",
         "source_url": "https://fred.stlouisfed.org/series/IORB",
         "source_vintage_end": "2026-10-01",
@@ -331,7 +331,7 @@
     },
     "JPNASSETS": {
       "block": "boj",
-      "checked_at": "2026-10-01T19:38:27.631370Z",
+      "checked_at": "2026-10-01T23:58:52.372584Z",
       "error": null,
       "freshness": {
         "age_calendar_days": 61,
@@ -343,9 +343,9 @@
         "stale_after_days": 75
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/JPNASSETS.json",
-        "raw_sha256": "5c88c8eb5130ce9b4eb855248e5a03fe8b250fb12a064e64d0bf8459091f7aca",
-        "retrieved_at": "2026-10-01T19:38:27.631370Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/JPNASSETS.json",
+        "raw_sha256": "d14a8db99f40835246e8e22c20aaeb293b650acc87581eebeeff9f54dde5e878",
+        "retrieved_at": "2026-10-01T23:58:52.372584Z"
       },
       "last_good": {
         "fingerprint": "c7f481958c9c75494f9c3d23eb9368bbfcc885d4b3b199a94b21733a8ea97e88",
@@ -404,7 +404,7 @@
     },
     "MMMFFAQ027S": {
       "block": "sector_distribution",
-      "checked_at": "2026-10-01T19:38:29.429105Z",
+      "checked_at": "2026-10-01T23:58:54.180070Z",
       "error": null,
       "freshness": {
         "age_calendar_days": 93,
@@ -416,9 +416,9 @@
         "stale_after_days": 190
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/MMMFFAQ027S.json",
-        "raw_sha256": "3e13573215a278fa17db6691f00c5774958c5709799d17a813d45690ad450cf2",
-        "retrieved_at": "2026-10-01T19:38:29.429105Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/MMMFFAQ027S.json",
+        "raw_sha256": "f538c7d743cb8910a981ce6cae4d170441275a047a4a254f1c46844524c21a5c",
+        "retrieved_at": "2026-10-01T23:58:54.180070Z"
       },
       "last_good": {
         "fingerprint": "a807e8a4b80b62ce3f33bbdea688a617ebb9639ad6b2c6d0953e670e00cbdfdb",
@@ -477,7 +477,7 @@
     },
     "RRPONTSYD": {
       "block": "fed",
-      "checked_at": "2026-10-01T19:38:16.355916Z",
+      "checked_at": "2026-10-01T23:58:42.101435Z",
       "error": null,
       "freshness": {
         "age_calendar_days": 0,
@@ -489,9 +489,9 @@
         "stale_after_days": 7
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/RRPONTSYD.json",
-        "raw_sha256": "7f5a4269cf310a1f55abe14e6abaabcc103ed48cf23fdd882fe857e5f902883a",
-        "retrieved_at": "2026-10-01T19:38:16.355916Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/RRPONTSYD.json",
+        "raw_sha256": "58fabd9a324de4b07b31bb2a0e627d2bbb22e7de82ce53f7534656136800accf",
+        "retrieved_at": "2026-10-01T23:58:42.101435Z"
       },
       "last_good": {
         "fingerprint": "0b17205f7f6ffba50774e785b6339109975179f2da51550a496a20362296a9e2",
@@ -550,7 +550,7 @@
     },
     "SOFR": {
       "block": "fed_funding",
-      "checked_at": "2026-10-01T19:38:18.035784Z",
+      "checked_at": "2026-10-01T23:58:43.722098Z",
       "error": null,
       "freshness": {
         "age_calendar_days": 1,
@@ -562,9 +562,9 @@
         "stale_after_days": 7
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/SOFR.json",
-        "raw_sha256": "d2b2e793c41e019e4747d5e32091cd9b29f2da5e1d198815f50e978a274db429",
-        "retrieved_at": "2026-10-01T19:38:18.035784Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/SOFR.json",
+        "raw_sha256": "650f281489af2149cfe02d18206710a66733f0ad3869cc653418fe3821481336",
+        "retrieved_at": "2026-10-01T23:58:43.722098Z"
       },
       "last_good": {
         "fingerprint": "c83701175577a4289bbf21ddcfc6b8e68259b50f070552c07ed905001450ed7e",
@@ -623,7 +623,7 @@
     },
     "TOTBKCR": {
       "block": "bank_credit",
-      "checked_at": "2026-10-01T19:38:19.734300Z",
+      "checked_at": "2026-10-01T23:58:45.528654Z",
       "error": null,
       "freshness": {
         "age_calendar_days": 15,
@@ -635,9 +635,9 @@
         "stale_after_days": 21
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/TOTBKCR.json",
-        "raw_sha256": "956a318368c8309876619cb9bf9e3c931ac7bd849d73e0d8868beaad695daef4",
-        "retrieved_at": "2026-10-01T19:38:19.734300Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/TOTBKCR.json",
+        "raw_sha256": "f0bdf132496601f7dd9e428f048d44d45ec555c9c7e6e8ac5e25a4f2ed70dfb6",
+        "retrieved_at": "2026-10-01T23:58:45.528654Z"
       },
       "last_good": {
         "fingerprint": "f145fb864383c26d0faca42ef9995c528e504c19e3dadd22a18b71a2ba9b484b",
@@ -696,7 +696,7 @@
     },
     "TOTLL": {
       "block": "bank_credit",
-      "checked_at": "2026-10-01T19:38:25.799450Z",
+      "checked_at": "2026-10-01T23:58:50.420363Z",
       "error": null,
       "freshness": {
         "age_calendar_days": 15,
@@ -708,9 +708,9 @@
         "stale_after_days": 21
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/TOTLL.json",
-        "raw_sha256": "b44f8fa553a353316b2595f70772c7f5b9d0ab5e9d9774abfed6da9875a51d61",
-        "retrieved_at": "2026-10-01T19:38:25.799450Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/TOTLL.json",
+        "raw_sha256": "58da6a8ed655c4415eac98027bc624e3dc204967d88d53bca0a81defbf0a0be8",
+        "retrieved_at": "2026-10-01T23:58:50.420363Z"
       },
       "last_good": {
         "fingerprint": "b26b50e67b86c042fdb5eaabbd0874d0567483204be86dd0a29dbdf365153d11",
@@ -769,71 +769,71 @@
     },
     "WALCL": {
       "block": "fed",
-      "checked_at": "2026-10-01T19:38:14.272471Z",
+      "checked_at": "2026-10-01T23:58:40.368792Z",
       "error": null,
       "freshness": {
-        "age_calendar_days": 8,
+        "age_calendar_days": 1,
         "basis": "native_observation_date",
-        "basis_date": "2026-09-23",
+        "basis_date": "2026-09-30",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 8,
+        "raw_reference_age_days": 1,
         "reference_date_stale": false,
         "stale_after_days": 21
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/WALCL.json",
-        "raw_sha256": "0182144327197a5e30890fbe3bc82ce2ca8aded18cfefaa9128972b89434cdb9",
-        "retrieved_at": "2026-10-01T19:38:14.272471Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/WALCL.json",
+        "raw_sha256": "6c132acb805483340cbb98f1f8e55c7526d394d5316f0ac7cd32c4a45bc21580",
+        "retrieved_at": "2026-10-01T23:58:40.368792Z"
       },
       "last_good": {
-        "fingerprint": "ca64f90522055593ceaf62bb21871aa8cb71ef3bda25419f6f62cef73f25e7ab",
-        "known_by": "2026-09-24T22:33:48.948699Z",
-        "observation_date": "2026-09-23",
+        "fingerprint": "ed5bd12e6b64c16ef778b5986c52bf74bbac6e4885ebefcfca40f6dc0280b125",
+        "known_by": "2026-10-01T23:58:40.368792Z",
+        "observation_date": "2026-09-30",
         "observations": [
           {
+            "date": "2026-09-30",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
+            "value": "6743031"
+          },
+          {
             "date": "2026-09-23",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "6747704"
           },
           {
             "date": "2026-09-16",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "6746548"
           },
           {
             "date": "2026-09-09",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "6740619"
           },
           {
             "date": "2026-09-02",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "6737204"
-          },
-          {
-            "date": "2026-08-26",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
-            "value": "6730912"
           }
         ],
         "original_release_at": null,
-        "raw_path": "raw/20260924T223347662109Z_8db8c87c94c4/WALCL.json",
-        "raw_sha256": "6cfc847a42db57b4e78a22d443f7c1cc432d48ae29c30e6813ef6f177f35a7a9",
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/WALCL.json",
+        "raw_sha256": "6c132acb805483340cbb98f1f8e55c7526d394d5316f0ac7cd32c4a45bc21580",
         "release_timestamp_verified": false,
         "research_eligible": false,
-        "retrieved_at": "2026-09-24T22:33:48.948699Z",
+        "retrieved_at": "2026-10-01T23:58:40.368792Z",
         "source_frequency": "Weekly, As of Wednesday",
-        "source_last_updated": "2026-09-24 15:32:20-05",
+        "source_last_updated": "2026-10-01 15:32:11-05",
         "source_units": "Millions of U.S. Dollars",
         "source_url": "https://fred.stlouisfed.org/series/WALCL",
-        "source_vintage_end": "2026-09-24",
-        "source_vintage_start": "2026-09-24",
-        "value": "6747704"
+        "source_vintage_end": "2026-10-01",
+        "source_vintage_start": "2026-10-01",
+        "value": "6743031"
       },
       "layer": 1,
       "research_eligible": false,
@@ -842,71 +842,71 @@
     },
     "WDTGAL": {
       "block": "fed",
-      "checked_at": "2026-10-01T19:38:24.921826Z",
+      "checked_at": "2026-10-01T23:58:49.366585Z",
       "error": null,
       "freshness": {
-        "age_calendar_days": 8,
+        "age_calendar_days": 1,
         "basis": "native_observation_date",
-        "basis_date": "2026-09-23",
+        "basis_date": "2026-09-30",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 8,
+        "raw_reference_age_days": 1,
         "reference_date_stale": false,
         "stale_after_days": 21
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/WDTGAL.json",
-        "raw_sha256": "fcb2140b6119800b47f26cf09c8cbca12b49983b76260df14d96c9a5f5bf8aaa",
-        "retrieved_at": "2026-10-01T19:38:24.921826Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/WDTGAL.json",
+        "raw_sha256": "630f898f119e092ad6bee55b596a9c26fcafcfe776ea39b1859f376c17bab438",
+        "retrieved_at": "2026-10-01T23:58:49.366585Z"
       },
       "last_good": {
-        "fingerprint": "c1a96a2de28485fee02aa08a959d359e4d893b96b6e090ae8dc7c458d8ca3b2a",
-        "known_by": "2026-09-24T22:33:58.884487Z",
-        "observation_date": "2026-09-23",
+        "fingerprint": "c8e197994f51c842da25661540d3622db2b71ff986ae8317261259e0bc6ee06b",
+        "known_by": "2026-10-01T23:58:49.366585Z",
+        "observation_date": "2026-09-30",
         "observations": [
           {
+            "date": "2026-09-30",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
+            "value": "984046"
+          },
+          {
             "date": "2026-09-23",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "947317"
           },
           {
             "date": "2026-09-16",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "991708"
           },
           {
             "date": "2026-09-09",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "843705"
           },
           {
             "date": "2026-09-02",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "944364"
-          },
-          {
-            "date": "2026-08-26",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
-            "value": "959435"
           }
         ],
         "original_release_at": null,
-        "raw_path": "raw/20260924T223347662109Z_8db8c87c94c4/WDTGAL.json",
-        "raw_sha256": "e29ef7918367104a3f3fe2f8894e124efa8f9430342e083eb9089721f35f91eb",
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/WDTGAL.json",
+        "raw_sha256": "630f898f119e092ad6bee55b596a9c26fcafcfe776ea39b1859f376c17bab438",
         "release_timestamp_verified": false,
         "research_eligible": false,
-        "retrieved_at": "2026-09-24T22:33:58.884487Z",
+        "retrieved_at": "2026-10-01T23:58:49.366585Z",
         "source_frequency": "Weekly, As of Wednesday",
-        "source_last_updated": "2026-09-24 15:32:49-05",
+        "source_last_updated": "2026-10-01 15:32:41-05",
         "source_units": "Millions of U.S. Dollars",
         "source_url": "https://fred.stlouisfed.org/series/WDTGAL",
-        "source_vintage_end": "2026-09-24",
-        "source_vintage_start": "2026-09-24",
-        "value": "947317"
+        "source_vintage_end": "2026-10-01",
+        "source_vintage_start": "2026-10-01",
+        "value": "984046"
       },
       "layer": 1,
       "research_eligible": false,
@@ -915,71 +915,71 @@
     },
     "WLRRAOL": {
       "block": "fed",
-      "checked_at": "2026-10-01T19:38:24.083375Z",
+      "checked_at": "2026-10-01T23:58:48.546693Z",
       "error": null,
       "freshness": {
-        "age_calendar_days": 8,
+        "age_calendar_days": 1,
         "basis": "native_observation_date",
-        "basis_date": "2026-09-23",
+        "basis_date": "2026-09-30",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 8,
+        "raw_reference_age_days": 1,
         "reference_date_stale": false,
         "stale_after_days": 21
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/WLRRAOL.json",
-        "raw_sha256": "8698d8cb4f4e56bc416e21d191589e2dcfc79178923f5f55bb98598544657f30",
-        "retrieved_at": "2026-10-01T19:38:24.083375Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/WLRRAOL.json",
+        "raw_sha256": "4ca888d2706173dadcb05b694d422da69f22bfdba7591c721a495b3126fb5bf7",
+        "retrieved_at": "2026-10-01T23:58:48.546693Z"
       },
       "last_good": {
-        "fingerprint": "23ce3f4679d70ecf200835f563293bcb6558cf2691381a700655ebfa1c85ffb2",
-        "known_by": "2026-09-24T22:33:58.025355Z",
-        "observation_date": "2026-09-23",
+        "fingerprint": "599dc646bf79ea9a94843e2e570527e1f74dfef58da028d47680c0b3213dc417",
+        "known_by": "2026-10-01T23:58:48.546693Z",
+        "observation_date": "2026-09-30",
         "observations": [
           {
+            "date": "2026-09-30",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
+            "value": "11539"
+          },
+          {
             "date": "2026-09-23",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "461"
           },
           {
             "date": "2026-09-16",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "5375"
           },
           {
             "date": "2026-09-09",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "432"
           },
           {
             "date": "2026-09-02",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "525"
-          },
-          {
-            "date": "2026-08-26",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
-            "value": "702"
           }
         ],
         "original_release_at": null,
-        "raw_path": "raw/20260924T223347662109Z_8db8c87c94c4/WLRRAOL.json",
-        "raw_sha256": "3ee745790e09512e5c6d37236cd4888cfb3bbdda7ef92a30a7e6d2f32cb6b74c",
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/WLRRAOL.json",
+        "raw_sha256": "4ca888d2706173dadcb05b694d422da69f22bfdba7591c721a495b3126fb5bf7",
         "release_timestamp_verified": false,
         "research_eligible": false,
-        "retrieved_at": "2026-09-24T22:33:58.025355Z",
+        "retrieved_at": "2026-10-01T23:58:48.546693Z",
         "source_frequency": "Weekly, As of Wednesday",
-        "source_last_updated": "2026-09-24 15:32:13-05",
+        "source_last_updated": "2026-10-01 15:32:33-05",
         "source_units": "Millions of U.S. Dollars",
         "source_url": "https://fred.stlouisfed.org/series/WLRRAOL",
-        "source_vintage_end": "2026-09-24",
-        "source_vintage_start": "2026-09-24",
-        "value": "461"
+        "source_vintage_end": "2026-10-01",
+        "source_vintage_start": "2026-10-01",
+        "value": "11539"
       },
       "layer": 1,
       "research_eligible": false,
@@ -988,71 +988,71 @@
     },
     "WRBWFRBL": {
       "block": "fed",
-      "checked_at": "2026-10-01T19:38:23.262909Z",
+      "checked_at": "2026-10-01T23:58:47.370306Z",
       "error": null,
       "freshness": {
-        "age_calendar_days": 8,
+        "age_calendar_days": 1,
         "basis": "native_observation_date",
-        "basis_date": "2026-09-23",
+        "basis_date": "2026-09-30",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 8,
+        "raw_reference_age_days": 1,
         "reference_date_stale": false,
         "stale_after_days": 21
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/WRBWFRBL.json",
-        "raw_sha256": "6b40f27052ae6976a8cf7930469b9ae1ad87a932d06cbba85b08666c4926d0f9",
-        "retrieved_at": "2026-10-01T19:38:23.262909Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/WRBWFRBL.json",
+        "raw_sha256": "6aa92b4d647d5e94e8982109628695f2010478c4ecf1e9c85660880036b63d29",
+        "retrieved_at": "2026-10-01T23:58:47.370306Z"
       },
       "last_good": {
-        "fingerprint": "798e73bf2d1540ea8cb81e48f8175bbe2a540c00c7301327f631e29ab7b9def8",
-        "known_by": "2026-09-24T22:33:57.060355Z",
-        "observation_date": "2026-09-23",
+        "fingerprint": "8dbb97923819a5c8f7795664db2a257a1f159d50c1947718f93f4c58c7a90bc3",
+        "known_by": "2026-10-01T23:58:47.370306Z",
+        "observation_date": "2026-09-30",
         "observations": [
           {
+            "date": "2026-09-30",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
+            "value": "2881686"
+          },
+          {
             "date": "2026-09-23",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "2969922"
           },
           {
             "date": "2026-09-16",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "2921536"
           },
           {
             "date": "2026-09-09",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "3036508"
           },
           {
             "date": "2026-09-02",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "2929285"
-          },
-          {
-            "date": "2026-08-26",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
-            "value": "2916824"
           }
         ],
         "original_release_at": null,
-        "raw_path": "raw/20260924T223347662109Z_8db8c87c94c4/WRBWFRBL.json",
-        "raw_sha256": "107339763f6e3ce2422c2e30d9f7e2bfcfadbcc6639c84dd69af3b9d8ef897b3",
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/WRBWFRBL.json",
+        "raw_sha256": "6aa92b4d647d5e94e8982109628695f2010478c4ecf1e9c85660880036b63d29",
         "release_timestamp_verified": false,
         "research_eligible": false,
-        "retrieved_at": "2026-09-24T22:33:57.060355Z",
+        "retrieved_at": "2026-10-01T23:58:47.370306Z",
         "source_frequency": "Weekly, As of Wednesday",
-        "source_last_updated": "2026-09-24 15:31:45-05",
+        "source_last_updated": "2026-10-01 15:31:56-05",
         "source_units": "Millions of U.S. Dollars",
         "source_url": "https://fred.stlouisfed.org/series/WRBWFRBL",
-        "source_vintage_end": "2026-09-24",
-        "source_vintage_start": "2026-09-24",
-        "value": "2969922"
+        "source_vintage_end": "2026-10-01",
+        "source_vintage_start": "2026-10-01",
+        "value": "2881686"
       },
       "layer": 1,
       "research_eligible": false,
@@ -1061,71 +1061,71 @@
     },
     "WRESBAL": {
       "block": "fed",
-      "checked_at": "2026-10-01T19:38:15.436123Z",
+      "checked_at": "2026-10-01T23:58:41.273586Z",
       "error": null,
       "freshness": {
-        "age_calendar_days": 8,
+        "age_calendar_days": 1,
         "basis": "native_observation_date",
-        "basis_date": "2026-09-23",
+        "basis_date": "2026-09-30",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 8,
+        "raw_reference_age_days": 1,
         "reference_date_stale": false,
         "stale_after_days": 21
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/WRESBAL.json",
-        "raw_sha256": "242f0854e4f1313489e915f2e2902a1b013e01c8fab1f749ca25c24885d22973",
-        "retrieved_at": "2026-10-01T19:38:15.436123Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/WRESBAL.json",
+        "raw_sha256": "36ce2319aa10af645a704fd9aeda7884cdfdb3b27caef13c20e1df5c6ed5d3a3",
+        "retrieved_at": "2026-10-01T23:58:41.273586Z"
       },
       "last_good": {
-        "fingerprint": "cccd17b1e65b885d207d31d5b3c5824aa278380af234899a5777970cd384e785",
-        "known_by": "2026-09-24T22:33:49.782999Z",
-        "observation_date": "2026-09-23",
+        "fingerprint": "11a86a127f3ba26cee9c63ffad04f27e961e6152ab5957e7b29537c0f8d7a50b",
+        "known_by": "2026-10-01T23:58:41.273586Z",
+        "observation_date": "2026-09-30",
         "observations": [
           {
+            "date": "2026-09-30",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
+            "value": "2948090"
+          },
+          {
             "date": "2026-09-23",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "2930193"
           },
           {
             "date": "2026-09-16",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "3013794"
           },
           {
             "date": "2026-09-09",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "2991310"
           },
           {
             "date": "2026-09-02",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "2894531"
-          },
-          {
-            "date": "2026-08-26",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
-            "value": "2924936"
           }
         ],
         "original_release_at": null,
-        "raw_path": "raw/20260924T223347662109Z_8db8c87c94c4/WRESBAL.json",
-        "raw_sha256": "1ea4c6843d19fa98daf199974ec09352012edd61b0f9d631f416f80121249450",
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/WRESBAL.json",
+        "raw_sha256": "36ce2319aa10af645a704fd9aeda7884cdfdb3b27caef13c20e1df5c6ed5d3a3",
         "release_timestamp_verified": false,
         "research_eligible": false,
-        "retrieved_at": "2026-09-24T22:33:49.782999Z",
+        "retrieved_at": "2026-10-01T23:58:41.273586Z",
         "source_frequency": "Weekly, Ending Wednesday",
-        "source_last_updated": "2026-09-24 15:31:52-05",
+        "source_last_updated": "2026-10-01 15:32:01-05",
         "source_units": "Millions of U.S. Dollars",
         "source_url": "https://fred.stlouisfed.org/series/WRESBAL",
-        "source_vintage_end": "2026-09-24",
-        "source_vintage_start": "2026-09-24",
-        "value": "2930193"
+        "source_vintage_end": "2026-10-01",
+        "source_vintage_start": "2026-10-01",
+        "value": "2948090"
       },
       "layer": 1,
       "research_eligible": false,
@@ -1134,71 +1134,71 @@
     },
     "WTREGEN": {
       "block": "fed",
-      "checked_at": "2026-10-01T19:38:17.239970Z",
+      "checked_at": "2026-10-01T23:58:42.873426Z",
       "error": null,
       "freshness": {
-        "age_calendar_days": 8,
+        "age_calendar_days": 1,
         "basis": "native_observation_date",
-        "basis_date": "2026-09-23",
+        "basis_date": "2026-09-30",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 8,
+        "raw_reference_age_days": 1,
         "reference_date_stale": false,
         "stale_after_days": 21
       },
       "last_capture": {
-        "raw_path": "raw/20261001T193813188809Z_c16b3258fe5f/WTREGEN.json",
-        "raw_sha256": "50e2d07cea16e0aa50e209da4526d039595faebda6fdcc6693b0327c774eba66",
-        "retrieved_at": "2026-10-01T19:38:17.239970Z"
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/WTREGEN.json",
+        "raw_sha256": "fe745be1de56675125a9f61267855cee9f74bc85766160e10f88a1a797b0411d",
+        "retrieved_at": "2026-10-01T23:58:42.873426Z"
       },
       "last_good": {
-        "fingerprint": "1cb6cdc58e46779fc65a30b94d181cf61fa994fe449400ee628d3ef85464dadd",
-        "known_by": "2026-09-24T22:33:52.054558Z",
-        "observation_date": "2026-09-23",
+        "fingerprint": "400ce4d3496affa4c8aaf979b5cf4dfb8fbe069a3dab93d1da6135d678c04851",
+        "known_by": "2026-10-01T23:58:42.873426Z",
+        "observation_date": "2026-09-30",
         "observations": [
           {
+            "date": "2026-09-30",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
+            "value": "948674"
+          },
+          {
             "date": "2026-09-23",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "977084"
           },
           {
             "date": "2026-09-16",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "877028"
           },
           {
             "date": "2026-09-09",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "883335"
           },
           {
             "date": "2026-09-02",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
+            "realtime_end": "2026-10-01",
+            "realtime_start": "2026-10-01",
             "value": "967935"
-          },
-          {
-            "date": "2026-08-26",
-            "realtime_end": "2026-09-24",
-            "realtime_start": "2026-09-24",
-            "value": "950736"
           }
         ],
         "original_release_at": null,
-        "raw_path": "raw/20260924T223347662109Z_8db8c87c94c4/WTREGEN.json",
-        "raw_sha256": "366b0989c209a4ec0ba073500a1fce37961cfa06ee24c5be6097397232002c8e",
+        "raw_path": "raw/20261001T235839137957Z_25fc785618c3/WTREGEN.json",
+        "raw_sha256": "fe745be1de56675125a9f61267855cee9f74bc85766160e10f88a1a797b0411d",
         "release_timestamp_verified": false,
         "research_eligible": false,
-        "retrieved_at": "2026-09-24T22:33:52.054558Z",
+        "retrieved_at": "2026-10-01T23:58:42.873426Z",
         "source_frequency": "Weekly, Ending Wednesday",
-        "source_last_updated": "2026-09-24 15:32:15-05",
+        "source_last_updated": "2026-10-01 15:31:57-05",
         "source_units": "Millions of U.S. Dollars",
         "source_url": "https://fred.stlouisfed.org/series/WTREGEN",
-        "source_vintage_end": "2026-09-24",
-        "source_vintage_start": "2026-09-24",
-        "value": "977084"
+        "source_vintage_end": "2026-10-01",
+        "source_vintage_start": "2026-10-01",
+        "value": "948674"
       },
       "layer": 1,
       "research_eligible": false,
@@ -1206,5 +1206,5 @@
       "status": "ok"
     }
   },
-  "started_at": "2026-10-01T19:38:13.188809Z"
+  "started_at": "2026-10-01T23:58:39.137957Z"
 }
