@@ -3,100 +3,95 @@
     {
       "age_calendar_days": 1,
       "asset": "BTC",
-      "business_date": "2026-10-05",
-      "changed": false,
-      "checked_at": "2026-10-07T01:40:17.850905Z",
+      "business_date": "2026-10-06",
+      "changed": true,
+      "checked_at": "2026-10-07T08:55:10.743766Z",
       "covered_funds": 12,
       "error": null,
-      "fingerprint": "b4fff7b4e05732142244bb7bab9b35538d03affe6d0454f19c4ffb1930a42307",
+      "fingerprint": "e4638f03fc3b09342e04e879696c4d76905ea566d46d2158977a00181296102c",
       "last_good_observation": {
         "asset": "BTC",
-        "component_sum": -89.8,
+        "component_sum": 118.8,
         "components": [
           {
-            "business_date": "2026-10-05",
+            "business_date": "2026-10-06",
             "ticker": "IBIT",
             "unit": "million USD",
-            "value": 69.9
+            "value": 122.0
           },
           {
-            "business_date": "2026-10-05",
+            "business_date": "2026-10-06",
             "ticker": "FBTC",
             "unit": "million USD",
-            "value": -74.5
+            "value": 0.0
           },
           {
-            "business_date": "2026-10-05",
+            "business_date": "2026-10-06",
             "ticker": "BITB",
             "unit": "million USD",
             "value": 0.0
           },
           {
-            "business_date": "2026-10-05",
+            "business_date": "2026-10-06",
             "ticker": "ARKB",
             "unit": "million USD",
-            "value": -85.2
+            "value": 0.0
           },
           {
-            "business_date": "2026-10-05",
+            "business_date": "2026-10-06",
             "ticker": "BTCO",
             "unit": "million USD",
             "value": 0.0
           },
           {
-            "business_date": "2026-10-05",
+            "business_date": "2026-10-06",
             "ticker": "EZBC",
             "unit": "million USD",
             "value": 0.0
           },
           {
-            "business_date": "2026-10-05",
+            "business_date": "2026-10-06",
             "ticker": "BRRR",
             "unit": "million USD",
             "value": 0.0
           },
           {
-            "business_date": "2026-10-05",
+            "business_date": "2026-10-06",
             "ticker": "HODL",
             "unit": "million USD",
             "value": 0.0
           },
           {
-            "business_date": "2026-10-05",
+            "business_date": "2026-10-06",
             "ticker": "BTCW",
             "unit": "million USD",
             "value": 0.0
           },
           {
-            "business_date": "2026-10-05",
+            "business_date": "2026-10-06",
             "ticker": "MSBT",
             "unit": "million USD",
-            "value": 0.0
+            "value": 7.8
           },
           {
-            "business_date": "2026-10-05",
+            "business_date": "2026-10-06",
             "ticker": "GBTC",
             "unit": "million USD",
             "value": 0.0
           },
           {
-            "business_date": "2026-10-05",
+            "business_date": "2026-10-06",
             "ticker": "BTC",
             "unit": "million USD",
-            "value": 0.0
+            "value": -11.0
           }
         ],
         "components_complete": true,
         "covered_funds": 12,
         "frequency": "daily_business_date",
-        "known_by": "2026-10-06T10:34:02.526709Z",
+        "known_by": "2026-10-07T08:55:10.743766Z",
         "label": "BTC 현물 ETF · 일별 순유입 (Farside)",
-        "latest_excluded_dates": [
-          {
-            "date": "2026-10-06",
-            "reason": "current_new_york_date_provisional"
-          }
-        ],
+        "latest_excluded_dates": [],
         "layer": 5,
         "method": "publisher_reported_net_flow",
         "notes": [
@@ -104,25 +99,25 @@
           "12개 공시 열이 완전한 동일 영업일; 당일 NY 날짜 제외",
           "음수는 순유출, 0은 명시적 영(零) 흐름; AUM 변화로 계산하지 않음"
         ],
-        "observation_date": "2026-10-05",
+        "observation_date": "2026-10-06",
         "original_release_at": null,
-        "period_end": "2026-10-05",
-        "period_start": "2026-10-05",
+        "period_end": "2026-10-06",
+        "period_start": "2026-10-06",
         "provider": "etf_flows",
-        "published_total": -89.8,
-        "raw_path": "raw/20261006T103401004674Z_67e15f389143/btc_flow_table.html",
+        "published_total": 118.8,
+        "raw_path": "raw/20261007T085509277443Z_93def052cf6d/btc_flow_table.html",
         "raw_scope": "exact_flow_table_html_fragment_excluding_page_footer",
-        "raw_sha256": "7ade8b77292d567a99a33d125394c0e3c356e4a351adf9efb9b14afaf480afcd",
+        "raw_sha256": "3c394234521454b8ed5a22c1dc5f83a9f571455b9d3155be62358f41ad24f6fc",
         "release_timestamp_verified": false,
         "research_eligible": false,
-        "retrieved_at": "2026-10-06T10:34:02.526709Z",
+        "retrieved_at": "2026-10-07T08:55:10.743766Z",
         "role": "flow",
         "rounding_difference": 0.0,
         "rounding_tolerance": 0.65,
         "series_id": "ETF_BTC_SPOT_NET_FLOW_FARSIDE",
         "source_publisher": "Farside Investors",
         "source_quality": "third_party_reported_underlying_cash_method_unverified",
-        "source_response_sha256": "8d90d2f8e1993b741ee826faa321826837c6eb8b05337aab37da521294e27e85",
+        "source_response_sha256": "34eb082c37008a5748c8958c96782e77785a06863393763e863ea74143b5630b",
         "source_universe": [
           "IBIT",
           "FBTC",
@@ -142,7 +137,7 @@
         "track": "crypto",
         "unit": "million USD",
         "unit_evidence_heading": "Bitcoin ETF Flow (US$m)",
-        "value": -89.8
+        "value": 118.8
       },
       "series_id": "ETF_BTC_SPOT_NET_FLOW_FARSIDE",
       "stale_after_days": 7,
@@ -150,7 +145,7 @@
     },
     {
       "asset": "ETH",
-      "checked_at": "2026-10-07T01:40:18.960738Z",
+      "checked_at": "2026-10-07T08:55:12.113094Z",
       "error": "source_fund_universe_changed",
       "fingerprint": "a57ca4f5a55f0b5a0a11898d30cfb59fb861e8f10352ff1ead5afb0869752ff4",
       "last_good_observation": {
@@ -292,7 +287,7 @@
     "Only BTC and ETH US spot-product universes on the source tables are covered; equity ETF flows and other crypto products remain absent.",
     "Capture time is the earliest knowability certified by this collector; a business date is not an original publication timestamp."
   ],
-  "capture_id": "20261007T014016711014Z_3c8a34b81a0e",
+  "capture_id": "20261007T085509277443Z_93def052cf6d",
   "errors": [
     {
       "asset": "ETH",
@@ -301,7 +296,7 @@
       "series_id": "ETF_ETH_SPOT_NET_FLOW_FARSIDE"
     }
   ],
-  "fetched_at": "2026-10-07T01:40:18.960769Z",
+  "fetched_at": "2026-10-07T08:55:12.113135Z",
   "limitations": [
     "Underlying flow construction and revisions are not independently audited against each issuer's creations and redemptions.",
     "The current New York calendar date is deliberately excluded, even if all cells are filled; this introduces a conservative reporting delay.",
@@ -314,92 +309,87 @@
   "observations": [
     {
       "asset": "BTC",
-      "component_sum": -89.8,
+      "component_sum": 118.8,
       "components": [
         {
-          "business_date": "2026-10-05",
+          "business_date": "2026-10-06",
           "ticker": "IBIT",
           "unit": "million USD",
-          "value": 69.9
+          "value": 122.0
         },
         {
-          "business_date": "2026-10-05",
+          "business_date": "2026-10-06",
           "ticker": "FBTC",
           "unit": "million USD",
-          "value": -74.5
+          "value": 0.0
         },
         {
-          "business_date": "2026-10-05",
+          "business_date": "2026-10-06",
           "ticker": "BITB",
           "unit": "million USD",
           "value": 0.0
         },
         {
-          "business_date": "2026-10-05",
+          "business_date": "2026-10-06",
           "ticker": "ARKB",
           "unit": "million USD",
-          "value": -85.2
+          "value": 0.0
         },
         {
-          "business_date": "2026-10-05",
+          "business_date": "2026-10-06",
           "ticker": "BTCO",
           "unit": "million USD",
           "value": 0.0
         },
         {
-          "business_date": "2026-10-05",
+          "business_date": "2026-10-06",
           "ticker": "EZBC",
           "unit": "million USD",
           "value": 0.0
         },
         {
-          "business_date": "2026-10-05",
+          "business_date": "2026-10-06",
           "ticker": "BRRR",
           "unit": "million USD",
           "value": 0.0
         },
         {
-          "business_date": "2026-10-05",
+          "business_date": "2026-10-06",
           "ticker": "HODL",
           "unit": "million USD",
           "value": 0.0
         },
         {
-          "business_date": "2026-10-05",
+          "business_date": "2026-10-06",
           "ticker": "BTCW",
           "unit": "million USD",
           "value": 0.0
         },
         {
-          "business_date": "2026-10-05",
+          "business_date": "2026-10-06",
           "ticker": "MSBT",
           "unit": "million USD",
-          "value": 0.0
+          "value": 7.8
         },
         {
-          "business_date": "2026-10-05",
+          "business_date": "2026-10-06",
           "ticker": "GBTC",
           "unit": "million USD",
           "value": 0.0
         },
         {
-          "business_date": "2026-10-05",
+          "business_date": "2026-10-06",
           "ticker": "BTC",
           "unit": "million USD",
-          "value": 0.0
+          "value": -11.0
         }
       ],
       "components_complete": true,
       "covered_funds": 12,
       "frequency": "daily_business_date",
-      "known_by": "2026-10-06T10:34:02.526709Z",
+      "known_by": "2026-10-07T08:55:10.743766Z",
       "label": "BTC 현물 ETF · 일별 순유입 (Farside)",
-      "latest_excluded_dates": [
-        {
-          "date": "2026-10-06",
-          "reason": "current_new_york_date_provisional"
-        }
-      ],
+      "latest_excluded_dates": [],
       "layer": 5,
       "method": "publisher_reported_net_flow",
       "notes": [
@@ -407,25 +397,25 @@
         "12개 공시 열이 완전한 동일 영업일; 당일 NY 날짜 제외",
         "음수는 순유출, 0은 명시적 영(零) 흐름; AUM 변화로 계산하지 않음"
       ],
-      "observation_date": "2026-10-05",
+      "observation_date": "2026-10-06",
       "original_release_at": null,
-      "period_end": "2026-10-05",
-      "period_start": "2026-10-05",
+      "period_end": "2026-10-06",
+      "period_start": "2026-10-06",
       "provider": "etf_flows",
-      "published_total": -89.8,
-      "raw_path": "raw/20261006T103401004674Z_67e15f389143/btc_flow_table.html",
+      "published_total": 118.8,
+      "raw_path": "raw/20261007T085509277443Z_93def052cf6d/btc_flow_table.html",
       "raw_scope": "exact_flow_table_html_fragment_excluding_page_footer",
-      "raw_sha256": "7ade8b77292d567a99a33d125394c0e3c356e4a351adf9efb9b14afaf480afcd",
+      "raw_sha256": "3c394234521454b8ed5a22c1dc5f83a9f571455b9d3155be62358f41ad24f6fc",
       "release_timestamp_verified": false,
       "research_eligible": false,
-      "retrieved_at": "2026-10-06T10:34:02.526709Z",
+      "retrieved_at": "2026-10-07T08:55:10.743766Z",
       "role": "flow",
       "rounding_difference": 0.0,
       "rounding_tolerance": 0.65,
       "series_id": "ETF_BTC_SPOT_NET_FLOW_FARSIDE",
       "source_publisher": "Farside Investors",
       "source_quality": "third_party_reported_underlying_cash_method_unverified",
-      "source_response_sha256": "8d90d2f8e1993b741ee826faa321826837c6eb8b05337aab37da521294e27e85",
+      "source_response_sha256": "34eb082c37008a5748c8958c96782e77785a06863393763e863ea74143b5630b",
       "source_universe": [
         "IBIT",
         "FBTC",
@@ -445,16 +435,16 @@
       "track": "crypto",
       "unit": "million USD",
       "unit_evidence_heading": "Bitcoin ETF Flow (US$m)",
-      "value": -89.8
+      "value": 118.8
     }
   ],
   "provider": "etf_flows",
   "raw_captures": [
     {
       "asset": "BTC",
-      "raw_path": "raw/20261007T014016711014Z_3c8a34b81a0e/btc_flow_table.html",
-      "raw_sha256": "7bc2038353efad6e6fc8c32c56cf71f9210c50f2d7ddf3dce837ea68c10827e6",
-      "retrieved_at": "2026-10-07T01:40:17.850905Z"
+      "raw_path": "raw/20261007T085509277443Z_93def052cf6d/btc_flow_table.html",
+      "raw_sha256": "3c394234521454b8ed5a22c1dc5f83a9f571455b9d3155be62358f41ad24f6fc",
+      "retrieved_at": "2026-10-07T08:55:10.743766Z"
     }
   ],
   "research_eligible": false,
@@ -583,7 +573,7 @@
   ],
   "schema_version": 1,
   "stale": 0,
-  "started_at": "2026-10-07T01:40:16.711014Z",
+  "started_at": "2026-10-07T08:55:09.277443Z",
   "status": "partial",
   "success": 1,
   "total": 2
