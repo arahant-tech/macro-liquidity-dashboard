@@ -1,11 +1,11 @@
 {
   "asset_status": [
     {
-      "age_calendar_days": 1,
+      "age_calendar_days": 2,
       "asset": "BTC",
       "business_date": "2026-10-13",
       "changed": false,
-      "checked_at": "2026-10-14T23:59:21.882890Z",
+      "checked_at": "2026-10-15T04:54:06.363994Z",
       "covered_funds": 12,
       "error": null,
       "fingerprint": "bc4861c3af31834e4dd71144abe064ce3918e3f9559ca5f9d346e15d803df0ee",
@@ -94,7 +94,7 @@
         "latest_excluded_dates": [
           {
             "date": "2026-10-14",
-            "reason": "current_new_york_date_provisional"
+            "reason": "missing_or_nonnumeric_component"
           }
         ],
         "layer": 5,
@@ -102,7 +102,8 @@
         "notes": [
           "게시자 보고 순유입; 발행사 결제현금 독립 인증 아님",
           "12개 공시 열이 완전한 동일 영업일; 당일 NY 날짜 제외",
-          "음수는 순유출, 0은 명시적 영(零) 흐름; AUM 변화로 계산하지 않음"
+          "음수는 순유출, 0은 명시적 영(零) 흐름; AUM 변화로 계산하지 않음",
+          "더 최근의 2026-10-14 행 제외: missing_or_nonnumeric_component"
         ],
         "observation_date": "2026-10-13",
         "original_release_at": null,
@@ -138,7 +139,7 @@
           "BTC"
         ],
         "source_url": "https://farside.co.uk/btc/",
-        "status": "ok",
+        "status": "partial",
         "track": "crypto",
         "unit": "million USD",
         "unit_evidence_heading": "Bitcoin ETF Flow (US$m)",
@@ -146,11 +147,11 @@
       },
       "series_id": "ETF_BTC_SPOT_NET_FLOW_FARSIDE",
       "stale_after_days": 7,
-      "status": "ok"
+      "status": "partial"
     },
     {
       "asset": "ETH",
-      "checked_at": "2026-10-14T23:59:22.965874Z",
+      "checked_at": "2026-10-15T04:54:07.580088Z",
       "error": "source_fund_universe_changed",
       "fingerprint": "a57ca4f5a55f0b5a0a11898d30cfb59fb861e8f10352ff1ead5afb0869752ff4",
       "last_good_observation": {
@@ -292,7 +293,7 @@
     "Only BTC and ETH US spot-product universes on the source tables are covered; equity ETF flows and other crypto products remain absent.",
     "Capture time is the earliest knowability certified by this collector; a business date is not an original publication timestamp."
   ],
-  "capture_id": "20261014T235920731119Z_1994f8b2778a",
+  "capture_id": "20261015T045401477929Z_5fe632f190a8",
   "errors": [
     {
       "asset": "ETH",
@@ -301,7 +302,7 @@
       "series_id": "ETF_ETH_SPOT_NET_FLOW_FARSIDE"
     }
   ],
-  "fetched_at": "2026-10-14T23:59:22.965899Z",
+  "fetched_at": "2026-10-15T04:54:07.580113Z",
   "limitations": [
     "Underlying flow construction and revisions are not independently audited against each issuer's creations and redemptions.",
     "The current New York calendar date is deliberately excluded, even if all cells are filled; this introduces a conservative reporting delay.",
@@ -397,7 +398,7 @@
       "latest_excluded_dates": [
         {
           "date": "2026-10-14",
-          "reason": "current_new_york_date_provisional"
+          "reason": "missing_or_nonnumeric_component"
         }
       ],
       "layer": 5,
@@ -405,7 +406,8 @@
       "notes": [
         "게시자 보고 순유입; 발행사 결제현금 독립 인증 아님",
         "12개 공시 열이 완전한 동일 영업일; 당일 NY 날짜 제외",
-        "음수는 순유출, 0은 명시적 영(零) 흐름; AUM 변화로 계산하지 않음"
+        "음수는 순유출, 0은 명시적 영(零) 흐름; AUM 변화로 계산하지 않음",
+        "더 최근의 2026-10-14 행 제외: missing_or_nonnumeric_component"
       ],
       "observation_date": "2026-10-13",
       "original_release_at": null,
@@ -441,7 +443,7 @@
         "BTC"
       ],
       "source_url": "https://farside.co.uk/btc/",
-      "status": "ok",
+      "status": "partial",
       "track": "crypto",
       "unit": "million USD",
       "unit_evidence_heading": "Bitcoin ETF Flow (US$m)",
@@ -452,9 +454,9 @@
   "raw_captures": [
     {
       "asset": "BTC",
-      "raw_path": "raw/20261014T235920731119Z_1994f8b2778a/btc_flow_table.html",
-      "raw_sha256": "b28a57cadf9975a543324a95cf9290875c15243bc18f331292c0503f4c7a5ea8",
-      "retrieved_at": "2026-10-14T23:59:21.882890Z"
+      "raw_path": "raw/20261015T045401477929Z_5fe632f190a8/btc_flow_table.html",
+      "raw_sha256": "51ab4c5afb201715df0e615207b7c708ccdf92ab0e94e0ceb9e5599e01a7c42b",
+      "retrieved_at": "2026-10-15T04:54:06.363994Z"
     }
   ],
   "research_eligible": false,
@@ -583,7 +585,7 @@
   ],
   "schema_version": 1,
   "stale": 0,
-  "started_at": "2026-10-14T23:59:20.731119Z",
+  "started_at": "2026-10-15T04:54:01.477929Z",
   "status": "partial",
   "success": 1,
   "total": 2
