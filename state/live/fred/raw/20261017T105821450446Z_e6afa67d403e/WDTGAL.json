@@ -1,63 +1,64 @@
 {
-  "known_by": "2026-10-17T05:42:43.634892Z",
+  "known_by": "2026-10-17T10:58:29.349028Z",
   "metadata_response": {
     "realtime_end": "2026-10-17",
     "realtime_start": "2026-10-17",
     "seriess": [
       {
-        "frequency": "Daily",
-        "frequency_short": "D",
-        "id": "SOFR",
-        "last_updated": "2026-10-16 07:02:32-05",
-        "observation_end": "2026-10-15",
-        "observation_start": "2018-04-03",
-        "popularity": 91,
+        "frequency": "Weekly, As of Wednesday",
+        "frequency_short": "W",
+        "id": "WDTGAL",
+        "last_updated": "2026-10-15 15:32:45-05",
+        "notes": "For questions on the data, please contact the data source (https://www.federalreserve.gov/apps/ContactUs/feedback.aspx?refurl=/releases/h41/%). For questions on FRED functionality, please contact us here (https://fred.stlouisfed.org/contactus/).",
+        "observation_end": "2026-10-14",
+        "observation_start": "2002-12-18",
+        "popularity": 75,
         "realtime_end": "2026-10-17",
         "realtime_start": "2026-10-17",
         "seasonal_adjustment": "Not Seasonally Adjusted",
         "seasonal_adjustment_short": "NSA",
-        "title": "Secured Overnight Financing Rate",
-        "units": "Percent",
-        "units_short": "%"
+        "title": "Liabilities and Capital: Liabilities: Deposits with F.R. Banks, Other Than Reserve Balances: U.S. Treasury, General Account: Wednesday Level",
+        "units": "Millions of U.S. Dollars",
+        "units_short": "Mil. of U.S. $"
       }
     ]
   },
   "observation_response": {
-    "count": 2228,
+    "count": 1244,
     "file_type": "json",
     "limit": 5,
     "observation_end": "2026-10-17",
     "observation_start": "1600-01-01",
     "observations": [
       {
-        "date": "2026-10-15",
-        "realtime_end": "2026-10-17",
-        "realtime_start": "2026-10-17",
-        "value": "3.89"
-      },
-      {
         "date": "2026-10-14",
         "realtime_end": "2026-10-17",
         "realtime_start": "2026-10-17",
-        "value": "3.88"
+        "value": "885823"
       },
       {
-        "date": "2026-10-13",
+        "date": "2026-10-07",
         "realtime_end": "2026-10-17",
         "realtime_start": "2026-10-17",
-        "value": "3.89"
+        "value": "885783"
       },
       {
-        "date": "2026-10-12",
+        "date": "2026-09-30",
         "realtime_end": "2026-10-17",
         "realtime_start": "2026-10-17",
-        "value": "."
+        "value": "984046"
       },
       {
-        "date": "2026-10-09",
+        "date": "2026-09-23",
         "realtime_end": "2026-10-17",
         "realtime_start": "2026-10-17",
-        "value": "3.87"
+        "value": "947317"
+      },
+      {
+        "date": "2026-09-16",
+        "realtime_end": "2026-10-17",
+        "realtime_start": "2026-10-17",
+        "value": "991708"
       }
     ],
     "offset": 0,
@@ -75,14 +76,14 @@
       "output_type": 1,
       "realtime_end": "2026-10-17",
       "realtime_start": "2026-10-17",
-      "series_id": "SOFR",
+      "series_id": "WDTGAL",
       "sort_order": "desc",
       "units": "lin"
     },
     "provider": "FRED"
   },
   "research_eligible": false,
-  "retrieved_at": "2026-10-17T05:42:43.634892Z",
+  "retrieved_at": "2026-10-17T10:58:29.349028Z",
   "schema_version": 1,
-  "series_id": "SOFR"
+  "series_id": "WDTGAL"
 }
