@@ -8,6 +8,10 @@
   ],
   "errors": [
     {
+      "code": "http_502",
+      "series_id": "Z1_ETF"
+    },
+    {
       "code": "http_403",
       "series_id": "MF"
     },
@@ -16,7 +20,7 @@
       "series_id": "ETF"
     }
   ],
-  "fetched_at": "2026-10-19T17:36:51.874218Z",
+  "fetched_at": "2026-10-19T22:31:51.471224Z",
   "limitations": [
     "TIC uses residence, not beneficial-owner nationality; its February 2023 form change is a structural series break. Only the Grand Total equity transaction column is used.",
     "Z.1 excludes financial corporations and includes closely held equities. Cash mergers, repurchases and issuance enter its net measure, so adding independent buybacks would double count retirements.",
@@ -103,45 +107,6 @@
       "block": "terminal_equity_flows",
       "duration_months": 3,
       "frequency": "quarterly",
-      "known_by": "2026-09-11T17:34:16.042508Z",
-      "label": "Fed Z.1 · ETF 주식자산 거래",
-      "layer": 4,
-      "metadata_raw_path": "raw/terminal_flows/1b56de670c4711be67c66c87379a7d2ef327311cf24f76c103cc4c09a9a646b9.json",
-      "metadata_raw_sha256": "1b56de670c4711be67c66c87379a7d2ef327311cf24f76c103cc4c09a9a646b9",
-      "method": "fed_ici_based_equity_etf_issuance_adjusted_quarterly_transactions",
-      "native_period_basis": "quarterly_transaction_amount_not_annual_rate",
-      "not_additive_with": [
-        "ICI_ETF_DOMESTIC_EQUITY_NET_ISSUANCE",
-        "ICI_ETF_WORLD_EQUITY_NET_ISSUANCE"
-      ],
-      "observation_date": "2026-06-30",
-      "original_release_at": null,
-      "period_end": "2026-06-30",
-      "period_start": "2026-04-01",
-      "provider": "terminal_flows",
-      "raw_path": "raw/terminal_flows/ddbea22b5221e33d6b75ee529e355aa9024bf6281850611dfad32407ce545b28.json",
-      "raw_sha256": "ddbea22b5221e33d6b75ee529e355aa9024bf6281850611dfad32407ce545b28",
-      "release_timestamp_verified": false,
-      "research_eligible": false,
-      "retrieved_at": "2026-09-11T17:34:16.042508Z",
-      "role": "flow",
-      "seasonal_adjustment": "NSA",
-      "series_id": "Z1_ETF_EQUITY_TRANSACTIONS",
-      "source_publisher": "Federal Reserve Board via FRED",
-      "source_series_id": "BOGZ1FU563064100Q",
-      "source_universe": "ETF corporate equities; ICI equity issuance adjusted for commodities, hybrid allocation and money-market holdings; not US-stock-only",
-      "source_url": "https://fred.stlouisfed.org/series/BOGZ1FU563064100Q",
-      "status": "ok",
-      "track": "equity",
-      "unit": "million USD",
-      "units": "million USD",
-      "value": 393132.0
-    },
-    {
-      "aggregation_allowed": false,
-      "block": "terminal_equity_flows",
-      "duration_months": 3,
-      "frequency": "quarterly",
       "known_by": "2026-09-11T17:34:16.851281Z",
       "label": "Fed Z.1 · 뮤추얼펀드 주식 순매수",
       "layer": 4,
@@ -179,79 +144,99 @@
   ],
   "provider": "terminal_flows",
   "research_eligible": false,
-  "retained_observations": [],
+  "retained_observations": [
+    {
+      "aggregation_allowed": false,
+      "block": "terminal_equity_flows",
+      "duration_months": 3,
+      "frequency": "quarterly",
+      "known_by": "2026-09-11T17:34:16.042508Z",
+      "label": "Fed Z.1 · ETF 주식자산 거래",
+      "layer": 4,
+      "metadata_raw_path": "raw/terminal_flows/1b56de670c4711be67c66c87379a7d2ef327311cf24f76c103cc4c09a9a646b9.json",
+      "metadata_raw_sha256": "1b56de670c4711be67c66c87379a7d2ef327311cf24f76c103cc4c09a9a646b9",
+      "method": "fed_ici_based_equity_etf_issuance_adjusted_quarterly_transactions",
+      "native_period_basis": "quarterly_transaction_amount_not_annual_rate",
+      "not_additive_with": [
+        "ICI_ETF_DOMESTIC_EQUITY_NET_ISSUANCE",
+        "ICI_ETF_WORLD_EQUITY_NET_ISSUANCE"
+      ],
+      "observation_date": "2026-06-30",
+      "original_release_at": null,
+      "period_end": "2026-06-30",
+      "period_start": "2026-04-01",
+      "provider": "terminal_flows",
+      "raw_path": "raw/terminal_flows/ddbea22b5221e33d6b75ee529e355aa9024bf6281850611dfad32407ce545b28.json",
+      "raw_sha256": "ddbea22b5221e33d6b75ee529e355aa9024bf6281850611dfad32407ce545b28",
+      "release_timestamp_verified": false,
+      "research_eligible": false,
+      "retrieved_at": "2026-09-11T17:34:16.042508Z",
+      "role": "flow",
+      "seasonal_adjustment": "NSA",
+      "series_id": "Z1_ETF_EQUITY_TRANSACTIONS",
+      "source_publisher": "Federal Reserve Board via FRED",
+      "source_series_id": "BOGZ1FU563064100Q",
+      "source_universe": "ETF corporate equities; ICI equity issuance adjusted for commodities, hybrid allocation and money-market holdings; not US-stock-only",
+      "source_url": "https://fred.stlouisfed.org/series/BOGZ1FU563064100Q",
+      "status": "ok",
+      "track": "equity",
+      "unit": "million USD",
+      "units": "million USD",
+      "value": 393132.0
+    }
+  ],
   "sources": [
     {
-      "known_by": "2026-10-19T17:36:45.539764Z",
+      "known_by": "2026-10-19T22:31:36.386633Z",
       "original_release_at": null,
       "raw_path": "raw/terminal_flows/dbdb9fb062d5f435aa625fd225bd42288029df46be33e84759c4741961e91180.txt",
       "raw_sha256": "dbdb9fb062d5f435aa625fd225bd42288029df46be33e84759c4741961e91180",
       "release_timestamp_verified": false,
-      "retrieved_at": "2026-10-19T17:36:45.539764Z",
+      "retrieved_at": "2026-10-19T22:31:36.386633Z",
       "source_url": "https://ticdata.treasury.gov/Publish/slt_table1.txt"
     },
     {
-      "known_by": "2026-10-19T17:36:45.833335Z",
+      "known_by": "2026-10-19T22:31:36.696163Z",
       "original_release_at": null,
       "raw_path": "raw/terminal_flows/d3e51b2af6d77ed368790456d9fcf00f12b64426090feb6bb4d991cb328a0a52.json",
       "raw_sha256": "d3e51b2af6d77ed368790456d9fcf00f12b64426090feb6bb4d991cb328a0a52",
       "release_timestamp_verified": false,
-      "retrieved_at": "2026-10-19T17:36:45.833335Z",
+      "retrieved_at": "2026-10-19T22:31:36.696163Z",
       "source_url": "https://fred.stlouisfed.org/series/BOGZ1FU103164103Q"
     },
     {
-      "known_by": "2026-10-19T17:36:46.106832Z",
+      "known_by": "2026-10-19T22:31:37.121903Z",
       "metadata_raw_path": "raw/terminal_flows/d3e51b2af6d77ed368790456d9fcf00f12b64426090feb6bb4d991cb328a0a52.json",
       "metadata_raw_sha256": "d3e51b2af6d77ed368790456d9fcf00f12b64426090feb6bb4d991cb328a0a52",
       "original_release_at": null,
       "raw_path": "raw/terminal_flows/b83d50b29b1fe28b6da0c0da0fa4bb25c508635c080c0c1d96043a73f60171d9.json",
       "raw_sha256": "b83d50b29b1fe28b6da0c0da0fa4bb25c508635c080c0c1d96043a73f60171d9",
       "release_timestamp_verified": false,
-      "retrieved_at": "2026-10-19T17:36:46.106832Z",
+      "retrieved_at": "2026-10-19T22:31:37.121903Z",
       "source_url": "https://fred.stlouisfed.org/series/BOGZ1FU103164103Q"
     },
     {
-      "known_by": "2026-10-19T17:36:49.199392Z",
-      "original_release_at": null,
-      "raw_path": "raw/terminal_flows/a7a20a2881fa0ab6e8d83b77511fbc97455921164dacd7be64f8edd2fdfa4701.json",
-      "raw_sha256": "a7a20a2881fa0ab6e8d83b77511fbc97455921164dacd7be64f8edd2fdfa4701",
-      "release_timestamp_verified": false,
-      "retrieved_at": "2026-10-19T17:36:49.199392Z",
-      "source_url": "https://fred.stlouisfed.org/series/BOGZ1FU563064100Q"
-    },
-    {
-      "known_by": "2026-10-19T17:36:49.557032Z",
-      "metadata_raw_path": "raw/terminal_flows/a7a20a2881fa0ab6e8d83b77511fbc97455921164dacd7be64f8edd2fdfa4701.json",
-      "metadata_raw_sha256": "a7a20a2881fa0ab6e8d83b77511fbc97455921164dacd7be64f8edd2fdfa4701",
-      "original_release_at": null,
-      "raw_path": "raw/terminal_flows/f481968c47762cb333becf60ad80b01ff6ad6775a38ca2722f33db2ac7cc61c6.json",
-      "raw_sha256": "f481968c47762cb333becf60ad80b01ff6ad6775a38ca2722f33db2ac7cc61c6",
-      "release_timestamp_verified": false,
-      "retrieved_at": "2026-10-19T17:36:49.557032Z",
-      "source_url": "https://fred.stlouisfed.org/series/BOGZ1FU563064100Q"
-    },
-    {
-      "known_by": "2026-10-19T17:36:49.990645Z",
+      "known_by": "2026-10-19T22:31:48.382245Z",
       "original_release_at": null,
       "raw_path": "raw/terminal_flows/d41940eaa0ae051361db9035e6943b5f8e26026b3107b6309b26eae6e5c38799.json",
       "raw_sha256": "d41940eaa0ae051361db9035e6943b5f8e26026b3107b6309b26eae6e5c38799",
       "release_timestamp_verified": false,
-      "retrieved_at": "2026-10-19T17:36:49.990645Z",
+      "retrieved_at": "2026-10-19T22:31:48.382245Z",
       "source_url": "https://fred.stlouisfed.org/series/BOGZ1FU653064100Q"
     },
     {
-      "known_by": "2026-10-19T17:36:51.779286Z",
+      "known_by": "2026-10-19T22:31:51.280963Z",
       "metadata_raw_path": "raw/terminal_flows/d41940eaa0ae051361db9035e6943b5f8e26026b3107b6309b26eae6e5c38799.json",
       "metadata_raw_sha256": "d41940eaa0ae051361db9035e6943b5f8e26026b3107b6309b26eae6e5c38799",
       "original_release_at": null,
       "raw_path": "raw/terminal_flows/305cc1523215d4aae1206746e886d0d4315b2ef3672f95c7c7dbe87ffd4575bd.json",
       "raw_sha256": "305cc1523215d4aae1206746e886d0d4315b2ef3672f95c7c7dbe87ffd4575bd",
       "release_timestamp_verified": false,
-      "retrieved_at": "2026-10-19T17:36:51.779286Z",
+      "retrieved_at": "2026-10-19T22:31:51.280963Z",
       "source_url": "https://fred.stlouisfed.org/series/BOGZ1FU653064100Q"
     }
   ],
   "status": "partial",
-  "success": 4,
+  "success": 3,
   "total": 8
 }
