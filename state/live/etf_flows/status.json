@@ -13,16 +13,22 @@
     "Only BTC and ETH US spot-product universes on the source tables are covered; equity ETF flows and other crypto products remain absent.",
     "Capture time is the earliest knowability certified by this collector; a business date is not an original publication timestamp."
   ],
-  "capture_id": "20261021T075023001284Z_44599ef65bc7",
+  "capture_id": "20261021T135816195036Z_66debc20f8ba",
   "errors": [
     {
+      "asset": "BTC",
+      "code": "farside_http_521",
+      "error": "farside_http_521",
+      "series_id": "ETF_BTC_SPOT_NET_FLOW_FARSIDE"
+    },
+    {
       "asset": "ETH",
-      "code": "source_fund_universe_changed",
-      "error": "source_fund_universe_changed",
+      "code": "farside_http_521",
+      "error": "farside_http_521",
       "series_id": "ETF_ETH_SPOT_NET_FLOW_FARSIDE"
     }
   ],
-  "fetched_at": "2026-10-21T07:50:25.271196Z",
+  "fetched_at": "2026-10-21T13:58:17.550151Z",
   "limitations": [
     "Underlying flow construction and revisions are not independently audited against each issuer's creations and redemptions.",
     "The current New York calendar date is deliberately excluded, even if all cells are filled; this introduces a conservative reporting delay.",
@@ -36,8 +42,8 @@
   "research_eligible": false,
   "schema_version": 1,
   "stale": 0,
-  "started_at": "2026-10-21T07:50:23.001284Z",
-  "status": "partial",
-  "success": 1,
+  "started_at": "2026-10-21T13:58:16.195036Z",
+  "status": "error",
+  "success": 0,
   "total": 2
 }
