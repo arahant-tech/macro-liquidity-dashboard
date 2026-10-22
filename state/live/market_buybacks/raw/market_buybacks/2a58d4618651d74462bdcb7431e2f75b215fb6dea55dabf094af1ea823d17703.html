@@ -4,7 +4,7 @@
 	<!--<![endif]-->
 	<head>
 <!-- begin spin_special_output(head_start) -->
-<script type="text/javascript" wd_script_id="view_printable_script" nonce="YmM0MGQyMTdjNjFlOWNmMmI3ODgwYjhhZGE5YzBmOTZkOTQ5YjA5YQ==">
+<script type="text/javascript" wd_script_id="view_printable_script" nonce="NTE4ZjNhOTBiMjMxOGJhMDY3YzFhMjQ4NzMwNjE1OTlhNmQzYTQwYg==">
 	function view_printable() {
 		var loc = window.location;
 		var sep = (loc.search == "") ? "?" : "&";
@@ -13,7 +13,8 @@
 	}
 </script>
 <link href="thirdparty/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" wd_script_id="font-awesome.min.css">
-<style type="text/css" wd_script_id="toolbar_style" nonce="YmM0MGQyMTdjNjFlOWNmMmI3ODgwYjhhZGE5YzBmOTZkOTQ5YjA5YQ==">
+<script type="text/javascript" src="js/wd_pdf_fallback.js" wd_script_id="wd_pdf_fallback.js" nonce="NTE4ZjNhOTBiMjMxOGJhMDY3YzFhMjQ4NzMwNjE1OTlhNmQzYTQwYg=="></script>
+<style type="text/css" wd_script_id="toolbar_style" nonce="NTE4ZjNhOTBiMjMxOGJhMDY3YzFhMjQ4NzMwNjE1OTlhNmQzYTQwYg==">
 			div.wd_toolbar {
 				border-top: 1px solid #cccccc;
 				border-bottom: 1px solid #cccccc;
@@ -61,10 +62,10 @@
 				float: left;
 			}
 		</style>
-<script type="text/javascript" src="js/jquery-webdriver.js" wd_script_id="jquery-webdriver.js" nonce="YmM0MGQyMTdjNjFlOWNmMmI3ODgwYjhhZGE5YzBmOTZkOTQ5YjA5YQ=="></script>
-<script type="text/javascript" src="js/webdriver.js" wd_script_id="webdriver.js" nonce="YmM0MGQyMTdjNjFlOWNmMmI3ODgwYjhhZGE5YzBmOTZkOTQ5YjA5YQ=="></script>
-<script type="text/javascript" src="js/wd_resize.js" wd_script_id="wd_resize.js" nonce="YmM0MGQyMTdjNjFlOWNmMmI3ODgwYjhhZGE5YzBmOTZkOTQ5YjA5YQ=="></script>
-<script type="text/javascript" wd_script_id="format_news_script" nonce="YmM0MGQyMTdjNjFlOWNmMmI3ODgwYjhhZGE5YzBmOTZkOTQ5YjA5YQ==">
+<script type="text/javascript" src="js/jquery-webdriver.js" wd_script_id="jquery-webdriver.js" nonce="NTE4ZjNhOTBiMjMxOGJhMDY3YzFhMjQ4NzMwNjE1OTlhNmQzYTQwYg=="></script>
+<script type="text/javascript" src="js/webdriver.js" wd_script_id="webdriver.js" nonce="NTE4ZjNhOTBiMjMxOGJhMDY3YzFhMjQ4NzMwNjE1OTlhNmQzYTQwYg=="></script>
+<script type="text/javascript" src="js/wd_resize.js" wd_script_id="wd_resize.js" nonce="NTE4ZjNhOTBiMjMxOGJhMDY3YzFhMjQ4NzMwNjE1OTlhNmQzYTQwYg=="></script>
+<script type="text/javascript" wd_script_id="format_news_script" nonce="NTE4ZjNhOTBiMjMxOGJhMDY3YzFhMjQ4NzMwNjE1OTlhNmQzYTQwYg==">
 (function($) {
 	webDriver.formatNews = function() {
 		var $news = $(this);
@@ -103,7 +104,7 @@
 	}
 })(webDriver.jQuery);
 </script>
-<style type="text/css" wd_script_id="template detail:newsfeed_releases:system style" nonce="YmM0MGQyMTdjNjFlOWNmMmI3ODgwYjhhZGE5YzBmOTZkOTQ5YjA5YQ==">
+<style type="text/css" wd_script_id="template detail:newsfeed_releases:system style" nonce="NTE4ZjNhOTBiMjMxOGJhMDY3YzFhMjQ4NzMwNjE1OTlhNmQzYTQwYg==">
 .wd_title {
 	font-size: 1.3em;
 	font-weight: bold;
@@ -168,211 +169,6 @@ blockquote.wd_pullquote:after {
 	margin: 1em 0 0 0;
 }
 </style>
-<script type="text/javascript" wd_script_id="download_page_as_pdf_script" nonce="YmM0MGQyMTdjNjFlOWNmMmI3ODgwYjhhZGE5YzBmOTZkOTQ5YjA5YQ==">
-	function download_page_as_pdf(el) {
-
-		function load_script(src) {
-			return new Promise(function(resolve, reject) {
-				var s = document.createElement("script");
-				s.src = src;
-				s.onload = resolve;
-				s.onerror = function () { reject(new Error("failed to load " + src)); };
-				document.head.appendChild(s);
-			});
-		}
-
-		function ensure_libs() {
-			var need = [];
-			if (typeof window.html2canvas === "undefined")
-				need.push(load_script("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"));
-			if (typeof window.jspdf === "undefined")
-				need.push(load_script("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"));
-			return Promise.all(need);
-		}
-
-		function fallback_to_server(err) {
-			if (window.console && console.error)
-				console.error("Client-side PDF generation failed, falling back to server download:", err);
-			window.location.href = el.href;
-		}
-
-		function safe_filename() {
-			var title = (document.title || "page").replace(/[\/:*?"<>|]+/g, "").trim();
-			return (title || "page") + ".pdf";
-		}
-
-		// Known third-party widgets (cookie/consent banners, social embeds, iframes)
-		// that are (a) not meaningful in a static PDF and (b) commonly served
-		// without CORS headers, which taints the canvas and breaks export.
-		var known_widget_selector = [
-			"iframe",
-			"[id*='trustarc' i]", "[class*='trustarc' i]", "[id*='teconsent' i]",
-			"[id*='consent_blackbar' i]", "[class*='truste' i]", "[id^='pop-frame']",
-			"[id*='onetrust' i]", "[class*='onetrust' i]", "[class*='ot-sdk' i]",
-			"[id*='cookiebot' i]", "[class*='cookie-consent' i]", "[class*='cookiebanner' i]"
-		].join(",");
-
-		function is_cross_origin_url(url) {
-			try {
-				return new URL(url, document.baseURI).origin !== window.location.origin;
-			} catch (e) {
-				return false;
-			}
-		}
-
-		// A same-origin URL (e.g. "/image/foo.jpg") can still 302-redirect
-		// server-side to a genuinely different, non-CORS origin (this site
-		// serves images via such redirects to a "filecache" host). Comparing
-		// img.src origin string misses that entirely, since img.src is
-		// always the pre-redirect URL. Instead, actually probe each
-		// candidate image by loading it with crossOrigin="anonymous": the
-		// browser enforces CORS against the final resolved resource (after
-		// any redirects), so this correctly identifies anything that would
-		// taint the canvas, regardless of what the original URL origin was.
-		function probe_image_cors_safe(url) {
-			return new Promise(function (resolve) {
-				var img = new Image();
-				img.crossOrigin = "anonymous";
-				img.onload = function () { resolve(true); };
-				img.onerror = function () { resolve(false); };
-				img.src = url;
-			});
-		}
-
-		function get_background_image_url(node) {
-			var bg = window.getComputedStyle ? window.getComputedStyle(node).backgroundImage : "";
-			var m = bg && /url\((['"]?)(.*?)\1\)/.exec(bg);
-			return m ? m[2] : null;
-		}
-
-		function collect_candidate_image_urls(root) {
-			var urls = {};
-			var imgs = root.querySelectorAll("img[src]");
-			for (var i = 0; i < imgs.length; i++) urls[imgs[i].src] = true;
-			var all = root.querySelectorAll("*");
-			for (var j = 0; j < all.length; j++) {
-				var bg_url = get_background_image_url(all[j]);
-				if (bg_url) {
-					try { urls[new URL(bg_url, document.baseURI).href] = true; } catch (e) {}
-				}
-			}
-			return Object.keys(urls);
-		}
-
-		// Only worth probing (network round-trips) same-origin-looking URLs
-		// that a naive check would otherwise consider "safe" -- genuinely
-		// cross-origin URLs are already caught by is_cross_origin_url().
-		function find_unsafe_image_urls(root) {
-			var candidates = collect_candidate_image_urls(root).filter(function (url) {
-				return !is_cross_origin_url(url);
-			});
-			return Promise.all(candidates.map(function (url) {
-				return probe_image_cors_safe(url).then(function (safe) {
-					return safe ? null : url;
-				});
-			})).then(function (results) {
-				var unsafe = {};
-				results.forEach(function (url) { if (url) unsafe[url] = true; });
-				return unsafe;
-			});
-		}
-
-		// strict = also skip any element whose image/background is cross-origin
-		// (by URL) or, after probing, redirects to a non-CORS origin. Used as a
-		// fallback retry when a first, lighter-touch capture gets tainted.
-		function build_ignore_elements(strict, unsafe_urls) {
-			return function (node) {
-				if (node.matches && node.matches(known_widget_selector))
-					return true;
-				if (!strict)
-					return false;
-				if (node.tagName === "IMG" && node.src) {
-					if (is_cross_origin_url(node.src)) return true;
-					if (unsafe_urls && unsafe_urls[node.src]) return true;
-				}
-				var bg_url = get_background_image_url(node);
-				if (bg_url) {
-					var resolved;
-					try { resolved = new URL(bg_url, document.baseURI).href; } catch (e) { resolved = bg_url; }
-					if (is_cross_origin_url(resolved)) return true;
-					if (unsafe_urls && unsafe_urls[resolved]) return true;
-				}
-				return false;
-			};
-		}
-
-		function capture_canvas(strict, unsafe_urls) {
-			var exclude_selector = ".wd_toolbar, [data-pdf-exclude]";
-
-			return window.html2canvas(document.body, {
-				useCORS: true,
-				allowTaint: false,
-				scale: window.devicePixelRatio > 1 ? 2 : 1.5,
-				windowWidth: document.documentElement.scrollWidth,
-				windowHeight: document.documentElement.scrollHeight,
-				ignoreElements: build_ignore_elements(strict, unsafe_urls),
-				onclone: function (cloned_doc) {
-					var nodes = cloned_doc.querySelectorAll(exclude_selector);
-					for (var i = 0; i < nodes.length; i++)
-						nodes[i].style.display = "none";
-				}
-			}).then(function (canvas) {
-				// Force the taint check now (rather than later, at save time) so
-				// we can retry with a stricter capture before giving up.
-				var data_url = canvas.toDataURL("image/jpeg", 0.95);
-				return { canvas: canvas, data_url: data_url };
-			});
-		}
-
-		var original_cursor = document.body.style.cursor;
-		document.body.style.cursor = "wait";
-
-		ensure_libs().then(function () {
-
-			return capture_canvas(false).catch(function (err) {
-				if (window.console && console.warn)
-					console.warn("PDF capture tainted, probing images and retrying without unsafe ones:", err);
-				// Probe same-origin-looking images for hidden redirects to a
-				// non-CORS origin (see find_unsafe_image_urls above) before
-				// retrying, so the strict pass actually excludes whatever
-				// tainted the canvas the first time.
-				return find_unsafe_image_urls(document.body).then(function (unsafe_urls) {
-					return capture_canvas(true, unsafe_urls);
-				});
-			});
-
-		}).then(function (result) {
-
-			var canvas = result.canvas;
-			var jsPDF = window.jspdf.jsPDF;
-			var pdf = new jsPDF("p", "pt", "a4");
-
-			var page_width = pdf.internal.pageSize.getWidth();
-			var page_height = pdf.internal.pageSize.getHeight();
-			var img_width = page_width;
-			var img_height = (canvas.height * img_width) / canvas.width;
-			var height_left = img_height;
-			var position = 0;
-
-			pdf.addImage(result.data_url, "JPEG", 0, position, img_width, img_height);
-			height_left -= page_height;
-
-			while (height_left > 0) {
-				position = height_left - img_height;
-				pdf.addPage();
-				pdf.addImage(result.data_url, "JPEG", 0, position, img_width, img_height);
-				height_left -= page_height;
-			}
-
-			pdf.save(safe_filename());
-
-		}).catch(fallback_to_server).finally(function () {
-			document.body.style.cursor = original_cursor;
-		});
-
-		return false;
-	}
-</script>
 
 <!-- end spin_special_output(head_start) -->
 
@@ -708,7 +504,7 @@ blockquote.wd_pullquote:after {
                     <span class="fa fa-twitter"></span>
 		    <span class="wd_sr-only wd_sr-only-focusable"></span>
                     </a>
-                </span></li><li class="wd_tool wd_tool-email"><span class="wd_tool_icon"><a onclick="window.location.href = 'mailto:?subject=S%26P%20500%20Q3%202025%20Buybacks%20Post%20Modest%206.2%25%20Gain%20to%20%24249.0%20Billion%20After%20Declining%2020.1%25%20Amidst%20Uncertainty%20in%20Q2%3B%20Q4%202025%20Expenditures%20Expected%20to%20Post%20Similar%20Growth%2C%20As%202025%20Anticipates%20a%20Record%20%241%20Trillion%20-%20Dec%2018%2C%202025&amp;body='+encodeURIComponent(window.location.href);return false;" href="#email" title="email"><span class="fa fa-envelope"></span></a></span></li><li class="wd_tool wd_tool-rss"><span class="wd_tool_icon"><a href="https://press.spglobal.com/2025-12-18-S-P-500-Q3-2025-Buybacks-Post-Modest-6-2-Gain-to-249-0-Billion-After-Declining-20-1-Amidst-Uncertainty-in-Q2-Q4-2025-Expenditures-Expected-to-Post-Similar-Growth,-As-2025-Anticipates-a-Record-1-Trillion?pagetemplate=rss" title="rss"><span class="fa fa-rss"></span></a></span></li><li class="wd_tool wd_tool-pdf"><span class="wd_tool_icon"><a href="https://press.spglobal.com/2025-12-18-S-P-500-Q3-2025-Buybacks-Post-Modest-6-2-Gain-to-249-0-Billion-After-Declining-20-1-Amidst-Uncertainty-in-Q2-Q4-2025-Expenditures-Expected-to-Post-Similar-Growth,-As-2025-Anticipates-a-Record-1-Trillion?asPDF=1" rel="nofollow" onclick="return download_page_as_pdf(this);" title="pdf"><span class="fa fa-file-pdf-o"></span></a></span></li></ul></div>
+                </span></li><li class="wd_tool wd_tool-email"><span class="wd_tool_icon"><a onclick="window.location.href = 'mailto:?subject=S%26P%20500%20Q3%202025%20Buybacks%20Post%20Modest%206.2%25%20Gain%20to%20%24249.0%20Billion%20After%20Declining%2020.1%25%20Amidst%20Uncertainty%20in%20Q2%3B%20Q4%202025%20Expenditures%20Expected%20to%20Post%20Similar%20Growth%2C%20As%202025%20Anticipates%20a%20Record%20%241%20Trillion%20-%20Dec%2018%2C%202025&amp;body='+encodeURIComponent(window.location.href);return false;" href="#email" title="email"><span class="fa fa-envelope"></span></a></span></li><li class="wd_tool wd_tool-rss"><span class="wd_tool_icon"><a href="https://press.spglobal.com/2025-12-18-S-P-500-Q3-2025-Buybacks-Post-Modest-6-2-Gain-to-249-0-Billion-After-Declining-20-1-Amidst-Uncertainty-in-Q2-Q4-2025-Expenditures-Expected-to-Post-Similar-Growth,-As-2025-Anticipates-a-Record-1-Trillion?pagetemplate=rss" title="rss"><span class="fa fa-rss"></span></a></span></li><li class="wd_tool wd_tool-pdf"><span class="wd_tool_icon"><a href="https://press.spglobal.com/2025-12-18-S-P-500-Q3-2025-Buybacks-Post-Modest-6-2-Gain-to-249-0-Billion-After-Declining-20-1-Amidst-Uncertainty-in-Q2-Q4-2025-Expenditures-Expected-to-Post-Similar-Growth,-As-2025-Anticipates-a-Record-1-Trillion?asPDF=1" rel="nofollow" onclick="return wd_download_pdf(this);" title="pdf"><span class="fa fa-file-pdf-o"></span></a></span></li></ul></div>
 
 
 
@@ -1809,5 +1605,5 @@ BORDER-COLLAPSE: COLLAPSE
 <!-- End Piwik Tracking Code -->
 		<span id="newwindow-note" class="sr-only">(opens in a new window)</span>
 <!-- end spin_special_output(body_end) -->
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4e4c8b70fe7c948',t:'MTc5MjYzMzEyMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4e6e36dec842d61',t:'MTc5MjY1NTE4OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
