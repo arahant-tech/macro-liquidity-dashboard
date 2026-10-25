@@ -1,64 +1,64 @@
 {
-  "known_by": "2026-10-25T11:49:00.940630Z",
+  "known_by": "2026-10-25T16:36:18.024506Z",
   "metadata_response": {
     "realtime_end": "2026-10-25",
     "realtime_start": "2026-10-25",
     "seriess": [
       {
-        "frequency": "Monthly, End of Period",
-        "frequency_short": "M",
-        "id": "JPNASSETS",
-        "last_updated": "2026-10-07 20:11:35-05",
-        "notes": "Copyright, 2016, Bank of Japan.",
-        "observation_end": "2026-09-01",
-        "observation_start": "1998-04-01",
-        "popularity": 55,
+        "frequency": "Weekly",
+        "frequency_short": "W",
+        "id": "ECBASSETSW",
+        "last_updated": "2026-10-20 11:02:31-05",
+        "notes": "A longer history for this series is available on the monthly series ECBASSETS (https://fred.stlouisfed.org/series/ECBASSETS).\r\n\r\nCopyright, 2016, European Central Bank (ECB). Reprinted with permission.",
+        "observation_end": "2026-10-16",
+        "observation_start": "1999-01-01",
+        "popularity": 60,
         "realtime_end": "2026-10-25",
         "realtime_start": "2026-10-25",
         "seasonal_adjustment": "Not Seasonally Adjusted",
         "seasonal_adjustment_short": "NSA",
-        "title": "Bank of Japan: Total Assets for Japan",
-        "units": "100 Million Yen",
-        "units_short": "100 Mil. Yen"
+        "title": "Central Bank Assets for Euro Area (11-19 Countries)",
+        "units": "Millions of Euros",
+        "units_short": "Mil. of Euros"
       }
     ]
   },
   "observation_response": {
-    "count": 342,
+    "count": 1451,
     "file_type": "json",
     "limit": 5,
     "observation_end": "2026-10-25",
     "observation_start": "1600-01-01",
     "observations": [
       {
-        "date": "2026-09-01",
+        "date": "2026-10-16",
         "realtime_end": "2026-10-25",
         "realtime_start": "2026-10-25",
-        "value": "6250253"
+        "value": "5935346.0"
       },
       {
-        "date": "2026-08-01",
+        "date": "2026-10-09",
         "realtime_end": "2026-10-25",
         "realtime_start": "2026-10-25",
-        "value": "6446620"
+        "value": "5943911.0"
       },
       {
-        "date": "2026-07-01",
+        "date": "2026-10-02",
         "realtime_end": "2026-10-25",
         "realtime_start": "2026-10-25",
-        "value": "6442957"
+        "value": "5947826.0"
       },
       {
-        "date": "2026-06-01",
+        "date": "2026-09-25",
         "realtime_end": "2026-10-25",
         "realtime_start": "2026-10-25",
-        "value": "6395509.0"
+        "value": "5897262.0"
       },
       {
-        "date": "2026-05-01",
+        "date": "2026-09-18",
         "realtime_end": "2026-10-25",
         "realtime_start": "2026-10-25",
-        "value": "6643630.0"
+        "value": "5898477.0"
       }
     ],
     "offset": 0,
@@ -76,14 +76,14 @@
       "output_type": 1,
       "realtime_end": "2026-10-25",
       "realtime_start": "2026-10-25",
-      "series_id": "JPNASSETS",
+      "series_id": "ECBASSETSW",
       "sort_order": "desc",
       "units": "lin"
     },
     "provider": "FRED"
   },
   "research_eligible": false,
-  "retrieved_at": "2026-10-25T11:49:00.940630Z",
+  "retrieved_at": "2026-10-25T16:36:18.024506Z",
   "schema_version": 1,
-  "series_id": "JPNASSETS"
+  "series_id": "ECBASSETSW"
 }
