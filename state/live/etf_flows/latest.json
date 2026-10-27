@@ -4,8 +4,8 @@
       "age_calendar_days": 1,
       "asset": "BTC",
       "business_date": "2026-10-26",
-      "changed": true,
-      "checked_at": "2026-10-27T06:26:41.124887Z",
+      "changed": false,
+      "checked_at": "2026-10-27T13:24:11.787638Z",
       "covered_funds": 12,
       "error": null,
       "fingerprint": "4e3719cf69494fc2591d36bf782d86c11d148c7554827cfcda036c8a6523812a",
@@ -91,7 +91,12 @@
         "frequency": "daily_business_date",
         "known_by": "2026-10-27T06:26:41.124887Z",
         "label": "BTC 현물 ETF · 일별 순유입 (Farside)",
-        "latest_excluded_dates": [],
+        "latest_excluded_dates": [
+          {
+            "date": "2026-10-27",
+            "reason": "current_new_york_date_provisional"
+          }
+        ],
         "layer": 5,
         "method": "publisher_reported_net_flow",
         "notes": [
@@ -145,7 +150,7 @@
     },
     {
       "asset": "ETH",
-      "checked_at": "2026-10-27T06:26:42.282753Z",
+      "checked_at": "2026-10-27T13:24:12.948784Z",
       "error": "source_fund_universe_changed",
       "fingerprint": "a57ca4f5a55f0b5a0a11898d30cfb59fb861e8f10352ff1ead5afb0869752ff4",
       "last_good_observation": {
@@ -287,7 +292,7 @@
     "Only BTC and ETH US spot-product universes on the source tables are covered; equity ETF flows and other crypto products remain absent.",
     "Capture time is the earliest knowability certified by this collector; a business date is not an original publication timestamp."
   ],
-  "capture_id": "20261027T062639926304Z_87b717b639cf",
+  "capture_id": "20261027T132410617856Z_1d2ac0c12172",
   "errors": [
     {
       "asset": "ETH",
@@ -296,7 +301,7 @@
       "series_id": "ETF_ETH_SPOT_NET_FLOW_FARSIDE"
     }
   ],
-  "fetched_at": "2026-10-27T06:26:42.282786Z",
+  "fetched_at": "2026-10-27T13:24:12.948851Z",
   "limitations": [
     "Underlying flow construction and revisions are not independently audited against each issuer's creations and redemptions.",
     "The current New York calendar date is deliberately excluded, even if all cells are filled; this introduces a conservative reporting delay.",
@@ -389,7 +394,12 @@
       "frequency": "daily_business_date",
       "known_by": "2026-10-27T06:26:41.124887Z",
       "label": "BTC 현물 ETF · 일별 순유입 (Farside)",
-      "latest_excluded_dates": [],
+      "latest_excluded_dates": [
+        {
+          "date": "2026-10-27",
+          "reason": "current_new_york_date_provisional"
+        }
+      ],
       "layer": 5,
       "method": "publisher_reported_net_flow",
       "notes": [
@@ -442,9 +452,9 @@
   "raw_captures": [
     {
       "asset": "BTC",
-      "raw_path": "raw/20261027T062639926304Z_87b717b639cf/btc_flow_table.html",
-      "raw_sha256": "1af3355b237893efc2c2faf5cd9fd57ceaa41d09a6594f0b056a01c982972453",
-      "retrieved_at": "2026-10-27T06:26:41.124887Z"
+      "raw_path": "raw/20261027T132410617856Z_1d2ac0c12172/btc_flow_table.html",
+      "raw_sha256": "c1c6e2053f583c35f7ddab2b180d890505ef65ab162723b9e534e969732421bb",
+      "retrieved_at": "2026-10-27T13:24:11.787638Z"
     }
   ],
   "research_eligible": false,
@@ -573,7 +583,7 @@
   ],
   "schema_version": 1,
   "stale": 0,
-  "started_at": "2026-10-27T06:26:39.926304Z",
+  "started_at": "2026-10-27T13:24:10.617856Z",
   "status": "partial",
   "success": 1,
   "total": 2
