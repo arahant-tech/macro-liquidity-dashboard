@@ -1,0 +1,88 @@
+{
+  "known_by": "2026-10-30T08:46:55.600628Z",
+  "metadata_response": {
+    "realtime_end": "2026-10-30",
+    "realtime_start": "2026-10-30",
+    "seriess": [
+      {
+        "frequency": "Daily",
+        "frequency_short": "D",
+        "id": "SOFR",
+        "last_updated": "2026-10-29 07:02:38-05",
+        "observation_end": "2026-10-28",
+        "observation_start": "2018-04-03",
+        "popularity": 91,
+        "realtime_end": "2026-10-30",
+        "realtime_start": "2026-10-30",
+        "seasonal_adjustment": "Not Seasonally Adjusted",
+        "seasonal_adjustment_short": "NSA",
+        "title": "Secured Overnight Financing Rate",
+        "units": "Percent",
+        "units_short": "%"
+      }
+    ]
+  },
+  "observation_response": {
+    "count": 2237,
+    "file_type": "json",
+    "limit": 5,
+    "observation_end": "2026-10-30",
+    "observation_start": "1600-01-01",
+    "observations": [
+      {
+        "date": "2026-10-28",
+        "realtime_end": "2026-10-30",
+        "realtime_start": "2026-10-30",
+        "value": "3.94"
+      },
+      {
+        "date": "2026-10-27",
+        "realtime_end": "2026-10-30",
+        "realtime_start": "2026-10-30",
+        "value": "3.95"
+      },
+      {
+        "date": "2026-10-26",
+        "realtime_end": "2026-10-30",
+        "realtime_start": "2026-10-30",
+        "value": "3.93"
+      },
+      {
+        "date": "2026-10-23",
+        "realtime_end": "2026-10-30",
+        "realtime_start": "2026-10-30",
+        "value": "3.92"
+      },
+      {
+        "date": "2026-10-22",
+        "realtime_end": "2026-10-30",
+        "realtime_start": "2026-10-30",
+        "value": "3.9"
+      }
+    ],
+    "offset": 0,
+    "order_by": "observation_date",
+    "output_type": 1,
+    "realtime_end": "2026-10-30",
+    "realtime_start": "2026-10-30",
+    "sort_order": "desc",
+    "units": "lin"
+  },
+  "request": {
+    "observations": {
+      "limit": 5,
+      "observation_end": "2026-10-30",
+      "output_type": 1,
+      "realtime_end": "2026-10-30",
+      "realtime_start": "2026-10-30",
+      "series_id": "SOFR",
+      "sort_order": "desc",
+      "units": "lin"
+    },
+    "provider": "FRED"
+  },
+  "research_eligible": false,
+  "retrieved_at": "2026-10-30T08:46:55.600628Z",
+  "schema_version": 1,
+  "series_id": "SOFR"
+}
