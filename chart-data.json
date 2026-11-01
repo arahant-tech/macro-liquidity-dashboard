@@ -6,65 +6,20 @@
   "breaks": [
     "자료 개정·공표 지연·이력 부족이 남습니다. 국가 간 합산·빈도 늘리기·결측 보간을 하지 않습니다."
   ],
-  "errors": [
-    {
-      "code": "http_400",
-      "series_id": "WRESBAL"
-    },
-    {
-      "code": "http_400",
-      "series_id": "WALCL"
-    },
-    {
-      "code": "http_400",
-      "series_id": "ECBASSETSW"
-    },
-    {
-      "code": "http_400",
-      "series_id": "JPNASSETS"
-    },
-    {
-      "code": "http_400",
-      "series_id": "RRPONTSYD"
-    },
-    {
-      "code": "http_400",
-      "series_id": "WTREGEN"
-    },
-    {
-      "code": "fresh_monthly_history_source_unavailable",
-      "series_id": "FINRA_MARGIN_DEBT"
-    }
-  ],
-  "generated_at": "2026-11-01T02:22:16.496420Z",
-  "github_run_url": "https://github.com/arahant-tech/macro-liquidity-dashboard/actions/runs/41264838912",
+  "errors": [],
+  "generated_at": "2026-11-01T09:29:30.964976Z",
+  "github_run_url": "https://github.com/arahant-tech/macro-liquidity-dashboard/actions/runs/41293266741",
   "research_eligible": false,
   "schema_version": 1,
   "series": [
     {
       "chart_type": "line",
-      "checked_at": "2026-11-01T02:22:14.530777Z",
+      "checked_at": "2026-11-01T09:29:26.040615Z",
       "frequency": "Weekly, Ending Wednesday",
       "history_basis": "current_vintage_3_years",
-      "known_by": "2026-10-29T21:53:34.695027Z",
+      "known_by": "2026-11-01T09:29:26.040615Z",
       "label": "Fed 지급준비금",
       "points": [
-        {
-          "date": "2023-10-04",
-          "value": 3145720.0
-        },
-        {
-          "date": "2023-10-11",
-          "value": 3288945.0
-        },
-        {
-          "date": "2023-10-18",
-          "value": 3353881.0
-        },
-        {
-          "date": "2023-10-25",
-          "value": 3261886.0
-        },
         {
           "date": "2023-11-01",
           "value": 3267216.0
@@ -695,38 +650,22 @@
         }
       ],
       "provider": "fred",
-      "raw_sha256": "320853e71c918970471358031cb68098875d68cc977d4b730349095744df52ef",
+      "raw_sha256": "1dc7b57c00577c44761f40d2ed18620a234ee5ec6e333e8dc36813b7408fd208",
       "research_eligible": false,
       "series_id": "WRESBAL",
       "source_url": "https://fred.stlouisfed.org/series/WRESBAL",
-      "status": "retained",
+      "status": "ok",
       "track": "equity",
       "unit": "Millions of U.S. Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-01T02:22:14.861338Z",
+      "checked_at": "2026-11-01T09:29:26.800911Z",
       "frequency": "Weekly, As of Wednesday",
       "history_basis": "current_vintage_3_years",
-      "known_by": "2026-10-29T21:53:35.536715Z",
+      "known_by": "2026-11-01T09:29:26.800911Z",
       "label": "Fed 총자산",
       "points": [
-        {
-          "date": "2023-10-04",
-          "value": 7955782.0
-        },
-        {
-          "date": "2023-10-11",
-          "value": 7952054.0
-        },
-        {
-          "date": "2023-10-18",
-          "value": 7933162.0
-        },
-        {
-          "date": "2023-10-25",
-          "value": 7907830.0
-        },
         {
           "date": "2023-11-01",
           "value": 7866664.0
@@ -1357,38 +1296,22 @@
         }
       ],
       "provider": "fred",
-      "raw_sha256": "7875f7914e95bd625c51eaf285adaf92fcf942b79c5aec17dfdd5e3f0ae73db7",
+      "raw_sha256": "c53ef9d52718e4f86d5efe8e36ef11379c91d40c33ba4a86b0164abffb3a445c",
       "research_eligible": false,
       "series_id": "WALCL",
       "source_url": "https://fred.stlouisfed.org/series/WALCL",
-      "status": "retained",
+      "status": "ok",
       "track": "equity",
       "unit": "Millions of U.S. Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-01T02:22:15.380952Z",
+      "checked_at": "2026-11-01T09:29:27.968681Z",
       "frequency": "Weekly",
       "history_basis": "current_vintage_3_years",
-      "known_by": "2026-10-27T19:30:45.552705Z",
+      "known_by": "2026-11-01T09:29:27.968681Z",
       "label": "ECB 총자산",
       "points": [
-        {
-          "date": "2023-10-06",
-          "value": 7057055.0
-        },
-        {
-          "date": "2023-10-13",
-          "value": 7056700.0
-        },
-        {
-          "date": "2023-10-20",
-          "value": 7037999.0
-        },
-        {
-          "date": "2023-10-27",
-          "value": 7019671.0
-        },
         {
           "date": "2023-11-03",
           "value": 7001618.0
@@ -2015,26 +1938,22 @@
         }
       ],
       "provider": "fred",
-      "raw_sha256": "d7cb0d59fd7cd6565c1b6417398c03a04552fa6b0858fee06c1d6935b1967e43",
+      "raw_sha256": "2501622f11e35775ba62bac6ef9eb41936cc128692f2b9a6c987f22d6421f127",
       "research_eligible": false,
       "series_id": "ECBASSETSW",
       "source_url": "https://fred.stlouisfed.org/series/ECBASSETSW",
-      "status": "retained",
+      "status": "ok",
       "track": "equity",
       "unit": "Millions of Euros"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-01T02:22:15.701862Z",
+      "checked_at": "2026-11-01T09:29:28.998550Z",
       "frequency": "Monthly, End of Period",
       "history_basis": "current_vintage_3_years",
-      "known_by": "2026-10-08T09:11:08.035956Z",
+      "known_by": "2026-11-01T09:29:28.998550Z",
       "label": "BOJ 총자산",
       "points": [
-        {
-          "date": "2023-10-01",
-          "value": 7506502.0
-        },
         {
           "date": "2023-11-01",
           "value": 7557805.0
@@ -2177,110 +2096,22 @@
         }
       ],
       "provider": "fred",
-      "raw_sha256": "371d91071e9b66044ba81bae08d5ac56dc806aab4ce8feb18303d18739742b97",
+      "raw_sha256": "869bdf7e5a48a9f20167526d8e4194900bf133efd7a0c367fbefe54826251491",
       "research_eligible": false,
       "series_id": "JPNASSETS",
       "source_url": "https://fred.stlouisfed.org/series/JPNASSETS",
-      "status": "retained",
+      "status": "ok",
       "track": "equity",
       "unit": "100 Million Yen"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-01T02:22:16.023489Z",
+      "checked_at": "2026-11-01T09:29:29.892677Z",
       "frequency": "Daily",
       "history_basis": "current_vintage_3_years",
-      "known_by": "2026-10-30T20:55:28.669702Z",
+      "known_by": "2026-11-01T09:29:29.892677Z",
       "label": "미국 익일물 역레포",
       "points": [
-        {
-          "date": "2023-10-02",
-          "value": 1365.739
-        },
-        {
-          "date": "2023-10-03",
-          "value": 1348.465
-        },
-        {
-          "date": "2023-10-04",
-          "value": 1342.031
-        },
-        {
-          "date": "2023-10-05",
-          "value": 1265.132
-        },
-        {
-          "date": "2023-10-06",
-          "value": 1283.461
-        },
-        {
-          "date": "2023-10-09",
-          "value": null
-        },
-        {
-          "date": "2023-10-10",
-          "value": 1222.44
-        },
-        {
-          "date": "2023-10-11",
-          "value": 1239.382
-        },
-        {
-          "date": "2023-10-12",
-          "value": 1157.319
-        },
-        {
-          "date": "2023-10-13",
-          "value": 1151.818
-        },
-        {
-          "date": "2023-10-16",
-          "value": 1108.819
-        },
-        {
-          "date": "2023-10-17",
-          "value": 1082.502
-        },
-        {
-          "date": "2023-10-18",
-          "value": 1150.781
-        },
-        {
-          "date": "2023-10-19",
-          "value": 1114.179
-        },
-        {
-          "date": "2023-10-20",
-          "value": 1138.756
-        },
-        {
-          "date": "2023-10-23",
-          "value": 1157.976
-        },
-        {
-          "date": "2023-10-24",
-          "value": 1097.875
-        },
-        {
-          "date": "2023-10-25",
-          "value": 1100.617
-        },
-        {
-          "date": "2023-10-26",
-          "value": 1089.85
-        },
-        {
-          "date": "2023-10-27",
-          "value": 1091.858
-        },
-        {
-          "date": "2023-10-30",
-          "value": 1138.035
-        },
-        {
-          "date": "2023-10-31",
-          "value": 1137.697
-        },
         {
           "date": "2023-11-01",
           "value": 1079.462
@@ -5415,38 +5246,22 @@
         }
       ],
       "provider": "fred",
-      "raw_sha256": "38e61d97b2f25791bb6daf02f406fa3e7c05e7c937377d18a85a21ea2ce669da",
+      "raw_sha256": "97308173a0784d7f0e284f367b2ed909819be278f5999ece41fef28e11e66611",
       "research_eligible": false,
       "series_id": "RRPONTSYD",
       "source_url": "https://fred.stlouisfed.org/series/RRPONTSYD",
-      "status": "retained",
+      "status": "ok",
       "track": "equity",
       "unit": "Billions of US Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-01T02:22:16.364657Z",
+      "checked_at": "2026-11-01T09:29:30.808390Z",
       "frequency": "Weekly, Ending Wednesday",
       "history_basis": "current_vintage_3_years",
-      "known_by": "2026-10-29T21:53:38.951022Z",
+      "known_by": "2026-11-01T09:29:30.808390Z",
       "label": "미 재무부 일반계정",
       "points": [
-        {
-          "date": "2023-10-04",
-          "value": 668009.0
-        },
-        {
-          "date": "2023-10-11",
-          "value": 709160.0
-        },
-        {
-          "date": "2023-10-18",
-          "value": 759878.0
-        },
-        {
-          "date": "2023-10-25",
-          "value": 834418.0
-        },
         {
           "date": "2023-11-01",
           "value": 820487.0
@@ -6077,17 +5892,17 @@
         }
       ],
       "provider": "fred",
-      "raw_sha256": "eb600d584fafad3d9975b6799ab72568c82e00a88810df26839b2078bc0ca3e1",
+      "raw_sha256": "795b9ed28f962e80bc35866a92e9ad25064ac3627a1a05c89fbd4bdca1253776",
       "research_eligible": false,
       "series_id": "WTREGEN",
       "source_url": "https://fred.stlouisfed.org/series/WTREGEN",
-      "status": "retained",
+      "status": "ok",
       "track": "equity",
       "unit": "Millions of U.S. Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-01T02:22:16.392421Z",
+      "checked_at": "2026-11-01T09:29:30.836612Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-10-14T12:09:25.108209Z",
@@ -6142,7 +5957,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-01T02:22:16.418181Z",
+      "checked_at": "2026-11-01T09:29:30.862847Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-10-14T12:09:25.121716Z",
@@ -6197,7 +6012,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-01T02:22:16.427139Z",
+      "checked_at": "2026-11-01T09:29:30.871799Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-10-14T12:09:25.126261Z",
@@ -6252,7 +6067,7 @@
     },
     {
       "chart_type": "bar",
-      "checked_at": "2026-11-01T02:22:16.437475Z",
+      "checked_at": "2026-11-01T09:29:30.881933Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-10-14T12:09:25.131578Z",
@@ -6307,7 +6122,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-01T02:22:16.437949Z",
+      "checked_at": "2026-11-01T09:29:30.882388Z",
       "frequency": "Monthly",
       "history_basis": "current_vintage_available_monthly_history_max_36_observations",
       "known_by": "2026-11-01T02:21:57.039126Z",
@@ -6474,7 +6289,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-01T02:22:16.453289Z",
+      "checked_at": "2026-11-01T09:29:30.898264Z",
       "frequency": "Monthly",
       "history_basis": "current_vintage_available_monthly_history_max_36_observations",
       "known_by": "2026-10-16T17:33:16.474239Z",
@@ -6539,13 +6354,13 @@
       "source_retrieved_at": "2026-10-16T17:33:16.474239Z",
       "source_universe": "FINRA reporting member firms carrying customer margin accounts",
       "source_url": "https://www.finra.org/rules-guidance/key-topics/margin-accounts/margin-statistics",
-      "status": "retained",
+      "status": "ok",
       "track": "equity",
       "unit": "million USD"
     },
     {
       "chart_type": "bar",
-      "checked_at": "2026-11-01T02:22:16.453582Z",
+      "checked_at": "2026-11-01T09:29:30.919971Z",
       "frequency": "Monthly",
       "history_basis": "current_vintage_available_monthly_history_max_36_observations",
       "known_by": "2026-11-01T02:22:09.547767Z",
