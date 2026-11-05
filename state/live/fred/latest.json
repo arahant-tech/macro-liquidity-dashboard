@@ -9,13 +9,29 @@
     "Only the latest five native observations are fetched, so older revisions can be missed.",
     "The collection covers a subset of the five-layer model; missing sources are not imputed."
   ],
-  "capture_id": "20261105T023540054268Z_218c258e091b",
-  "completed_at": "2026-11-05T02:35:47.235904Z",
+  "capture_id": "20261105T111343852222Z_89150913fa2d",
+  "completed_at": "2026-11-05T11:13:57.976377Z",
   "derived": {
     "SOFR_IORB": {
-      "reason": "both_inputs_must_have_successful_capture",
+      "formula": "100 * (SOFR - IORB), identical observation date",
+      "input_captures": [
+        {
+          "raw_path": "raw/20261104T153344895098Z_ee5ecfdc85d9/SOFR.json",
+          "raw_sha256": "8aa1b6818980548bb7d1839f9adc8f3a889cf4c53bdc613927bb71c049d04ab2",
+          "series_id": "SOFR"
+        },
+        {
+          "raw_path": "raw/20261105T111343852222Z_89150913fa2d/IORB.json",
+          "raw_sha256": "6623a26d66b5eecc13611086fca5b03d5578437a0e503aaa850ace2413b65be0",
+          "series_id": "IORB"
+        }
+      ],
+      "known_by": "2026-11-05T11:13:48.684029Z",
+      "observation_date": "2026-11-03",
       "research_eligible": false,
-      "status": "unavailable"
+      "status": "ok",
+      "units": "basis points",
+      "value": 7.000000000000028
     }
   },
   "research_eligible": false,
@@ -23,9 +39,8 @@
   "series": {
     "DPSACBW027SBOG": {
       "block": "sector_distribution",
-      "checked_at": "2026-11-05T02:35:43.917785Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:50.790001Z",
+      "error": null,
       "freshness": {
         "age_calendar_days": 15,
         "basis": "native_observation_date",
@@ -34,6 +49,11 @@
         "raw_reference_age_days": 15,
         "reference_date_stale": false,
         "stale_after_days": 21
+      },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/DPSACBW027SBOG.json",
+        "raw_sha256": "64efe69f1227a203136761739eedefd73f212afed2e94b7660f24c0ac46d2d45",
+        "retrieved_at": "2026-11-05T11:13:50.790001Z"
       },
       "last_good": {
         "fingerprint": "2ad27fb85261863077d6925ea5a875f8793ee99baf1ff538ce5e404428e5f1a6",
@@ -88,13 +108,12 @@
       "layer": 2,
       "research_eligible": false,
       "series_id": "DPSACBW027SBOG",
-      "status": "error"
+      "status": "ok"
     },
     "DRTSCILM": {
       "block": "bank_credit",
-      "checked_at": "2026-11-05T02:35:46.891300Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:57.184609Z",
+      "error": null,
       "freshness": {
         "age_calendar_days": 35,
         "basis": "native_observation_date",
@@ -103,6 +122,11 @@
         "raw_reference_age_days": 35,
         "reference_date_stale": false,
         "stale_after_days": 190
+      },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/DRTSCILM.json",
+        "raw_sha256": "595f9059b136ee404f56869f66954d8c7c48cbdc7b8a530f65ccc02e6eda0f66",
+        "retrieved_at": "2026-11-05T11:13:57.184609Z"
       },
       "last_good": {
         "fingerprint": "5af729408babf580fb522fbfe30d8a85f11f4bbd2bfee7af270d711e866ecc9d",
@@ -157,13 +181,12 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "DRTSCILM",
-      "status": "error"
+      "status": "ok"
     },
     "ECBASSETSW": {
       "block": "ecb",
-      "checked_at": "2026-11-05T02:35:46.162527Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:55.624598Z",
+      "error": null,
       "freshness": {
         "age_calendar_days": 6,
         "basis": "native_observation_date",
@@ -172,6 +195,11 @@
         "raw_reference_age_days": 6,
         "reference_date_stale": false,
         "stale_after_days": 21
+      },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/ECBASSETSW.json",
+        "raw_sha256": "e33eeed37db6dcfb998a90c1d1297cca4b89a81e678cf81f8fd51d2a063cacd6",
+        "retrieved_at": "2026-11-05T11:13:55.624598Z"
       },
       "last_good": {
         "fingerprint": "8007aebfc796be45e1aa13b3436734f78dad8196b4113048a547e50e04c8a301",
@@ -226,151 +254,158 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "ECBASSETSW",
-      "status": "error"
+      "status": "ok"
     },
     "IORB": {
       "block": "fed_funding",
-      "checked_at": "2026-11-05T02:35:43.161821Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:48.684029Z",
+      "error": null,
       "freshness": {
-        "age_calendar_days": 1,
+        "age_calendar_days": 0,
         "basis": "native_observation_date",
-        "basis_date": "2026-11-04",
+        "basis_date": "2026-11-05",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 1,
+        "raw_reference_age_days": 0,
         "reference_date_stale": false,
         "stale_after_days": 7
       },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/IORB.json",
+        "raw_sha256": "6623a26d66b5eecc13611086fca5b03d5578437a0e503aaa850ace2413b65be0",
+        "retrieved_at": "2026-11-05T11:13:48.684029Z"
+      },
       "last_good": {
-        "fingerprint": "b2fd6ccf8818305be280c2ff4d966e264be93d7e6bf96f6082ef3703eb08ae58",
-        "known_by": "2026-11-04T21:59:12.178170Z",
-        "observation_date": "2026-11-04",
+        "fingerprint": "de2c9598f979f12112d01cca9c091a17a34443de963626d7f8e3ab088f6b1666",
+        "known_by": "2026-11-05T11:13:48.684029Z",
+        "observation_date": "2026-11-05",
         "observations": [
           {
+            "date": "2026-11-05",
+            "realtime_end": "2026-11-05",
+            "realtime_start": "2026-11-05",
+            "value": "3.9"
+          },
+          {
             "date": "2026-11-04",
-            "realtime_end": "2026-11-04",
-            "realtime_start": "2026-11-04",
+            "realtime_end": "2026-11-05",
+            "realtime_start": "2026-11-05",
             "value": "3.9"
           },
           {
             "date": "2026-11-03",
-            "realtime_end": "2026-11-04",
-            "realtime_start": "2026-11-04",
+            "realtime_end": "2026-11-05",
+            "realtime_start": "2026-11-05",
             "value": "3.9"
           },
           {
             "date": "2026-11-02",
-            "realtime_end": "2026-11-04",
-            "realtime_start": "2026-11-04",
+            "realtime_end": "2026-11-05",
+            "realtime_start": "2026-11-05",
             "value": "3.9"
           },
           {
             "date": "2026-11-01",
-            "realtime_end": "2026-11-04",
-            "realtime_start": "2026-11-04",
-            "value": "3.9"
-          },
-          {
-            "date": "2026-10-31",
-            "realtime_end": "2026-11-04",
-            "realtime_start": "2026-11-04",
+            "realtime_end": "2026-11-05",
+            "realtime_start": "2026-11-05",
             "value": "3.9"
           }
         ],
         "original_release_at": null,
-        "raw_path": "raw/20261104T215907203358Z_a9460295286a/IORB.json",
-        "raw_sha256": "a5db9be14803a78a596a481478100cb527ce5561a5628306800e65fd573eabb4",
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/IORB.json",
+        "raw_sha256": "6623a26d66b5eecc13611086fca5b03d5578437a0e503aaa850ace2413b65be0",
         "release_timestamp_verified": false,
         "research_eligible": false,
-        "retrieved_at": "2026-11-04T21:59:12.178170Z",
+        "retrieved_at": "2026-11-05T11:13:48.684029Z",
         "source_frequency": "Daily, 7-Day",
         "source_last_updated": "2026-11-04 15:31:16-06",
         "source_units": "Percent",
         "source_url": "https://fred.stlouisfed.org/series/IORB",
-        "source_vintage_end": "2026-11-04",
-        "source_vintage_start": "2026-11-04",
+        "source_vintage_end": "2026-11-05",
+        "source_vintage_start": "2026-11-05",
         "value": "3.9"
       },
       "layer": 1,
       "research_eligible": false,
       "series_id": "IORB",
-      "status": "error"
+      "status": "ok"
     },
     "JPNASSETS": {
       "block": "boj",
-      "checked_at": "2026-11-05T02:35:46.524071Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:56.321998Z",
+      "error": null,
       "freshness": {
-        "age_calendar_days": 65,
+        "age_calendar_days": 35,
         "basis": "native_observation_date",
-        "basis_date": "2026-09-01",
+        "basis_date": "2026-10-01",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 65,
+        "raw_reference_age_days": 35,
         "reference_date_stale": false,
         "stale_after_days": 75
       },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/JPNASSETS.json",
+        "raw_sha256": "dad32b6a29d59d598f7ea315adc93f3b7a9e88f1fe8dc0d3f888eb3badb710c2",
+        "retrieved_at": "2026-11-05T11:13:56.321998Z"
+      },
       "last_good": {
-        "fingerprint": "8a9c42f6fa41425d2937c8ea7b85485e8ba3d693ca6979a2f051220bf79fcf1e",
-        "known_by": "2026-10-08T09:10:23.169295Z",
-        "observation_date": "2026-09-01",
+        "fingerprint": "c8d7befce90665863eb00aea1975d4c7e7bca3ead3959a15680a424bf57ed2ea",
+        "known_by": "2026-11-05T11:13:56.321998Z",
+        "observation_date": "2026-10-01",
         "observations": [
           {
+            "date": "2026-10-01",
+            "realtime_end": "2026-11-05",
+            "realtime_start": "2026-11-05",
+            "value": "6261882"
+          },
+          {
             "date": "2026-09-01",
-            "realtime_end": "2026-10-08",
-            "realtime_start": "2026-10-08",
+            "realtime_end": "2026-11-05",
+            "realtime_start": "2026-11-05",
             "value": "6250253"
           },
           {
             "date": "2026-08-01",
-            "realtime_end": "2026-10-08",
-            "realtime_start": "2026-10-08",
+            "realtime_end": "2026-11-05",
+            "realtime_start": "2026-11-05",
             "value": "6446620"
           },
           {
             "date": "2026-07-01",
-            "realtime_end": "2026-10-08",
-            "realtime_start": "2026-10-08",
+            "realtime_end": "2026-11-05",
+            "realtime_start": "2026-11-05",
             "value": "6442957"
           },
           {
             "date": "2026-06-01",
-            "realtime_end": "2026-10-08",
-            "realtime_start": "2026-10-08",
+            "realtime_end": "2026-11-05",
+            "realtime_start": "2026-11-05",
             "value": "6395509.0"
-          },
-          {
-            "date": "2026-05-01",
-            "realtime_end": "2026-10-08",
-            "realtime_start": "2026-10-08",
-            "value": "6643630.0"
           }
         ],
         "original_release_at": null,
-        "raw_path": "raw/20261008T091011612924Z_18141411d7b4/JPNASSETS.json",
-        "raw_sha256": "ec2e488469da3b96ab98e61c0593f337afae50e93fddda6a14b5df42832604ed",
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/JPNASSETS.json",
+        "raw_sha256": "dad32b6a29d59d598f7ea315adc93f3b7a9e88f1fe8dc0d3f888eb3badb710c2",
         "release_timestamp_verified": false,
         "research_eligible": false,
-        "retrieved_at": "2026-10-08T09:10:23.169295Z",
+        "retrieved_at": "2026-11-05T11:13:56.321998Z",
         "source_frequency": "Monthly, End of Period",
-        "source_last_updated": "2026-10-07 20:11:35-05",
+        "source_last_updated": "2026-11-04 20:11:29-06",
         "source_units": "100 Million Yen",
         "source_url": "https://fred.stlouisfed.org/series/JPNASSETS",
-        "source_vintage_end": "2026-10-08",
-        "source_vintage_start": "2026-10-08",
-        "value": "6250253"
+        "source_vintage_end": "2026-11-05",
+        "source_vintage_start": "2026-11-05",
+        "value": "6261882"
       },
       "layer": 1,
       "research_eligible": false,
       "series_id": "JPNASSETS",
-      "status": "error"
+      "status": "ok"
     },
     "MMMFFAQ027S": {
       "block": "sector_distribution",
-      "checked_at": "2026-11-05T02:35:47.235854Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:57.975390Z",
+      "error": null,
       "freshness": {
         "age_calendar_days": 128,
         "basis": "verified_quarter_end",
@@ -379,6 +414,11 @@
         "raw_reference_age_days": 218,
         "reference_date_stale": false,
         "stale_after_days": 190
+      },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/MMMFFAQ027S.json",
+        "raw_sha256": "51c88dd2f98d262281807a58c95c477ed749dd6dbc0d2961326d2e9d1e34a624",
+        "retrieved_at": "2026-11-05T11:13:57.975390Z"
       },
       "last_good": {
         "fingerprint": "a807e8a4b80b62ce3f33bbdea688a617ebb9639ad6b2c6d0953e670e00cbdfdb",
@@ -433,13 +473,12 @@
       "layer": 2,
       "research_eligible": false,
       "series_id": "MMMFFAQ027S",
-      "status": "error"
+      "status": "ok"
     },
     "RRPONTSYD": {
       "block": "fed",
-      "checked_at": "2026-11-05T02:35:41.792869Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:46.376764Z",
+      "error": null,
       "freshness": {
         "age_calendar_days": 1,
         "basis": "native_observation_date",
@@ -448,6 +487,11 @@
         "raw_reference_age_days": 1,
         "reference_date_stale": false,
         "stale_after_days": 7
+      },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/RRPONTSYD.json",
+        "raw_sha256": "268daa0d7f0d7bdccc093e7c0c126803e992cd357491bbccf4dbdbea98abe1a5",
+        "retrieved_at": "2026-11-05T11:13:46.376764Z"
       },
       "last_good": {
         "fingerprint": "e115b2797b63a2fdd94270440fbf2002b2b670eef3012454cff1c60d053aad3c",
@@ -502,13 +546,12 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "RRPONTSYD",
-      "status": "error"
+      "status": "ok"
     },
     "SOFR": {
       "block": "fed_funding",
-      "checked_at": "2026-11-05T02:35:42.743074Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:47.981592Z",
+      "error": null,
       "freshness": {
         "age_calendar_days": 2,
         "basis": "native_observation_date",
@@ -517,6 +560,11 @@
         "raw_reference_age_days": 2,
         "reference_date_stale": false,
         "stale_after_days": 7
+      },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/SOFR.json",
+        "raw_sha256": "2f9340996e40fc2c9e43f9f6ae1e67f645aded3c919264454b04a2fd97d7598b",
+        "retrieved_at": "2026-11-05T11:13:47.981592Z"
       },
       "last_good": {
         "fingerprint": "5a10338bfc95f7954a767700777221b77f3f5dc7877eb9955c189002906c4ff6",
@@ -571,13 +619,12 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "SOFR",
-      "status": "error"
+      "status": "ok"
     },
     "TOTBKCR": {
       "block": "bank_credit",
-      "checked_at": "2026-11-05T02:35:43.561101Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:49.841595Z",
+      "error": null,
       "freshness": {
         "age_calendar_days": 15,
         "basis": "native_observation_date",
@@ -586,6 +633,11 @@
         "raw_reference_age_days": 15,
         "reference_date_stale": false,
         "stale_after_days": 21
+      },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/TOTBKCR.json",
+        "raw_sha256": "9492b339eacd88c14c8a4d6727676fd5f845a7c2cc2076e2a2d4820dc6ace227",
+        "retrieved_at": "2026-11-05T11:13:49.841595Z"
       },
       "last_good": {
         "fingerprint": "6fe8264e7b43beb402ef4a8bee02aa4735193a18ed87c9eb2d68ae36a29afbb1",
@@ -640,13 +692,12 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "TOTBKCR",
-      "status": "error"
+      "status": "ok"
     },
     "TOTLL": {
       "block": "bank_credit",
-      "checked_at": "2026-11-05T02:35:45.719010Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:54.826052Z",
+      "error": null,
       "freshness": {
         "age_calendar_days": 15,
         "basis": "native_observation_date",
@@ -655,6 +706,11 @@
         "raw_reference_age_days": 15,
         "reference_date_stale": false,
         "stale_after_days": 21
+      },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/TOTLL.json",
+        "raw_sha256": "d725af3fce7a45cb13c16cb116a907e8bc0249b21754f1f7b12922039c8f02ff",
+        "retrieved_at": "2026-11-05T11:13:54.826052Z"
       },
       "last_good": {
         "fingerprint": "9c85bde2b12fe45c36ea030b13312696ba0d2588ce8e1c9678dcbd1e32bbfd65",
@@ -709,13 +765,12 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "TOTLL",
-      "status": "error"
+      "status": "ok"
     },
     "WALCL": {
       "block": "fed",
-      "checked_at": "2026-11-05T02:35:40.612451Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:44.758914Z",
+      "error": null,
       "freshness": {
         "age_calendar_days": 8,
         "basis": "native_observation_date",
@@ -724,6 +779,11 @@
         "raw_reference_age_days": 8,
         "reference_date_stale": false,
         "stale_after_days": 21
+      },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/WALCL.json",
+        "raw_sha256": "79c91aa053253fbcaf754a977cd62460fe6ac36c2781567fe2bcd76f41537e11",
+        "retrieved_at": "2026-11-05T11:13:44.758914Z"
       },
       "last_good": {
         "fingerprint": "be5fbfc0180e89599b077ae054e49901cc7d16832de744e3a982b1c145605622",
@@ -778,13 +838,12 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "WALCL",
-      "status": "error"
+      "status": "ok"
     },
     "WDTGAL": {
       "block": "fed",
-      "checked_at": "2026-11-05T02:35:45.284037Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:53.030603Z",
+      "error": null,
       "freshness": {
         "age_calendar_days": 8,
         "basis": "native_observation_date",
@@ -793,6 +852,11 @@
         "raw_reference_age_days": 8,
         "reference_date_stale": false,
         "stale_after_days": 21
+      },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/WDTGAL.json",
+        "raw_sha256": "0c5100f9092a1bc3e0827a22f3db6305af3856c0c8a3cb0ca5348ba7d2e03b8b",
+        "retrieved_at": "2026-11-05T11:13:53.030603Z"
       },
       "last_good": {
         "fingerprint": "f8a7a1cb9f319ee89686b7036a143329b6c90353580ae350157c55db004fb9c3",
@@ -847,13 +911,12 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "WDTGAL",
-      "status": "error"
+      "status": "ok"
     },
     "WLRRAOL": {
       "block": "fed",
-      "checked_at": "2026-11-05T02:35:44.712881Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:52.308307Z",
+      "error": null,
       "freshness": {
         "age_calendar_days": 8,
         "basis": "native_observation_date",
@@ -862,6 +925,11 @@
         "raw_reference_age_days": 8,
         "reference_date_stale": false,
         "stale_after_days": 21
+      },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/WLRRAOL.json",
+        "raw_sha256": "359f1820529704258f7272cc1d6321e3af79e472c2e0b82b529b93dcd508f568",
+        "retrieved_at": "2026-11-05T11:13:52.308307Z"
       },
       "last_good": {
         "fingerprint": "8efb1f39ca1572262b95e771b7d359c63b35c9c71a90ce1ec381a549e6daa2f1",
@@ -916,13 +984,12 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "WLRRAOL",
-      "status": "error"
+      "status": "ok"
     },
     "WRBWFRBL": {
       "block": "fed",
-      "checked_at": "2026-11-05T02:35:44.325652Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:51.588217Z",
+      "error": null,
       "freshness": {
         "age_calendar_days": 8,
         "basis": "native_observation_date",
@@ -931,6 +998,11 @@
         "raw_reference_age_days": 8,
         "reference_date_stale": false,
         "stale_after_days": 21
+      },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/WRBWFRBL.json",
+        "raw_sha256": "fe36d4c0b0938d645fd2193731775fcc370876645049168c5ea9758020623136",
+        "retrieved_at": "2026-11-05T11:13:51.588217Z"
       },
       "last_good": {
         "fingerprint": "757eb7c3ce6fa312411d65eda9c376d3e265f43032ca7c948f42822ed67c3f65",
@@ -985,13 +1057,12 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "WRBWFRBL",
-      "status": "error"
+      "status": "ok"
     },
     "WRESBAL": {
       "block": "fed",
-      "checked_at": "2026-11-05T02:35:41.337522Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:45.613890Z",
+      "error": null,
       "freshness": {
         "age_calendar_days": 8,
         "basis": "native_observation_date",
@@ -1000,6 +1071,11 @@
         "raw_reference_age_days": 8,
         "reference_date_stale": false,
         "stale_after_days": 21
+      },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/WRESBAL.json",
+        "raw_sha256": "65cdd78f63d91694fba39de7f4d4cb20e1132f3382680684dd31237ca6f38cea",
+        "retrieved_at": "2026-11-05T11:13:45.613890Z"
       },
       "last_good": {
         "fingerprint": "797bc9e54be1bae303058c6d1b681e9c9376f8d36249109f880f0089304015cf",
@@ -1054,13 +1130,12 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "WRESBAL",
-      "status": "error"
+      "status": "ok"
     },
     "WTREGEN": {
       "block": "fed",
-      "checked_at": "2026-11-05T02:35:42.236037Z",
-      "error": "http_400",
-      "fetch_failed": true,
+      "checked_at": "2026-11-05T11:13:47.163761Z",
+      "error": null,
       "freshness": {
         "age_calendar_days": 8,
         "basis": "native_observation_date",
@@ -1069,6 +1144,11 @@
         "raw_reference_age_days": 8,
         "reference_date_stale": false,
         "stale_after_days": 21
+      },
+      "last_capture": {
+        "raw_path": "raw/20261105T111343852222Z_89150913fa2d/WTREGEN.json",
+        "raw_sha256": "17871baf2aea2cd8350ba2124e140aaf67e12fdcbe1b4447e84185962f3cf9d5",
+        "retrieved_at": "2026-11-05T11:13:47.163761Z"
       },
       "last_good": {
         "fingerprint": "9b175f30e341a220ff156dc8a1eebb4ce4f7cf9f51d9e14b9aff5e7670e9723f",
@@ -1123,8 +1203,8 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "WTREGEN",
-      "status": "error"
+      "status": "ok"
     }
   },
-  "started_at": "2026-11-05T02:35:40.054268Z"
+  "started_at": "2026-11-05T11:13:43.852222Z"
 }
