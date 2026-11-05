@@ -6,15 +6,40 @@
   "breaks": [
     "자료 개정·공표 지연·이력 부족이 남습니다. 국가 간 합산·빈도 늘리기·결측 보간을 하지 않습니다."
   ],
-  "errors": [],
-  "generated_at": "2026-11-04T21:59:59.551382Z",
-  "github_run_url": "https://github.com/arahant-tech/macro-liquidity-dashboard/actions/runs/41921072398",
+  "errors": [
+    {
+      "code": "http_400",
+      "series_id": "WRESBAL"
+    },
+    {
+      "code": "http_400",
+      "series_id": "WALCL"
+    },
+    {
+      "code": "http_400",
+      "series_id": "ECBASSETSW"
+    },
+    {
+      "code": "http_400",
+      "series_id": "JPNASSETS"
+    },
+    {
+      "code": "http_400",
+      "series_id": "RRPONTSYD"
+    },
+    {
+      "code": "http_400",
+      "series_id": "WTREGEN"
+    }
+  ],
+  "generated_at": "2026-11-05T02:36:51.991837Z",
+  "github_run_url": "https://github.com/arahant-tech/macro-liquidity-dashboard/actions/runs/41956207295",
   "research_eligible": false,
   "schema_version": 1,
   "series": [
     {
       "chart_type": "line",
-      "checked_at": "2026-11-04T21:59:55.439044Z",
+      "checked_at": "2026-11-05T02:36:49.386981Z",
       "frequency": "Weekly, Ending Wednesday",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-11-01T09:29:26.040615Z",
@@ -654,13 +679,13 @@
       "research_eligible": false,
       "series_id": "WRESBAL",
       "source_url": "https://fred.stlouisfed.org/series/WRESBAL",
-      "status": "ok",
+      "status": "retained",
       "track": "equity",
       "unit": "Millions of U.S. Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-04T21:59:56.149046Z",
+      "checked_at": "2026-11-05T02:36:49.827173Z",
       "frequency": "Weekly, As of Wednesday",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-11-01T09:29:26.800911Z",
@@ -1300,13 +1325,13 @@
       "research_eligible": false,
       "series_id": "WALCL",
       "source_url": "https://fred.stlouisfed.org/series/WALCL",
-      "status": "ok",
+      "status": "retained",
       "track": "equity",
       "unit": "Millions of U.S. Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-04T21:59:56.874336Z",
+      "checked_at": "2026-11-05T02:36:50.446908Z",
       "frequency": "Weekly",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-11-03T17:56:04.561067Z",
@@ -1946,13 +1971,13 @@
       "research_eligible": false,
       "series_id": "ECBASSETSW",
       "source_url": "https://fred.stlouisfed.org/series/ECBASSETSW",
-      "status": "ok",
+      "status": "retained",
       "track": "equity",
       "unit": "Millions of Euros"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-04T21:59:57.630333Z",
+      "checked_at": "2026-11-05T02:36:51.085758Z",
       "frequency": "Monthly, End of Period",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-11-01T09:29:28.998550Z",
@@ -2104,13 +2129,13 @@
       "research_eligible": false,
       "series_id": "JPNASSETS",
       "source_url": "https://fred.stlouisfed.org/series/JPNASSETS",
-      "status": "ok",
+      "status": "retained",
       "track": "equity",
       "unit": "100 Million Yen"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-04T21:59:58.687199Z",
+      "checked_at": "2026-11-05T02:36:51.487275Z",
       "frequency": "Daily",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-11-04T21:59:58.687199Z",
@@ -5266,13 +5291,13 @@
       "research_eligible": false,
       "series_id": "RRPONTSYD",
       "source_url": "https://fred.stlouisfed.org/series/RRPONTSYD",
-      "status": "ok",
+      "status": "retained",
       "track": "equity",
       "unit": "Billions of US Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-04T21:59:59.431592Z",
+      "checked_at": "2026-11-05T02:36:51.836684Z",
       "frequency": "Weekly, Ending Wednesday",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-11-01T09:29:30.808390Z",
@@ -5912,13 +5937,13 @@
       "research_eligible": false,
       "series_id": "WTREGEN",
       "source_url": "https://fred.stlouisfed.org/series/WTREGEN",
-      "status": "ok",
+      "status": "retained",
       "track": "equity",
       "unit": "Millions of U.S. Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-04T21:59:59.452006Z",
+      "checked_at": "2026-11-05T02:36:51.864256Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-10-14T12:09:25.108209Z",
@@ -5973,7 +5998,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-04T21:59:59.470372Z",
+      "checked_at": "2026-11-05T02:36:51.889726Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-10-14T12:09:25.121716Z",
@@ -6028,7 +6053,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-04T21:59:59.476976Z",
+      "checked_at": "2026-11-05T02:36:51.898868Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-10-14T12:09:25.126261Z",
@@ -6083,7 +6108,7 @@
     },
     {
       "chart_type": "bar",
-      "checked_at": "2026-11-04T21:59:59.484214Z",
+      "checked_at": "2026-11-05T02:36:51.909313Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
       "known_by": "2026-10-14T12:09:25.131578Z",
@@ -6138,7 +6163,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-04T21:59:59.484584Z",
+      "checked_at": "2026-11-05T02:36:51.909840Z",
       "frequency": "Monthly",
       "history_basis": "current_vintage_available_monthly_history_max_36_observations",
       "known_by": "2026-11-04T21:59:36.698070Z",
@@ -6309,7 +6334,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-04T21:59:59.495916Z",
+      "checked_at": "2026-11-05T02:36:51.924950Z",
       "frequency": "Monthly",
       "history_basis": "current_vintage_available_monthly_history_max_36_observations",
       "known_by": "2026-10-16T17:33:16.474239Z",
@@ -6380,7 +6405,7 @@
     },
     {
       "chart_type": "bar",
-      "checked_at": "2026-11-04T21:59:59.511364Z",
+      "checked_at": "2026-11-05T02:36:51.946561Z",
       "frequency": "Monthly",
       "history_basis": "current_vintage_available_monthly_history_max_36_observations",
       "known_by": "2026-11-01T02:22:09.547767Z",
