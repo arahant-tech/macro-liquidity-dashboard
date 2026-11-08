@@ -1,11 +1,11 @@
 {
   "asset_status": [
     {
-      "age_calendar_days": 1,
+      "age_calendar_days": 2,
       "asset": "BTC",
       "business_date": "2026-11-06",
       "changed": false,
-      "checked_at": "2026-11-07T23:44:13.099408Z",
+      "checked_at": "2026-11-08T06:21:14.301568Z",
       "covered_funds": 12,
       "error": null,
       "fingerprint": "6d09cc75f612add5873b1f6026d07ef91c4af3a45cca4aced8711ea5b05cca60",
@@ -145,7 +145,7 @@
     },
     {
       "asset": "ETH",
-      "checked_at": "2026-11-07T23:44:14.374707Z",
+      "checked_at": "2026-11-08T06:21:15.444008Z",
       "error": "source_fund_universe_changed",
       "fingerprint": "a57ca4f5a55f0b5a0a11898d30cfb59fb861e8f10352ff1ead5afb0869752ff4",
       "last_good_observation": {
@@ -287,7 +287,7 @@
     "Only BTC and ETH US spot-product universes on the source tables are covered; equity ETF flows and other crypto products remain absent.",
     "Capture time is the earliest knowability certified by this collector; a business date is not an original publication timestamp."
   ],
-  "capture_id": "20261107T234411769444Z_1da465e06a43",
+  "capture_id": "20261108T062112958742Z_f0407a50314b",
   "errors": [
     {
       "asset": "ETH",
@@ -296,7 +296,7 @@
       "series_id": "ETF_ETH_SPOT_NET_FLOW_FARSIDE"
     }
   ],
-  "fetched_at": "2026-11-07T23:44:14.374751Z",
+  "fetched_at": "2026-11-08T06:21:15.444043Z",
   "limitations": [
     "Underlying flow construction and revisions are not independently audited against each issuer's creations and redemptions.",
     "The current New York calendar date is deliberately excluded, even if all cells are filled; this introduces a conservative reporting delay.",
@@ -442,9 +442,9 @@
   "raw_captures": [
     {
       "asset": "BTC",
-      "raw_path": "raw/20261107T234411769444Z_1da465e06a43/btc_flow_table.html",
-      "raw_sha256": "adcdd792ebabb3a70acad28a5562399e730d19c28bc1e69af47e1b8ca41f753b",
-      "retrieved_at": "2026-11-07T23:44:13.099408Z"
+      "raw_path": "raw/20261108T062112958742Z_f0407a50314b/btc_flow_table.html",
+      "raw_sha256": "e54e0f1ab76a5aeee98b17838a91fb302f60255200139bd3634f37c80dfb9fdb",
+      "retrieved_at": "2026-11-08T06:21:14.301568Z"
     }
   ],
   "research_eligible": false,
@@ -573,7 +573,7 @@
   ],
   "schema_version": 1,
   "stale": 0,
-  "started_at": "2026-11-07T23:44:11.769444Z",
+  "started_at": "2026-11-08T06:21:12.958742Z",
   "status": "partial",
   "success": 1,
   "total": 2
