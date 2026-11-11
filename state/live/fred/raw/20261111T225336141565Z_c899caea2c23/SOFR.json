@@ -1,64 +1,63 @@
 {
-  "known_by": "2026-11-11T16:21:59.379402Z",
+  "known_by": "2026-11-11T22:53:42.262790Z",
   "metadata_response": {
     "realtime_end": "2026-11-11",
     "realtime_start": "2026-11-11",
     "seriess": [
       {
-        "frequency": "Quarterly",
-        "frequency_short": "Q",
-        "id": "DRTSCILM",
-        "last_updated": "2026-11-02 13:02:14-06",
-        "notes": "data source (https://www.federalreserve.gov/apps/ContactUs/feedback.aspx?refurl=/data/SLOOS%). For questions on FRED functionality, please contact us here (https://fred.stlouisfed.org/contactus/).</p>",
-        "observation_end": "2026-10-01",
-        "observation_start": "1990-04-01",
-        "popularity": 70,
+        "frequency": "Daily",
+        "frequency_short": "D",
+        "id": "SOFR",
+        "last_updated": "2026-11-10 07:02:37-06",
+        "observation_end": "2026-11-09",
+        "observation_start": "2018-04-03",
+        "popularity": 91,
         "realtime_end": "2026-11-11",
         "realtime_start": "2026-11-11",
         "seasonal_adjustment": "Not Seasonally Adjusted",
         "seasonal_adjustment_short": "NSA",
-        "title": "Net Percentage of Domestic Banks Tightening Standards for Commercial and Industrial Loans to Large and Middle-Market Firms",
+        "title": "Secured Overnight Financing Rate",
         "units": "Percent",
         "units_short": "%"
       }
     ]
   },
   "observation_response": {
-    "count": 147,
+    "count": 2245,
     "file_type": "json",
     "limit": 5,
     "observation_end": "2026-11-11",
     "observation_start": "1600-01-01",
     "observations": [
       {
-        "date": "2026-10-01",
+        "date": "2026-11-09",
         "realtime_end": "2026-11-11",
         "realtime_start": "2026-11-11",
-        "value": "1.7"
+        "value": "3.88"
       },
       {
-        "date": "2026-07-01",
+        "date": "2026-11-06",
         "realtime_end": "2026-11-11",
         "realtime_start": "2026-11-11",
-        "value": "0"
+        "value": "3.89"
       },
       {
-        "date": "2026-04-01",
+        "date": "2026-11-05",
         "realtime_end": "2026-11-11",
         "realtime_start": "2026-11-11",
-        "value": "8.1"
+        "value": "3.92"
       },
       {
-        "date": "2026-01-01",
+        "date": "2026-11-04",
         "realtime_end": "2026-11-11",
         "realtime_start": "2026-11-11",
-        "value": "5.3"
+        "value": "3.94"
       },
       {
-        "date": "2025-10-01",
+        "date": "2026-11-03",
         "realtime_end": "2026-11-11",
         "realtime_start": "2026-11-11",
-        "value": "6.5"
+        "value": "3.97"
       }
     ],
     "offset": 0,
@@ -76,14 +75,14 @@
       "output_type": 1,
       "realtime_end": "2026-11-11",
       "realtime_start": "2026-11-11",
-      "series_id": "DRTSCILM",
+      "series_id": "SOFR",
       "sort_order": "desc",
       "units": "lin"
     },
     "provider": "FRED"
   },
   "research_eligible": false,
-  "retrieved_at": "2026-11-11T16:21:59.379402Z",
+  "retrieved_at": "2026-11-11T22:53:42.262790Z",
   "schema_version": 1,
-  "series_id": "DRTSCILM"
+  "series_id": "SOFR"
 }
