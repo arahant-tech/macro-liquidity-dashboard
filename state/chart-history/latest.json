@@ -6,43 +6,18 @@
   "breaks": [
     "자료 개정·공표 지연·이력 부족이 남습니다. 국가 간 합산·빈도 늘리기·결측 보간을 하지 않습니다."
   ],
-  "errors": [
-    {
-      "code": "http_400",
-      "series_id": "WRESBAL"
-    },
-    {
-      "code": "http_400",
-      "series_id": "WALCL"
-    },
-    {
-      "code": "http_400",
-      "series_id": "ECBASSETSW"
-    },
-    {
-      "code": "http_400",
-      "series_id": "JPNASSETS"
-    },
-    {
-      "code": "http_400",
-      "series_id": "RRPONTSYD"
-    },
-    {
-      "code": "http_400",
-      "series_id": "WTREGEN"
-    }
-  ],
-  "generated_at": "2026-11-13T01:59:06.147064Z",
-  "github_run_url": "https://github.com/arahant-tech/macro-liquidity-dashboard/actions/runs/43348701045",
+  "errors": [],
+  "generated_at": "2026-11-13T09:46:51.974715Z",
+  "github_run_url": "https://github.com/arahant-tech/macro-liquidity-dashboard/actions/runs/43403938796",
   "research_eligible": false,
   "schema_version": 1,
   "series": [
     {
       "chart_type": "line",
-      "checked_at": "2026-11-13T01:59:03.911270Z",
+      "checked_at": "2026-11-13T09:46:48.293533Z",
       "frequency": "Weekly, Ending Wednesday",
       "history_basis": "current_vintage_3_years",
-      "known_by": "2026-11-06T08:02:15.812431Z",
+      "known_by": "2026-11-13T09:46:48.293533Z",
       "label": "Fed 지급준비금",
       "points": [
         {
@@ -676,24 +651,28 @@
         {
           "date": "2026-11-04",
           "value": 2930088.0
+        },
+        {
+          "date": "2026-11-11",
+          "value": 2960603.0
         }
       ],
       "provider": "fred",
-      "raw_path": "raw/8ea066f19f4cc8502b3ee12bd4c34cd7c0ce7fcbd597f61654d82b21a7142bf6.json",
-      "raw_sha256": "8ea066f19f4cc8502b3ee12bd4c34cd7c0ce7fcbd597f61654d82b21a7142bf6",
+      "raw_path": "raw/e42f7b25c2b121760d793629395351660b1359d3e5d6e3f6aab77cd01f315ad2.json",
+      "raw_sha256": "e42f7b25c2b121760d793629395351660b1359d3e5d6e3f6aab77cd01f315ad2",
       "research_eligible": false,
       "series_id": "WRESBAL",
       "source_url": "https://fred.stlouisfed.org/series/WRESBAL",
-      "status": "retained",
+      "status": "ok",
       "track": "equity",
       "unit": "Millions of U.S. Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-13T01:59:04.315923Z",
+      "checked_at": "2026-11-13T09:46:48.952478Z",
       "frequency": "Weekly, As of Wednesday",
       "history_basis": "current_vintage_3_years",
-      "known_by": "2026-11-06T08:02:16.860270Z",
+      "known_by": "2026-11-13T09:46:48.952478Z",
       "label": "Fed 총자산",
       "points": [
         {
@@ -1327,21 +1306,25 @@
         {
           "date": "2026-11-04",
           "value": 6748145.0
+        },
+        {
+          "date": "2026-11-11",
+          "value": 6758867.0
         }
       ],
       "provider": "fred",
-      "raw_path": "raw/29fc1a96239862dc994d847450c3c8e3d5d9128169ca60f1b5300747790d7bb8.json",
-      "raw_sha256": "29fc1a96239862dc994d847450c3c8e3d5d9128169ca60f1b5300747790d7bb8",
+      "raw_path": "raw/e3a1383fc83b696afa2b6c7bd973862c2cc99aca9643ea9924397eb80b5c61e1.json",
+      "raw_sha256": "e3a1383fc83b696afa2b6c7bd973862c2cc99aca9643ea9924397eb80b5c61e1",
       "research_eligible": false,
       "series_id": "WALCL",
       "source_url": "https://fred.stlouisfed.org/series/WALCL",
-      "status": "retained",
+      "status": "ok",
       "track": "equity",
       "unit": "Millions of U.S. Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-13T01:59:04.738575Z",
+      "checked_at": "2026-11-13T09:46:49.568088Z",
       "frequency": "Weekly",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-11-10T20:55:38.222427Z",
@@ -1986,13 +1969,13 @@
       "research_eligible": false,
       "series_id": "ECBASSETSW",
       "source_url": "https://fred.stlouisfed.org/series/ECBASSETSW",
-      "status": "retained",
+      "status": "ok",
       "track": "equity",
       "unit": "Millions of Euros"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-13T01:59:05.304257Z",
+      "checked_at": "2026-11-13T09:46:50.578517Z",
       "frequency": "Monthly, End of Period",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-11-05T11:15:05.105643Z",
@@ -2149,13 +2132,13 @@
       "research_eligible": false,
       "series_id": "JPNASSETS",
       "source_url": "https://fred.stlouisfed.org/series/JPNASSETS",
-      "status": "retained",
+      "status": "ok",
       "track": "equity",
       "unit": "100 Million Yen"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-13T01:59:05.675400Z",
+      "checked_at": "2026-11-13T09:46:51.184686Z",
       "frequency": "Daily",
       "history_basis": "current_vintage_3_years",
       "known_by": "2026-11-12T20:58:27.193211Z",
@@ -5336,16 +5319,16 @@
       "research_eligible": false,
       "series_id": "RRPONTSYD",
       "source_url": "https://fred.stlouisfed.org/series/RRPONTSYD",
-      "status": "retained",
+      "status": "ok",
       "track": "equity",
       "unit": "Billions of US Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-13T01:59:05.993258Z",
+      "checked_at": "2026-11-13T09:46:51.837595Z",
       "frequency": "Weekly, Ending Wednesday",
       "history_basis": "current_vintage_3_years",
-      "known_by": "2026-11-06T08:02:21.118391Z",
+      "known_by": "2026-11-13T09:46:51.837595Z",
       "label": "미 재무부 일반계정",
       "points": [
         {
@@ -5979,24 +5962,28 @@
         {
           "date": "2026-11-04",
           "value": 957175.0
+        },
+        {
+          "date": "2026-11-11",
+          "value": 914370.0
         }
       ],
       "provider": "fred",
-      "raw_path": "raw/e3feca9c722eb51b594ee75456d2e1cc5ea453fca4ab6b98170fa3c412a2fabc.json",
-      "raw_sha256": "e3feca9c722eb51b594ee75456d2e1cc5ea453fca4ab6b98170fa3c412a2fabc",
+      "raw_path": "raw/2cfc842a55051e053365cf09ae95e2e0a526b276aba02b3dd9fabfb0ee73bd0c.json",
+      "raw_sha256": "2cfc842a55051e053365cf09ae95e2e0a526b276aba02b3dd9fabfb0ee73bd0c",
       "research_eligible": false,
       "series_id": "WTREGEN",
       "source_url": "https://fred.stlouisfed.org/series/WTREGEN",
-      "status": "retained",
+      "status": "ok",
       "track": "equity",
       "unit": "Millions of U.S. Dollars"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-13T01:59:06.021484Z",
+      "checked_at": "2026-11-13T09:46:51.862457Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
-      "known_by": "2026-10-14T12:09:25.108209Z",
+      "known_by": "2026-11-13T09:46:51.862457Z",
       "label": "PBoC 총자산",
       "points": [
         {
@@ -6034,25 +6021,29 @@
         {
           "date": "2026-09-30",
           "value": 505003.29
+        },
+        {
+          "date": "2026-10-31",
+          "value": 513769.19
         }
       ],
       "provider": "pboc",
-      "raw_path": "raw/51690c8f6c6b76609879314ca5bb664999499fa8573202f4a08a1963c1a8efe1.html",
-      "raw_sha256": "51690c8f6c6b76609879314ca5bb664999499fa8573202f4a08a1963c1a8efe1",
+      "raw_path": "raw/e41ac2b1a28f45098fcad52a77700c6533d7ecc597989d63dc07a777dfd440dd.html",
+      "raw_sha256": "e41ac2b1a28f45098fcad52a77700c6533d7ecc597989d63dc07a777dfd440dd",
       "research_eligible": false,
       "series_id": "PBOC_TOTAL_ASSETS",
-      "source_retrieved_at": "2026-10-14T12:08:44.134009Z",
-      "source_url": "https://www.pbc.gov.cn/diaochatongjisi/attachDir/2026/10/2026101417430649497.htm",
+      "source_retrieved_at": "2026-11-13T09:46:11.422987Z",
+      "source_url": "https://www.pbc.gov.cn/diaochatongjisi/attachDir/2026/11/2026111317255346807.htm",
       "status": "ok",
       "track": "equity",
       "unit": "100 million CNY"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-13T01:59:06.047022Z",
+      "checked_at": "2026-11-13T09:46:51.884579Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
-      "known_by": "2026-10-14T12:09:25.121716Z",
+      "known_by": "2026-11-13T09:46:51.884579Z",
       "label": "PBoC 예금취급기관 예금",
       "points": [
         {
@@ -6090,25 +6081,29 @@
         {
           "date": "2026-09-30",
           "value": 230599.25
+        },
+        {
+          "date": "2026-10-31",
+          "value": 222911.05
         }
       ],
       "provider": "pboc",
-      "raw_path": "raw/51690c8f6c6b76609879314ca5bb664999499fa8573202f4a08a1963c1a8efe1.html",
-      "raw_sha256": "51690c8f6c6b76609879314ca5bb664999499fa8573202f4a08a1963c1a8efe1",
+      "raw_path": "raw/e41ac2b1a28f45098fcad52a77700c6533d7ecc597989d63dc07a777dfd440dd.html",
+      "raw_sha256": "e41ac2b1a28f45098fcad52a77700c6533d7ecc597989d63dc07a777dfd440dd",
       "research_eligible": false,
       "series_id": "PBOC_DEPOSITS_OTHER_DEPOSITORY_CORPORATIONS",
-      "source_retrieved_at": "2026-10-14T12:08:44.134009Z",
-      "source_url": "https://www.pbc.gov.cn/diaochatongjisi/attachDir/2026/10/2026101417430649497.htm",
+      "source_retrieved_at": "2026-11-13T09:46:11.422987Z",
+      "source_url": "https://www.pbc.gov.cn/diaochatongjisi/attachDir/2026/11/2026111317255346807.htm",
       "status": "ok",
       "track": "equity",
       "unit": "100 million CNY"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-13T01:59:06.055839Z",
+      "checked_at": "2026-11-13T09:46:51.891994Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
-      "known_by": "2026-10-14T12:09:25.126261Z",
+      "known_by": "2026-11-13T09:46:51.891994Z",
       "label": "중국 사회융자총량 잔액",
       "points": [
         {
@@ -6146,25 +6141,29 @@
         {
           "date": "2026-09-30",
           "value": 468.17
+        },
+        {
+          "date": "2026-10-31",
+          "value": 469.16
         }
       ],
       "provider": "pboc",
-      "raw_path": "raw/8649f9da169e8c89985781bfb26f222f277adc59685315836c0c133dc0056794.html",
-      "raw_sha256": "8649f9da169e8c89985781bfb26f222f277adc59685315836c0c133dc0056794",
+      "raw_path": "raw/f412ce7c254b3c0a827eec979f35954be805ee2ca0cd28f78e2b3e6343cfa305.html",
+      "raw_sha256": "f412ce7c254b3c0a827eec979f35954be805ee2ca0cd28f78e2b3e6343cfa305",
       "research_eligible": false,
       "series_id": "PBOC_TSF_STOCK",
-      "source_retrieved_at": "2026-10-14T12:08:46.733723Z",
-      "source_url": "https://www.pbc.gov.cn/diaochatongjisi/attachDir/2026/10/2026101417444554195.htm",
+      "source_retrieved_at": "2026-11-13T09:46:12.841651Z",
+      "source_url": "https://www.pbc.gov.cn/diaochatongjisi/attachDir/2026/11/2026111317240340459.htm",
       "status": "ok",
       "track": "equity",
       "unit": "trillion CNY"
     },
     {
       "chart_type": "bar",
-      "checked_at": "2026-11-13T01:59:06.066052Z",
+      "checked_at": "2026-11-13T09:46:51.901932Z",
       "frequency": "Monthly",
       "history_basis": "available_official_monthly_table",
-      "known_by": "2026-10-14T12:09:25.131578Z",
+      "known_by": "2026-11-13T09:46:51.901932Z",
       "label": "중국 사회융자총량 월간 흐름",
       "points": [
         {
@@ -6201,23 +6200,27 @@
         },
         {
           "date": "2026-09-30",
-          "value": 35476.0
+          "value": 35547.0
+        },
+        {
+          "date": "2026-10-31",
+          "value": 11429.0
         }
       ],
       "provider": "pboc",
-      "raw_path": "raw/6595e4c2c44fddf849e6bf00624f2666ea0b1c762eec9394e6ff54ba13092924.html",
-      "raw_sha256": "6595e4c2c44fddf849e6bf00624f2666ea0b1c762eec9394e6ff54ba13092924",
+      "raw_path": "raw/24c47c90f8ae5bac86fe768cc7efe91634bbeaa850b26729be631eefc8c5f840.html",
+      "raw_sha256": "24c47c90f8ae5bac86fe768cc7efe91634bbeaa850b26729be631eefc8c5f840",
       "research_eligible": false,
       "series_id": "PBOC_TSF_FLOW",
-      "source_retrieved_at": "2026-10-14T12:08:48.904074Z",
-      "source_url": "https://www.pbc.gov.cn/diaochatongjisi/attachDir/2026/10/2026101417443343908.htm",
+      "source_retrieved_at": "2026-11-13T09:46:14.981722Z",
+      "source_url": "https://www.pbc.gov.cn/diaochatongjisi/attachDir/2026/11/2026111317235249469.htm",
       "status": "ok",
       "track": "equity",
       "unit": "100 million CNY"
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-13T01:59:06.066539Z",
+      "checked_at": "2026-11-13T09:46:51.902139Z",
       "frequency": "Monthly",
       "history_basis": "current_vintage_available_monthly_history_max_36_observations",
       "known_by": "2026-11-04T21:59:36.698070Z",
@@ -6389,7 +6392,7 @@
     },
     {
       "chart_type": "line",
-      "checked_at": "2026-11-13T01:59:06.081625Z",
+      "checked_at": "2026-11-13T09:46:51.916267Z",
       "frequency": "Monthly",
       "history_basis": "current_vintage_available_monthly_history_max_36_observations",
       "known_by": "2026-10-16T17:33:16.474239Z",
@@ -6461,7 +6464,7 @@
     },
     {
       "chart_type": "bar",
-      "checked_at": "2026-11-13T01:59:06.103345Z",
+      "checked_at": "2026-11-13T09:46:51.934984Z",
       "frequency": "Monthly",
       "history_basis": "current_vintage_available_monthly_history_max_36_observations",
       "known_by": "2026-11-01T02:22:09.547767Z",
