@@ -9,29 +9,13 @@
     "Only the latest five native observations are fetched, so older revisions can be missed.",
     "The collection covers a subset of the five-layer model; missing sources are not imputed."
   ],
-  "capture_id": "20261117T230017132863Z_d4a237aa6e62",
-  "completed_at": "2026-11-17T23:01:44.025607Z",
+  "capture_id": "20261118T043504068327Z_c26c54ce58ee",
+  "completed_at": "2026-11-18T04:35:11.897163Z",
   "derived": {
     "SOFR_IORB": {
-      "formula": "100 * (SOFR - IORB), identical observation date",
-      "input_captures": [
-        {
-          "raw_path": "raw/20261117T144144412228Z_28533a8640a3/SOFR.json",
-          "raw_sha256": "263590dfba1d0792f23d0fcb26770f675186c67ea6eee3d7f587e3dd4f9c4110",
-          "series_id": "SOFR"
-        },
-        {
-          "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/IORB.json",
-          "raw_sha256": "49f93a2487417928471017f8bd353d6789aaff706088729e6954df4531848b55",
-          "series_id": "IORB"
-        }
-      ],
-      "known_by": "2026-11-17T23:01:06.972280Z",
-      "observation_date": "2026-11-16",
+      "reason": "both_inputs_must_have_successful_capture",
       "research_eligible": false,
-      "status": "ok",
-      "units": "basis points",
-      "value": 3.000000000000025
+      "status": "unavailable"
     }
   },
   "research_eligible": false,
@@ -39,21 +23,17 @@
   "series": {
     "DPSACBW027SBOG": {
       "block": "sector_distribution",
-      "checked_at": "2026-11-17T23:01:11.719110Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:08.161674Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 13,
+        "age_calendar_days": 14,
         "basis": "native_observation_date",
         "basis_date": "2026-11-04",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 13,
+        "raw_reference_age_days": 14,
         "reference_date_stale": false,
         "stale_after_days": 21
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/DPSACBW027SBOG.json",
-        "raw_sha256": "f11919c7efd93a4d9ca34749183ac99d046ea6a3f7324c7f872e95a46cf5591f",
-        "retrieved_at": "2026-11-17T23:01:11.719110Z"
       },
       "last_good": {
         "fingerprint": "d7f3b9a16bad61f22b10b1f37273bfb34049e5de9b1beb57a9915e47caf242a8",
@@ -108,25 +88,21 @@
       "layer": 2,
       "research_eligible": false,
       "series_id": "DPSACBW027SBOG",
-      "status": "ok"
+      "status": "error"
     },
     "DRTSCILM": {
       "block": "bank_credit",
-      "checked_at": "2026-11-17T23:01:37.118634Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:11.400350Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 47,
+        "age_calendar_days": 48,
         "basis": "native_observation_date",
         "basis_date": "2026-10-01",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 47,
+        "raw_reference_age_days": 48,
         "reference_date_stale": false,
         "stale_after_days": 190
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/DRTSCILM.json",
-        "raw_sha256": "7e66615409cda746bed1eb28fbf819d51526ba46938bf0f7eb69e5a51836abf3",
-        "retrieved_at": "2026-11-17T23:01:37.118634Z"
       },
       "last_good": {
         "fingerprint": "5af729408babf580fb522fbfe30d8a85f11f4bbd2bfee7af270d711e866ecc9d",
@@ -181,25 +157,21 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "DRTSCILM",
-      "status": "ok"
+      "status": "error"
     },
     "ECBASSETSW": {
       "block": "ecb",
-      "checked_at": "2026-11-17T23:01:35.421046Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:10.535949Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 4,
+        "age_calendar_days": 5,
         "basis": "native_observation_date",
         "basis_date": "2026-11-13",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 4,
+        "raw_reference_age_days": 5,
         "reference_date_stale": false,
         "stale_after_days": 21
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/ECBASSETSW.json",
-        "raw_sha256": "2bf37dc1e8788a1c6c5ee19fddbe28f34e19d7d48fa6f75f46e178ab94a64b98",
-        "retrieved_at": "2026-11-17T23:01:35.421046Z"
       },
       "last_good": {
         "fingerprint": "9da7aa1a1a600d0de274fecfee216497b61a6dbeec3325f2b9e29e107990dca2",
@@ -254,25 +226,21 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "ECBASSETSW",
-      "status": "ok"
+      "status": "error"
     },
     "IORB": {
       "block": "fed_funding",
-      "checked_at": "2026-11-17T23:01:06.972280Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:07.034953Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 0,
+        "age_calendar_days": 1,
         "basis": "native_observation_date",
         "basis_date": "2026-11-17",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 0,
+        "raw_reference_age_days": 1,
         "reference_date_stale": false,
         "stale_after_days": 7
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/IORB.json",
-        "raw_sha256": "49f93a2487417928471017f8bd353d6789aaff706088729e6954df4531848b55",
-        "retrieved_at": "2026-11-17T23:01:06.972280Z"
       },
       "last_good": {
         "fingerprint": "61bceefd5abde744bb32be0e6451ca467139ac9611775941ecf92a3fc12f4179",
@@ -327,25 +295,21 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "IORB",
-      "status": "ok"
+      "status": "error"
     },
     "JPNASSETS": {
       "block": "boj",
-      "checked_at": "2026-11-17T23:01:36.369170Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:10.928671Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 47,
+        "age_calendar_days": 48,
         "basis": "native_observation_date",
         "basis_date": "2026-10-01",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 47,
+        "raw_reference_age_days": 48,
         "reference_date_stale": false,
         "stale_after_days": 75
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/JPNASSETS.json",
-        "raw_sha256": "80a658d5af535b9d255c221ed4325cc0541a0154146ca74e92a89937351cfedc",
-        "retrieved_at": "2026-11-17T23:01:36.369170Z"
       },
       "last_good": {
         "fingerprint": "c8d7befce90665863eb00aea1975d4c7e7bca3ead3959a15680a424bf57ed2ea",
@@ -400,25 +364,21 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "JPNASSETS",
-      "status": "ok"
+      "status": "error"
     },
     "MMMFFAQ027S": {
       "block": "sector_distribution",
-      "checked_at": "2026-11-17T23:01:44.024589Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:11.897110Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 140,
+        "age_calendar_days": 141,
         "basis": "verified_quarter_end",
         "basis_date": "2026-06-30",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 230,
+        "raw_reference_age_days": 231,
         "reference_date_stale": false,
         "stale_after_days": 190
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/MMMFFAQ027S.json",
-        "raw_sha256": "a1d2f72e0e747138430dff054302a44198346e59443e5867cab8828ca74c713f",
-        "retrieved_at": "2026-11-17T23:01:44.024589Z"
       },
       "last_good": {
         "fingerprint": "a807e8a4b80b62ce3f33bbdea688a617ebb9639ad6b2c6d0953e670e00cbdfdb",
@@ -473,25 +433,21 @@
       "layer": 2,
       "research_eligible": false,
       "series_id": "MMMFFAQ027S",
-      "status": "ok"
+      "status": "error"
     },
     "RRPONTSYD": {
       "block": "fed",
-      "checked_at": "2026-11-17T23:00:46.009358Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:05.584931Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 0,
+        "age_calendar_days": 1,
         "basis": "native_observation_date",
         "basis_date": "2026-11-17",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 0,
+        "raw_reference_age_days": 1,
         "reference_date_stale": false,
         "stale_after_days": 7
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/RRPONTSYD.json",
-        "raw_sha256": "7fde2023b056148b968dd7bf94640e565b5e6f6189aa4aeb8f1f2d7e26704afc",
-        "retrieved_at": "2026-11-17T23:00:46.009358Z"
       },
       "last_good": {
         "fingerprint": "8cf112a46e21c4b23f36ed3e1770dbbc0b7e004dbe669b39809b9ede5bfdd248",
@@ -540,25 +496,21 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "RRPONTSYD",
-      "status": "ok"
+      "status": "error"
     },
     "SOFR": {
       "block": "fed_funding",
-      "checked_at": "2026-11-17T23:01:03.809627Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:06.468365Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 1,
+        "age_calendar_days": 2,
         "basis": "native_observation_date",
         "basis_date": "2026-11-16",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 1,
+        "raw_reference_age_days": 2,
         "reference_date_stale": false,
         "stale_after_days": 7
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/SOFR.json",
-        "raw_sha256": "1c710bc70f5eaf867c8860e48a6aa1a2b903317c6c96babf76c800c570acf984",
-        "retrieved_at": "2026-11-17T23:01:03.809627Z"
       },
       "last_good": {
         "fingerprint": "109db0952a1ed62db93047e2de512e70aaac24bd81d511e4cc8c415329135565",
@@ -607,25 +559,21 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "SOFR",
-      "status": "ok"
+      "status": "error"
     },
     "TOTBKCR": {
       "block": "bank_credit",
-      "checked_at": "2026-11-17T23:01:10.737463Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:07.645420Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 13,
+        "age_calendar_days": 14,
         "basis": "native_observation_date",
         "basis_date": "2026-11-04",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 13,
+        "raw_reference_age_days": 14,
         "reference_date_stale": false,
         "stale_after_days": 21
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/TOTBKCR.json",
-        "raw_sha256": "8f4b23d480d1a126d185d7d4822894d713e6dfa7419ab927693b582df74e0724",
-        "retrieved_at": "2026-11-17T23:01:10.737463Z"
       },
       "last_good": {
         "fingerprint": "6666a97b6986c7378a17cd0e2b42fadd74d88509f92f5dbc4d6f4117f235a914",
@@ -680,25 +628,21 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "TOTBKCR",
-      "status": "ok"
+      "status": "error"
     },
     "TOTLL": {
       "block": "bank_credit",
-      "checked_at": "2026-11-17T23:01:29.719558Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:09.953083Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 13,
+        "age_calendar_days": 14,
         "basis": "native_observation_date",
         "basis_date": "2026-11-04",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 13,
+        "raw_reference_age_days": 14,
         "reference_date_stale": false,
         "stale_after_days": 21
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/TOTLL.json",
-        "raw_sha256": "6d8b0e613cda6760ea33cdc795e89a606affc241268ab96f8f456287f29b4e8f",
-        "retrieved_at": "2026-11-17T23:01:29.719558Z"
       },
       "last_good": {
         "fingerprint": "68ee71821a0fa3dcce0dcbd16d661376d4f14f370c2f0709b0aaa9bb05131b40",
@@ -753,25 +697,21 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "TOTLL",
-      "status": "ok"
+      "status": "error"
     },
     "WALCL": {
       "block": "fed",
-      "checked_at": "2026-11-17T23:00:24.211130Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:04.546393Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 6,
+        "age_calendar_days": 7,
         "basis": "native_observation_date",
         "basis_date": "2026-11-11",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 6,
+        "raw_reference_age_days": 7,
         "reference_date_stale": false,
         "stale_after_days": 21
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/WALCL.json",
-        "raw_sha256": "a037c7f7ff32dfca60abef721967b7aaeb54a95ff7372712e91b40a620b358f1",
-        "retrieved_at": "2026-11-17T23:00:24.211130Z"
       },
       "last_good": {
         "fingerprint": "d3cfceecabbcaf7518aeb40a170b206f4ede2ea80d5c48f4d5697d96925fb642",
@@ -826,25 +766,21 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "WALCL",
-      "status": "ok"
+      "status": "error"
     },
     "WDTGAL": {
       "block": "fed",
-      "checked_at": "2026-11-17T23:01:27.998616Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:09.522184Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 6,
+        "age_calendar_days": 7,
         "basis": "native_observation_date",
         "basis_date": "2026-11-11",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 6,
+        "raw_reference_age_days": 7,
         "reference_date_stale": false,
         "stale_after_days": 21
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/WDTGAL.json",
-        "raw_sha256": "11f34795c34f2dbcba176179f8964675dea1bf7d2e5471b4481004ee5a3b13b4",
-        "retrieved_at": "2026-11-17T23:01:27.998616Z"
       },
       "last_good": {
         "fingerprint": "62999fadb78f794797e125bcdf6049fdad8e3200bd11460230ef707ec25042ce",
@@ -899,25 +835,21 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "WDTGAL",
-      "status": "ok"
+      "status": "error"
     },
     "WLRRAOL": {
       "block": "fed",
-      "checked_at": "2026-11-17T23:01:23.507243Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:09.099451Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 6,
+        "age_calendar_days": 7,
         "basis": "native_observation_date",
         "basis_date": "2026-11-11",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 6,
+        "raw_reference_age_days": 7,
         "reference_date_stale": false,
         "stale_after_days": 21
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/WLRRAOL.json",
-        "raw_sha256": "ecfe75a06893460ac95f4b183ff545f2473690f962c199b932d34fdfc7b5ea05",
-        "retrieved_at": "2026-11-17T23:01:23.507243Z"
       },
       "last_good": {
         "fingerprint": "fd42d2ab2b3f051776f4ac4bb1fdb490879b10e903b3b898d744de792973fec5",
@@ -972,25 +904,21 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "WLRRAOL",
-      "status": "ok"
+      "status": "error"
     },
     "WRBWFRBL": {
       "block": "fed",
-      "checked_at": "2026-11-17T23:01:18.446269Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:08.606658Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 6,
+        "age_calendar_days": 7,
         "basis": "native_observation_date",
         "basis_date": "2026-11-11",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 6,
+        "raw_reference_age_days": 7,
         "reference_date_stale": false,
         "stale_after_days": 21
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/WRBWFRBL.json",
-        "raw_sha256": "d9b9cdff034c97cc568ddf0064c6abc8da084902f448142f3cde7fb8061f4cc4",
-        "retrieved_at": "2026-11-17T23:01:18.446269Z"
       },
       "last_good": {
         "fingerprint": "822ae0b22d4b5074ba89f1f6f67b4065ee98b54206b55ced83b4fadd53a04179",
@@ -1045,25 +973,21 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "WRBWFRBL",
-      "status": "ok"
+      "status": "error"
     },
     "WRESBAL": {
       "block": "fed",
-      "checked_at": "2026-11-17T23:00:35.631016Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:04.950896Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 6,
+        "age_calendar_days": 7,
         "basis": "native_observation_date",
         "basis_date": "2026-11-11",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 6,
+        "raw_reference_age_days": 7,
         "reference_date_stale": false,
         "stale_after_days": 21
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/WRESBAL.json",
-        "raw_sha256": "5774aedbdc0ef32905c3c6cea13ea7543a9bd9af1d90b6624d6a1052afceff97",
-        "retrieved_at": "2026-11-17T23:00:35.631016Z"
       },
       "last_good": {
         "fingerprint": "93789fb31247ca6d1fb353faa6b5e3ad31d514478af8929f28e6b67dbe88f87f",
@@ -1118,25 +1042,21 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "WRESBAL",
-      "status": "ok"
+      "status": "error"
     },
     "WTREGEN": {
       "block": "fed",
-      "checked_at": "2026-11-17T23:00:54.942376Z",
-      "error": null,
+      "checked_at": "2026-11-18T04:35:05.990888Z",
+      "error": "http_400",
+      "fetch_failed": true,
       "freshness": {
-        "age_calendar_days": 6,
+        "age_calendar_days": 7,
         "basis": "native_observation_date",
         "basis_date": "2026-11-11",
         "definition": "Age of the verified economic period end where configured, otherwise the native reference date; not a certification of the release schedule.",
-        "raw_reference_age_days": 6,
+        "raw_reference_age_days": 7,
         "reference_date_stale": false,
         "stale_after_days": 21
-      },
-      "last_capture": {
-        "raw_path": "raw/20261117T230017132863Z_d4a237aa6e62/WTREGEN.json",
-        "raw_sha256": "b49bee895c97397bde3626224a217ee04da7f985171c695fff043ed55df3ca2f",
-        "retrieved_at": "2026-11-17T23:00:54.942376Z"
       },
       "last_good": {
         "fingerprint": "e68cf7fa3453ed51b1c9a84cc4d5643c4e7129a879a7ab9ec29585fbb2d9813c",
@@ -1191,8 +1111,8 @@
       "layer": 1,
       "research_eligible": false,
       "series_id": "WTREGEN",
-      "status": "ok"
+      "status": "error"
     }
   },
-  "started_at": "2026-11-17T23:00:17.132863Z"
+  "started_at": "2026-11-18T04:35:04.068327Z"
 }
